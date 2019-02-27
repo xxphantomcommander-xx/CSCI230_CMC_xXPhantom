@@ -63,7 +63,7 @@ public class DBController {
 	}
 	/*
 	 * gets alist of saved schools for
-	 * a specific user from the databaase
+	 * a specific user from the database
 	 * @param nonAdminUser
 	 */
 	public List<University> getSavedSchoolList(String nonAdminUser)
