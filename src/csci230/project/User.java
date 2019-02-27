@@ -1,8 +1,8 @@
 package csci230.project;
-/*this class will act as a super class for both non-admin and admin users
- * 
+/**
+ * this class will act as a super class for both non-admin and admin users
  * @author: Gavin Wollenberg
- * @version: 2/25/19
+ * @version: 2/27/19
  */
 
 abstract class User {
@@ -24,6 +24,7 @@ abstract class User {
    *@return firstName
    */
   public String getFirstName() {
+	return firstName;
     
   }
   
@@ -32,6 +33,7 @@ abstract class User {
    *@return lastName
    */
   public String getLastName() {
+	return firstName;
     
   }
   
@@ -40,6 +42,7 @@ abstract class User {
    *@return userName
    */
   public String getUserName() {
+	return firstName;
     
   }
   
@@ -48,6 +51,7 @@ abstract class User {
    *@return password
    */
   public String getPassword() {
+	return firstName;
     
   }
   
@@ -56,6 +60,7 @@ abstract class User {
    *@return firstName
    */
   public boolean getType() {
+	return status;
     
   }
   
@@ -64,6 +69,7 @@ abstract class User {
    *@return status
    */
   public boolean getStatus() {
+	return status;
     
   }
   
@@ -72,6 +78,7 @@ abstract class User {
    *@return boolean
    */
   public boolean isLoggedon() {
+	return status;
     
   }
   
@@ -153,7 +160,8 @@ abstract class User {
    *@return String
    */
   public String findByUserName(String userName) {
-	  
+	return "";
+	  //Fix should return user but creates errors for now
   }
 
   /**
@@ -161,7 +169,8 @@ abstract class User {
    *@param user
    *@return String 
    */
-  public String (user User) {
+  public String showDetails(User user) {
+	return firstName;
 	  
   }
 }

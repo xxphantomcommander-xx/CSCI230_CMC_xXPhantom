@@ -1,9 +1,12 @@
 package csci230.project;
+
+import java.util.List;
+
 /**
  * This class controls how Users objects interact
  * with the system
  * @author andrewbreyen
- * @version Feb 25
+ * @version 2/27/19
  */
 
 public class UserController {
@@ -19,7 +22,7 @@ public class UserController {
 	 * sets the last name
 	 * @param newLastName new Last Name
 	 */
-	public void setFirstName(String newLastName) {
+	public void setLastName(String newLastName) {
 		
 	}
 	
@@ -80,6 +83,7 @@ public class UserController {
 	 * @return String of user details
 	 */
 	public String showUserDetails(User user) {
+		return null;
 		
 	}
 	
@@ -87,7 +91,7 @@ public class UserController {
 	 * sorts by state
 	 * @param savedSchools saved schools
 	 */
-	public void sortByState(list<universities> savedSchools) {
+	public void sortByState(List<University> savedSchools) {
 		
 	}
 	
@@ -95,7 +99,7 @@ public class UserController {
 	 * sorts by size
 	 * @param savedSchools saved schools
 	 */
-	public void sortBySize(list<universities> savedSchools) {
+	public void sortBySize(List<University> savedSchools) {
 		
 	}
 	
@@ -103,7 +107,7 @@ public class UserController {
 	 * sorts by name
 	 * @param savedSchools saved schools
 	 */
-	public void sortByName(list<universities> savedSchools) {
+	public void sortByName(List<University> savedSchools) {
 		
 	}
 }
