@@ -13,7 +13,16 @@ import java.util.List;
 public class DBController {
 	private static final University University = null;
 	private static final User User = null;
-	/*
+	
+	/**
+	 * Constructor for the database controller
+	 */
+	public DBController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	/**
 	 * saves the a new school to the database
 	 * @param school
 	 */
