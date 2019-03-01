@@ -6,6 +6,53 @@ package csci230.project;
  * @version 2/25/19
  */
 public class UniversityController {
+	
+	/**
+	 * Constructor for University controller
+	 */
+	public UniversityController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	/**
+	 * searches for schools using parameters
+	 * @param sch
+	 * @param st
+	 * @param l
+	 * @param c
+	 * @param nStuLow
+	 * @param nStuHigh
+	 * @param prctfLow
+	 * @param prctfHigh
+	 * @param svLow
+	 * @param svHigh
+	 * @param smLow
+	 * @param smHigh
+	 * @param eLow
+	 * @param eHigh
+	 * @param prctfinLow
+	 * @param prctfinHigh
+	 * @param nApLow
+	 * @param nApHigh
+	 * @param prctaLow
+	 * @param prctaHigh
+	 * @param prcteLow
+	 * @param prcteHigh
+	 * @param asLow
+	 * @param asHigh
+	 * @param ssLow
+	 * @param ssHigh
+	 * @param qLow
+	 * @param qHigh
+	 * @param emp
+	 */
+	public void searchSchools(String sch, String st, String l, String c, 
+			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
+			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, String emp) {
+		
+	}
+	
 	/**
 	 * 
 	 * Sets school name
@@ -16,6 +63,7 @@ public class UniversityController {
 		return "";
 	}
 	
+
 	/**
 	 * 
 	 * Sets state

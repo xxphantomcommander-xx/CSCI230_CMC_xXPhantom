@@ -94,30 +94,42 @@ public class NonAdminInteraction {
 	}
 	
 	/**
-	 * Searches for schools that most match the search
+	 * searches for schools using parameters
 	 * @param sch
 	 * @param st
 	 * @param l
 	 * @param c
-	 * @param nStu
-	 * @param prctf
-	 * @param sv
-	 * @param sm
-	 * @param e
-	 * @param prctfin
-	 * @param nApp
-	 * @param prcta
-	 * @param prcte
-	 * @param as
-	 * @param ss
-	 * @param q
+	 * @param nStuLow
+	 * @param nStuHigh
+	 * @param prctfLow
+	 * @param prctfHigh
+	 * @param svLow
+	 * @param svHigh
+	 * @param smLow
+	 * @param smHigh
+	 * @param eLow
+	 * @param eHigh
+	 * @param prctfinLow
+	 * @param prctfinHigh
+	 * @param nApLow
+	 * @param nApHigh
+	 * @param prctaLow
+	 * @param prctaHigh
+	 * @param prcteLow
+	 * @param prcteHigh
+	 * @param asLow
+	 * @param asHigh
+	 * @param ssLow
+	 * @param ssHigh
+	 * @param qLow
+	 * @param qHigh
 	 * @param emp
 	 */
-	public void searchSchools(String sch, String st, String l, String c, int nStu,
-			int prctf, int sv, int sm, int e, int prctfin, int nApp, int prcta, 
-			int prcte, int as, int ss, int q, String emp) {
-		this.nAFC.searchSchools(sch, st, l, c, nStu, prctf, sv, sm, e, prctfin, nApp, prcta, prcte, as, ss, q, emp);
-		
+	public void searchSchools(String sch, String st, String l, String c, 
+			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
+			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, String emp) {
+		this.nAFC.searchSchools(sch, st, l, c, nStuLow, nStuHigh, prctfLow, prctfHigh, svLow, svHigh, smLow, smHigh, eLow, eHigh, prctfinLow, prctfinHigh, nApLow, nApHigh,
+				prctaLow, prctaHigh, prcteLow, prcteHigh, asLow, asHigh, ssLow, ssHigh, qLow, qHigh, emp);
 	}
 	
 	/**
