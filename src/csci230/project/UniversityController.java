@@ -1,4 +1,7 @@
 package csci230.project;
+
+import java.util.ArrayList;
+
 /**
  * This class controls how Universities object interact 
  * with the system
@@ -6,13 +9,15 @@ package csci230.project;
  * @version 2/25/19
  */
 public class UniversityController {
-	
+	private DBController dbCon;
 	/**
 	 * Constructor for University controller
 	 */
 	public UniversityController() {
 		super();
 		// TODO Auto-generated constructor stub
+		dbCon = new DBController();
+		
 	}
 	
 	/**
@@ -50,7 +55,34 @@ public class UniversityController {
 	public void searchSchools(String sch, String st, String l, String c, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
 			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, String emp) {
+		String [][] univData;
+		String [][] univEmp;
+		univData = dbCon.getUniversities();
+		univEmp = dbCon.getEmphasis();
+		ArrayList<University> univ = new ArrayList<University>(); 
+		/**
+		 * Create list of Universities and Store their info into them.
+		 */
+		for(int i = 0; i < univData.length; i++) {
+			
+			University temp = new University(univData[i][0], univData[i][1], univData[i][2], Integer.parseInt(univData[i][3]), Integer.parseInt(univData[i][4]), Integer.parseInt(univData[i][5]),
+					Integer.parseInt(univData[i][6]), Integer.parseInt(univData[i][7]), Integer.parseInt(univData[i][8]), Integer.parseInt(univData[i][9]), Integer.parseInt(univData[i][10]),
+					Integer.parseInt(univData[i][11]), Integer.parseInt(univData[i][12]), Integer.parseInt(univData[i][13]), Integer.parseInt(univData[i][14]));
+			univ.add(temp);
+		}
 		
+		/**
+		 * TODO add the emphasis to the Universities in the list
+		 */
+		for(int i = 0; i < univEmp.length; i++) {
+			
+			
+			for(int j = 0; j < univEmp[i].length; j++) {
+				
+			}
+		}
+		
+		//TODO Sort through the schools... Maybe do that before putting them in lists? 
 	}
 	
 	/**

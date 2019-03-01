@@ -13,12 +13,15 @@ import java.util.List;
 public class DBController {
 	private static final University University = null;
 	private static final User User = null;
+	private UniversityDBLibrary univDBlib;
+	
 	
 	/**
 	 * Constructor for the database controller
 	 */
 	public DBController() {
 		super();
+		univDBlib = new UniversityDBLibrary("xxphanto", "csci230");
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -46,30 +49,7 @@ public class DBController {
 	{
 		return User;
 	}
-	/*
-	 * searches for schools based on the given criteria
-	 * @param sch
-	 * @param st
-	 * @param l
-	 * @param c
-	 * @param nStu
-	 * @param perctF
-	 * @param sv
-	 * @param sm
-	 * @param e
-	 * @param perctFin
-	 * @param nApp
-	 * @param perctA
-	 * @param perctE
-	 * @param as
-	 * @param ss
-	 * @param q
-	 * @param emp)
-	 */
-	public void searchSchools(String sch, String st, String l, String c, int nStu, int perctF, int sv, int sm, int e, int perctFin, int nApp, int perctA, int perctE, int as, int ss, int q, String emp)
-	{
-		
-	}
+
 	/*
 	 * gets a list of saved schools for
 	 * a specific user from the database
@@ -154,7 +134,7 @@ public class DBController {
 		
 	}
 	/*
-	 * shows all of the details for a speciifed school
+	 * shows all of the details for a specified school
 	 * @param school
 	 */
 	public String showUniversityDetails(University school)
@@ -227,5 +207,21 @@ public class DBController {
 	public void addUniversity(String sch, String st, String l, String c, int nStu, int perctF, int sv, int sm, int e, int perctFin, int nApp, int perctA, int perctE, int as, int ss, int q, String emp)
 	{
 	
+	}
+	
+	/**
+	 * gets the 2d array of universities
+	 * @return universities
+	 */
+	public String[][] getUniversities(){
+		return univDBlib.university_getUniversities();
+	}
+	
+	/**
+	 * gets a 2d array of the emphasis connected to the university names
+	 * @return Emphasis
+	 */
+	public String [][] getEmphasis(){
+		return univDBlib.university_getNamesWithEmphases();
 	}
 }
