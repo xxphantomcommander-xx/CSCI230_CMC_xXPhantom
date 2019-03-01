@@ -62,7 +62,7 @@ public class DBController {
 		
 	}
 	/*
-	 * gets alist of saved schools for
+	 * gets a list of saved schools for
 	 * a specific user from the database
 	 * @param nonAdminUser
 	 */

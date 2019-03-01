@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class NonAdminInteraction {
 	
-	
+	NonAdminFunctionalityController nAFC = new NonAdminFunctionalityController();
 	/**
 	 * creates an object
 	 */
@@ -116,8 +116,7 @@ public class NonAdminInteraction {
 	public void searchSchools(String sch, String st, String l, String c, int nStu,
 			int prctf, int sv, int sm, int e, int prctfin, int nApp, int prcta, 
 			int prcte, int as, int ss, int q, String emp) {
-		NonAdminFunctionalityController NaFC = new NonAdminFunctionalityController();
-		NaFC.searchSchools(sch, st, l, c, nStu, prctf, sv, sm, e, prctfin, nApp, prcta, prcte, as, ss, q, emp);
+		this.nAFC.searchSchools(sch, st, l, c, nStu, prctf, sv, sm, e, prctfin, nApp, prcta, prcte, as, ss, q, emp);
 		
 	}
 	
