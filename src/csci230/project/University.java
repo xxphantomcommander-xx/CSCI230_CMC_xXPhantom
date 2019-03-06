@@ -30,7 +30,7 @@ public class University {
 	// percent of admitted that actually enrolled
 	int perEnrolled;
 	// academic scale of this university 0-10
-	int acedemicScale;
+	int academicScale;
 	// social scale of this university 0-10
 	int socialScale;
 	// quality of life scale of this university 0-10
@@ -63,133 +63,248 @@ public class University {
 	}
 	
 	/**
-	 * Gets the school name from this University
-	 * @return schoolName
+	 * gets school name
+	 * @return school name
 	 */
 	public String getSchoolName() {
-		
-		return "";
+		return schoolName;
 	}
 
 	/**
-	 * gets the State of the University
+	 * sets school name
+	 * @param schoolName
+	 */
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
+
+	/**
+	 * gets state
 	 * @return state
 	 */
 	public String getState() {
-		
-		return "";
+		return state;
 	}
-	
+
 	/**
-	 * gets Location of university (Rural, suburb or Urban)
-	 * @return
+	 * set state
+	 * @param state
+	 */
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	/**
+	 * gets location
+	 * @return location
 	 */
 	public String getLocation() {
-		
-		return "";
+		return location;
 	}
-	
+
 	/**
-	 * gets the number of students at the university
-	 * @return numOfStudents
+	 * sets location
+	 * @param location
+	 */
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	/**
+	 *  gets the number of students in the university
+	 * @return number of students
 	 */
 	public int getNumOfStudents() {
-	
-		return 0;
+		return numOfStudents;
 	}
-	
+
 	/**
-	 * gets the percent female 0-100 %
+	 * sets the number of students in the university
+	 * @param numOfStudents
+	 */
+	public void setNumOfStudents(int numOfStudents) {
+		this.numOfStudents = numOfStudents;
+	}
+
+	/**
+	 * gets the percent female
 	 * @return percent female
 	 */
-	public int getPercFem() {
-		return 0;
+	public int getPerFem() {
+		return perFem;
 	}
-	
+
 	/**
-	 * gets the SatVerb requirements for this University
-	 * @return Sat Verbal score
+	 * sets the percent female
+	 * @param perFem
 	 */
-	public int getSatVerb() {
-		return 0;
+	public void setPerFem(int perFem) {
+		this.perFem = perFem;
 	}
-	
+
 	/**
-	 * gets the Sat Math score for this university
-	 * @return SatMath
+	 * gets the SATVerbal
+	 * @return SATVerbal
+	 */
+	public int getSatVerbal() {
+		return satVerbal;
+	}
+
+	/**
+	 * set the SATVerbal
+	 * @param satVerbal
+	 */
+	public void setSatVerbal(int satVerbal) {
+		this.satVerbal = satVerbal;
+	}
+
+	/**
+	 * gets the SATMath
+	 * @return SATMath
 	 */
 	public int getSatMath() {
-		return 0;
+		return satMath;
 	}
-	
+
 	/**
-	 * gets the cost of attending this university
-	 * @return Expense of attending this University
+	 * sets the SAT math
+	 * @param satMath
+	 */
+	public void setSatMath(int satMath) {
+		this.satMath = satMath;
+	}
+
+	/**
+	 * gets the expenses
+	 * @return expenses
 	 */
 	public int getExpenses() {
-		return 0;
+		return expenses;
 	}
-	
+
 	/**
-	 * gets the FinancialAid offer from the University
+	 * sets the expenses of this university
+	 * @param expenses
+	 */
+	public void setExpenses(int expenses) {
+		this.expenses = expenses;
+	}
+
+	/**
+	 * gets the Financial Aid
 	 * @return Financial Aid
 	 */
 	public int getFinancialAid() {
-		return 0;
+		return financialAid;
 	}
-	
+
 	/**
-	 * gets the number of applicants to this university
+	 * sets the financial aid
+	 * @param financialAid
+	 */
+	public void setFinancialAid(int financialAid) {
+		this.financialAid = financialAid;
+	}
+
+	/**
+	 * gets the number of applicants
 	 * @return number of applicants
 	 */
 	public int getNumOfApps() {
-		return 0;
+		return numOfApps;
 	}
-	
+
 	/**
-	 * gets the percent of applicants admitted
+	 * sets the number of applicants
+	 * @param numOfApps
+	 */
+	public void setNumOfApps(int numOfApps) {
+		this.numOfApps = numOfApps;
+	}
+
+	/**
+	 * gets the percent admitted
 	 * @return percent admitted
 	 */
 	public int getPerAdmitted() {
-		return 0;
+		return perAdmitted;
 	}
-	
+
 	/**
-	 * gets the percent of admitted enrolled at this university
-	 * @return percent Enrolled
+	 * sets the percent admitted
+	 * @param perAdmitted
+	 */
+	public void setPerAdmitted(int perAdmitted) {
+		this.perAdmitted = perAdmitted;
+	}
+
+	/**
+	 * gets the percent enrolled
+	 * @return percent enrolled
 	 */
 	public int getPerEnrolled() {
-		return 0;
+		return perEnrolled;
 	}
-	
+
 	/**
-	 * Scale of academics for this university
-	 * @return
+	 * sets the percent enrolled
+	 * @param perEnrolled
+	 */
+	public void setPerEnrolled(int perEnrolled) {
+		this.perEnrolled = perEnrolled;
+	}
+
+	/**
+	 * gets the academic scale
+	 * @return academic scale 1-10
 	 */
 	public int getAcademicScale() {
-		return 0;
+		return academicScale;
 	}
-	
+
 	/**
-	 * gets the social scale of this university
+	 * sets the academic scale
+	 * @param academicScale
+	 */
+	public void setAcademicScale(int academicScale) {
+		this.academicScale = academicScale;
+	}
+
+	/**
+	 * gets the social scale 1-10
 	 * @return social scale
 	 */
 	public int getSocialScale() {
-		return 0;
+		return socialScale;
 	}
-	
+
 	/**
-	 * gets the scale of the quality of life at this univerisity
-	 * @return quality of life scale
+	 * sets the social scale
+	 * @param socialScale
+	 */
+	public void setSocialScale(int socialScale) {
+		this.socialScale = socialScale;
+	}
+
+	/**
+	 * gets the quality of life scale 1-10
+	 * @return quality of life
 	 */
 	public int getQualOfLife() {
-		return 0;
+		return qualOfLife;
 	}
-	
+
 	/**
-	 * Uses all the gets to show all the university's details
-	 * formats it nicely for output to the GUI
-	 * @return String
+	 * sets the quality of life
+	 * @param qualOfLife
+	 */
+	public void setQualOfLife(int qualOfLife) {
+		this.qualOfLife = qualOfLife;
+	}
+
+	/**
+	 *  shows the details about the school
+	 * @return details about the school
 	 */
 	public String showUniversityDetails() {
 		//basically use all the gets and format it nicely for an output
