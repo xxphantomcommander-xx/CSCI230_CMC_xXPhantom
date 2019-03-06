@@ -174,7 +174,7 @@ public class DBController {
 	}
 	
 	
-	public void deleteSavedSchool(String username) {
+	public void deleteSavedSchool(String username, String school) {
 		univDBlib.user_removeSchool(username, school);
 	}
 }
