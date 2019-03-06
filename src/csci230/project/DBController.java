@@ -173,7 +173,11 @@ public class DBController {
 		univDBlib.user_deleteUser(username);
 	}
 	
-	
+	/**
+	 * delete saved school from user
+	 * @param username
+	 * @param school
+	 */
 	public void deleteSavedSchool(String username, String school) {
 		univDBlib.user_removeSchool(username, school);
 	}
