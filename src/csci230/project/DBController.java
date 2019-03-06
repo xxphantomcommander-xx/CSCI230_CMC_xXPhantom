@@ -8,11 +8,10 @@ import java.util.List;
  * This class accesses the raw information from the database
  * can remove and save new users and schools to database
  * @author zheinen001
- * @version 2/24/19
+ * @version 3/6/19
  */
 public class DBController {
-	private static final University University = null;
-	private static final User User = null;
+
 	private UniversityDBLibrary univDBlib;
 	
 	
@@ -26,187 +25,83 @@ public class DBController {
 	}
 	
 	/**
-	 * saves the a new school to the database
-	 * @param school
-	 */
-	public void saveUniversities()
-	{
-		
-	}
-	/*
-	 * gets a university from the database
+	 * saves schools to the user's saved universities
+	 * @param userName
 	 * @param schoolName
 	 */
-	public University getUniversity(String schoolName)
+	public void saveUniversities(String userName, String schoolName)
 	{
-		return University;
+		univDBlib.user_saveSchool(userName, schoolName);
 	}
+	
 	/*
 	 * gets a user from the database
 	 * @param userName
+	 * @return 2d array of users
 	 */
-	public User getUser(String userName)
+	public String [][] getUsers()
 	{
-		return User;
+		return univDBlib.user_getUsers();
 	}
 
 	/*
 	 * gets a list of saved schools for
 	 * a specific user from the database
-	 * @param nonAdminUser
+	 * @param userName
+	 * @return 2d array of saved schools attached to the username along with a timestamp
 	 */
-	public List<University> getSavedSchoolList(String nonAdminUser)
+	public String [][] getSavedSchoolList(String userName)
 	{
-		return null;
+		return univDBlib.user_getUsernamesWithSavedSchools();
 	}
+	
 	/*
 	 * removes a school from the database
 	 * @param uniName
 	 */
-	public void removeSchool()
+	public void removeSchool(String uniName)
 	{
+		univDBlib.university_deleteUniversity(uniName);
+	}
 	
-	}
-	/*
-	 * sets a new school to the saved list of schools
-	 * for the user
-	 * @param schoolName
+	/**
+	 * adds a user to the database
+	 * @param firstName
+	 * @param lastName
+	 * @param username
+	 * @param password
+	 * @param type
 	 */
-	public University setSavedUniversity(String schooName)
+	public void addUser(String firstName, String lastName, String username, String password, char type)
 	{
-		return null;
-		
+		univDBlib.user_addUser(firstName, lastName, username, password, type);
 	}
-	/*
-	 * gets the password for a user when they try to log in
-	 */
-	public String getPassword()
-	{
-		return null;
-		
-	}
-	/*
-	 * checks to see if a user is logged in
-	 * @returns if the user is logged in
-	 */
-	public boolean isLoggedIn()
-	{
-		return false;
-		
-	}
-	/*
-	 * logs the user into the CMC system and sets
-	 * the user info to the system
-	 */
-	public void logon()
-	{
-		
-	}
-	/*
-	 * saves a new user to the database
-	 * @param user
-	 */
-	public void saveUser(User user)
-	{
-		
-	}
-	/*
-	 * selects a new school of the week
-	 * @param school
-	 */
-	public void selectNewSchoolOfTheWeek(University school)
-	{
-		
-	}
-	/*
-	 * checks to see if there is a school of the week saved
-	 */
-	public boolean schoolOfTheWeekSaved()
-	{
-		return false;
-	}
-	/*
-	 * saves the new school of the week
-	 * @param school
-	 */
-	public void saveNewSchoolOfTheWeek(University school)
-	{
-		
-	}
-	/*
-	 * shows all of the details for a specified school
-	 * @param school
-	 */
-	public String showUniversityDetails(University school)
-	{
-		return "";
-	}
-	/*
-	 * checks to see if a user exists when trying to
-	 * send a new email by password
-	 * @param user
-	 */
-	public boolean isUser(User user)
-	{
-		return false;
-	}
-	/*
-	 * finds the school image for a specified school
-	 * @param school
-	 */
-	public void findSchoolImage(University school)
-	{
-		
-	}
-	/*
-	 * recommends schools based off of another school
-	 * @param school
-	 */
-	public List<University> recommendSchool(University school)
-	{
-		return null;
-	}
-	/*
-	 * allows the user to view all universities from the 
-	 * database
-	 */
-	public void viewUniversities()
-	{
-		
-	}
-	/*
-	 * checks to see if the name of the school
-	 * actually exists in the database
-	 * @param school
-	 */
-	public boolean checkSchool(University school)
-	{
-		return false;
-	}
-	/*
-	 * adds a new school to the database
-	 * @param sch
-	 * @param st
-	 * @param l
-	 * @param c
-	 * @param nStu
-	 * @param perctF
-	 * @param sv
-	 * @param sm
-	 * @param e
-	 * @param perctFin
-	 * @param nApp
-	 * @param perctA
-	 * @param perctE
-	 * @param as
-	 * @param ss
-	 * @param q
-	 * @param emp
-	 * @return university
-	 */
-	public void addUniversity(String sch, String st, String l, String c, int nStu, int perctF, int sv, int sm, int e, int perctFin, int nApp, int perctA, int perctE, int as, int ss, int q, String emp)
-	{
 	
+	/**
+	 * adds university to database
+	 * @param school
+	 * @param state
+	 * @param location
+	 * @param control
+	 * @param numberOfStudents
+	 * @param percentFemales
+	 * @param SATVerbal
+	 * @param SATMath
+	 * @param expenses
+	 * @param percentFinancialAid
+	 * @param numberOfApplicants
+	 * @param percentAdmitted
+	 * @param percentEnrolled
+	 * @param academicsScale
+	 * @param socialScale
+	 * @param qualityOfLifeScale
+	 */
+	public void addUniversity(String school, String state, String location, String control, int numberOfStudents, 
+			int percentFemales, int SATVerbal, int SATMath, int expenses, int percentFinancialAid, int numberOfApplicants, 
+			int percentAdmitted, int percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale)
+	{
+	univDBlib.university_addUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, 
+			SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
 	}
 	
 	/**
@@ -223,5 +118,63 @@ public class DBController {
 	 */
 	public String [][] getEmphasis(){
 		return univDBlib.university_getNamesWithEmphases();
+	}
+	
+	/**
+	 * adds emphasis to a university
+	 * @param school
+	 * @param emphasis
+	 */
+	public void addUnivEmph(String school, String emphasis) {
+		univDBlib.university_addUniversityEmphasis(school, emphasis);
+	}
+	
+	/**
+	 * edits university based on school name to database
+	 * @param school
+	 * @param state
+	 * @param location
+	 * @param control
+	 * @param numberOfStudents
+	 * @param percentFemales
+	 * @param SATVerbal
+	 * @param SATMath
+	 * @param expenses
+	 * @param percentFinancialAid
+	 * @param numberOfApplicants
+	 * @param percentAdmitted
+	 * @param percentEnrolled
+	 * @param academicsScale
+	 * @param socialScale
+	 * @param qualityOfLifeScale
+	 */
+	public void editUniversity(String school, String state, String location, String control, int numberOfStudents, 
+			int percentFemales, int SATVerbal, int SATMath, int expenses, int percentFinancialAid, int numberOfApplicants, 
+			int percentAdmitted, int percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale)
+	{
+	univDBlib.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, 
+			SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
+	}
+	
+	/**
+	 * removes emphasis from a university
+	 * @param school
+	 * @param emphasis
+	 */
+	public void removeUnivEmph(String school, String emphasis) {
+		univDBlib.university_removeUniversityEmphasis(school, emphasis);
+	}
+	
+	/**
+	 * deletes a user from the database
+	 * @param username
+	 */
+	public void deleteUser(String username) {
+		univDBlib.user_deleteUser(username);
+	}
+	
+	
+	public void deleteSavedSchool(String username) {
+		univDBlib.user_removeSchool(username, school);
 	}
 }
