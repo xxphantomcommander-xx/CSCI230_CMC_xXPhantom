@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * This class controls how Universities object interact 
  * with the system
- * @author AndrewBreyen
+ * @author zheinen001
  * @version 2/25/19
  */
 public class UniversityController {
