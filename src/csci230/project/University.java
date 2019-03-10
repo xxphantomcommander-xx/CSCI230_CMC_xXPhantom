@@ -1,4 +1,7 @@
 package csci230.project;
+
+import java.util.ArrayList;
+
 /**
  * This class contains all the info about Universities
  * @author zheinen001
@@ -35,7 +38,8 @@ public class University {
 	int socialScale;
 	// quality of life scale of this university 0-10
 	int qualOfLife;
-	
+	// the emphasises of the University
+	ArrayList<String> emp;
 	/**
 	 * creates a University
 	 * @param schoolName
@@ -301,13 +305,15 @@ public class University {
 	public void setQualOfLife(int qualOfLife) {
 		this.qualOfLife = qualOfLife;
 	}
-
-	/**
-	 *  shows the details about the school
-	 * @return details about the school
-	 */
-	public String showUniversityDetails() {
-		//basically use all the gets and format it nicely for an output
-		return "";
+	
+	
+	public ArrayList<String> getEmp(){
+		return emp;
 	}
+	
+	
+	public void setEmp(ArrayList<String> newEmp) {
+		this.emp = newEmp;
+	}
+
 }
