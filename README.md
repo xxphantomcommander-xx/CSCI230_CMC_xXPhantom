@@ -3,6 +3,7 @@
 ## Helpful Links
 ### Project Wiki
 [GitHub Cheat Sheet](https://github.com/xxphantomcommander-xx/CSCI230_CMC_xXPhantom/wiki/GitHub-Cheat-Sheet)
+
 [Initial Setup Instructions](https://github.com/xxphantomcommander-xx/CSCI230_CMC_xXPhantom/wiki/Initial-Setup-Instructions)
 
 ### Project OneDrive
@@ -10,7 +11,11 @@
 
 ### Documentation and In Class Links/Documents
 [Imad's Website](http://www.users.csbsju.edu/~irahal/)
+
 [teams, members and chosen customer meeting times](http://www.users.csbsju.edu/~csweb/CS230/handouts/project/Teams_Spring2019.pdf)
+
 [CSCI 230 Meeting Schedule](http://www.users.csbsju.edu/~csweb/CS230/handouts/CSCI230_Spring2019_MeetingSchedule.pdf)
+
 [UniversityDBLibrary Documentation](http://www.users.csbsju.edu/~csweb/CS230/handouts/project/DatabaseLibrary/documentation/dblibrary/project/csci230/UniversityDBLibrary.html)
+
 [Markdown Cheat Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
