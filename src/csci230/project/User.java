@@ -5,7 +5,7 @@ package csci230.project;
  * @version: 3/10/19
  */
 
-abstract class User {
+public class User {
   //first name of user
   protected String firstName;
   //last name of user
@@ -19,8 +19,8 @@ abstract class User {
   //status of user (active or deactivated)
   protected char status;
 
-  public User() {
-	// TODO Auto-generated constructor stub
+  public User(java.lang.String firstName, java.lang.String lastName, java.lang.String userName,
+			java.lang.String password, char type, char status) {
 		super(); //IDK IF WE NEED THIS
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -28,7 +28,7 @@ abstract class User {
 		this.password = password;
 		this.type = type;
 		this.status = status;
-}
+	}
 /**
    *get first name
    *@return firstName

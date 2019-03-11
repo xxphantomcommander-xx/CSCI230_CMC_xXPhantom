@@ -36,24 +36,24 @@ public class UserController {
 		String [][] users = dbCon.getUsers();
 		for (int i = 0; i < users.length; i++)
 		{
-			if (username == users[i][2])
+			if (username.equals(users[i][2]))
 			{
-				if (password == users[i][3]) 
+				if (password.equals(users[i][3])) 
 				{
-					if (users[i][5] == "Y")
+					if ("Y".equals(users[i][5])) 
 					{
-						if (users[i][4] == "u")
+						if ("u".equals(users[i][4]))
 						{
 							isLoggedIn = true;
-							univC.loadUniversities();
-							loadUsers(username);
+							//univC.loadUniversities();
+							//loadUsers(username);
 							return;
 						}
 						else
 						{
 							isAdminLoggedIn = true;
-							univC.loadUniversities();
-							loadUsers(username);
+							//univC.loadUniversities();
+							//loadUsers(username);
 							return;
 						}
 					}
@@ -62,10 +62,13 @@ public class UserController {
 						System.out.println("User status is inactive");
 					}
 				}
-//				else
-//				{
-//					System.out.println("Username or password is incorrect");
-//				}
+				else
+				{
+					
+					System.out.println("wrongPass");
+					isLoggedIn = false;
+					return;
+				}
 			}
 //			else
 //			{
@@ -85,6 +88,9 @@ public class UserController {
 		ArrayList<User> users = new ArrayList<User>();
 		for (int i = 0; i < userString.length; i++)
 		{
+			
+			//User u = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
+			
 			if (userString[i][4] == "u")
 			{
 
@@ -182,9 +188,9 @@ public class UserController {
 	   * returns an arraylist of users
 	   * @return arraylist of users
 	   */
-	  public ArrayList<User> viewUsers(){
-		  return users;
-	  }
+//	  public ArrayList<User> viewUsers(){
+//		  return users;
+//	  }
 	  
 	  
 	  public void editMyProfile(String first, String last, String oldPassword, String newPassword) {

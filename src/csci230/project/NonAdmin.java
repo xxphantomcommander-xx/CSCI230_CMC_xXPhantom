@@ -11,13 +11,8 @@ public class NonAdmin extends User{
 	
 	public NonAdmin(java.lang.String firstName, java.lang.String lastName, java.lang.String userName,
 			java.lang.String password, char type, char status) {
-		super(); //IDK IF WE NEED THIS
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.userName = userName;
-		this.password = password;
-		this.type = type;
-		this.status = status;
+		super(firstName, lastName, userName, password, type, status); //IDK IF WE NEED THIS
+	
 	}
 	/**
 	 * This method allows the NonAdmin User

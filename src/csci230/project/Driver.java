@@ -8,36 +8,37 @@ public class Driver {
 
 	
 	public static void main(String[] args){
-		//System.out.println("Creating Instances...");
+		System.out.println("Creating Instances as needed...");
 		NonAdminInteraction nai = new NonAdminInteraction();
 		AdminInteraction ai = new AdminInteraction();
 		UserController uc = new UserController();
 		
-		//uc.loadUsers("juser");
-		System.out.println(uc.viewUsers());
-	
+		
+		System.out.println(uc.loadUsers("juser"));
+		
+		System.out.println();
 		System.out.println("*** 1 ***");
 		System.out.println("Logging in with valid user credentials");
-		nai.logOn("juser", "user");
+		uc.logOn("juser", "user");
 		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
 		
 		System.out.println("");
 		
 		System.out.println("Logging in with invalid user credentials");
-		nai.logOn("juser", "incorrectPassword");
+		uc.logOn("juser", "incorrectPassword");
 		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
 		
 		System.out.println("");
 		
 		System.out.println("Logging in with deactivated user credentials");
-		nai.logOn("luser", "user");
+		uc.logOn("luser", "user");
 		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
 		
 		System.out.println("");
 		
 		System.out.println("Logging in with valid admin credentials");
-		nai.logOn("nadmin", "admin");
-		System.out.println("IsLoggedIn status: "+uc.isAdminLoggedIn());
+		uc.logOn("nadmin", "admin");
+		System.out.println("IsAdminLoggedIn status: "+uc.isAdminLoggedIn());
 		
 		System.out.println("");
 		
