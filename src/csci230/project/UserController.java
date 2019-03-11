@@ -10,6 +10,14 @@ import java.util.List;
  */
 
 public class UserController {
+	
+	private DBController dbCon;
+	public UserController() {
+		super();
+		// TODO Auto-generated constructor stub
+		dbCon = new DBController();
+	}
+
 	/**
 	 * sets the first name
 	 * @param newFirstName new First Name

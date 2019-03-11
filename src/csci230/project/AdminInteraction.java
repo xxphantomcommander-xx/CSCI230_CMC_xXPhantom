@@ -7,6 +7,15 @@ package csci230.project;
  */
 public class AdminInteraction {
 	
+
+	//admin func controller
+	AdminFunctionalityController aFC;
+	public AdminInteraction() {
+		super();
+		// TODO Auto-generated constructor stub
+		aFC = new AdminFunctionalityController();
+	}
+
 	/**
 	 * adds User to the database
 	 * @param first
@@ -28,7 +37,7 @@ public class AdminInteraction {
 	 * @param password
 	 */
 	public void logOn(String userName, String password) {
-	
+		
 	}
 	
 	/**

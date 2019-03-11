@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class UniversityController {
 	private DBController dbCon;
+	private ArrayList<University> univ;
 	/**
 	 * Constructor for University controller
 	 */
@@ -59,7 +60,6 @@ public class UniversityController {
 		String [][] univEmp;
 		univData = dbCon.getUniversities();
 		univEmp = dbCon.getEmphasis();
-		ArrayList<University> univ = new ArrayList<University>(); 
 		/**
 		 * Create list of Universities and Store their info into them.
 		 */

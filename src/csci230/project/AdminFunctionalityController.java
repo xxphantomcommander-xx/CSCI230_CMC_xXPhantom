@@ -6,6 +6,15 @@ package csci230.project;
  * @version 2/25/19
  */
 public class AdminFunctionalityController {
+	
+	UniversityController univC;
+	UserController userC;
+	public AdminFunctionalityController() {
+		super();
+		// TODO Auto-generated constructor stub
+		univC = new UniversityController();
+		userC = new UserController();
+	}
 	/**
 	 * Logs the admin into the system
 	 * @param userName
