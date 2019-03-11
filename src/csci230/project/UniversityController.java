@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * This class controls how Universities object interact 
  * with the system
  * @author zheinen001
- * @version 2/25/19
+ * @version 3/10/19
  */
 public class UniversityController {
 	private DBController dbCon;
@@ -259,4 +259,5 @@ public class UniversityController {
 		}
 		return univNames;
 	}
+
 }

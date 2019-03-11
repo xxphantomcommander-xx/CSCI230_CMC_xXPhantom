@@ -2,7 +2,7 @@ package csci230.project;
 /**
  * this class will act as a super class for both non-admin and admin users
  * @author: Gavin Wollenberg
- * @version: 2/27/19
+ * @version: 3/10/19
  */
 
 abstract class User {

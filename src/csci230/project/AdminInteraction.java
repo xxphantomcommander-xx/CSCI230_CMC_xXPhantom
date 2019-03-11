@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * This class is how Admins interact with the system
  * @author zheinen001
- * @version 2/24/19
+ * @version 3/10/19
  */
 public class AdminInteraction {
 	
@@ -91,10 +91,14 @@ public class AdminInteraction {
 	}
 	
 	/**
-	 * Displays all the User's names
+	 * Displays all the User's names and info
 	 */
 	public void viewUsers() {
-		
+		ArrayList<User> temp = new ArrayList<User>();
+		temp = aFC.viewUsers();
+		for(User i:temp) {
+			System.out.println(i.getFirstName() + " " + i.getLastName() + " " + i.getUserName() + " " + i.getPassword() + " " + i.getType() + " " + i.getStatus() + "\n");
+		}
 	}
 	
 	/**
@@ -124,7 +128,7 @@ public class AdminInteraction {
 	 * Displays the Universitie's names
 	 */
 	public void viewUniversities() {
-		ArrayList<String> univName = new ArrayList();
+		ArrayList<String> univName = new ArrayList<String>();
 		univName = aFC.viewUniversities();
 		for(String i:univName) {
 			System.out.println(i + "\n");
@@ -136,6 +140,14 @@ public class AdminInteraction {
 	 * @param userName
 	 */
 	public void resetPasswordByEmail(String userName) {
+		
+	}
+	
+	
+	public void viewMyProfile() {
+		User temp;
+		temp = aFC.viewMyProfile();
+		System.out.println(temp.getFirstName() + "\n" + temp.getLastName() + "\n" + temp.getUserName() + "\n" + temp.getPassword() + "\n" + temp.getType());
 		
 	}
 }

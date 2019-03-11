@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * This class contains all the functionalities of Non-Admins
  * @author zheinen001
- * @version 2/25/19
+ * @version 3/10/19
  */
 public class NonAdminFunctionalityController {
 	private UniversityController univC;
@@ -122,14 +122,14 @@ public class NonAdminFunctionalityController {
 	 * @param newPassword
 	 */
 	public void editProfile(String first, String last, String oldPassword, String newPassword) {
-		
+		userC.editMyProfile(first, last, oldPassword, newPassword);
 	}
 	
 	/**
 	 * lets the user view their profile
 	 */
-	public void viewMyProfile() {
-		
+	public User viewMyProfile() {
+		return userC.viewMyProfile();
 	}
 	
 	/**

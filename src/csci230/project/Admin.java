@@ -4,7 +4,7 @@ package csci230.project;
  * This is a subclass of User Contains info about Admins
  * 
  * @author zheinen001
- * @version 2/26/19
+ * @version 3/10/19
  */
 class Admin extends User {
 

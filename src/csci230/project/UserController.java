@@ -7,7 +7,7 @@ import java.util.List;
  * This class controls how Users objects interact
  * with the system
  * @author andrewbreyen
- * @version 2/27/19
+ * @version 3/10/19
  */
 
 public class UserController {
@@ -16,46 +16,27 @@ public class UserController {
 	private DBController dbCon;
 	private UniversityController univC;
 	private ArrayList<User> users;
+	private User loggedOn;
+	
+	/**
+	 * constructor
+	 */
 	public UserController() {
 		super();
 		// TODO Auto-generated constructor stub
 		dbCon = new DBController();
 		univC = new UniversityController();
 	}
-
-	/**
-	 * sets the first name
-	 * @param newFirstName new First Name
-	 */
-	public void setFirstName(String newFirstName) {
-		
-	}
 	
 	/**
-	 * sets the last name
-	 * @param newLastName new Last Name
+	 * logs on and loads data into the program
+	 * @param username
 	 */
-	public void setLastName(String newLastName) {
-		
-	}
-	
-	/**
-	 * sets a new password
-	 * @param newPassword the new password
-	 */
-	public void setPassword(String newPassword) {
-		
-	}
-	
-	/**
-	 * logs on
-	 * @param userName the username
-	 */
-	public void logOn(String userName, String password) {
+	public void logOn(String username, String password) {
 		String [][] users = dbCon.getUsers();
 		for (int i = 0; i < users.length; i++)
 		{
-			if (userName == users[i][2])
+			if (username == users[i][2])
 			{
 				if (password == users[i][3]) 
 				{
@@ -65,11 +46,13 @@ public class UserController {
 						{
 							isLoggedIn = true;
 							univC.loadUniversities();
+							loadUsers(username);
 						}
 						else
 						{
 							isAdminLoggedIn = true;
 							univC.loadUniversities();
+							loadUsers(username);
 						}
 					}
 					else
@@ -89,10 +72,12 @@ public class UserController {
 		}
 		
 	}
+	
 	/**
-	 * create a 2d list of users
+	 * create an arraylist of users from the 2d String array
+	 * @param username
 	 */
-	public void loadUsers()
+	public void loadUsers(String username)
 	{
 		String [][] userString = dbCon.getUsers();
 		
@@ -100,17 +85,25 @@ public class UserController {
 		{
 			if (userString[i][4] == "u")
 			{
+
 				NonAdmin temp = new NonAdmin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
 				users.add(temp);
+				if(userString[i][2] == username) {
+					loggedOn = temp;
+				}
 			}
 			else
 			{
 				Admin temp = new Admin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
 				users.add(temp);
+				if(userString[i][2] == username) {
+					loggedOn = temp;
+				}
 			}
 
 		}
 	}
+	
 	/**
 	 * logs out
 	 */
@@ -118,13 +111,6 @@ public class UserController {
 		
 	}
 	
-	/**
-	 * sets the user
-	 * @param user the user
-	 */
-	public void setUser(User user) {
-		
-	}
 	
 	/**
 	 * adds a user
@@ -141,19 +127,10 @@ public class UserController {
 	
 	/**
 	 * views profile
+	 * @return logged on user
 	 */
-	public void viewMyProfile() {
-		
-	}
-	
-	/**
-	 * shows user details
-	 * @param user User
-	 * @return String of user details
-	 */
-	public String showUserDetails(User user) {
-		return null;
-		
+	public User viewMyProfile() {
+		  return loggedOn;
 	}
 	
 	/**
@@ -196,5 +173,21 @@ public class UserController {
 	  public boolean isAdminLoggedIn() {
 		return isAdminLoggedIn;
 	    
+	  }
+	  
+	  /**
+	   * returns an arraylist of users
+	   * @return arraylist of users
+	   */
+	  public ArrayList<User> viewUsers(){
+		  return users;
+	  }
+	  
+	  
+	  public void editMyProfile(String first, String last, String oldPassword, String newPassword) {
+		  
+		  if(oldPassword == loggedOn.getPassword()) {  
+			  dbCon.editUser(loggedOn.getUserName(), first, last, newPassword, loggedOn.getType(), loggedOn.getStatus());
+		  }
 	  }
 }

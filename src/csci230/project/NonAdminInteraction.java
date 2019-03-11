@@ -49,7 +49,9 @@ public class NonAdminInteraction {
 	 * Shows the details of the user
 	 */
 	public void viewMyProfile() {
-		
+		User temp;
+		temp = nAFC.viewMyProfile();
+		System.out.println(temp.getFirstName() + "\n" + temp.getLastName() + "\n" + temp.getUserName() + "\n" + temp.getPassword() + "\n" + temp.getType());
 	}
 	
 	/**
@@ -75,9 +77,8 @@ public class NonAdminInteraction {
 	 * @param oldPassword
 	 * @param newPassword
 	 */
-	public void editProfile(String first, String last,
-			String oldPassword, String newpassword) {
-		
+	public void editProfile(String first, String last,String oldPassword, String newPassword) {
+		nAFC.editProfile(first, last, oldPassword, newPassword);
 	}
 	
 	/**

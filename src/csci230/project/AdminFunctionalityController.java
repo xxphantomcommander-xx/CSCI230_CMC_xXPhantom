@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * This class contains all the functionalities of Admins
  * @author zheinen001 and samyoung3
- * @version 2/25/19
+ * @version 3/10/19
  */
 public class AdminFunctionalityController {
 	
@@ -88,9 +88,9 @@ public class AdminFunctionalityController {
 	/**
 	 * Allows the admin to view all users
 	 */
-	public void viewUsers()
+	public ArrayList<User> viewUsers()
 	{
-		
+		return userC.viewUsers();
 	}
 	/**
 	 * Edits the school of the week
@@ -130,5 +130,13 @@ public class AdminFunctionalityController {
 	public void addUniversity(String school, String state, String location, String control, int numStudents, int prctFemale, int SATVerbal, int SATMath, double expenses, double prctFinancialAid, int numApplicants, int prctAccepted, int prctEnrolled, int academicScale, int socialScale, int qualOfLife, String emphases)
 	{
 		
+	}
+	
+	/**
+	 * shows the logged in User their profile
+	 * @return user
+	 */
+	public User viewMyProfile() {
+		return userC.viewMyProfile();
 	}
 }

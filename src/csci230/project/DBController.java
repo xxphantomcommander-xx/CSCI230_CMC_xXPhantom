@@ -8,7 +8,7 @@ import java.util.List;
  * This class accesses the raw information from the database
  * can remove and save new users and schools to database
  * @author zheinen001
- * @version 3/6/19
+ * @version 3/10/19
  */
 public class DBController {
 
@@ -180,5 +180,18 @@ public class DBController {
 	 */
 	public void deleteSavedSchool(String username, String school) {
 		univDBlib.user_removeSchool(username, school);
+	}
+	
+	/**
+	 * edits the user in the database
+	 * @param username
+	 * @param firstName
+	 * @param lastName
+	 * @param password
+	 * @param type
+	 * @param status
+	 */
+	public void editUser(String username, String firstName, String lastName, String password, char type, char status) {
+		univDBlib.user_editUser(username, firstName, lastName, password, type, status);
 	}
 }
