@@ -15,7 +15,7 @@ public class UserController {
 	private boolean isAdminLoggedIn = false;
 	private DBController dbCon;
 	private UniversityController univC;
-	private ArrayList<User> users;
+	//private ArrayList<User> users;
 	private User loggedOn;
 	
 	/**
@@ -79,10 +79,10 @@ public class UserController {
 	 * create an arraylist of users from the 2d String array
 	 * @param username
 	 */
-	public void loadUsers(String username)
+	public ArrayList<User> loadUsers(String username)
 	{
 		String [][] userString = dbCon.getUsers();
-		
+		ArrayList<User> users = new ArrayList<User>();
 		for (int i = 0; i < userString.length; i++)
 		{
 			if (userString[i][4] == "u")
@@ -102,8 +102,9 @@ public class UserController {
 					loggedOn = temp;
 				}
 			}
-
+	
 		}
+		return users;
 	}
 	
 	/**
