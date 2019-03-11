@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * This class is how Non-Admins interact with the system
  * @author zheinen001
- * @version 2/25/19
+ * @version 3/10/19
  */
 public class NonAdminInteraction {
 	
@@ -24,8 +24,8 @@ public class NonAdminInteraction {
 	 * @param userName
 	 * @param password
 	 */
-	public void logOn(String userName, String password) {
-	
+	public void logOn(String username, String password) {
+		nAFC.logOn(username, password);
 	}
 	
 	/**
