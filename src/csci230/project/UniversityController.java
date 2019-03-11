@@ -77,6 +77,16 @@ public class UniversityController {
 					Integer.parseInt(univData[i][11]), Integer.parseInt(univData[i][12]), Integer.parseInt(univData[i][13]), Integer.parseInt(univData[i][14]));
 			univ.add(temp);
 		}
+		for(int i = 0; i < univEmp.length; i++) {
+			
+
+			for(University u : univ) {
+				if(univEmp[i][0] == u.getSchoolName()) {
+					u.addEmp(univEmp[i][1]);
+				}
+			
+			}
+		}
 		
 	}
 	/**

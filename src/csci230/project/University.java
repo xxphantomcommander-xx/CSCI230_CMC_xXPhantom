@@ -312,8 +312,8 @@ public class University {
 	}
 	
 	
-	public void setEmp(ArrayList<String> newEmp) {
-		this.emp = newEmp;
+	public void addEmp(String newEmp) {
+		this.emp.add(newEmp);
 	}
 
 }
