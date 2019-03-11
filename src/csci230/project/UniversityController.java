@@ -57,8 +57,8 @@ public class UniversityController {
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
 			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, String[] emp) {
 
-		
-		//TODO Sort through the schools... Maybe do that before putting them in lists? 
+		ArrayList<University> searchList = new ArrayList();
+		searchList = univ;
 		
 	}
 	
@@ -69,6 +69,11 @@ public class UniversityController {
 			return temp;
 		}
 		else{
+			for(University i: temp)
+			{
+				String name = i.getSchoolName();
+				
+			}
 			
 			//TODO search by school return sublist of matching schools
 		}
@@ -81,6 +86,7 @@ public class UniversityController {
 			return temp;
 		}
 		else{
+		
 			
 			//TODO search by state return sublist of matching schools
 		}
