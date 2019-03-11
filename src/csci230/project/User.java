@@ -73,14 +73,7 @@ abstract class User {
     
   }
   
-  /**
-   *used to check is user is logged in or not
-   *@return boolean
-   */
-  public boolean isLoggedon() {
-	return status;
-    
-  }
+
   
   /**
    *logon user

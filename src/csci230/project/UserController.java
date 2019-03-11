@@ -10,12 +10,15 @@ import java.util.List;
  */
 
 public class UserController {
-	
+	private boolean isLoggedIn = false;
+	private boolean isAdminLoggedIn = false;
 	private DBController dbCon;
+	private UniversityController univC;
 	public UserController() {
 		super();
 		// TODO Auto-generated constructor stub
 		dbCon = new DBController();
+		univC = new UniversityController();
 	}
 
 	/**
@@ -47,6 +50,41 @@ public class UserController {
 	 * @param userName the username
 	 */
 	public void logOn(String userName, String password) {
+		String [][] users = dbCon.getUsers();
+		for (int i = 0; i < users.length; i++)
+		{
+			if (userName == users[i][2])
+			{
+				if (password == users[i][3]) 
+				{
+					if (users[i][5] == "Y")
+					{
+						if (users[i][4] == "u")
+						{
+							isLoggedIn = true;
+							univC.loadUniversities();
+						}
+						else
+						{
+							isAdminLoggedIn = true;
+							univC.loadUniversities();
+						}
+					}
+					else
+					{
+						System.out.println("User status is inactive");
+					}
+				}
+				else
+				{
+					System.out.println("Username or password is incorrect");
+				}
+			}
+			else
+			{
+				System.out.println("Username or password is incorrect");
+			}
+		}
 		
 	}
 	
@@ -118,4 +156,22 @@ public class UserController {
 	public void sortByName(List<University> savedSchools) {
 		
 	}
+	
+	  /**
+	   *used to check is user is logged in or not
+	   *@return boolean
+	   */
+	  public boolean isLoggedIn() {
+		return isLoggedIn;
+	    
+	  }
+	  
+	  /**
+	   *used to check is user is logged in or not
+	   *@return boolean
+	   */
+	  public boolean isAdminLoggedIn() {
+		return isAdminLoggedIn;
+	    
+	  }
 }
