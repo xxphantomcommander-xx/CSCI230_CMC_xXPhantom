@@ -56,6 +56,13 @@ public class UniversityController {
 	public void searchSchools(String sch, String st, String l, String c, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
 			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, String emp) {
+
+		
+		//TODO Sort through the schools... Maybe do that before putting them in lists? 
+	}
+	
+	
+	public void loadUniversities() {
 		String [][] univData;
 		String [][] univEmp;
 		univData = dbCon.getUniversities();
@@ -71,20 +78,7 @@ public class UniversityController {
 			univ.add(temp);
 		}
 		
-		/**
-		 * TODO add the emphasis to the Universities in the list
-		 */
-		for(int i = 0; i < univEmp.length; i++) {
-			
-			
-			for(int j = 0; j < univEmp[i].length; j++) {
-				
-			}
-		}
-		
-		//TODO Sort through the schools... Maybe do that before putting them in lists? 
 	}
-	
 	/**
 	 * 
 	 * Sets school name
