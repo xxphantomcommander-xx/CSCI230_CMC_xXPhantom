@@ -1,5 +1,6 @@
 package csci230.project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -83,7 +84,11 @@ public class NonAdminInteraction {
 	 * Displays the Universitie's names
 	 */
 	public void viewUniversities() {
-		
+		ArrayList<String> univName = new ArrayList();
+		univName = nAFC.viewUniversities();
+		for(String i:univName) {
+			System.out.println(i + "\n");
+		}
 	}
 	
 	/**

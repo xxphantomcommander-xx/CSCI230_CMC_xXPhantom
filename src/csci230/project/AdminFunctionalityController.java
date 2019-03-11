@@ -1,5 +1,7 @@
 package csci230.project;
 
+import java.util.ArrayList;
+
 /**
  * This class contains all the functionalities of Admins
  * @author zheinen001 and samyoung3
@@ -79,9 +81,9 @@ public class AdminFunctionalityController {
 	/**
 	 * Allows the admin to view all universities 
 	 */
-	public void viewUniversities()
+	public ArrayList<String> viewUniversities()
 	{
-		
+		return univC.viewUniversities();
 	}
 	/**
 	 * Allows the admin to view all users

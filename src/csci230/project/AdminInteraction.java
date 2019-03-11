@@ -1,5 +1,7 @@
 package csci230.project;
 
+import java.util.ArrayList;
+
 /**
  * This class is how Admins interact with the system
  * @author zheinen001
@@ -122,7 +124,11 @@ public class AdminInteraction {
 	 * Displays the Universitie's names
 	 */
 	public void viewUniversities() {
-		
+		ArrayList<String> univName = new ArrayList();
+		univName = aFC.viewUniversities();
+		for(String i:univName) {
+			System.out.println(i + "\n");
+		}
 	}
 	
 	/**
