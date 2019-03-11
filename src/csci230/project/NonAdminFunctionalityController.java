@@ -9,12 +9,13 @@ import java.util.List;
  */
 public class NonAdminFunctionalityController {
 	private UniversityController univC;
-	
+	private UserController userC;
 	
 	public NonAdminFunctionalityController() {
 		super();
 		// TODO Auto-generated constructor stub
 		univC = new UniversityController();
+		userC = new UserController();
 	}
 
 	/**
@@ -23,7 +24,7 @@ public class NonAdminFunctionalityController {
 	 * @param password
 	 */
 	public void logOn(String username, String password) {
-		
+		userC.logOn(username, password);
 	}
 	
 	/**
