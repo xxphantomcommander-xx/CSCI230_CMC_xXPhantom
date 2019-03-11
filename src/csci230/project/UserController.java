@@ -47,12 +47,14 @@ public class UserController {
 							isLoggedIn = true;
 							univC.loadUniversities();
 							loadUsers(username);
+							return;
 						}
 						else
 						{
 							isAdminLoggedIn = true;
 							univC.loadUniversities();
 							loadUsers(username);
+							return;
 						}
 					}
 					else
@@ -60,17 +62,17 @@ public class UserController {
 						System.out.println("User status is inactive");
 					}
 				}
-				else
-				{
-					System.out.println("Username or password is incorrect");
-				}
+//				else
+//				{
+//					System.out.println("Username or password is incorrect");
+//				}
 			}
-			else
-			{
-				System.out.println("Username or password is incorrect");
-			}
+//			else
+//			{
+//				System.out.println("Username or password is incorrect");
+//			}
 		}
-		
+		System.out.println("Username or password is incorrect");
 	}
 	
 	/**
