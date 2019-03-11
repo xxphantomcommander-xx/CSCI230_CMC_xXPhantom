@@ -12,7 +12,7 @@
 ### Documentation and In Class Links/Documents
 [Imad's Website](http://www.users.csbsju.edu/~irahal/)
 
-[teams, members and chosen customer meeting times](http://www.users.csbsju.edu/~csweb/CS230/handouts/project/Teams_Spring2019.pdf)
+[Teams, members, database credentials, and chosen customer meeting times](http://www.users.csbsju.edu/~csweb/CS230/handouts/project/Teams_Spring2019.pdf)
 
 [CSCI 230 Meeting Schedule](http://www.users.csbsju.edu/~csweb/CS230/handouts/CSCI230_Spring2019_MeetingSchedule.pdf)
 
