@@ -1,7 +1,9 @@
 # CSCI230_CMC_xXPhantomCommander$Xx
 
 ## Helpful Links
-### [Project Wiki](https://github.com/xxphantomcommander-xx/CSCI230_CMC_xXPhantom/wiki)
+### Project Wiki
+[Wiki Homepage](https://github.com/xxphantomcommander-xx/CSCI230_CMC_xXPhantom/wiki)
+
 [GitHub Cheat Sheet](https://github.com/xxphantomcommander-xx/CSCI230_CMC_xXPhantom/wiki/GitHub-Cheat-Sheet)
 
 [Initial Setup Instructions](https://github.com/xxphantomcommander-xx/CSCI230_CMC_xXPhantom/wiki/Initial-Setup-Instructions)
