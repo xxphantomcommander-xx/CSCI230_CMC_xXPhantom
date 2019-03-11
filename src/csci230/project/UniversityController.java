@@ -251,4 +251,12 @@ public class UniversityController {
 		return 0;
 	}
 
+	public ArrayList<String> viewUniversities(){
+		ArrayList<String> univNames = new ArrayList<String>();
+		for (University i: univ)
+		{
+			univNames.add(i.getSchoolName());
+		}
+		return univNames;
+	}
 }

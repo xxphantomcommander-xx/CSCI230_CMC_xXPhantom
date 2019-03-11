@@ -1,5 +1,6 @@
 package csci230.project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -87,6 +88,14 @@ public class NonAdminFunctionalityController {
 	 */
 	public void viewSavedSchools() {
 		
+	}
+	
+	/**
+	 * shows a list of all the universities
+	 */
+	public ArrayList<String> viewUniversities(){
+		ArrayList<String> univ = new ArrayList<String>();
+		return univ;
 	}
 	
 	/**
