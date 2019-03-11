@@ -7,22 +7,11 @@ package csci230.project;
  * @version 2/26/19
  */
 class Admin extends User {
-	// first name of user
-	protected String firstName;
-	// last name of user
-	protected String lastName;
-	// username of user
-	protected String userName;
-	// password of user
-	protected String password;
-	// type of user (admin or non-admin)
-	protected boolean type;
-	// status of user (active or deactivated)
-	protected boolean status;
+
 
 	public Admin(java.lang.String firstName, java.lang.String lastName, java.lang.String userName,
-			java.lang.String password, boolean type, boolean status) {
-		super();// IDK IF WE NEED THIS
+			java.lang.String password, char type, char status) {
+		super(); //IDK IF WE NEED THIS
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
@@ -140,7 +129,7 @@ class Admin extends User {
 	 * gets the Type of user
 	 * @return type
 	 */
-	public boolean isType() {
+	public char isType() {
 		return type;
 	}
 
@@ -148,7 +137,7 @@ class Admin extends User {
 	 * sets the type of User
 	 * @param type
 	 */
-	public void setType(boolean type) {
+	public void setType(char type) {
 		this.type = type;
 	}
 
@@ -156,7 +145,7 @@ class Admin extends User {
 	 * gets the status
 	 * @return status of user
 	 */
-	public boolean isStatus() {
+	public char isStatus() {
 		return status;
 	}
 
@@ -164,7 +153,7 @@ class Admin extends User {
 	 * sets the status of the user
 	 * @param status
 	 */
-	public void setStatus(boolean status) {
+	public void setStatus(char status) {
 		this.status = status;
 	}
 }

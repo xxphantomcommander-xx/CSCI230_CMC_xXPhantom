@@ -15,11 +15,21 @@ abstract class User {
   //password of user
   protected String password;
   //type of user (admin or non-admin)
-  protected boolean type;
+  protected char type;
   //status of user (active or deactivated)
-  protected boolean status;
-  
-  /**
+  protected char status;
+
+  public User() {
+	// TODO Auto-generated constructor stub
+		super(); //IDK IF WE NEED THIS
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.password = password;
+		this.type = type;
+		this.status = status;
+}
+/**
    *get first name
    *@return firstName
    */
@@ -59,8 +69,8 @@ abstract class User {
    *get type of profile
    *@return firstName
    */
-  public boolean getType() {
-	return status;
+  public char getType() {
+	return type;
     
   }
   
@@ -68,7 +78,7 @@ abstract class User {
    *get status of profile
    *@return status
    */
-  public boolean getStatus() {
+  public char getStatus() {
 	return status;
     
   }

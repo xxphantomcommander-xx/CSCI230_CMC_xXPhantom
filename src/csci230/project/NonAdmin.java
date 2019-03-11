@@ -8,6 +8,17 @@ import java.util.List;
  * @version 2/24/19
  */
 public class NonAdmin extends User{
+	
+	public NonAdmin(java.lang.String firstName, java.lang.String lastName, java.lang.String userName,
+			java.lang.String password, char type, char status) {
+		super(); //IDK IF WE NEED THIS
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.password = password;
+		this.type = type;
+		this.status = status;
+	}
 	/**
 	 * This method allows the NonAdmin User
 	 * to view the details of their profile
@@ -18,8 +29,8 @@ public class NonAdmin extends User{
 		String last = user.getLastName();
 		String username = user.getUserName();
 		String password = user.getPassword();
-		boolean type = user.getType();
-		boolean status = user.getStatus();
+		char type = user.getType();
+		char status = user.getStatus();
 		System.out.println("first name = " + first + "\n" + "last name = " + last + "\n" + "userName = " 
 		+ username + "\n" + "password = " + password + "\n" + "type = " + type + "\n" + "status = " + status 
 		+ "\n");

@@ -1,5 +1,6 @@
 package csci230.project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ public class UserController {
 	private boolean isAdminLoggedIn = false;
 	private DBController dbCon;
 	private UniversityController univC;
+	private ArrayList<User> users;
 	public UserController() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -87,7 +89,28 @@ public class UserController {
 		}
 		
 	}
-	
+	/**
+	 * create a 2d list of users
+	 */
+	public void loadUsers()
+	{
+		String [][] userString = dbCon.getUsers();
+		
+		for (int i = 0; i < userString.length; i++)
+		{
+			if (userString[i][4] == "u")
+			{
+				NonAdmin temp = new NonAdmin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
+				users.add(temp);
+			}
+			else
+			{
+				Admin temp = new Admin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
+				users.add(temp);
+			}
+
+		}
+	}
 	/**
 	 * logs out
 	 */
