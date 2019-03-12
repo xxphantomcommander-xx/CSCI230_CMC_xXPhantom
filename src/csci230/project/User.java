@@ -43,7 +43,7 @@ public class User {
    *@return lastName
    */
   public String getLastName() {
-	return firstName;
+	return lastName;
     
   }
   
@@ -52,7 +52,7 @@ public class User {
    *@return userName
    */
   public String getUserName() {
-	return firstName;
+	return userName;
     
   }
   
@@ -61,7 +61,7 @@ public class User {
    *@return password
    */
   public String getPassword() {
-	return firstName;
+	return password;
     
   }
   
@@ -104,15 +104,15 @@ public class User {
    *@param firstName
    */
   public void setFirstName(String firstName) {
-    
+	  this.firstName = firstName;
   }
   
   /**
    *set last name to parameter
    *@param lastName
    */
-  public void setLastName(String firstName) {
-    
+  public void setLastName(String lastName) {
+	  this.lastName = lastName;
   }
   
   /**
@@ -120,7 +120,7 @@ public class User {
    *@param userName
    */
   public void setuserName(String userName) {
-    
+	  this.userName = userName;
   }
   
   /**
@@ -128,21 +128,21 @@ public class User {
    *@param password
    */
   public void setPassword(String newPassword) {
-    
+	  this.password = newPassword;
   }
   
   /**
    *set type of profile
    */
-  public void setType() {
-    
+  public void setType(char type) {
+	  this.type = type;
   }
   
   /**
    *set status of profile
    */
-  public void setStatus() {
-    
+  public void setStatus(char status) {
+	  this.status = status;
   }   
   
   /**
@@ -177,22 +177,3 @@ public class User {
 	  
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

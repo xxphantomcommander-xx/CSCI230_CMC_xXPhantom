@@ -14,22 +14,7 @@ public class NonAdmin extends User{
 		super(firstName, lastName, userName, password, type, status); //IDK IF WE NEED THIS
 	
 	}
-	/**
-	 * This method allows the NonAdmin User
-	 * to view the details of their profile
-	 */
-	public void viewMyProfile(User user)
-	{
-		String first = user.getFirstName();
-		String last = user.getLastName();
-		String username = user.getUserName();
-		String password = user.getPassword();
-		char type = user.getType();
-		char status = user.getStatus();
-		System.out.println("first name = " + first + "\n" + "last name = " + last + "\n" + "userName = " 
-		+ username + "\n" + "password = " + password + "\n" + "type = " + type + "\n" + "status = " + status 
-		+ "\n");
-	}
+	
 	
 	/**
 	 * Allows the NonAdmin to change the name

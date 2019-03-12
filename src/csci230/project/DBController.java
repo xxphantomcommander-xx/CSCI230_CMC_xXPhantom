@@ -44,7 +44,7 @@ public class DBController {
 		return univDBlib.user_getUsers();
 	}
 
-	/*
+	/*e
 	 * gets a list of saved schools for
 	 * a specific user from the database
 	 * @param userName
@@ -191,7 +191,8 @@ public class DBController {
 	 * @param type
 	 * @param status
 	 */
-	public void editUser(String username, String firstName, String lastName, String password, char type, char status) {
-		univDBlib.user_editUser(username, firstName, lastName, password, type, status);
+	public int editUser(String username, String firstName, String lastName, String password, char type, char status) {
+		int editstatus = univDBlib.user_editUser(username, firstName, lastName, password, type, status);
+		return editstatus;
 	}
 }

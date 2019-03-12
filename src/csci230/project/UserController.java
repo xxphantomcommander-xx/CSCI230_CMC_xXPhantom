@@ -16,7 +16,7 @@ public class UserController {
 	private DBController dbCon;
 	private UniversityController univC;
 	//private ArrayList<User> users;
-	private User loggedOn;
+	private User loggedOnUser;
 	
 	/**
 	 * constructor
@@ -46,14 +46,14 @@ public class UserController {
 						{
 							isLoggedIn = true;
 							//univC.loadUniversities();
-							//loadUsers(username);
+							loadUsers(username);
 							return;
 						}
 						else
 						{
 							isAdminLoggedIn = true;
 							//univC.loadUniversities();
-							//loadUsers(username);
+							loadUsers(username);
 							return;
 						}
 					}
@@ -91,21 +91,21 @@ public class UserController {
 			
 			//User u = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
 			
-			if (userString[i][4] == "u")
+			if ("u".equals(userString[i][4]))
 			{
 
 				NonAdmin temp = new NonAdmin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
 				users.add(temp);
-				if(userString[i][2] == username) {
-					loggedOn = temp;
+				if(username.equals(userString[i][2])) {
+					loggedOnUser = temp;
 				}
 			}
 			else
 			{
 				Admin temp = new Admin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
 				users.add(temp);
-				if(userString[i][2] == username) {
-					loggedOn = temp;
+				if(username.equals(userString[i][2])) {
+					loggedOnUser = temp;
 				}
 			}
 	
@@ -138,8 +138,14 @@ public class UserController {
 	 * views profile
 	 * @return logged on user
 	 */
-	public User viewMyProfile() {
-		  return loggedOn;
+	public void viewMyProfile(User user) {
+		  String first = user.getFirstName();
+		  String last = user.getLastName();
+		  String username = user.getUserName();
+		  String password = user.getPassword();
+		  char type = user.getType();
+		  char status = user.getStatus();
+		  System.out.println("First Name: "+ first + "\t"+"Last Name: "+ last + "\t"+"Username: "+ username + "\t"+"Password: "+ password + "\t\t"+"Type: "+ type + "\t\t"+"Status: "+ status + "\t");
 	}
 	
 	/**
@@ -195,8 +201,15 @@ public class UserController {
 	  
 	  public void editMyProfile(String first, String last, String oldPassword, String newPassword) {
 		  
-		  if(oldPassword == loggedOn.getPassword()) {  
-			  dbCon.editUser(loggedOn.getUserName(), first, last, newPassword, loggedOn.getType(), loggedOn.getStatus());
+		  if(loggedOnUser.getPassword().equals(oldPassword)) {  
+			  loggedOnUser.setFirstName(first);
+			  loggedOnUser.setLastName(last);
+			  loggedOnUser.setPassword(newPassword);
+			  dbCon.editUser(loggedOnUser.getUserName(), first, last, newPassword, loggedOnUser.getType(), loggedOnUser.getStatus());
 		  }
+	  }
+	  
+	  public User getLoggedOnUser() {
+		  return loggedOnUser;
 	  }
 }

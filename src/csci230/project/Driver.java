@@ -12,9 +12,8 @@ public class Driver {
 		NonAdminInteraction nai = new NonAdminInteraction();
 		AdminInteraction ai = new AdminInteraction();
 		UserController uc = new UserController();
+		UniversityController univc = new UniversityController();
 		
-		
-		System.out.println(uc.loadUsers("juser"));
 		
 		System.out.println();
 		System.out.println("*** 1 ***");
@@ -42,14 +41,29 @@ public class Driver {
 		
 		System.out.println("");
 		
+		
+		
+		
+		
+		
 		System.out.println("*** 2 ***");
-		System.out.println("View Profile");
+		System.out.println("View My Profile");
+		//This prints the user details for Noreen, as she was the last logged in user. She was successfully logged on in Driver part 1. 
+		uc.viewMyProfile(uc.getLoggedOnUser());
+	
 		
 		System.out.println("");
 		
 		System.out.println("Edit Profile");
-		
+		uc.editMyProfile("Noreen", "Admin", "admin", "newAdmin");
+		System.out.print(uc.getLoggedOnUser().getFirstName());
+		System.out.print("Updated Profile Details: \t\t");
+		uc.viewMyProfile(uc.getLoggedOnUser());
 		System.out.println("");
+		
+		
+		
+		
 		System.out.println("*** 3 ***");
 		System.out.println("Search for schools by a combination of state and number of students");
 		System.out.println("View Results");
@@ -61,6 +75,7 @@ public class Driver {
 		System.out.println("");
 		System.out.println("*** 5 ***");
 		System.out.println("View list of universities");
+		univc.viewUniversities();
 		
 		System.out.println("");
 		System.out.println("*** 6 ***");

@@ -85,13 +85,13 @@ public class AdminFunctionalityController {
 	{
 		return univC.viewUniversities();
 	}
-	/**
-	 * Allows the admin to view all users
-	 */
-	public ArrayList<User> viewUsers()
-	{
-		return userC.viewUsers();
-	}
+//	/**
+//	 * Allows the admin to view all users
+//	 */
+//	public ArrayList<User> viewUsers()
+//	{
+//		return userC.viewUsers();
+//	}
 	/**
 	 * Edits the school of the week
 	 */
@@ -132,11 +132,11 @@ public class AdminFunctionalityController {
 		
 	}
 	
-	/**
-	 * shows the logged in User their profile
-	 * @return user
-	 */
-	public User viewMyProfile() {
-		return userC.viewMyProfile();
-	}
+//	/**
+//	 * shows the logged in User their profile
+//	 * @return user
+//	 */
+//	public User viewMyProfile() {
+//		return userC.viewMyProfile();
+//	}
 }
