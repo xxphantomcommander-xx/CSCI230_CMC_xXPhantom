@@ -454,6 +454,10 @@ public class UniversityController {
 		return 0;
 	}
 
+	/**
+	 * get all universities
+	 * @return ArrayList<University> os all universities
+	 */
 	public ArrayList<University> getAllUnivs() {
 		return allUnivs;
 	}

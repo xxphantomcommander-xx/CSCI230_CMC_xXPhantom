@@ -164,7 +164,7 @@ public class User {
    */
   public String findByUserName(String userName) {
 	return "";
-	  //Fix should return user but creates errors for now
+	  //TODO Fix should return user but creates errors for now
   }
 
   /**

@@ -1,9 +1,16 @@
 package csci230.project;
 
 
+/**
+ * @author abreyen001
+ * @version 3/12/18
+ */
 public class Driver {
 
 	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args){
 		System.out.println("Creating Instances as needed...");
 		NonAdminInteraction nai = new NonAdminInteraction();

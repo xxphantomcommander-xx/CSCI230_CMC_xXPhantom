@@ -222,7 +222,14 @@ public class UserController {
 	  }
 	  
 	  
-	  public void editMyProfile(String first, String last, String oldPassword, String newPassword) {
+	  /**
+	   * edits profile
+	 * @param first first name to change
+	 * @param last last name to change
+	 * @param oldPassword old password
+	 * @param newPassword new password to change
+	 */
+	public void editMyProfile(String first, String last, String oldPassword, String newPassword) {
 		  
 		  if(loggedOnUser.getPassword().equals(oldPassword)) {  
 			  loggedOnUser.setFirstName(first);
@@ -235,11 +242,18 @@ public class UserController {
 		  }
 	  }
 	  
-	  public User getLoggedOnUser() {
+	  /**
+	   * gets currently logged on user
+	 * @return currently logged on user
+	 */
+	public User getLoggedOnUser() {
 		  return loggedOnUser;
 	  }
 	  
-	  public void viewUniversities(){
+	  /**
+	 * views universities
+	 */
+	public void viewUniversities(){
 			if(getLoggedOnUser().getType() == 'a') {
 				ArrayList<University> univNames = univC.loadUniversities();
 				for (int i = 0 ; i < univC.getAllUnivs().size() ; i++)

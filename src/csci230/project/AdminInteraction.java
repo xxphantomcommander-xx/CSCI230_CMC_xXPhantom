@@ -144,6 +144,9 @@ public class AdminInteraction {
 	}
 	
 	
+	/**
+	 * views profile
+	 */
 	public void viewMyProfile() {
 		User temp;
 		temp = aFC.viewMyProfile();

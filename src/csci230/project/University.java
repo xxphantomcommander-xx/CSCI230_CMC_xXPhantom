@@ -341,11 +341,19 @@ public class University {
 	}
 	
 	
+	/**
+	 * gets emphases
+	 * @return ArrayList<String> of emphases
+	 */
 	public ArrayList<String> getEmp(){
 		return emp;
 	}
 	
 	
+	/**
+	 * adds emphasis
+	 * @param newEmp new emphasis
+	 */
 	public void addEmp(String newEmp) {
 		this.emp.add(newEmp);
 	}

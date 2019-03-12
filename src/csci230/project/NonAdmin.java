@@ -9,6 +9,14 @@ import java.util.List;
  */
 public class NonAdmin extends User{
 	
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param userName
+	 * @param password
+	 * @param type
+	 * @param status
+	 */
 	public NonAdmin(java.lang.String firstName, java.lang.String lastName, java.lang.String userName,
 			java.lang.String password, char type, char status) {
 		super(firstName, lastName, userName, password, type, status); //IDK IF WE NEED THIS
