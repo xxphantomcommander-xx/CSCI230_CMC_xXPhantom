@@ -24,7 +24,12 @@ public class Driver {
 		
 		System.out.println("Logging in with invalid user credentials");
 		//TODO Print error message
+		System.out.println("1: Incorrect Password");
 		uc.logOn("juser", "incorrectPassword");
+		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
+		System.out.println();
+		System.out.println("2: Incorrect Username");
+		uc.logOn("jNotAUser", "user");
 		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
 		
 		System.out.println("");
@@ -38,6 +43,7 @@ public class Driver {
 		
 		System.out.println("Logging in with valid admin credentials");
 		uc.logOn("nadmin", "admin");
+		System.out.println(uc.getLoggedOnUser().getUserName());
 		System.out.println("IsAdminLoggedIn status: "+uc.isAdminLoggedIn());
 		
 		System.out.println("******** 1 COMPLETE ********\n\n");
@@ -106,7 +112,8 @@ public class Driver {
 		System.out.println("******** 5 ********");
 		
 		System.out.println("View list of universities");
-		uc.viewUniversities();
+		System.out.println("!!!! VIEW LIST OF UNIVERSITIES HAS BEEN DEACTIVATED FOR TESTING PURPOSES !!!! \nTo reactivate, uncomment line 111 in Driver.java");
+		//uc.viewUniversities();
 		
 		System.out.println("******** 5 COMPLETE ********\n\n");
 		

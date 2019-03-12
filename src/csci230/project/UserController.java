@@ -34,16 +34,22 @@ public class UserController {
 	 */
 	public void logOn(String username, String password) {
 		String [][] users = dbCon.getUsers();
+		
 		for (int i = 0; i < users.length; i++)
 		{
+			
 			if (username.equals(users[i][2]))
 			{
+				//username exists
 				if (password.equals(users[i][3])) 
 				{
+					//password IS correct
 					if ("Y".equals(users[i][5])) 
 					{
+						//user status IS active
 						if ("u".equals(users[i][4]))
 						{
+							//user type IS user
 							isLoggedIn = true;
 							//univC.loadUniversities();
 							loadUsers(username);
@@ -51,6 +57,7 @@ public class UserController {
 						}
 						else
 						{
+							//user type IS admin
 							isAdminLoggedIn = true;
 							//univC.loadUniversities();
 							loadUsers(username);
@@ -59,22 +66,29 @@ public class UserController {
 					}
 					else
 					{
+						//user status IS inactive
 						System.out.println("User status is inactive");
+						return;
 					}
 				}
 				else
 				{
+					//password IS incorrect
 					isLoggedIn = false;
+					isAdminLoggedIn = false;
+					System.out.println("Password incorrect.");
 					return;
 				}
 			}
-//			else
-//			{
-//				System.out.println("Username or password is incorrect");
-//			}
+			
+			else {
+				System.out.println(i+"Username incorrect.");
+				i++;
+				System.out.println(i);
+				return;
+			}
 		}
 		
-		System.out.println("Username or password is incorrect");
 	}
 	
 	/**
