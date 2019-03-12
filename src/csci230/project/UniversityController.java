@@ -58,209 +58,339 @@ public class UniversityController {
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
 			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, String[] emp) {
 
-		ArrayList<University> searchList = new ArrayList();
+		ArrayList<University> searchList = new ArrayList<University>();
 		searchList = allUnivs;
-		
+		searchByEmphasis(searchByQualityOfLife(searchBySocialLife(searchByAcademicScale(searchByPercEnrolled(searchByPercAdmitted(searchByNumOfApps
+				(searchByPercentFinAid(searchByExpenses(searchBySATMath(searchBySATVerbal(searchByPercentFemale(searchByNumOfStudents(searchByControl(searchByState(searchBySchool(searchList, sch), st),  c),nStuLow, nStuHigh)
+				, prctfLow, prctfHigh), svLow, svHigh), smLow, smHigh), eLow, eHigh), prctfinLow, prctfinHigh), nApLow, nApHigh), prctaLow, prctaHigh), prcteLow, prcteHigh),
+				asLow, asHigh), ssLow, ssHigh), qLow, qHigh), emp);
 	}
 	
-//	private ArrayList<University> searchBySchool(ArrayList<University> temp, String sch)
-//	{
-//		if(sch == null)
-//		{
-//			return temp;
-//		}
-//		else{
-//			for(University i: temp)
-//			{
-//				String name = i.getSchoolName();
-//				
-//			}
-//			
-//			//TODO search by school return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchByState(ArrayList<University> temp, String st)
-//	{
-//		if(st == null)
-//		{
-//			return temp;
-//		}
-//		else{
-//		
-//			
-//			//TODO search by state return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchByControl(ArrayList<University> temp, String c)
-//	{
-//		if(c == null)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by control return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchByNumOfStudents(ArrayList<University> temp, int nStuLow, int nStuHigh)
-//	{
-//		if(nStuLow == -1 && nStuHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by number of students(high to low) return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchByPercentFemale(ArrayList<University> temp, int prctfLow, int prctfHigh)
-//	{
-//		if(prctfLow == -1 && prctfHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by percent female (high to low) return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchBySATVerbal(ArrayList<University> temp, int svLow, int svHigh)
-//	{
-//		if(svLow == -1 && svHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by average SAT verbal score(high to low) return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchBySATMath(ArrayList<University> temp, int smLow, int smHigh)
-//	{
-//		if(smLow == -1 && smHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by average SAT math score(high to low) return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchByExpenses(ArrayList<University> temp, int eLow, int eHigh)
-//	{
-//		if(eLow == -1 && eHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by expenses(high to low) return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchByPercentFinAid(ArrayList<University> temp, int prctfinLow, int prctfinHigh)
-//	{
-//		if(prctfinLow == -1 && prctfinHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by percent financial aid given(high to low) return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchByNumOfApps(ArrayList<University> temp, int nApLow, int nApHigh)
-//	{
-//		if(nApLow == -1 && nApHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by number of applicants(high to low) return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchByPercAdmitted(ArrayList<University> temp, int prctaLow, int prctaHigh)
-//	{
-//		if(prctaLow == -1 && prctaHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by percent admitted(high to low) return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchByPercEnrolled(ArrayList<University> temp, int prcteLow, int prcteHigh)
-//	{
-//		if(prcteLow == -1 && prcteHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by percent enrolled(high to low) return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchByAcademicScale(ArrayList<University> temp, int asLow, int asHigh)
-//	{
-//		if(asLow == -1 && asHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by academic scale(high to low) return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchBySocialLife(ArrayList<University> temp, int ssLow, int ssHigh)
-//	{
-//		if(ssLow == -1 && ssHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by social life scale(high to low) return sublist of matching schools
-//		}
-//	}
-//	
-//	private ArrayList<University> searchByQualityOfLife(ArrayList<University> temp, int qLow, int qHigh)
-//	{
-//		if(qLow == -1 && qHigh == -1)
-//		{
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO search by quality of life scale(high to low) return sublist of matching schools
-//		}
-//	}
-//	
-////	private ArrayList<University> searchByEmphasis(ArrayList<University> temp, String[] emp)
-//	{
-//		if(emp == null)
-//		{
-//			
-//			return temp;
-//		}
-//		else{
-//			
-//			//TODO searby school emphasis
-//		}
-//	}
+	private ArrayList<University> searchBySchool(ArrayList<University> temp, String sch)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		String schoolName = sch.toUpperCase();
+		if(sch.equals(null))
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				String name = i.getSchoolName();
+				if(name.contains(schoolName)) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+		}
+	}
+	
+	private ArrayList<University> searchByState(ArrayList<University> temp, String st)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		String state = st.toUpperCase();
+		if(st.equals(null))
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				String name = i.getState();
+				if(name.contains(state)) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+		}
+			
+
+		}
+	
+	
+	private ArrayList<University> searchByControl(ArrayList<University> temp, String c)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		String control = c.toUpperCase();
+		if(c.equals(null))
+		{
+			return temp;
+		}
+		else{
+			
+			for(University i: temp)
+			{
+				String name = i.getControl();
+				if(name.contains(control)) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+		}
+	
+	}
+	
+	
+	private ArrayList<University> searchByNumOfStudents(ArrayList<University> temp, int nStuLow, int nStuHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(nStuLow == -1 && nStuHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getNumOfStudents();
+				if(v >= nStuLow && v <= nStuHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+			
+		}
+	}
+	
+	private ArrayList<University> searchByPercentFemale(ArrayList<University> temp, int prctfLow, int prctfHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(prctfLow == -1 && prctfHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getPerFem();
+				if(v >= prctfLow && v <= prctfHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+		}
+	}
+	
+	private ArrayList<University> searchBySATVerbal(ArrayList<University> temp, int svLow, int svHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(svLow == -1 && svHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getSatVerbal();
+				if(v >= svLow && v <= svHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+			
+		}
+	}
+	
+	private ArrayList<University> searchBySATMath(ArrayList<University> temp, int smLow, int smHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(smLow == -1 && smHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getSatMath();
+				if(v >= smLow && v <= smHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+
+		}
+	}
+	
+	private ArrayList<University> searchByExpenses(ArrayList<University> temp, int eLow, int eHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(eLow == -1 && eHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getExpenses();
+				if(v >= eLow && v <= eHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+
+		}
+	}
+	
+	private ArrayList<University> searchByPercentFinAid(ArrayList<University> temp, int prctfinLow, int prctfinHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(prctfinLow == -1 && prctfinHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getFinancialAid();
+				if(v >= prctfinLow && v <= prctfinHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+
+		}
+	}
+	
+	private ArrayList<University> searchByNumOfApps(ArrayList<University> temp, int nApLow, int nApHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(nApLow == -1 && nApHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getNumOfApps();
+				if(v >= nApLow && v <= nApHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+
+		}
+	}
+	
+	private ArrayList<University> searchByPercAdmitted(ArrayList<University> temp, int prctaLow, int prctaHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(prctaLow == -1 && prctaHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getPerAdmitted();
+				if(v >= prctaLow && v <= prctaHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+
+		}
+	}
+	
+	private ArrayList<University> searchByPercEnrolled(ArrayList<University> temp, int prcteLow, int prcteHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(prcteLow == -1 && prcteHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getPerEnrolled();
+				if(v >= prcteLow && v <= prcteHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+
+		}
+	}
+	
+	private ArrayList<University> searchByAcademicScale(ArrayList<University> temp, int asLow, int asHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(asLow == -1 && asHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getAcademicScale();
+				if(v >= asLow && v <= asHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+
+		}
+	}
+	
+	private ArrayList<University> searchBySocialLife(ArrayList<University> temp, int ssLow, int ssHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(ssLow == -1 && ssHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getSocialScale();
+				if(v >= ssLow && v <= ssHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+
+		}
+	}
+	
+	private ArrayList<University> searchByQualityOfLife(ArrayList<University> temp, int qLow, int qHigh)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(qLow == -1 && qHigh == -1)
+		{
+			return temp;
+		}
+		else{
+			for(University i: temp)
+			{
+				int v = i.getQualOfLife();
+				if(v >= qLow && v <= qHigh) {
+					matchedSchools.add(i);
+				}
+			}
+			return matchedSchools;
+
+		}
+	}
+	
+	private ArrayList<University> searchByEmphasis(ArrayList<University> temp, String[] emp)
+	{
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if(emp == null)
+		{
+			
+			return temp;
+		}
+		else{
+			for(University i: temp) {
+				ArrayList<String> v = i.getEmp();
+				for(String u:emp) {
+					if(u.equals(v.get(0)) || u.equals(v.get(1)) || u.equals(v.get(2)) || u.equals(v.get(3)) || u.equals(v.get(4)) ) {
+						matchedSchools.add(i);
+					}
+				}
+			}
+			return matchedSchools;
+		}
+	}
 	
 	public ArrayList<University> loadUniversities() {
 		String [][] univData;
