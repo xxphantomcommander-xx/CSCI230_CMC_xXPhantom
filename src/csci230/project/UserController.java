@@ -51,7 +51,7 @@ public class UserController {
 						{
 							//user type IS user
 							isLoggedIn = true;
-							//univC.loadUniversities();
+							univC.loadUniversities();
 							loadUsers(username);
 							return;
 						}
@@ -59,7 +59,7 @@ public class UserController {
 						{
 							//user type IS admin
 							isAdminLoggedIn = true;
-							//univC.loadUniversities();
+							univC.loadUniversities();
 							loadUsers(username);
 							return;
 						}
@@ -256,7 +256,7 @@ public class UserController {
 				ArrayList<University> univNames = univC.loadUniversities();
 				for (int i = 0 ; i < univC.getAllUnivs().size() ; i++)
 				{
-					System.out.println(univNames.get(i).getEmp());
+					System.out.println(univNames.get(i).getSchoolName());
 				}
 				
 			  }

@@ -1,5 +1,6 @@
 package csci230.project;
 
+import java.util.ArrayList;
 
 /**
  * @author abreyen001
@@ -17,6 +18,7 @@ public class Driver {
 		AdminInteraction ai = new AdminInteraction();
 		UserController uc = new UserController();
 		UniversityController univc = new UniversityController();
+		ArrayList<String> al = new ArrayList<String>();
 		
 		
 		System.out.println();
@@ -91,8 +93,9 @@ public class Driver {
 		
 		System.out.println("Search for schools by a combination of state and number of students");
 		System.out.println("View Results");
-		
-		System.out.println("******** 3 COMPLETE ********\n\n");
+		univc.loadUniversities();
+		univc.searchSchools("", "New York", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
+		//System.out.println("******** 3 COMPLETE ********\n\n");
 		
 		
 		
@@ -106,7 +109,7 @@ public class Driver {
 		
 		System.out.println("Find top 5 recommended schools for a given school");
 		
-		System.out.println("******** 4 COMPLETE ********\n\n");
+		//System.out.println("******** 4 COMPLETE ********\n\n");
 		
 		
 		
@@ -120,7 +123,7 @@ public class Driver {
 		
 		System.out.println("View list of universities");
 		//System.out.println("!!!! VIEW LIST OF UNIVERSITIES HAS BEEN DEACTIVATED FOR TESTING PURPOSES !!!! \nTo reactivate, uncomment line 111 in Driver.java");
-		uc.viewUniversities();
+		//uc.viewUniversities();
 		
 		System.out.println("******** 5 COMPLETE ********\n\n");
 		

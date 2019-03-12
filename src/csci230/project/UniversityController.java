@@ -56,14 +56,19 @@ public class UniversityController {
 	 */
 	public void searchSchools(String sch, String st, String l, String c, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
-			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, String[] emp) {
+			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, ArrayList<String> emp) {
 
 		ArrayList<University> searchList = new ArrayList<University>();
+		ArrayList<University> results = new ArrayList<University>();
 		searchList = allUnivs;
-		searchByEmphasis(searchByQualityOfLife(searchBySocialLife(searchByAcademicScale(searchByPercEnrolled(searchByPercAdmitted(searchByNumOfApps
+		results = searchByEmphasis(searchByQualityOfLife(searchBySocialLife(searchByAcademicScale(searchByPercEnrolled(searchByPercAdmitted(searchByNumOfApps
 				(searchByPercentFinAid(searchByExpenses(searchBySATMath(searchBySATVerbal(searchByPercentFemale(searchByNumOfStudents(searchByControl(searchByState(searchBySchool(searchList, sch), st),  c),nStuLow, nStuHigh)
 				, prctfLow, prctfHigh), svLow, svHigh), smLow, smHigh), eLow, eHigh), prctfinLow, prctfinHigh), nApLow, nApHigh), prctaLow, prctaHigh), prcteLow, prcteHigh),
 				asLow, asHigh), ssLow, ssHigh), qLow, qHigh), emp);
+		for(University i: results) {
+			System.out.println(i.getSchoolName());
+
+		}
 	}
 	
 	private ArrayList<University> searchBySchool(ArrayList<University> temp, String sch)
@@ -371,10 +376,10 @@ public class UniversityController {
 		}
 	}
 	
-	private ArrayList<University> searchByEmphasis(ArrayList<University> temp, String[] emp)
+	private ArrayList<University> searchByEmphasis(ArrayList<University> temp, ArrayList<String> emp)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if(emp == null)
+		if(emp.isEmpty())
 		{
 			
 			return temp;
