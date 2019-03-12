@@ -41,7 +41,7 @@ public class University {
 	// quality of life scale of this university 0-10
 	int qualOfLife;
 	// the emphasises of the University
-	ArrayList<String> emp;
+	ArrayList<String> emphasis;
 	/**
 	 * creates a University
 	 * @param schoolName
@@ -65,7 +65,7 @@ public class University {
 			int numOfStudents, int perFem, int satVerbal, int satMath,
 			int expenses, int financialAid, int numOfApps, int perAdmitted, 
 			int perEnrolled, int academicScale, int socialScale, 
-			int qualOfLife) {
+			int qualOfLife, ArrayList<String> emphasis) {
 		this.schoolName = schoolName;
 		this.state = state;
 		this.location = location;
@@ -82,6 +82,7 @@ public class University {
 		this.academicScale = academicScale;
 		this.socialScale = socialScale;
 		this.qualOfLife = qualOfLife;
+		this.emphasis = emphasis;
 	}
 	
 	/**
@@ -346,7 +347,7 @@ public class University {
 	 * @return ArrayList<String> of emphases
 	 */
 	public ArrayList<String> getEmp(){
-		return emp;
+		return emphasis;
 	}
 	
 	
@@ -354,8 +355,8 @@ public class University {
 	 * adds emphasis
 	 * @param newEmp new emphasis
 	 */
-	public void addEmp(String newEmp) {
-		this.emp.add(newEmp);
+	public void setEmphasis(ArrayList<String> newEmp) {
+		this.emphasis = newEmp;
 	}
 
 }

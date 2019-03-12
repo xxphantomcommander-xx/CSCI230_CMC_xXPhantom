@@ -256,7 +256,7 @@ public class UserController {
 				ArrayList<University> univNames = univC.loadUniversities();
 				for (int i = 0 ; i < univC.getAllUnivs().size() ; i++)
 				{
-					System.out.println(univNames.get(i).getSchoolName());
+					System.out.println(univNames.get(i).getEmp());
 				}
 				
 			  }

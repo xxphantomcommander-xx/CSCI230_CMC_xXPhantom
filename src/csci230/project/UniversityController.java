@@ -264,10 +264,10 @@ public class UniversityController {
 	
 	public ArrayList<University> loadUniversities() {
 		String [][] univData;
-		String [][] univEmp;
+	
 		ArrayList<University> univ = new ArrayList<University>();
 		univData = dbCon.getUniversities();
-		univEmp = dbCon.getEmphasis();
+	
 		/**
 		 * Create list of Universities and Store their info into them.
 		 */
@@ -275,22 +275,31 @@ public class UniversityController {
 			
 			University temp = new University(univData[i][0], univData[i][1], univData[i][2],univData[i][3], Integer.parseInt(univData[i][4]), Integer.parseInt(univData[i][5]), Integer.parseInt(univData[i][6]),
 					Integer.parseInt(univData[i][7]), Integer.parseInt(univData[i][8]), Integer.parseInt(univData[i][9]), Integer.parseInt(univData[i][10]), Integer.parseInt(univData[i][11]),
-					Integer.parseInt(univData[i][12]), Integer.parseInt(univData[i][13]), Integer.parseInt(univData[i][14]), Integer.parseInt(univData[i][15]));
+					Integer.parseInt(univData[i][12]), Integer.parseInt(univData[i][13]), Integer.parseInt(univData[i][14]), Integer.parseInt(univData[i][15]), loadEmp(univData[i][0]));
 			univ.add(temp);
 		}
+
+		allUnivs = univ;
+		//System.out.println(univEmp[0][1]);
+		return univ;
+		
+	}
+	
+	
+	private ArrayList<String> loadEmp(String univName){
+		String [][] univEmp;
+		univEmp = dbCon.getEmphasis();
+		ArrayList<String> emp = new ArrayList<String>();
 		for(int i = 0; i < univEmp.length; i++) {
 			
 
-			for(University u : univ) {
-				if(univEmp[i][0] == u.getSchoolName()) {
-					u.addEmp(univEmp[i][1]);
-				}
 			
+				if(univEmp[i][0].equals(univName)) {
+					emp.add(univEmp[i][1]);
 			}
+				
 		}
-		allUnivs = univ;
-		return univ;
-		
+		return emp;
 	}
 	/**
 	 * 
