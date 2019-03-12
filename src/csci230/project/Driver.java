@@ -120,7 +120,7 @@ public class Driver {
 		
 		System.out.println("View list of universities");
 		System.out.println("!!!! VIEW LIST OF UNIVERSITIES HAS BEEN DEACTIVATED FOR TESTING PURPOSES !!!! \nTo reactivate, uncomment line 111 in Driver.java");
-		//uc.viewUniversities();
+		uc.viewUniversities();
 		
 		System.out.println("******** 5 COMPLETE ********\n\n");
 		

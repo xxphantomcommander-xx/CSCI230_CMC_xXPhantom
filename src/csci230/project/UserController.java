@@ -67,8 +67,8 @@ public class UserController {
 					else
 					{
 						//user status IS inactive
-						System.out.println("User status is inactive");
-						return;
+//						System.out.println("User status is inactive");
+//						return;
 					}
 				}
 				else
@@ -76,16 +76,14 @@ public class UserController {
 					//password IS incorrect
 					isLoggedIn = false;
 					isAdminLoggedIn = false;
-					System.out.println("Password incorrect.");
-					return;
+//					System.out.println("Password incorrect.");
+//					return;
 				}
 			}
 			
 			else {
-				System.out.println(i+"Username incorrect.");
-				i++;
-				System.out.println(i);
-				return;
+				//System.out.println(username +" Username incorrect.");
+				//return;
 			}
 		}
 		
