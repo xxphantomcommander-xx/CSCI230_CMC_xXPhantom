@@ -75,7 +75,7 @@ public class Driver {
 		System.out.println("");
 		System.out.println("*** 5 ***");
 		System.out.println("View list of universities");
-		//univc.viewUniversities();
+		uc.viewUniversities();
 		
 		System.out.println("");
 		System.out.println("*** 6 ***");

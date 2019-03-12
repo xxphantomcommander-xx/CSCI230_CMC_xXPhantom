@@ -15,6 +15,8 @@ public class University {
 	//Location of school(urban or rural)
 	String location;
 	// number of students in the university
+	String control;
+	// private vs city/state
 	int numOfStudents;
 	// percent female
 	int perFem;
@@ -45,6 +47,7 @@ public class University {
 	 * @param schoolName
 	 * @param state
 	 * @param location
+	 * @param control
 	 * @param numOfStudents
 	 * @param perFem
 	 * @param satVerbal
@@ -58,12 +61,27 @@ public class University {
 	 * @param socialScale
 	 * @param qualOfLife
 	 */
-	public University(String schoolName, String state, String location, 
+	public University(String schoolName, String state, String location, String control, 
 			int numOfStudents, int perFem, int satVerbal, int satMath,
 			int expenses, int financialAid, int numOfApps, int perAdmitted, 
-			int perEnrolled, int acedemicScale, int socialScale, 
+			int perEnrolled, int academicScale, int socialScale, 
 			int qualOfLife) {
-		
+		this.schoolName = schoolName;
+		this.state = state;
+		this.location = location;
+		this.control = control;
+		this.numOfStudents = numOfStudents;
+		this.perFem = perFem;
+		this.satVerbal = satVerbal;
+		this.satMath = satMath;
+		this.expenses = expenses;
+		this.financialAid = financialAid;
+		this.numOfApps = numOfApps;
+		this.perAdmitted = perAdmitted;
+		this.perEnrolled = perEnrolled;
+		this.academicScale = academicScale;
+		this.socialScale = socialScale;
+		this.qualOfLife = qualOfLife;
 	}
 	
 	/**
@@ -112,6 +130,22 @@ public class University {
 	 */
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	
+	/**
+	 * gets control
+	 * @return control
+	 */
+	public String getControl() {
+		return control;
+	}
+
+	/**
+	 * sets control
+	 * @param control
+	 */
+	public void setContol(String control) {
+		this.control = control;
 	}
 
 	/**

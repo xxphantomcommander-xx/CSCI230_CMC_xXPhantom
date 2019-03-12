@@ -222,4 +222,20 @@ public class UserController {
 	  public User getLoggedOnUser() {
 		  return loggedOnUser;
 	  }
+	  
+	  public void viewUniversities(){
+			if(getLoggedOnUser().getType() == 'a') {
+				ArrayList<University> univNames = univC.loadUniversities();
+				for (int i = 0 ; i < univC.getAllUnivs().size() ; i++)
+				{
+					System.out.println(univNames.get(i).getSchoolName());
+				}
+				
+			  }
+			  else {
+				  System.out.println("Currently logged in user is not an admin");
+			  }
+			
+			
+		}
 }
