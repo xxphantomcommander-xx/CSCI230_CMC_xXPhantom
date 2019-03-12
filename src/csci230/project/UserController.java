@@ -15,7 +15,7 @@ public class UserController {
 	private boolean isAdminLoggedIn = false;
 	private DBController dbCon;
 	private UniversityController univC;
-	//private ArrayList<User> users;
+	private ArrayList<User> allUsers;
 	private User loggedOnUser;
 	
 	/**
@@ -110,6 +110,7 @@ public class UserController {
 			}
 	
 		}
+		allUsers = users;
 		return users;
 	}
 	
@@ -194,9 +195,18 @@ public class UserController {
 	   * returns an arraylist of users
 	   * @return arraylist of users
 	   */
-//	  public ArrayList<User> viewUsers(){
-//		  return users;
-//	  }
+	  public void viewUsers(){
+		  if(loggedOnUser.getType() == 'a') {
+			  ArrayList<User> users = loadUsers(loggedOnUser.getUserName());
+			  for(int i = 0;i < allUsers.size();i++) {
+				  System.out.println(users.get(i).getUserName());
+			  }
+		  }
+		  else {
+			  System.out.println("Currently logged in user is not an admin");
+		  }
+		  
+	  }
 	  
 	  
 	  public void editMyProfile(String first, String last, String oldPassword, String newPassword) {

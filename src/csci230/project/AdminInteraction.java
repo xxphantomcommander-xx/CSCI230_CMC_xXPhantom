@@ -93,13 +93,13 @@ public class AdminInteraction {
 	/**
 	 * Displays all the User's names and info
 	 */
-	public void viewUsers() {
-		ArrayList<User> temp = new ArrayList<User>();
-		temp = aFC.viewUsers();
-		for(User i:temp) {
-			System.out.println(i.getFirstName() + " " + i.getLastName() + " " + i.getUserName() + " " + i.getPassword() + " " + i.getType() + " " + i.getStatus() + "\n");
-		}
-	}
+//	public void viewUsers() {
+//		ArrayList<User> temp = new ArrayList<User>();
+//		temp = aFC.viewUsers();
+//		for(User i:temp) {
+//			System.out.println(i.getFirstName() + " " + i.getLastName() + " " + i.getUserName() + " " + i.getPassword() + " " + i.getType() + " " + i.getStatus() + "\n");
+//		}
+//	}
 	
 	/**
 	 * This edits the User's info in the database

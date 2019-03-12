@@ -54,12 +54,12 @@ public class Driver {
 		
 		System.out.println("");
 		
-		System.out.println("Edit Profile");
-		uc.editMyProfile("Noreen", "Admin", "admin", "newAdmin");
-		System.out.print(uc.getLoggedOnUser().getFirstName());
-		System.out.print("Updated Profile Details: \t\t");
-		uc.viewMyProfile(uc.getLoggedOnUser());
-		System.out.println("");
+//		System.out.println("Edit Profile");
+//		uc.editMyProfile("Noreen", "Admin", "admin", "newAdmin");
+//		System.out.print(uc.getLoggedOnUser().getFirstName());
+//		System.out.print("Updated Profile Details: \t\t");
+//		uc.viewMyProfile(uc.getLoggedOnUser());
+//		System.out.println("");
 		
 		
 		
@@ -75,11 +75,12 @@ public class Driver {
 		System.out.println("");
 		System.out.println("*** 5 ***");
 		System.out.println("View list of universities");
-		univc.viewUniversities();
+		//univc.viewUniversities();
 		
 		System.out.println("");
 		System.out.println("*** 6 ***");
 		System.out.println("View list of users");
+		uc.viewUsers();
 		
 		
 		

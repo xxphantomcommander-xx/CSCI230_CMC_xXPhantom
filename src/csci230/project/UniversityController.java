@@ -261,7 +261,7 @@ public class UniversityController {
 		}
 	}
 	
-	public void loadUniversities() {
+	public ArrayList<University> loadUniversities() {
 		String [][] univData;
 		String [][] univEmp;
 		univData = dbCon.getUniversities();
