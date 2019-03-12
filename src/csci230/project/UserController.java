@@ -64,8 +64,6 @@ public class UserController {
 				}
 				else
 				{
-					
-					System.out.println("wrongPass");
 					isLoggedIn = false;
 					return;
 				}
@@ -75,6 +73,7 @@ public class UserController {
 //				System.out.println("Username or password is incorrect");
 //			}
 		}
+		
 		System.out.println("Username or password is incorrect");
 	}
 	
@@ -216,6 +215,9 @@ public class UserController {
 			  loggedOnUser.setLastName(last);
 			  loggedOnUser.setPassword(newPassword);
 			  dbCon.editUser(loggedOnUser.getUserName(), first, last, newPassword, loggedOnUser.getType(), loggedOnUser.getStatus());
+		  }
+		  else {
+			  System.out.println("Incorrect Password. Nothing changed!");
 		  }
 	  }
 	  
