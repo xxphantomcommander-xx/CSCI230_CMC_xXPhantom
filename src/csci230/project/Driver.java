@@ -64,7 +64,7 @@ public class Driver {
 		System.out.println("");
 		
 		System.out.println("Logging in with valid admin credentials");
-		uc.logOn("nadmin", "admin");
+		uc.logOn("nadmin", "newAdmin");
 		System.out.println(uc.getLoggedOnUser().getUserName());
 		System.out.println("IsAdminLoggedIn status: "+uc.isAdminLoggedIn());
 		
@@ -82,11 +82,11 @@ public class Driver {
 		System.out.println("");
 		//If you want to change Noreen back to the default, you will need to change her password in line 39 and the old password (parameter 3 in line 58.)
 		System.out.println("Edit Profile");
-		System.out.println("!!! CHANGE USER HAS BEEN DEACTIVATED FOR TESTING PURPOSES! !!!\nUncomment lines 66-69 in Driver.java to reactivate change user.");
-		//uc.editMyProfile("Noreen", "Admin", "newAdmin", "admin");
-		//System.out.println("Updated Profile Details:");
-		//uc.viewMyProfile(uc.getLoggedOnUser());
-		//System.out.println("");
+		//System.out.println("!!! CHANGE USER HAS BEEN DEACTIVATED FOR TESTING PURPOSES! !!!\nUncomment lines 66-69 in Driver.java to reactivate change user.");
+		//uc.editMyProfile("Noreen", "Admin", "admin", "newAdmin");
+		System.out.println("Updated Profile Details:");
+		uc.viewMyProfile();
+		System.out.println("");
 		
 		System.out.println("******** 2 COMPLETE ********\n\n");
 		
@@ -105,7 +105,7 @@ public class Driver {
 		al.add("");
 		al.add("");
 		al.add("");
-		univc.searchSchools("", "New York", "", "", 20000, 35000, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
+		univc.searchSchools("", "Minnesota", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
 		System.out.println("******** 3 COMPLETE ********\n\n");
 		
 		
@@ -133,8 +133,8 @@ public class Driver {
 		System.out.println("******** 5 ********");
 		
 		System.out.println("View list of universities");
-		System.out.println("!!!! VIEW LIST OF UNIVERSITIES HAS BEEN DEACTIVATED FOR TESTING PURPOSES !!!! \nTo reactivate, uncomment line 111 in Driver.java");
-		//uc.viewUniversities();
+		//System.out.println("!!!! VIEW LIST OF UNIVERSITIES HAS BEEN DEACTIVATED FOR TESTING PURPOSES !!!! \nTo reactivate, uncomment line 111 in Driver.java");
+		uc.viewUniversities();
 		
 		System.out.println("******** 5 COMPLETE ********\n\n");
 
