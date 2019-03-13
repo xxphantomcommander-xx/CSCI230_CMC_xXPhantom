@@ -40,12 +40,18 @@ public class Driver {
 		
 		System.out.println("Logging in with invalid user credentials");
 		//TODO Print error message
-		System.out.println("1: Incorrect Password");
+		System.out.println("Test 1: User with Incorrect Password");
 		uc.logOn("juser", "incorrectPassword");
 		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
 		System.out.println();
-		System.out.println("2: Incorrect Username");
+		
+		System.out.println("Test 2: User with Incorrect Username, Correct Password");
 		uc.logOn("jNotAUser", "user");
+		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
+		System.out.println();
+		
+		System.out.println("Test 3: User with Incorrect Username and Incorrect Password");
+		uc.logOn("jNotAUser", "incorrectPassword");
 		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
 		
 		System.out.println("");
@@ -66,16 +72,11 @@ public class Driver {
 		
 		
 		
-		
-		
-		
-		
-		
 		System.out.println("******** 2 ********");
 		
 		System.out.println("View My Profile");
 		//This prints the user details for Noreen, as she was the last logged in user. She was successfully logged on in Driver part 1. 
-		uc.viewMyProfile(uc.getLoggedOnUser());
+		uc.viewMyProfile();
 	
 		
 		System.out.println("");
@@ -91,26 +92,23 @@ public class Driver {
 		
 		
 		
-		
-		
-		
-		
 		System.out.println("******** 3 ********");
 		
 		
 		System.out.println("Search for schools by a combination of state and number of students");
 		System.out.println("View Results");
 		univc.loadUniversities();
-		univc.searchSchools("", "New York", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
-		//System.out.println("******** 3 COMPLETE ********\n\n");
+		//name, **state**, location, control, **numOfStudents(low)**, **numOfStudents(high)**, prctFem(low), prctFem(high), SATVerbal(low), SATVerbal(high), SATMath(low), SATMath(high), expenses(low), expenses(high), prctFinAid(low), prctFinAid(low), prctFinAid(high), numOfApps(low), numOfApps(high), prctAdmitted(low), prctAdmitted(high) prctEnrolled(low), prctEnrolled(high), academicsScale(low), academicsScale(high), socialScale(low), socialScale(high), qualOfLife(low), qualOfLife(high), array list of emphasis
+		// Searches for New York schools with a size of 15000-35000. Excludes schools that do not meet criteria.
+		al.add("");
+		al.add("");
+		al.add("");
+		al.add("");
+		al.add("");
+		univc.searchSchools("", "New York", "", "", 20000, 35000, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
+		System.out.println("******** 3 COMPLETE ********\n\n");
 		
 		
-		
-		
-		
-		
-		
-		System.out.println("");
 		
 		System.out.println("******** 4 ********");
 		
@@ -118,7 +116,7 @@ public class Driver {
 		
 		univc.topRecommended(u);
 		
-		//System.out.println("******** 4 COMPLETE ********\n\n");
+
 		
 		
 		
@@ -126,23 +124,21 @@ public class Driver {
 		
 		
 		
+
+		System.out.println("******** 4 COMPLETE ********\n\n");
+
 		
+				
 		
 		System.out.println("******** 5 ********");
 		
 		System.out.println("View list of universities");
-		//System.out.println("!!!! VIEW LIST OF UNIVERSITIES HAS BEEN DEACTIVATED FOR TESTING PURPOSES !!!! \nTo reactivate, uncomment line 111 in Driver.java");
+		System.out.println("!!!! VIEW LIST OF UNIVERSITIES HAS BEEN DEACTIVATED FOR TESTING PURPOSES !!!! \nTo reactivate, uncomment line 111 in Driver.java");
 		//uc.viewUniversities();
 		
 		System.out.println("******** 5 COMPLETE ********\n\n");
+
 		
-		
-		
-		
-		
-		
-		
-		System.out.println("");
 		
 		System.out.println("******** 6 ********");
 		

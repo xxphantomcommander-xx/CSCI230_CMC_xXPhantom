@@ -1,9 +1,7 @@
 package csci230.project;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.TreeMap;
+
 
 /**
  * This class controls how Universities object interact 
@@ -382,15 +380,20 @@ public class UniversityController {
 	private ArrayList<University> searchByEmphasis(ArrayList<University> temp, ArrayList<String> emp)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if(emp.isEmpty())
+		ArrayList<String> capEmp = new ArrayList<String>();
+		for(String i:emp) {
+			capEmp.add(i.toUpperCase());
+		}
+		
+		if(emp.get(0).equals("") && emp.get(1).equals("") && emp.get(2).equals("") && emp.get(3).equals("") && emp.get(4).equals(""))
 		{
 			
 			return temp;
 		}
 		else{
 			for(University i: temp) {
-				ArrayList<String> v = i.getEmp();
-				for(String u:emp) {
+				ArrayList<String> v = capEmp;
+				for(String u:i.getEmp()) {
 					if(u.equals(v.get(0)) || u.equals(v.get(1)) || u.equals(v.get(2)) || u.equals(v.get(3)) || u.equals(v.get(4)) ) {
 						matchedSchools.add(i);
 					}

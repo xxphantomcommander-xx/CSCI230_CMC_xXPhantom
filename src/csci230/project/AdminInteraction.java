@@ -128,11 +128,12 @@ public class AdminInteraction {
 	 * Displays the Universitie's names
 	 */
 	public void viewUniversities() {
-		ArrayList<String> univName = new ArrayList<String>();
-		univName = aFC.viewUniversities();
-		for(String i:univName) {
-			System.out.println(i + "\n");
-		}
+//		ArrayList<String> univName = new ArrayList<String>();
+//		univName = aFC.viewUniversities();
+		aFC.viewUniversities();
+//		for(String i:univName) {
+//			System.out.println(i + "\n");
+//		}
 	}
 	
 	/**
@@ -148,9 +149,10 @@ public class AdminInteraction {
 	 * views profile
 	 */
 	public void viewMyProfile() {
-		User temp;
-		temp = aFC.viewMyProfile();
-		System.out.println(temp.getFirstName() + "\n" + temp.getLastName() + "\n" + temp.getUserName() + "\n" + temp.getPassword() + "\n" + temp.getType());
+//		User temp;
+//		temp = aFC.viewMyProfile();
+		aFC.viewMyProfile();
+		//System.out.println(temp.getFirstName() + "\n" + temp.getLastName() + "\n" + temp.getUserName() + "\n" + temp.getPassword() + "\n" + temp.getType());
 		
 	}
 }
