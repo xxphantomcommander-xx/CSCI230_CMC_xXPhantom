@@ -69,7 +69,7 @@ public class Driver {
 		
 		System.out.println("View My Profile");
 		//This prints the user details for Noreen, as she was the last logged in user. She was successfully logged on in Driver part 1. 
-		uc.viewMyProfile(uc.getLoggedOnUser());
+		uc.viewMyProfile();
 	
 		
 		System.out.println("");
@@ -93,7 +93,12 @@ public class Driver {
 		univc.loadUniversities();
 		//name, **state**, location, control, **numOfStudents(low)**, **numOfStudents(high)**, prctFem(low), prctFem(high), SATVerbal(low), SATVerbal(high), SATMath(low), SATMath(high), expenses(low), expenses(high), prctFinAid(low), prctFinAid(low), prctFinAid(high), numOfApps(low), numOfApps(high), prctAdmitted(low), prctAdmitted(high) prctEnrolled(low), prctEnrolled(high), academicsScale(low), academicsScale(high), socialScale(low), socialScale(high), qualOfLife(low), qualOfLife(high), array list of emphasis
 		// Searches for New York schools with a size of 15000-35000. Excludes schools that do not meet criteria.
-		univc.searchSchools("", "New York", "", "", 15000, 35000, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
+		al.add("");
+		al.add("");
+		al.add("");
+		al.add("");
+		al.add("");
+		univc.searchSchools("", "New York", "", "", 20000, 35000, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
 		System.out.println("******** 3 COMPLETE ********\n\n");
 		
 		

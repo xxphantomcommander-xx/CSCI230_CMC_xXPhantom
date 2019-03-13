@@ -150,13 +150,13 @@ public class UserController {
 	 * views profile
 	 * @return logged on user
 	 */
-	public void viewMyProfile(User user) {
-		  String first = user.getFirstName();
-		  String last = user.getLastName();
-		  String username = user.getUserName();
-		  String password = user.getPassword();
-		  char type = user.getType();
-		  char status = user.getStatus();
+	public void viewMyProfile() {
+		  String first = loggedOnUser.getFirstName();
+		  String last = loggedOnUser.getLastName();
+		  String username = loggedOnUser.getUserName();
+		  String password = loggedOnUser.getPassword();
+		  char type = loggedOnUser.getType();
+		  char status = loggedOnUser.getStatus();
 		  System.out.println("First Name: "+ first + "\t"+"Last Name: "+ last + "\t"+"Username: "+ username + "\t"+"Password: "+ password + "\t\t"+"Type: "+ type + "\t\t"+"Status: "+ status + "\t");
 	}
 	

@@ -81,9 +81,9 @@ public class AdminFunctionalityController {
 	/**
 	 * Allows the admin to view all universities 
 	 */
-	public ArrayList<String> viewUniversities()
+	public void viewUniversities()
 	{
-		return univC.viewUniversities();
+		userC.viewUniversities();
 	}
 //	/**
 //	 * Allows the admin to view all users
@@ -132,11 +132,11 @@ public class AdminFunctionalityController {
 		
 	}
 	
-//	/**
-//	 * shows the logged in User their profile
-//	 * @return user
-//	 */
-//	public User viewMyProfile() {
-//		return userC.viewMyProfile();
-//	}
+	/**
+	 * shows the logged in User their profile
+	 * @return user
+	 */
+	public void viewMyProfile() {
+		userC.viewMyProfile();
+	}
 }
