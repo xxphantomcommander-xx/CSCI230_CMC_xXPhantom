@@ -19,6 +19,13 @@ public class Driver {
 		UserController uc = new UserController();
 		UniversityController univc = new UniversityController();
 		ArrayList<String> al = new ArrayList<String>();
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0);
 		
 		
 		System.out.println();
@@ -108,6 +115,8 @@ public class Driver {
 		System.out.println("******** 4 ********");
 		
 		System.out.println("Find top 5 recommended schools for a given school");
+		
+		univc.topRecommended(u);
 		
 		//System.out.println("******** 4 COMPLETE ********\n\n");
 		

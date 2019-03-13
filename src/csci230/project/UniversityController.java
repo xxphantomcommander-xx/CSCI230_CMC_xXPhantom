@@ -1,6 +1,9 @@
 package csci230.project;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * This class controls how Universities object interact 
@@ -397,6 +400,237 @@ public class UniversityController {
 		}
 	}
 	
+	public void topRecommended(University univ)
+	{
+		ArrayList<University> recommend = new ArrayList<University>();
+		for (University i: allUnivs)
+		{
+			int count = 0;
+			if (univ.getState().equals("-1"))
+			{
+				
+			}
+			else if (i.getState().equals(univ.getState()))
+			{
+				count++;
+			}
+			
+			if (univ.getLocation().equals("-1"))
+			{
+				
+			}
+			else if (i.getLocation().equals(univ.getLocation()))
+			{
+				count++;
+			}
+			
+			if (univ.getControl().equals("-1"))
+			{
+				
+			}
+			else if (i.getControl().equals(univ.getControl()))
+			{
+				count++;
+			}
+			
+			if (univ.getNumOfStudents() == -1)
+			{
+				
+			}
+			else if (i.getNumOfStudents() - univ.getNumOfStudents() <= 5000 && i.getNumOfStudents() - univ.getNumOfStudents() >= -5000)
+			{
+				count++;
+			}
+			
+			if (univ.getPerFem() == -1)
+			{
+				
+			}
+			else if (i.getPerFem() - univ.getPerFem() <= 10 && i.getPerFem() - univ.getPerFem() >= -10)
+			{
+				count++;
+			}
+			
+			if (univ.getSatVerbal() == -1)
+			{
+				
+			}
+			else if (i.getSatVerbal() - univ.getSatVerbal() <= 50 && i.getSatVerbal() - univ.getSatVerbal() >= -50)
+			{
+				count++;
+			}
+			
+			if (univ.getSatMath() == -1)
+			{
+				
+			}
+			else if (i.getSatMath() - univ.getSatMath() <= 50 && i.getSatMath() - univ.getSatMath() >= -50)
+			{
+				count++;
+			}
+			
+			if (univ.getExpenses() == -1)
+			{
+				
+			}
+
+			else if (i.getExpenses() - univ.getExpenses() <= 5000 && i.getExpenses() - univ.getExpenses() >= -5000)
+			{
+				count++;
+			}
+			
+			if (univ.getFinancialAid() == -1)
+			{
+				
+			}
+			else if (i.getFinancialAid() - univ.getFinancialAid() <= 10 && i.getFinancialAid() - univ.getFinancialAid() >= 10)
+			{
+				count++;
+			}
+			
+			if (univ.getNumOfApps() == -1)
+			{
+				
+			}
+			else if (i.getNumOfApps() - univ.getNumOfApps() <= 500 && i.getNumOfApps() - univ.getNumOfApps() >= 500)
+			{
+				count++;
+			}
+			
+			if (univ.getPerAdmitted() == -1)
+			{
+				
+			}
+			else if (i.getPerAdmitted() - univ.getPerAdmitted() <= 10 && i.getPerAdmitted() - univ.getPerAdmitted() >= 10)
+			{
+				count++;
+			}
+			
+			if (univ.getPerEnrolled() == -1)
+			{
+				
+			}
+			else if (i.getPerEnrolled() - univ.getPerEnrolled() <= 10 && i.getPerEnrolled() - univ.getPerEnrolled() >= 10)
+			{
+				count++;
+			}
+			
+			if (univ.getAcademicScale() == -1)
+			{
+				
+			}
+			else if (i.getAcademicScale() == univ.getAcademicScale())
+			{
+				count++;
+			}
+			
+			if (univ.getSocialScale() == -1)
+			{
+				
+			}
+			else if (i.getSocialScale() == univ.getSocialScale())
+			{
+				count++;
+			}
+			
+			if (univ.getQualOfLife() == -1)
+			{
+				
+			}
+			else if (i.getQualOfLife() == univ.getQualOfLife())
+			{
+				count++;
+			}
+			
+			
+			i.setCount(count);
+		}
+
+		for (University i : allUnivs)
+		{
+			recommend.add(i);
+		}
+		
+//		for (int i = 0 ; i < recomend.size() ; i++)
+//		{
+//			recomend.get(i).getCount();
+//			
+//		}
+		ArrayList<University> sortedSchools = mergeSort(recommend);
+		for (int i = 1 ; i <= 5 ; i++)
+		{
+			System.out.println(sortedSchools.get(i).getSchoolName());
+		}
+		
+
+	}
+	
+	public ArrayList<University> mergeSort(ArrayList<University> whole)
+	{
+		ArrayList<University> left = new ArrayList<University>();
+		ArrayList<University> right = new ArrayList<University>();
+		int center;
+		
+		if (whole.size() == 1)
+		{
+			return whole;
+		}
+		else 
+		{
+			center = whole.size()/2;
+			for (int i = 0; i < center ; i++)
+			{
+				left.add(whole.get(i));
+			}
+			for (int i = center; i < whole.size(); i++)
+			{
+				right.add(whole.get(i));
+			}
+			left = mergeSort(left);
+			right = mergeSort(right);
+			merge(left, right, whole);
+		}
+		return whole;
+	}
+	
+	private void merge(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int wholeIndex = 0;
+ 
+        // As long as neither the left nor the right ArrayList has
+        // been used up, keep taking the smaller of left.get(leftIndex)
+        // or right.get(rightIndex) and adding it at both.get(bothIndex).
+        while (leftIndex < left.size() && rightIndex < right.size()) {
+            if ( (left.get(leftIndex).getCount() > (right.get(rightIndex).getCount()))) {
+                whole.set(wholeIndex, left.get(leftIndex));
+                leftIndex++;
+            } else {
+                whole.set(wholeIndex, right.get(rightIndex));
+                rightIndex++;
+            }
+            wholeIndex++;
+        }
+ 
+        ArrayList<University> rest;
+        int restIndex;
+        if (leftIndex >= left.size()) {
+            // The left ArrayList has been use up...
+            rest = right;
+            restIndex = rightIndex;
+        } else {
+            // The right ArrayList has been used up...
+            rest = left;
+            restIndex = leftIndex;
+        }
+ 
+        // Copy the rest of whichever ArrayList (left or right) was not used up.
+        for (int i=restIndex; i<rest.size(); i++) {
+            whole.set(wholeIndex, rest.get(i));
+            wholeIndex++;
+        }
+    }
+	
 	public ArrayList<University> loadUniversities() {
 		String [][] univData;
 	
@@ -410,7 +644,7 @@ public class UniversityController {
 			
 			University temp = new University(univData[i][0], univData[i][1], univData[i][2],univData[i][3], Integer.parseInt(univData[i][4]), Integer.parseInt(univData[i][5]), Integer.parseInt(univData[i][6]),
 					Integer.parseInt(univData[i][7]), Integer.parseInt(univData[i][8]), Integer.parseInt(univData[i][9]), Integer.parseInt(univData[i][10]), Integer.parseInt(univData[i][11]),
-					Integer.parseInt(univData[i][12]), Integer.parseInt(univData[i][13]), Integer.parseInt(univData[i][14]), Integer.parseInt(univData[i][15]), loadEmp(univData[i][0]));
+					Integer.parseInt(univData[i][12]), Integer.parseInt(univData[i][13]), Integer.parseInt(univData[i][14]), Integer.parseInt(univData[i][15]), loadEmp(univData[i][0]), 0);
 			univ.add(temp);
 			//hey
 		}
