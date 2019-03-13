@@ -2,6 +2,7 @@ package csci230.project;
 
 import dblibrary.project.csci230.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,12 @@ import java.util.List;
  * @version 3/10/19
  */
 public class DBController {
+	private User loggedOnUser;
+	private UniversityController univC;
+	private UserController userC;
+	
 
+	
 	private UniversityDBLibrary univDBlib;
 	
 	
@@ -21,7 +27,9 @@ public class DBController {
 	public DBController() {
 		super();
 		univDBlib = new UniversityDBLibrary("xxphanto", "csci230");
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub\
+		//univC = new UniversityController();
+		//userC = new UserController();
 	}
 	
 	/**
@@ -66,42 +74,29 @@ public class DBController {
 	
 	/**
 	 * adds a user to the database
-	 * @param firstName
-	 * @param lastName
-	 * @param username
-	 * @param password
-	 * @param type
+	 * @param status
 	 */
-	public void addUser(String firstName, String lastName, String username, String password, char type)
+	public void addUser(User newUser)
 	{
-		univDBlib.user_addUser(firstName, lastName, username, password, type);
+		univDBlib.user_addUser(newUser.getFirstName(), newUser.getLastName(), newUser.getUserName(), newUser.getPassword(), newUser.getType());
 	}
 	
 	/**
 	 * adds university to database
 	 * @param school
-	 * @param state
-	 * @param location
-	 * @param control
-	 * @param numberOfStudents
-	 * @param percentFemales
-	 * @param SATVerbal
-	 * @param SATMath
-	 * @param expenses
-	 * @param percentFinancialAid
-	 * @param numberOfApplicants
-	 * @param percentAdmitted
-	 * @param percentEnrolled
-	 * @param academicsScale
-	 * @param socialScale
-	 * @param qualityOfLifeScale
 	 */
-	public void addUniversity(String school, String state, String location, String control, int numberOfStudents, 
-			int percentFemales, int SATVerbal, int SATMath, int expenses, int percentFinancialAid, int numberOfApplicants, 
-			int percentAdmitted, int percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale)
+	public void addUniversity(University univ)
 	{
-	univDBlib.university_addUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, 
-			SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
+	univDBlib.university_addUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), univ.getControl(), univ.getNumOfStudents(), 
+			univ.getPerFem(), univ.getSatVerbal(), univ.getSatMath(), univ.getExpenses(), univ.getFinancialAid(), univ.getNumOfApps(), univ.getPerAdmitted(), 
+			univ.getPerEnrolled(), univ.getAcademicScale(), univ.getSocialScale(), univ.getQualOfLife());
+	ArrayList<String> emp = new ArrayList<String>();
+	emp = univ.getEmp();
+	for(String i:emp) {
+		addUnivEmph(univ.getSchoolName(), i);
+	}
+	loadUniversities();
+	
 	}
 	
 	/**
@@ -125,35 +120,19 @@ public class DBController {
 	 * @param school
 	 * @param emphasis
 	 */
-	public void addUnivEmph(String school, String emphasis) {
+	private void addUnivEmph(String school, String emphasis) {
 		univDBlib.university_addUniversityEmphasis(school, emphasis);
 	}
 	
 	/**
 	 * edits university based on school name to database
 	 * @param school
-	 * @param state
-	 * @param location
-	 * @param control
-	 * @param numberOfStudents
-	 * @param percentFemales
-	 * @param SATVerbal
-	 * @param SATMath
-	 * @param expenses
-	 * @param percentFinancialAid
-	 * @param numberOfApplicants
-	 * @param percentAdmitted
-	 * @param percentEnrolled
-	 * @param academicsScale
-	 * @param socialScale
-	 * @param qualityOfLifeScale
 	 */
-	public void editUniversity(String school, String state, String location, String control, int numberOfStudents, 
-			int percentFemales, int SATVerbal, int SATMath, int expenses, int percentFinancialAid, int numberOfApplicants, 
-			int percentAdmitted, int percentEnrolled, int academicsScale, int socialScale, int qualityOfLifeScale)
+	public void editUniversity(University univ)
 	{
-	univDBlib.university_editUniversity(school, state, location, control, numberOfStudents, percentFemales, SATVerbal, 
-			SATMath, expenses, percentFinancialAid, numberOfApplicants, percentAdmitted, percentEnrolled, academicsScale, socialScale, qualityOfLifeScale);
+	univDBlib.university_editUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), univ.getControl(), univ.getNumOfStudents(), 
+			univ.getPerFem(), univ.getSatVerbal(), univ.getSatMath(), univ.getExpenses(), univ.getFinancialAid(), univ.getNumOfApps(), univ.getPerAdmitted(), 
+			univ.getPerEnrolled(), univ.getAcademicScale(), univ.getSocialScale(), univ.getQualOfLife());
 	}
 	
 	/**
@@ -184,15 +163,104 @@ public class DBController {
 	
 	/**
 	 * edits the user in the database
-	 * @param username
-	 * @param firstName
-	 * @param lastName
-	 * @param password
-	 * @param type
-	 * @param status
+	 * @param User
 	 */
-	public int editUser(String username, String firstName, String lastName, String password, char type, char status) {
-		int editstatus = univDBlib.user_editUser(username, firstName, lastName, password, type, status);
-		return editstatus;
+	public void editUser(User newUser)
+	{
+		univDBlib.user_editUser(newUser.getUserName(), newUser.getFirstName(), newUser.getLastName(), newUser.getPassword(), newUser.getType(), newUser.getStatus());
 	}
+	
+	/**
+	 * create an arraylist of users from the 2d String array
+	 * @param username
+	 */
+	public ArrayList<User> loadUsers(String username)
+	{
+		String [][] userString = getUsers();
+		ArrayList<User> users = new ArrayList<User>();
+		for (int i = 0; i < userString.length; i++)
+		{
+			
+			//User u = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
+			
+			if ("u".equals(userString[i][4]))
+			{
+
+				NonAdmin temp = new NonAdmin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
+				users.add(temp);
+				if(username.equals(userString[i][2])) {
+					loggedOnUser = temp;
+				}
+			}
+			else
+			{
+				Admin temp = new Admin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
+				users.add(temp);
+				if(username.equals(userString[i][2])) {
+					loggedOnUser = temp;
+				}
+			}
+	
+		}
+
+		return users;
+	}
+	
+	/**
+	 * Loads the university into an arraylist
+	 * @return An array list of universities
+	 */
+	public ArrayList<University> loadUniversities() {
+		String [][] univData;
+	
+		ArrayList<University> univ = new ArrayList<University>();
+		univData = getUniversities();
+	
+		/**
+		 * Create list of Universities and Store their info into them.
+		 */
+		for(int i = 0; i < univData.length; i++) {
+			
+			University temp = new University(univData[i][0], univData[i][1], univData[i][2],univData[i][3], Integer.parseInt(univData[i][4]), Integer.parseInt(univData[i][5]), Integer.parseInt(univData[i][6]),
+					Integer.parseInt(univData[i][7]), Integer.parseInt(univData[i][8]), Integer.parseInt(univData[i][9]), Integer.parseInt(univData[i][10]), Integer.parseInt(univData[i][11]),
+					Integer.parseInt(univData[i][12]), Integer.parseInt(univData[i][13]), Integer.parseInt(univData[i][14]), Integer.parseInt(univData[i][15]), loadEmp(univData[i][0]), 0);
+			univ.add(temp);
+			//hey
+		}
+
+		
+		//System.out.println(univEmp[0][1]);
+		return univ;
+		
+	}
+	
+	/**
+	 * gets all the emps into a single arraylist of strings
+	 * @param univName
+	 * @return list of emps
+	 */
+	private ArrayList<String> loadEmp(String univName){
+		String [][] univEmp;
+		univEmp = getEmphasis();
+		ArrayList<String> emp = new ArrayList<String>();
+		for(int i = 0; i < univEmp.length; i++) {
+			
+
+			
+				if(univEmp[i][0].equals(univName)) {
+					emp.add(univEmp[i][1]);
+			}
+				
+		}
+		return emp;
+	}
+	
+	  /**
+	   * gets currently logged on user
+	 * @return currently logged on user
+	 */
+	public User getLoggedOnUser() {
+		  return loggedOnUser;
+	  
+}
 }

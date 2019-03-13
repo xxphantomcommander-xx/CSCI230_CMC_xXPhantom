@@ -26,6 +26,7 @@ public class UserController {
 		// TODO Auto-generated constructor stub
 		dbCon = new DBController();
 		univC = new UniversityController();
+		loggedOnUser = dbCon.getLoggedOnUser();
 	}
 	
 	/**
@@ -51,16 +52,18 @@ public class UserController {
 						{
 							//user type IS user
 							isLoggedIn = true;
-							univC.loadUniversities();
-							loadUsers(username);
+							dbCon.loadUniversities();
+							dbCon.loadUsers(username);
+							loggedOnUser = dbCon.getLoggedOnUser();
 							return;
 						}
 						else
 						{
 							//user type IS admin
 							isAdminLoggedIn = true;
-							univC.loadUniversities();
-							loadUsers(username);
+							dbCon.loadUniversities();
+							dbCon.loadUsers(username);
+							loggedOnUser = dbCon.getLoggedOnUser();
 							return;
 						}
 					}
@@ -89,41 +92,7 @@ public class UserController {
 		
 	}
 	
-	/**
-	 * create an arraylist of users from the 2d String array
-	 * @param username
-	 */
-	public ArrayList<User> loadUsers(String username)
-	{
-		String [][] userString = dbCon.getUsers();
-		ArrayList<User> users = new ArrayList<User>();
-		for (int i = 0; i < userString.length; i++)
-		{
-			
-			//User u = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
-			
-			if ("u".equals(userString[i][4]))
-			{
-
-				NonAdmin temp = new NonAdmin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
-				users.add(temp);
-				if(username.equals(userString[i][2])) {
-					loggedOnUser = temp;
-				}
-			}
-			else
-			{
-				Admin temp = new Admin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
-				users.add(temp);
-				if(username.equals(userString[i][2])) {
-					loggedOnUser = temp;
-				}
-			}
 	
-		}
-		allUsers = users;
-		return users;
-	}
 	
 	/**
 	 * logs out
@@ -150,14 +119,15 @@ public class UserController {
 	 * views profile
 	 * @return logged on user
 	 */
-	public void viewMyProfile() {
-		  String first = loggedOnUser.getFirstName();
-		  String last = loggedOnUser.getLastName();
-		  String username = loggedOnUser.getUserName();
-		  String password = loggedOnUser.getPassword();
-		  char type = loggedOnUser.getType();
-		  char status = loggedOnUser.getStatus();
-		  System.out.println("First Name: "+ first + "\t"+"Last Name: "+ last + "\t"+"Username: "+ username + "\t"+"Password: "+ password + "\t\t"+"Type: "+ type + "\t\t"+"Status: "+ status + "\t");
+	public User viewMyProfile() {
+		return loggedOnUser;
+//		  String first = loggedOnUser.getFirstName();
+//		  String last = loggedOnUser.getLastName();
+//		  String username = loggedOnUser.getUserName();
+//		  String password = loggedOnUser.getPassword();
+//		  char type = loggedOnUser.getType();
+//		  char status = loggedOnUser.getStatus();
+		  //System.out.println("First Name: "+ first + "\t"+"Last Name: "+ last + "\t"+"Username: "+ username + "\t"+"Password: "+ password + "\t\t"+"Type: "+ type + "\t\t"+"Status: "+ status + "\t");
 	}
 	
 	/**
@@ -206,15 +176,15 @@ public class UserController {
 	   * returns an arraylist of users
 	   * @return arraylist of users
 	   */
-	  public void viewUsers(){
+	  public ArrayList<User> viewUsers(){
 		  if(loggedOnUser.getType() == 'a') {
-			  ArrayList<User> users = loadUsers(loggedOnUser.getUserName());
-			  for(int i = 0;i < allUsers.size();i++) {
-				  System.out.println(users.get(i).getUserName());
-			  }
+			  ArrayList<User> users = dbCon.loadUsers(loggedOnUser.getUserName());
+				  return users;
+			  
 		  }
 		  else {
 			  System.out.println("Currently logged in user is not an admin");
+			  return null;
 		  }
 		  
 	  }
@@ -233,7 +203,7 @@ public class UserController {
 			  loggedOnUser.setFirstName(first);
 			  loggedOnUser.setLastName(last);
 			  loggedOnUser.setPassword(newPassword);
-			  dbCon.editUser(loggedOnUser.getUserName(), first, last, newPassword, loggedOnUser.getType(), loggedOnUser.getStatus());
+			  dbCon.editUser(loggedOnUser);
 		  }
 		  else {
 			  System.out.println("Incorrect Password. Nothing changed!");
@@ -251,19 +221,29 @@ public class UserController {
 	  /**
 	 * views universities
 	 */
-	public void viewUniversities(){
-			if(getLoggedOnUser().getType() == 'a') {
-				ArrayList<University> univNames = univC.loadUniversities();
-				for (int i = 0 ; i < univC.getAllUnivs().size() ; i++)
-				{
-					System.out.println(univNames.get(i).getSchoolName());
-				}
+	public ArrayList<University> viewUniversities(){
+		//THIS IS A MAJOR PROBLEM!!!	
+		if(loggedOnUser.getType() == 'a') {
+				ArrayList<University> univNames = dbCon.loadUniversities();
+				return univNames;
+//				for (int i = 0 ; i < univC.getAllUnivs().size() ; i++)
+//				{
+//					System.out.println(univNames.get(i).getSchoolName());
+//				}
 				
 			  }
 			  else {
-				  System.out.println("Currently logged in user is not an admin");
+				  return null;
 			  }
 			
 			
 		}
+	
+	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 
+			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
+			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, ArrayList<String> emp)
+	{
+		return univC.searchSchools(sch, st, l, c, nStuLow, nStuHigh, prctfLow, prctfHigh, svLow, svHigh, smLow, smHigh, eLow, eHigh, prctfinLow, prctfinHigh, nApLow, nApHigh,
+				prctaLow, prctaHigh, prcteLow, prcteHigh, asLow, asHigh, ssLow, ssHigh, qLow, qHigh, emp);
+	}
 }

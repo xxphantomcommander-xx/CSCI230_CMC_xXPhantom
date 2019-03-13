@@ -48,13 +48,12 @@ public class NonAdminInteraction {
 	/**
 	 * Shows the details of the user
 	 */
-	public void viewMyProfile() {
-//		User temp;
-//		temp = nAFC.viewMyProfile();
-		nAFC.viewMyProfile();
-//		System.out.println(temp.getFirstName() + "\n" + temp.getLastName() + "\n" + temp.getUserName() + "\n" + temp.getPassword() + "\n" + temp.getType());
-	}
-	
+	public User viewMyProfile() {
+		User temp;
+		temp = nAFC.viewMyProfile();
+		return temp;
+		//System.out.println(temp.getFirstName() + "\n" + temp.getLastName() + "\n" + temp.getUserName() + "\n" + temp.getPassword() + "\n" + temp.getType());
+	}	
 	/**
 	 * Displays the school's details
 	 * @param school
@@ -85,12 +84,13 @@ public class NonAdminInteraction {
 	/**
 	 * Displays the Universitie's names
 	 */
-	public void viewUniversities() {
-		ArrayList<String> univName = new ArrayList();
+	public ArrayList<University> viewUniversities() {
+		ArrayList<University> univName = new ArrayList<University>();
 		univName = nAFC.viewUniversities();
-		for(String i:univName) {
-			System.out.println(i + "\n");
-		}
+		return univName;
+//		for(String i:univName) {
+//			System.out.println(i + "\n");
+//		}
 	}
 	
 	/**
@@ -133,10 +133,10 @@ public class NonAdminInteraction {
 	 * @param qHigh
 	 * @param emp
 	 */
-	public void searchSchools(String sch, String st, String l, String c, 
+	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
 			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, ArrayList<String> emp) {
-		this.nAFC.searchSchools(sch, st, l, c, nStuLow, nStuHigh, prctfLow, prctfHigh, svLow, svHigh, smLow, smHigh, eLow, eHigh, prctfinLow, prctfinHigh, nApLow, nApHigh,
+		 return this.nAFC.searchSchools(sch, st, l, c, nStuLow, nStuHigh, prctfLow, prctfHigh, svLow, svHigh, smLow, smHigh, eLow, eHigh, prctfinLow, prctfinHigh, nApLow, nApHigh,
 				prctaLow, prctaHigh, prcteLow, prcteHigh, asLow, asHigh, ssLow, ssHigh, qLow, qHigh, emp);
 	}
 	

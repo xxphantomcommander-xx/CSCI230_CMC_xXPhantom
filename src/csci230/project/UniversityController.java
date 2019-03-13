@@ -19,6 +19,7 @@ public class UniversityController {
 		super();
 		// TODO Auto-generated constructor stub
 		dbCon = new DBController();
+		allUnivs = dbCon.loadUniversities();
 
 		
 	}
@@ -55,7 +56,7 @@ public class UniversityController {
 	 * @param qHigh
 	 * @param emp
 	 */
-	public void searchSchools(String sch, String st, String l, String c, 
+	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
 			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, ArrayList<String> emp) {
 
@@ -66,10 +67,11 @@ public class UniversityController {
 				(searchByPercentFinAid(searchByExpenses(searchBySATMath(searchBySATVerbal(searchByPercentFemale(searchByNumOfStudents(searchByControl(searchByState(searchBySchool(searchList, sch), st),  c),nStuLow, nStuHigh)
 				, prctfLow, prctfHigh), svLow, svHigh), smLow, smHigh), eLow, eHigh), prctfinLow, prctfinHigh), nApLow, nApHigh), prctaLow, prctaHigh), prcteLow, prcteHigh),
 				asLow, asHigh), ssLow, ssHigh), qLow, qHigh), emp);
-		for(University i: results) {
-			System.out.println(i.getSchoolName());
+		//for(University i: results) {
+//			System.out.println(i.getSchoolName());
 
-		}
+		//}
+		return results;
 	}
 	
 	private ArrayList<University> searchBySchool(ArrayList<University> temp, String sch)
@@ -634,46 +636,10 @@ public class UniversityController {
         }
     }
 	
-	public ArrayList<University> loadUniversities() {
-		String [][] univData;
-	
-		ArrayList<University> univ = new ArrayList<University>();
-		univData = dbCon.getUniversities();
-	
-		/**
-		 * Create list of Universities and Store their info into them.
-		 */
-		for(int i = 0; i < univData.length; i++) {
-			
-			University temp = new University(univData[i][0], univData[i][1], univData[i][2],univData[i][3], Integer.parseInt(univData[i][4]), Integer.parseInt(univData[i][5]), Integer.parseInt(univData[i][6]),
-					Integer.parseInt(univData[i][7]), Integer.parseInt(univData[i][8]), Integer.parseInt(univData[i][9]), Integer.parseInt(univData[i][10]), Integer.parseInt(univData[i][11]),
-					Integer.parseInt(univData[i][12]), Integer.parseInt(univData[i][13]), Integer.parseInt(univData[i][14]), Integer.parseInt(univData[i][15]), loadEmp(univData[i][0]), 0);
-			univ.add(temp);
-			//hey
-		}
-
-		allUnivs = univ;
-		//System.out.println(univEmp[0][1]);
-		return univ;
-		
-	}
 	
 	
-	private ArrayList<String> loadEmp(String univName){
-		String [][] univEmp;
-		univEmp = dbCon.getEmphasis();
-		ArrayList<String> emp = new ArrayList<String>();
-		for(int i = 0; i < univEmp.length; i++) {
-			
-
-			
-				if(univEmp[i][0].equals(univName)) {
-					emp.add(univEmp[i][1]);
-			}
-				
-		}
-		return emp;
-	}
+	
+	
 	/**
 	 * 
 	 * Sets school name

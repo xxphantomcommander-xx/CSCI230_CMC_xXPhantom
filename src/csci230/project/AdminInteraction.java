@@ -93,26 +93,20 @@ public class AdminInteraction {
 	/**
 	 * Displays all the User's names and info
 	 */
-//	public void viewUsers() {
-//		ArrayList<User> temp = new ArrayList<User>();
-//		temp = aFC.viewUsers();
+	public ArrayList<User> viewUsers() {
+		ArrayList<User> temp = new ArrayList<User>();
+		temp = aFC.viewUsers();
+		return temp;
 //		for(User i:temp) {
 //			System.out.println(i.getFirstName() + " " + i.getLastName() + " " + i.getUserName() + " " + i.getPassword() + " " + i.getType() + " " + i.getStatus() + "\n");
 //		}
-//	}
+	}
 	
 	/**
 	 * This edits the User's info in the database
-	 * @param first
-	 * @param last
-	 * @param userName
-	 * @param password
-	 * @param type
-	 * @param status
+	 * @param User
 	 */
-	public void editUser(String first, String last,
-			String userName, String password, String type,
-			String status) {
+	public void editUser(User user) {
 		
 	}
 	
@@ -154,6 +148,13 @@ public class AdminInteraction {
 		aFC.viewMyProfile();
 		//System.out.println(temp.getFirstName() + "\n" + temp.getLastName() + "\n" + temp.getUserName() + "\n" + temp.getPassword() + "\n" + temp.getType());
 		
+	}
+	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 
+			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
+			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, ArrayList<String> emp)
+	{
+		return aFC.searchSchools(sch, st, l, c, nStuLow, nStuHigh, prctfLow, prctfHigh, svLow, svHigh, smLow, smHigh, eLow, eHigh, prctfinLow, prctfinHigh, nApLow, nApHigh,
+				prctaLow, prctaHigh, prcteLow, prcteHigh, asLow, asHigh, ssLow, ssHigh, qLow, qHigh, emp);
 	}
 }
 
