@@ -94,7 +94,7 @@ public class NonAdminFunctionalityController {
 	 */
 	public ArrayList<University> viewUniversities(){
 		ArrayList<University> univ = new ArrayList<University>();
-		univ = userC.viewUniversities();
+		univ = univC.viewUniversities();
 		return univ;
 	}
 	

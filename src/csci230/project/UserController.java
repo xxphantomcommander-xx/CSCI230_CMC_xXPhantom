@@ -24,7 +24,8 @@ public class UserController {
 	public UserController() {
 		dbCon = new DBController();
 		univC = new UniversityController();
-		loggedOnUser = dbCon.getLoggedOnUser();
+		this.loggedOnUser = dbCon.getLoggedOnUser();
+		this.allUsers = dbCon.loadUsers(loggedOnUser.getUserName());
 	}
 	
 	/**
@@ -178,7 +179,7 @@ public class UserController {
 	   */
 	  public ArrayList<User> viewUsers(){
 		  if(loggedOnUser.getType() == 'a') {
-			  ArrayList<User> users = dbCon.loadUsers(loggedOnUser.getUserName());
+			  ArrayList<User> users = allUsers;
 				  return users;
 			  
 		  }
@@ -217,27 +218,7 @@ public class UserController {
 	public User getLoggedOnUser() {
 		  return loggedOnUser;
 	  }
-	  
-	  /**
-	 * views universities
-	 */
-	public ArrayList<University> viewUniversities(){
-		//THIS IS A MAJOR PROBLEM!!!	
-		if(loggedOnUser.getType() == 'a') {
-				ArrayList<University> univNames = dbCon.loadUniversities();
-				return univNames;
-//				for (int i = 0 ; i < univC.getAllUnivs().size() ; i++)
-//				{
-//					System.out.println(univNames.get(i).getSchoolName());
-//				}
-				
-			  }
-			  else {
-				  return null;
-			  }
-			
-			
-		}
+	  		
 	
 	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,

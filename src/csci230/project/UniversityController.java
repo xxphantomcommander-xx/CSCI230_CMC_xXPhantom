@@ -824,7 +824,7 @@ public class UniversityController {
 	 * get all universities
 	 * @return ArrayList<University> os all universities
 	 */
-	public ArrayList<University> getAllUnivs() {
+	public ArrayList<University> viewUniversities() {
 		return allUnivs;
 	}
 	

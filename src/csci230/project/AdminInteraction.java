@@ -130,13 +130,9 @@ public class AdminInteraction {
 	/**
 	 * Displays the Universitie's names
 	 */
-	public void viewUniversities() {
-//		ArrayList<String> univName = new ArrayList<String>();
-//		univName = aFC.viewUniversities();
-		aFC.viewUniversities();
-//		for(String i:univName) {
-//			System.out.println(i + "\n");
-//		}
+	public ArrayList<University> viewUniversities() {
+		return aFC.viewUniversities();
+		
 	}
 	
 	/**

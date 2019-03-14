@@ -79,9 +79,9 @@ public class AdminFunctionalityController {
 	/**
 	 * Allows the admin to view all universities 
 	 */
-	public void viewUniversities()
+	public ArrayList<University> viewUniversities()
 	{
-		userC.viewUniversities();
+		return univC.viewUniversities();
 	}
 	/**
 	 * Allows the admin to view all users
