@@ -33,23 +33,7 @@ public class AdminFunctionalityController {
 	{
 		userC.logOut();
 	}
-	/**
-	 * replaces the old password with a new one
-	 * @param userName
-	 * @param password
-	 */
-	public void resetPassword(String userName, String newPassword)
-	{
-		
-	}
-	/**
-	 * Sets the given user as active and logged in
-	 * @param user
-	 */
-	public void setUser(User user)
-	{
-		
-	}
+
 	/**
 	 * Adds a new user to the database
 	 * @param first
@@ -95,7 +79,7 @@ public class AdminFunctionalityController {
 	 */
 	public void editSchoolOfTheWeek() 
 	{
-		
+		//TODO finish this method
 	}
 	/**
 	 * Shows the details of a specific user
@@ -138,8 +122,8 @@ public class AdminFunctionalityController {
 	 * shows the logged in User their profile
 	 * @return user
 	 */
-	public void viewMyProfile() {
-		userC.viewMyProfile();
+	public User viewMyProfile() {
+		return userC.viewMyProfile();
 	}
 	
 	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 

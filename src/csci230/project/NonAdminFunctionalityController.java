@@ -74,15 +74,6 @@ public class NonAdminFunctionalityController {
 	}
 	
 	/**
-	 * replaces the old password with a new one
-	 * @param username
-	 * @param newPassword
-	 */
-	public void resetPassword(String username, String newPassword) {
-		
-	}
-	
-	/**
 	 * able to view the your saved school's list
 	 */
 	public void viewSavedSchools() {

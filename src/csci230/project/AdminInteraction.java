@@ -124,7 +124,7 @@ public class AdminInteraction {
 	 * @param schoolName
 	 */
 	public void editSchoolOfTheWeek(String schoolName) {
-		
+		//TODO finish this additional functionality
 	}
 	
 	/**
@@ -140,17 +140,16 @@ public class AdminInteraction {
 	 * @param userName
 	 */
 	public void resetPasswordByEmail(String userName) {
-		
+		//TODO finish this additional functionality
 	}
 	
 	
 	/**
 	 * views profile
 	 */
-	public void viewMyProfile() {
-//		User temp;
-//		temp = aFC.viewMyProfile();
-		aFC.viewMyProfile();
+	public User viewMyProfile() {
+
+		return aFC.viewMyProfile();
 		//System.out.println(temp.getFirstName() + "\n" + temp.getLastName() + "\n" + temp.getUserName() + "\n" + temp.getPassword() + "\n" + temp.getType());
 		
 	}
