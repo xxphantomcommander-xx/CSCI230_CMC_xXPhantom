@@ -19,12 +19,12 @@ public class AdminFunctionalityController {
 	}
 	/**
 	 * Logs the admin into the system
-	 * @param userName
+	 * @param username
 	 * @param password
 	 */
-	public void logOn(String userName, String password)
+	public void logOn(String username, String password)
 	{
-		
+		userC.logOn(username, password);
 	}
 	/**
 	 * Logs the user out of the system

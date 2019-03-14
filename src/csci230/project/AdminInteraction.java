@@ -35,11 +35,11 @@ public class AdminInteraction {
 	
 	/**
 	 * Logs the user onto the system
-	 * @param userName
+	 * @param username
 	 * @param password
 	 */
-	public void logOn(String userName, String password) {
-		
+	public void logOn(String username, String password) {
+		aFC.logOn(username, password);
 	}
 	
 	/**
