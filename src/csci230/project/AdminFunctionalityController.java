@@ -103,9 +103,9 @@ public class AdminFunctionalityController {
 	 * Shows the details of a specific user
 	 * @param user
 	 */
-	public void showUserDetails(User user)
+	public ArrayList<String> showUserDetails(User user)
 	{
-		
+		return userC.showUserDetails(user);
 	}
 	/**
 	 * Creates a new university and adds it to the database

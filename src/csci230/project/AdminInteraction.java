@@ -86,8 +86,9 @@ public class AdminInteraction {
 	 * Shows the details of the user
 	 * @param user
 	 */
-	public void showUserDetails(User user) {
+	public ArrayList<String> showUserDetails(User user) {
 		
+		return aFC.showUserDetails(user);
 	}
 	
 	/**

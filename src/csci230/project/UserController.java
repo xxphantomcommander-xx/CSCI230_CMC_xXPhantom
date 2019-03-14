@@ -248,4 +248,16 @@ public class UserController {
 		return univC.searchSchools(sch, st, l, c, nStuLow, nStuHigh, prctfLow, prctfHigh, svLow, svHigh, smLow, smHigh, eLow, eHigh, prctfinLow, prctfinHigh, nApLow, nApHigh,
 				prctaLow, prctaHigh, prcteLow, prcteHigh, asLow, asHigh, ssLow, ssHigh, qLow, qHigh, emp);
 	}
+	
+	
+	public ArrayList<String> showUserDetails(User user){
+		ArrayList<String> details = new ArrayList<String>();
+		details.add(user.getFirstName());
+		details.add(user.getLastName());
+		details.add(user.getUserName());
+		details.add(user.getPassword());
+		details.add(String.valueOf(user.getType()));
+		details.add(String.valueOf(user.getStatus()));
+		return details;
+	}
 }
