@@ -98,14 +98,6 @@ public class AdminInteraction {
 	}
 	
 	/**
-	 * Sets the user as the user logged in???? DO WE NEED THIS?
-	 * @param user
-	 */
-	public void setUser(User user) {
-		
-	}
-	
-	/**
 	 * Displays all the User's names and info
 	 */
 	public ArrayList<User> viewUsers() {
@@ -121,8 +113,10 @@ public class AdminInteraction {
 	 * This edits the User's info in the database
 	 * @param User
 	 */
-	public void editUser(User user) {
-		
+	public void editUser(String first, String last,
+			String username, String password, char type,
+			char status) {
+		aFC.editUser(first, last, username, password, type, status);
 	}
 	
 	/**

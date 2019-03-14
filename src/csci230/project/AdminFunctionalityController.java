@@ -67,14 +67,14 @@ public class AdminFunctionalityController {
 	 * Edits a user in the database
 	 * @param first
 	 * @param last
-	 * @param userName
+	 * @param username
 	 * @param password
 	 * @param type
 	 * @param status
 	 */
-	public void editUser(String first, String last, String userName, String password, String type, String status)
+	public void editUser(String first, String last, String username, String password, char type, char status)
 	{
-		
+		userC.editUser(first, last, username, password, type, status);
 	}
 	/**
 	 * Allows the admin to view all universities 

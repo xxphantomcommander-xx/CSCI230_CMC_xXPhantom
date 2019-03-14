@@ -247,7 +247,12 @@ public class UserController {
 				prctaLow, prctaHigh, prcteLow, prcteHigh, asLow, asHigh, ssLow, ssHigh, qLow, qHigh, emp);
 	}
 	
-	
+	/**
+	 * Gets all the details about a specific user
+	 * and returns them in an arraylist of strings ready to be printed.
+	 * @param user that the user wants to view details about
+	 * @return arraylist of strings to be printed for the user
+	 */
 	public ArrayList<String> showUserDetails(User user){
 		ArrayList<String> details = new ArrayList<String>();
 		details.add(user.getFirstName());
@@ -257,5 +262,19 @@ public class UserController {
 		details.add(String.valueOf(user.getType()));
 		details.add(String.valueOf(user.getStatus()));
 		return details;
+	}
+	
+	/**
+	 * adds a user
+	 * @param first name
+	 * @param last name
+	 * @param user name
+	 * @param password
+	 * @param type
+	 * @param status
+	 */
+	public void editUser(String first, String last, String username, String password, char type, char status) {
+		User newUser = new User(first, last, username, password, type, status);
+		dbCon.editUser(newUser);
 	}
 }
