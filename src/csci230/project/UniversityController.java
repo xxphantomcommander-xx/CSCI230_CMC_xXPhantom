@@ -809,5 +809,36 @@ public class UniversityController {
 	public ArrayList<University> getAllUnivs() {
 		return allUnivs;
 	}
+	
+	
+	/**
+	 * Creates a new university and adds it to the database
+	 * @param school
+	 * @param state
+	 * @param location
+	 * @param control
+	 * @param numStudents
+	 * @param prctFemale
+	 * @param SATVerbal
+	 * @param SATMath
+	 * @param expenses
+	 * @param prctFinancialAid
+	 * @param numApplicants
+	 * @param prctAccepted
+	 * @param prctEnrolled
+	 * @param academicScale
+	 * @param socialScale
+	 * @param qualOfLife
+	 * @param emphasis
+	 */
+	public void addUniversity(String school, String state, String location, String control, 
+			int numStudents, int perFem, int satVerbal, int satMath,
+			int expenses, int financialAid, int numOfApps, int perAdmitted, 
+			int perEnrolled, int academicScale, int socialScale, 
+			int qualOfLife, ArrayList<String> emphasis)
+	{
+		University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0);
+		dbCon.addUniversity(newUniv);
+	}
 
 }

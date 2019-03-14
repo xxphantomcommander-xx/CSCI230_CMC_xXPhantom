@@ -49,21 +49,37 @@ public class AdminInteraction {
 		aFC.logOff();
 	}
 	
-	/**
-	 * Resets the user password
-	 * @param userName
-	 * @param newPassword
-	 */
-	public void resetPassword(String userName, String newPassword) {
-		
-	}
+//	/**
+//	 * Resets the user password
+//	 * @param userName
+//	 * @param newPassword
+//	 */
+//	public void resetPassword(String userName, String newPassword) {
+//		aFC.resetPassword(userName, newPassword);
+//	}
 	
 	/**
 	 * Adds the school to the database
 	 * @param school
+	 * @param state
+	 * @param location
+	 * @param control
+	 * @param numStudents
+	 * @param prctFemale
+	 * @param SATVerbal
+	 * @param SATMath
+	 * @param expenses
+	 * @param prctFinancialAid
+	 * @param numApplicants
+	 * @param prctAccepted
+	 * @param prctEnrolled
+	 * @param academicScale
+	 * @param socialScale
+	 * @param qualOfLife
+	 * @param emphases
 	 */
-	public void addSchool(University school) {
-		
+	public void addSchool(String school, String state, String location, String control, int numStudents, int prctFemale, int SATVerbal, int SATMath, int expenses, int prctFinancialAid, int numApplicants, int prctAccepted, int prctEnrolled, int academicScale, int socialScale, int qualOfLife, ArrayList<String> emphases) {
+		aFC.addUniversity(school, state, location, control, numStudents, prctFemale, SATVerbal, SATMath, expenses, prctFinancialAid, numApplicants, prctAccepted, prctEnrolled, academicScale, socialScale, qualOfLife, emphases);
 	}
 	
 	/**

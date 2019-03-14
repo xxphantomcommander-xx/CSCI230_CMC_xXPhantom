@@ -127,9 +127,13 @@ public class AdminFunctionalityController {
 	 * @param qualOfLife
 	 * @param emphasis
 	 */
-	public void addUniversity(String school, String state, String location, String control, int numStudents, int prctFemale, int SATVerbal, int SATMath, double expenses, double prctFinancialAid, int numApplicants, int prctAccepted, int prctEnrolled, int academicScale, int socialScale, int qualOfLife, String emphases)
+	public void addUniversity(String school, String state, String location, String control, 
+			int numStudents, int perFem, int satVerbal, int satMath,
+			int expenses, int financialAid, int numOfApps, int perAdmitted, 
+			int perEnrolled, int academicScale, int socialScale, 
+			int qualOfLife, ArrayList<String> emphasis)
 	{
-		
+		univC.addUniversity(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis);
 	}
 	
 	/**
