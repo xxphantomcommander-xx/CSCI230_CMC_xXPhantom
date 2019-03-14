@@ -13,8 +13,6 @@ public class AdminInteraction {
 	//admin func controller
 	AdminFunctionalityController aFC;
 	public AdminInteraction() {
-		super();
-		// TODO Auto-generated constructor stub
 		aFC = new AdminFunctionalityController();
 	}
 
@@ -95,8 +93,8 @@ public class AdminInteraction {
 	 * Displays the school's details
 	 * @param school
 	 */
-	public void showSchoolDetails(University school) {
-		
+	public ArrayList<String> showSchoolDetails(University school) {
+		return aFC.showSchoolDetails(school);
 	}
 	
 	/**

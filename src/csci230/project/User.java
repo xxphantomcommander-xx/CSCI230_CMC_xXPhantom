@@ -21,7 +21,6 @@ public class User {
 
   public User(java.lang.String firstName, java.lang.String lastName, java.lang.String userName,
 			java.lang.String password, char type, char status) {
-		super(); //IDK IF WE NEED THIS
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;

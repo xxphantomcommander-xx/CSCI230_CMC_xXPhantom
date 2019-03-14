@@ -12,8 +12,6 @@ public class AdminFunctionalityController {
 	UniversityController univC;
 	UserController userC;
 	public AdminFunctionalityController() {
-		super();
-		// TODO Auto-generated constructor stub
 		univC = new UniversityController();
 		userC = new UserController();
 	}
@@ -150,5 +148,8 @@ public class AdminFunctionalityController {
 	{
 		 return userC.searchSchools(sch, st, l, c, nStuLow, nStuHigh, prctfLow, prctfHigh, svLow, svHigh, smLow, smHigh, eLow, eHigh, prctfinLow, prctfinHigh, nApLow, nApHigh,
 				prctaLow, prctaHigh, prcteLow, prcteHigh, asLow, asHigh, ssLow, ssHigh, qLow, qHigh, emp);
+	}
+	public ArrayList<String> showSchoolDetails(University school) {
+		return univC.showUniversityDetails(school);
 	}
 }

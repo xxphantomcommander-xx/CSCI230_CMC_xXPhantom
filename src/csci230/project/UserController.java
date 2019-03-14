@@ -22,8 +22,6 @@ public class UserController {
 	 * constructor
 	 */
 	public UserController() {
-		super();
-		// TODO Auto-generated constructor stub
 		dbCon = new DBController();
 		univC = new UniversityController();
 		loggedOnUser = dbCon.getLoggedOnUser();

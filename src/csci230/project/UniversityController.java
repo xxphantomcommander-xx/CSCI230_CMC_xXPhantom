@@ -16,8 +16,6 @@ public class UniversityController {
 	 * Constructor for University controller
 	 */
 	public UniversityController() {
-		super();
-		// TODO Auto-generated constructor stub
 		dbCon = new DBController();
 		allUnivs = dbCon.loadUniversities();
 
@@ -798,8 +796,28 @@ public class UniversityController {
 	 * @param String of school searched
 	 * @return String of results
 	 */
-	public int showUniversityDetails() {
-		return 0;
+	public ArrayList<String> showUniversityDetails(University univ) {
+		ArrayList<String> details = new ArrayList<String>();
+		details.add(univ.getSchoolName());
+		details.add(univ.getState());
+		details.add(univ.getLocation());
+		details.add(univ.getControl());
+		details.add(String.valueOf(univ.getNumOfStudents()));
+		details.add(String.valueOf(univ.getPerFem()));
+		details.add(String.valueOf(univ.getSatVerbal()));
+		details.add(String.valueOf(univ.getSatMath()));
+		details.add(String.valueOf(univ.getExpenses()));
+		details.add(String.valueOf(univ.getFinancialAid()));
+		details.add(String.valueOf(univ.getNumOfApps()));
+		details.add(String.valueOf(univ.getPerAdmitted()));
+		details.add(String.valueOf(univ.getPerEnrolled()));
+		details.add(String.valueOf(univ.getAcademicScale()));
+		details.add(String.valueOf(univ.getSocialScale()));
+		details.add(String.valueOf(univ.getQualOfLife()));
+		for(String i:univ.getEmp()) {
+			details.add(i);
+		}
+		return details;
 	}
 
 	/**

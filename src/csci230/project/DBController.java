@@ -25,9 +25,7 @@ public class DBController {
 	 * Constructor for the database controller
 	 */
 	public DBController() {
-		super();
 		univDBlib = new UniversityDBLibrary("xxphanto", "csci230");
-		// TODO Auto-generated constructor stub\
 		//univC = new UniversityController();
 		//userC = new UserController();
 	}

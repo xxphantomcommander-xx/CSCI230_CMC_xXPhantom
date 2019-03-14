@@ -15,8 +15,7 @@ public class NonAdminInteraction {
 	 * creates an object
 	 */
 	public NonAdminInteraction() {
-		super();
-		// TODO Auto-generated constructor stub
+
 		nAFC = new NonAdminFunctionalityController();
 	}
 

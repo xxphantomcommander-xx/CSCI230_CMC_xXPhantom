@@ -13,8 +13,7 @@ public class NonAdminFunctionalityController {
 	private UserController userC;
 	
 	public NonAdminFunctionalityController() {
-		super();
-		// TODO Auto-generated constructor stub
+
 		univC = new UniversityController();
 		userC = new UserController();
 	}
