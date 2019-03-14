@@ -98,7 +98,8 @@ public class UserController {
 	 * logs out
 	 */
 	public void logOut() {
-		
+		loggedOnUser = null;
+		return;
 	}
 	
 	

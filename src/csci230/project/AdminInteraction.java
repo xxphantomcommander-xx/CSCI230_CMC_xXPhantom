@@ -46,7 +46,7 @@ public class AdminInteraction {
 	 * Logs the User out
 	 */
 	public void logOut() {
-		
+		aFC.logOff();
 	}
 	
 	/**

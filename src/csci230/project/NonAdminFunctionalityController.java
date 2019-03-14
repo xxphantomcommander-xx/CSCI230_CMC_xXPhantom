@@ -32,7 +32,7 @@ public class NonAdminFunctionalityController {
 	 * Logs the user out of the program
 	 */
 	public void logout() {
-		
+		userC.logOut();
 	}
 	
 	/**

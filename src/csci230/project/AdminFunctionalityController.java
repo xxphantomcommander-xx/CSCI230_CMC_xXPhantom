@@ -33,7 +33,7 @@ public class AdminFunctionalityController {
 	 */
 	public void logOff() 
 	{
-		
+		userC.logOut();
 	}
 	/**
 	 * replaces the old password with a new one

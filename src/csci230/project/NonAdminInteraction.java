@@ -33,7 +33,7 @@ public class NonAdminInteraction {
 	 * Logs the User out
 	 */
 	public void logOut() {
-		
+		nAFC.logout();
 	}
 	
 	/**
