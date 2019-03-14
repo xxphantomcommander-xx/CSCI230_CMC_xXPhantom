@@ -22,15 +22,15 @@ public class AdminInteraction {
 	 * adds User to the database
 	 * @param first
 	 * @param last
-	 * @param userName
+	 * @param username
 	 * @param password
 	 * @param type
 	 * @param status
 	 */
 	public void addUser(String first, String last,
-			String userName, String password, String type,
-			String status) {
-		
+			String username, String password, char type,
+			char status) {
+		aFC.addUser(first, last, username, password, type, status);
 	}
 	
 	/**

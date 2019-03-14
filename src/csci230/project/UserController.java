@@ -104,15 +104,16 @@ public class UserController {
 	
 	/**
 	 * adds a user
-	 * @param f first name
-	 * @param l last name
-	 * @param u user name
-	 * @param p password
-	 * @param t type
-	 * @param s status
+	 * @param first name
+	 * @param last name
+	 * @param user name
+	 * @param password
+	 * @param type
+	 * @param status
 	 */
-	public void addUser(String f, String l, String u, String p, String t, Boolean s) {
-		
+	public void addUser(String first, String last, String username, String password, char type, char status) {
+		User newUser = new User(first, last, username, password, type, status);
+		dbCon.addUser(newUser);
 	}
 	
 	/**
