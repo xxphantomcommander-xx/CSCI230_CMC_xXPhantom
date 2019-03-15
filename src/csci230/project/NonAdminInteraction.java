@@ -36,15 +36,6 @@ public class NonAdminInteraction {
 	}
 	
 	/**
-	 * Resets the user password
-	 * @param userName
-	 * @param newPassword
-	 */
-	public void resetPassword(String userName, String newPassword) {
-		
-	}
-	
-	/**
 	 * Shows the details of the user
 	 */
 	public User viewMyProfile() {
@@ -56,17 +47,10 @@ public class NonAdminInteraction {
 	/**
 	 * Displays the school's details
 	 * @param school
+	 * @return An array list of school details ready to be printed
 	 */
-	public void showSchoolDetails(University school) {
-		
-	}
-	
-	/**
-	 * Sets the user as the user logged in???? DO WE NEED THIS?
-	 * @param user
-	 */
-	public void setUser(User user) {
-		
+	public ArrayList<String> showSchoolDetails(University school) {
+		return nAFC.showSchoolDetails(school);
 	}
 	
 	/**
@@ -97,7 +81,7 @@ public class NonAdminInteraction {
 	 * @param userName
 	 */
 	public void resetPasswordByEmail(String userName) {
-		
+		//TODO finish this functionality
 	}
 	
 	/**
@@ -141,9 +125,10 @@ public class NonAdminInteraction {
 	
 	/**
 	 * Displays saved schools
+	 * @return ArrayList of saved universities
 	 */
-	public void viewSavedSchools() {
-		
+	public ArrayList<University> viewSavedSchools() {
+		return nAFC.viewSavedSchools();
 	}
 	
 	/**
@@ -151,7 +136,15 @@ public class NonAdminInteraction {
 	 * @param school
 	 */
 	public void removeSavedSchool(University school) {
-		
+		nAFC.removeSavedSchool(school);
+	}
+	
+	/**
+	 * saves university to the user
+	 * @param school
+	 */
+	public void saveUniversity(University school) {
+		nAFC.saveUniversity(school);
 	}
 	
 	/**
@@ -159,7 +152,7 @@ public class NonAdminInteraction {
 	 * @param user
 	 */
 	public void viewHistory(String user){
-		
+		//TODO finish this additional functionality
 	}
 	
 	/**
@@ -167,7 +160,7 @@ public class NonAdminInteraction {
 	 * @param savedSchool
 	 */
 	public void sortByState(List<University> savedSchool) {
-		
+		//TODO finish this additional functionality
 	}
 	
 	/**
@@ -175,7 +168,7 @@ public class NonAdminInteraction {
 	 * @param savedSchool
 	 */
 	public void sortBySize(List<University> savedSchool) {
-		
+		//TODO finish this additional functionality
 	}
 	
 	/**
@@ -183,14 +176,14 @@ public class NonAdminInteraction {
 	 * @param savedSchool
 	 */
 	public void sortByName(List<University> savedSchool) {
-		
+		//TODO finish this additional functionality
 	}
 	
 	/**
 	 * lists 5 recommended Universities
 	 * @param school
 	 */
-	public List<University> recommendSchools(University school){
-		return null;
+	public ArrayList<University> recommendSchools(University school){
+		return nAFC.recommendSchools(school);
 	}
 }

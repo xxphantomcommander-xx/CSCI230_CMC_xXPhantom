@@ -36,9 +36,9 @@ public class DBController {
 	 * @param userName
 	 * @param schoolName
 	 */
-	public void saveUniversities(String userName, String schoolName)
+	public void saveUniversities(University school)
 	{
-		univDBlib.user_saveSchool(userName, schoolName);
+		univDBlib.user_saveSchool(loggedOnUser.getUserName(), school.getSchoolName());
 	}
 	
 	/*
@@ -54,12 +54,22 @@ public class DBController {
 	/*e
 	 * gets a list of saved schools for
 	 * a specific user from the database
-	 * @param userName
-	 * @return 2d array of saved schools attached to the username along with a timestamp
+	 * @return an arrayList of universities saved by the user
 	 */
-	public String [][] getSavedSchoolList(String userName)
+	public ArrayList<University> getSavedSchoolList()
 	{
-		return univDBlib.user_getUsernamesWithSavedSchools();
+		ArrayList<University> savedUnivs = new ArrayList<University>();
+		String [][] usersSavedUnivs = univDBlib.user_getUsernamesWithSavedSchools();
+		ArrayList<String> al = new ArrayList<String>();
+		User loggedOnUser2 = getLoggedOnUser();
+		for(int i = 0; i < usersSavedUnivs.length; i++) {
+			
+			if(usersSavedUnivs[i][0].equals(loggedOnUser2.getUserName())) {
+				University temp = univC.searchSchools(usersSavedUnivs[i][1], "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al).get(0);
+				savedUnivs.add(temp);
+			}
+		}
+		return savedUnivs;
 	}
 	
 	/*
@@ -156,8 +166,8 @@ public class DBController {
 	 * @param username
 	 * @param school
 	 */
-	public void deleteSavedSchool(String username, String school) {
-		univDBlib.user_removeSchool(username, school);
+	public void deleteSavedSchool(University school) {
+		univDBlib.user_removeSchool(loggedOnUser.getUserName(), school.getSchoolName());
 	}
 	
 	/**

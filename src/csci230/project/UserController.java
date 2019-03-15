@@ -259,4 +259,29 @@ public class UserController {
 		User newUser = new User(first, last, username, password, type, status);
 		dbCon.editUser(newUser);
 	}
+	
+	/**
+	 * able to view the your saved school's list
+	 * @return list of Saved Schools connected to a user
+	 */
+	public ArrayList<University> viewSavedSchools() {
+		return dbCon.getSavedSchoolList();
+	}
+	
+	/**
+	 * Remove a school from the saved university list
+	 * @param uniName
+	 */
+	public void removeSavedSchool(University school) {
+		dbCon.deleteSavedSchool(school);
+	}
+	
+	
+	/**
+	 * saves university to the user
+	 * @param school
+	 */
+	public void saveUniversity(University school) {
+		dbCon.saveUniversities(school);
+	}
 }
