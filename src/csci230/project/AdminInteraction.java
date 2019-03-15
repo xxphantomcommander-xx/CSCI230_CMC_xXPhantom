@@ -12,6 +12,10 @@ public class AdminInteraction {
 
 	//admin func controller
 	AdminFunctionalityController aFC;
+	
+	/**
+	 * Constructor
+	 */
 	public AdminInteraction() {
 		aFC = new AdminFunctionalityController();
 	}
@@ -47,15 +51,6 @@ public class AdminInteraction {
 		aFC.logOff();
 	}
 	
-//	/**
-//	 * Resets the user password
-//	 * @param userName
-//	 * @param newPassword
-//	 */
-//	public void resetPassword(String userName, String newPassword) {
-//		aFC.resetPassword(userName, newPassword);
-//	}
-	
 	/**
 	 * Adds the school to the database
 	 * @param school
@@ -83,6 +78,7 @@ public class AdminInteraction {
 	/**
 	 * Shows the details of the user
 	 * @param user
+	 * @return user details
 	 */
 	public ArrayList<String> showUserDetails(User user) {
 		
@@ -92,6 +88,7 @@ public class AdminInteraction {
 	/**
 	 * Displays the school's details
 	 * @param school
+	 * @return school details
 	 */
 	public ArrayList<String> showSchoolDetails(University school) {
 		return aFC.showSchoolDetails(school);
@@ -99,12 +96,10 @@ public class AdminInteraction {
 	
 	/**
 	 * Displays all the User's names and info
+	 * @return user objects
 	 */
 	public ArrayList<User> viewUsers() {
 		return aFC.viewUsers();
-//		for(User i:temp) {
-//			System.out.println(i.getFirstName() + " " + i.getLastName() + " " + i.getUserName() + " " + i.getPassword() + " " + i.getType() + " " + i.getStatus() + "\n");
-//		}
 	}
 	
 	/**
@@ -127,6 +122,7 @@ public class AdminInteraction {
 	
 	/**
 	 * Displays the Universitie's names
+	 * @return university objects
 	 */
 	public ArrayList<University> viewUniversities() {
 		return aFC.viewUniversities();
@@ -144,6 +140,7 @@ public class AdminInteraction {
 	
 	/**
 	 * views profile
+	 * @return User object
 	 */
 	public User viewMyProfile() {
 

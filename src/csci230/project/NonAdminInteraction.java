@@ -9,13 +9,13 @@ import java.util.List;
  * @version 3/10/19
  */
 public class NonAdminInteraction {
-	
+	//Controller that controls all the functionalities of a nonadmin user
 	NonAdminFunctionalityController nAFC;
+	
 	/**
-	 * creates an object
+	 * constructor
 	 */
 	public NonAdminInteraction() {
-
 		nAFC = new NonAdminFunctionalityController();
 	}
 
@@ -37,13 +37,14 @@ public class NonAdminInteraction {
 	
 	/**
 	 * Shows the details of the user
+	 * @return User object of the user that is logged in
 	 */
 	public User viewMyProfile() {
 		User temp;
 		temp = nAFC.viewMyProfile();
 		return temp;
-		//System.out.println(temp.getFirstName() + "\n" + temp.getLastName() + "\n" + temp.getUserName() + "\n" + temp.getPassword() + "\n" + temp.getType());
 	}	
+	
 	/**
 	 * Displays the school's details
 	 * @param school
@@ -66,14 +67,12 @@ public class NonAdminInteraction {
 	
 	/**
 	 * Displays the Universitie's names
+	 * @return University objects
 	 */
 	public ArrayList<University> viewUniversities() {
 		ArrayList<University> univName = new ArrayList<University>();
 		univName = nAFC.viewUniversities();
 		return univName;
-//		for(String i:univName) {
-//			System.out.println(i + "\n");
-//		}
 	}
 	
 	/**
@@ -115,6 +114,7 @@ public class NonAdminInteraction {
 	 * @param qLow
 	 * @param qHigh
 	 * @param emp
+	 * @return University Objects of universities that match the search parameters
 	 */
 	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
@@ -182,6 +182,7 @@ public class NonAdminInteraction {
 	/**
 	 * lists 5 recommended Universities
 	 * @param school
+	 * @return University objects of recommended schools
 	 */
 	public ArrayList<University> recommendSchools(University school){
 		return nAFC.recommendSchools(school);

@@ -9,11 +9,16 @@ import java.util.List;
  * @version 3/10/19
  */
 public class NonAdminFunctionalityController {
+	//Controller that controls all universities
 	private UniversityController univC;
+	
+	//Controller that controls all users
 	private UserController userC;
 	
+	/**
+	 * Constructor method
+	 */
 	public NonAdminFunctionalityController() {
-
 		univC = new UniversityController();
 		userC = new UserController();
 	}
@@ -65,6 +70,7 @@ public class NonAdminFunctionalityController {
 	 * @param qLow
 	 * @param qHigh
 	 * @param emp
+	 * @return University objects that match the search parameters
 	 */
 	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
@@ -83,6 +89,7 @@ public class NonAdminFunctionalityController {
 	
 	/**
 	 * shows a list of all the universities
+	 * @return All university objects
 	 */
 	public ArrayList<University> viewUniversities(){
 		ArrayList<University> univ = new ArrayList<University>();
@@ -92,12 +99,11 @@ public class NonAdminFunctionalityController {
 	
 	/**
 	 * Remove a school from the saved university list
-	 * @param uniName
+	 * @param school
 	 */
 	public void removeSavedSchool(University school) {
 		userC.removeSavedSchool(school);
 	}
-	
 	
 	/**
 	 * saves university to the user
@@ -108,15 +114,7 @@ public class NonAdminFunctionalityController {
 	}
 	
 	/**
-	 * sets user as active
-	 * @param user
-	 */
-	public void setUser(User user) {
-		
-	}
-	
-	/**
-	 * Lets the user change their first, last and password
+	 * Lets the user change their first name, last name, and password
 	 * @param first
 	 * @param last
 	 * @param oldPassword
@@ -128,6 +126,7 @@ public class NonAdminFunctionalityController {
 	
 	/**
 	 * lets the user view their profile
+	 * @return User object of the user that is currently logged in
 	 */
 	public User viewMyProfile() {
 		User temp = userC.viewMyProfile();
@@ -137,33 +136,9 @@ public class NonAdminFunctionalityController {
 	
 	/**
 	 * generates a random school for non admin to view
+	 * @return Random university
 	 */
 	public University viewRandomSchool() {
-		return null;
-		
-	}
-	
-	/**
-	 * returns the random university
-	 * @param randomSchool
-	 */
-	public String returnUniversity(String randomSchool) {
-		return "";
-		
-	}
-	
-	/**
-	 * views more school info on the specific school
-	 * @param school
-	 */
-	public void viewMoreSchoolInfo(String school) {
-		
-	}
-	
-	/**
-	 * Returns the info to the user
-	 */
-	public String returnSchoolInfo() {
 		return null;
 		
 	}
@@ -173,7 +148,7 @@ public class NonAdminFunctionalityController {
 	 * @param school
 	 */
 	public void displaySchoolImage(String school) {
-		
+		//TODO finish this additional functionality
 	}
 	
 	/**
@@ -198,25 +173,29 @@ public class NonAdminFunctionalityController {
 	 * @param savedSchools
 	 */
 	public void sortByState(List<University> savedSchools) {
-		
+		//TODO finish this additional functionality
 	}
+	
 	/**
 	 * lists out the saved schools sorted by the size
 	 * @param savedSchools
 	 */
 	public void sortBySize(List<University> savedSchools) {
-		
+		//TODO finish this additional functionality
 	}
+	
 	/**
 	 * lists out the saved schools sorted by the name alphabetically
 	 * @param savedSchools
 	 */
 	public void sortByName(List<University> savedSchools) {
-		
+		//TODO finish this additional functionality
 	}
+	
 	/**
 	 * Displays the school's details
 	 * @param school
+	 * @return School details
 	 */
 	public ArrayList<String> showSchoolDetails(University school) {
 		

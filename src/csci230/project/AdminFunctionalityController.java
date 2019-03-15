@@ -9,12 +9,20 @@ import java.util.ArrayList;
  */
 public class AdminFunctionalityController {
 	
+	//controller for all universities
 	UniversityController univC;
+	
+	//controller for all users
 	UserController userC;
+	
+	/**
+	 * constructor method
+	 */
 	public AdminFunctionalityController() {
 		univC = new UniversityController();
 		userC = new UserController();
 	}
+	
 	/**
 	 * Logs the admin into the system
 	 * @param username
@@ -24,6 +32,7 @@ public class AdminFunctionalityController {
 	{
 		userC.logOn(username, password);
 	}
+	
 	/**
 	 * Logs the user out of the system
 	 * @param userName
@@ -47,6 +56,7 @@ public class AdminFunctionalityController {
 	{
 		userC.addUser(first, last, username, password, type, status);
 	}
+	
 	/**
 	 * Edits a user in the database
 	 * @param first
@@ -60,20 +70,25 @@ public class AdminFunctionalityController {
 	{
 		userC.editUser(first, last, username, password, type, status);
 	}
+	
 	/**
-	 * Allows the admin to view all universities 
+	 * Allows the admin to view all universities
+	 * @return an array list of universities 
 	 */
 	public ArrayList<University> viewUniversities()
 	{
 		return univC.viewUniversities();
 	}
+	
 	/**
 	 * Allows the admin to view all users
+	 * @return an array list of users
 	 */
 	public ArrayList<User> viewUsers()
 	{
 		return userC.viewUsers();
 	}
+	
 	/**
 	 * Edits the school of the week
 	 */
@@ -81,14 +96,17 @@ public class AdminFunctionalityController {
 	{
 		//TODO finish this method
 	}
+	
 	/**
 	 * Shows the details of a specific user
 	 * @param user
+	 * @return an array list string of user details
 	 */
 	public ArrayList<String> showUserDetails(User user)
 	{
 		return userC.showUserDetails(user);
 	}
+	
 	/**
 	 * Creates a new university and adds it to the database
 	 * @param school
@@ -126,6 +144,11 @@ public class AdminFunctionalityController {
 		return userC.viewMyProfile();
 	}
 	
+	/**
+	 * shows the school details
+	 * @param school
+	 * @return an array list of string school details
+	 */
 	public ArrayList<String> showSchoolDetails(University school) {
 		return univC.showUniversityDetails(school);
 	}
