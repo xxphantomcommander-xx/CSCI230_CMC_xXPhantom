@@ -1,9 +1,7 @@
 package csci230.project;
 
 import dblibrary.project.csci230.*;
-import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class accesses the raw information from the database
@@ -14,7 +12,7 @@ import java.util.List;
 public class DBController {
 	private User loggedOnUser;
 	private UniversityController univC;
-	private UserController userC;
+	//private UserController userC;
 	private ArrayList<User> allUsers = new ArrayList<User>();
 	
 

@@ -15,7 +15,6 @@ public class UserController {
 	private boolean isAdminLoggedIn = false;
 	private DBController dbCon;
 	private UniversityController univC;
-	private ArrayList<User> allUsers;
 	//private User loggedOnUser;
 	
 	/**
