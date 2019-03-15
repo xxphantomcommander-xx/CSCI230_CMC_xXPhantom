@@ -15,7 +15,7 @@ public class DBController {
 	private User loggedOnUser;
 	private UniversityController univC;
 	private UserController userC;
-	private ArrayList<User> allUsers;
+	private ArrayList<User> allUsers = new ArrayList<User>();
 	
 
 	
@@ -186,7 +186,7 @@ public class DBController {
 	public ArrayList<User> loadUsers(String username)
 	{
 		String [][] userString = getUsers();
-		ArrayList<User> users = new ArrayList<User>();
+		//ArrayList<User> users = new ArrayList<User>();
 		for (int i = 0; i < userString.length; i++)
 		{
 			
@@ -195,24 +195,23 @@ public class DBController {
 			if ("u".equals(userString[i][4]))
 			{
 
-				NonAdmin temp = new NonAdmin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
-				users.add(temp);
+				User temp = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
+				this.allUsers.add(temp);
 				if(username.equals(userString[i][2])) {
-					loggedOnUser = temp;
+					loggedOnUser = this.allUsers.get(i);
 				}
 			}
 			else
 			{
-				Admin temp = new Admin(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
-				users.add(temp);
+				User temp2 = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
+				this.allUsers.add(temp2);
 				if(username.equals(userString[i][2])) {
-					loggedOnUser = temp;
+					loggedOnUser = this.allUsers.get(i);
 				}
 			}
 	
 		}
-		allUsers = users;
-		return users;
+		return this.allUsers;
 	}
 	
 	/**
@@ -274,6 +273,33 @@ public class DBController {
 }
 	public ArrayList<User> getAllUsers()
 	{
-		return allUsers;
+		String [][] userString = getUsers();
+		//ArrayList<User> users = new ArrayList<User>();
+		for (int i = 0; i < userString.length; i++)
+		{
+			
+			//User u = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
+			
+			if ("u".equals(userString[i][4]))
+			{
+
+				User temp = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
+				this.allUsers.add(temp);
+				
+			}
+			else
+			{
+				User temp2 = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
+				this.allUsers.add(temp2);
+				
+			}
+	
+		}
+		return this.allUsers;
+	}
+	
+	public void logOut()
+	{
+		loggedOnUser = null;
 	}
 }

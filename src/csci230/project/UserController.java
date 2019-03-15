@@ -16,7 +16,7 @@ public class UserController {
 	private DBController dbCon;
 	private UniversityController univC;
 	private ArrayList<User> allUsers;
-	private User loggedOnUser;
+	//private User loggedOnUser;
 	
 	/**
 	 * constructor
@@ -53,7 +53,7 @@ public class UserController {
 							isLoggedIn = true;
 							dbCon.loadUniversities();
 							dbCon.loadUsers(username);
-							loggedOnUser = dbCon.getLoggedOnUser();
+							//loggedOnUser = dbCon.getLoggedOnUser();
 							return;
 						}
 						else
@@ -62,7 +62,7 @@ public class UserController {
 							isAdminLoggedIn = true;
 							dbCon.loadUniversities();
 							dbCon.loadUsers(username);
-							loggedOnUser = dbCon.getLoggedOnUser();
+							//loggedOnUser = dbCon.getLoggedOnUser();
 							return;
 						}
 					}
@@ -97,8 +97,7 @@ public class UserController {
 	 * logs out
 	 */
 	public void logOut() {
-		loggedOnUser = null;
-		return;
+		dbCon.logOut();
 	}
 	
 	
@@ -121,7 +120,7 @@ public class UserController {
 	 * @return logged on user
 	 */
 	public User viewMyProfile() {
-		return loggedOnUser;
+		return dbCon.getLoggedOnUser();
 //		  String first = loggedOnUser.getFirstName();
 //		  String last = loggedOnUser.getLastName();
 //		  String username = loggedOnUser.getUserName();
@@ -178,17 +177,16 @@ public class UserController {
 	   * @return arraylist of users
 	   */
 	  public ArrayList<User> viewUsers(){
-		  return dbCon.getAllUsers();
-//		  if(loggedOnUser.getType() == 'a') {
-//			  ArrayList<User> users = allUsers;
-//				  return users;
-//			  
-//		  }
-//		  else {
-//			  System.out.println("Currently logged in user is not an admin");
-//			  return null;
-//		  }
-//		  
+		 // if(dbCon.getLoggedOnUser().getType() == 'a') {
+			  ArrayList<User> users = dbCon.getAllUsers();
+				  return users;
+			  
+		  //}
+		  //else {
+			//  System.out.println("Currently logged in user is not an admin");
+		//	  return null;
+		 // }
+		  
 	  }
 	  
 	  
@@ -201,11 +199,11 @@ public class UserController {
 	 */
 	public void editMyProfile(String first, String last, String oldPassword, String newPassword) {
 		  
-		  if(loggedOnUser.getPassword().equals(oldPassword)) {  
-			  loggedOnUser.setFirstName(first);
-			  loggedOnUser.setLastName(last);
-			  loggedOnUser.setPassword(newPassword);
-			  dbCon.editUser(loggedOnUser);
+		  if(dbCon.getLoggedOnUser().getPassword().equals(oldPassword)) {  
+			  dbCon.getLoggedOnUser().setFirstName(first);
+			  dbCon.getLoggedOnUser().setLastName(last);
+			  dbCon.getLoggedOnUser().setPassword(newPassword);
+			  dbCon.editUser(dbCon.getLoggedOnUser());
 		  }
 		  else {
 			  System.out.println("Incorrect Password. Nothing changed!");
@@ -217,7 +215,7 @@ public class UserController {
 	 * @return currently logged on user
 	 */
 	public User getLoggedOnUser() {
-		  return loggedOnUser;
+		  return dbCon.getLoggedOnUser();
 	  }
 	  		
 	
@@ -284,4 +282,5 @@ public class UserController {
 	public void saveUniversity(University school) {
 		dbCon.saveUniversities(school);
 	}
+	
 }
