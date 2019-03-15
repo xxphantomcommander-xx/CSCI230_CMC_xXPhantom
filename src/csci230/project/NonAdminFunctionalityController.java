@@ -75,9 +75,10 @@ public class NonAdminFunctionalityController {
 	
 	/**
 	 * able to view the your saved school's list
+	 * @return list of Saved Schools connected to a user
 	 */
-	public void viewSavedSchools() {
-		
+	public ArrayList<University> viewSavedSchools() {
+		return userC.viewSavedSchools();
 	}
 	
 	/**
@@ -93,8 +94,17 @@ public class NonAdminFunctionalityController {
 	 * Remove a school from the saved university list
 	 * @param uniName
 	 */
-	public void removeSchool(University uniName) {
-		
+	public void removeSavedSchool(University school) {
+		userC.removeSavedSchool(school);
+	}
+	
+	
+	/**
+	 * saves university to the user
+	 * @param school
+	 */
+	public void saveUniversity(University school) {
+		userC.saveUniversity(school);
 	}
 	
 	/**
@@ -203,5 +213,13 @@ public class NonAdminFunctionalityController {
 	 */
 	public void sortByName(List<University> savedSchools) {
 		
+	}
+	/**
+	 * Displays the school's details
+	 * @param school
+	 */
+	public ArrayList<String> showSchoolDetails(University school) {
+		
+		return univC.showUniversityDetails(school);
 	}
 }
