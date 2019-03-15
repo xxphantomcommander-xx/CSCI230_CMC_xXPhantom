@@ -104,7 +104,12 @@ public class AdminInteraction {
 	
 	/**
 	 * This edits the User's info in the database
-	 * @param User
+	 * @param first
+	 * @param last
+	 * @param username
+	 * @param password
+	 * @param type
+	 * @param status
 	 */
 	public void editUser(String first, String last,
 			String username, String password, char type,

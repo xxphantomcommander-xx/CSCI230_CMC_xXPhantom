@@ -160,9 +160,77 @@ public class Driver {
 		System.out.println("******** 6 COMPLETE ********");
 		
 		
-		System.out.println("********** 7 **********");
-		//
 		
+		System.out.println("******** LogOn  *********");
+		
+		System.out.println("Logging in with valid user credentials");
+		uc.logOn("juser", "user");
+		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
+		
+		System.out.println("");
+		
+		System.out.println("Logging in with invalid user credentials");
+		//TODO Print error message
+		System.out.println("Test 1: User with Incorrect Password");
+		uc.logOn("juser", "incorrectPassword");
+		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
+		System.out.println();
+		
+		System.out.println("Test 2: User with Incorrect Username, Correct Password");
+		uc.logOn("jNotAUser", "user");
+		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
+		System.out.println();
+		
+		System.out.println("Test 3: User with Incorrect Username and Incorrect Password");
+		uc.logOn("jNotAUser", "incorrectPassword");
+		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
+		
+		System.out.println("");
+		
+		System.out.println("Logging in with deactivated user credentials");
+		//TODO Print error message: deactivated, not wrong password
+		uc.logOn("luser", "user");
+		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
+		
+		System.out.println("");
+		
+		System.out.println("Logging in with valid admin credentials");
+		uc.logOn("nadmin", "admin");
+		//System.out.println(uc.getLoggedOnUser().getUserName());
+		System.out.println("IsAdminLoggedIn status: "+uc.isAdminLoggedIn());
+		
+		System.out.println("******** LogOn Complete!!! ********\n\n");
+
+		
+		
+		System.out.println("********** ADMIN Functionalities **********\n\n");
+		
+		System.out.println("********** AddUser ***********\n");
+		
+		System.out.println("adding Gavin as a nonAdmin");
+		ai.addUser("Gavin", "Wollenberg", "GWOLLENBE001@csbsju.edu", "ww2", 'u', 'Y');
+		
+		System.out.println("adding Zach as an Admin");
+		ai.addUser("Zachary", "Heinen", "ZHEINEN001@csbsju.edu", "zaciscool", 'a', 'Y');
+		
+		System.out.println("********** AddUser Complete!!! ***********\n\n");
+		
+		System.out.println("********** ViewUsers ***********\n");
+		
+		ArrayList<User> users = ai.viewUsers();
+		for(User i : users) {
+			System.out.println("First Name: " + i.getFirstName());
+			System.out.println("Last Name: " + i.getLastName());
+			System.out.println("Username: " + i.getUserName());
+			System.out.println("Password: " + i.getPassword());
+			System.out.println("Type: " + i.getType());
+			System.out.println("Status: " + i.getStatus());
+			System.out.println();
+		}
+		
+		System.out.println("********** ViewUsers Complete!!! ***********\n\n");
+		
+		System.out.println("********** addUniversities ***********\n");
 			
     }
 	
