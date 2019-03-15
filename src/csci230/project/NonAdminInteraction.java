@@ -152,7 +152,7 @@ public class NonAdminInteraction {
 	 * @param user
 	 */
 	public void viewHistory(String user){
-		
+		//TODO finish this additional functionality
 	}
 	
 	/**
@@ -160,7 +160,7 @@ public class NonAdminInteraction {
 	 * @param savedSchool
 	 */
 	public void sortByState(List<University> savedSchool) {
-		
+		//TODO finish this additional functionality
 	}
 	
 	/**
@@ -168,7 +168,7 @@ public class NonAdminInteraction {
 	 * @param savedSchool
 	 */
 	public void sortBySize(List<University> savedSchool) {
-		
+		//TODO finish this additional functionality
 	}
 	
 	/**
@@ -176,14 +176,14 @@ public class NonAdminInteraction {
 	 * @param savedSchool
 	 */
 	public void sortByName(List<University> savedSchool) {
-		
+		//TODO finish this additional functionality
 	}
 	
 	/**
 	 * lists 5 recommended Universities
 	 * @param school
 	 */
-	public List<University> recommendSchools(University school){
-		return null;
+	public ArrayList<University> recommendSchools(University school){
+		return nAFC.recommendSchools(school);
 	}
 }

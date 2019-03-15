@@ -403,7 +403,7 @@ public class UniversityController {
 		}
 	}
 	
-	public void topRecommended(University univ)
+	public ArrayList<University> topRecommended(University univ)
 	{
 		ArrayList<University> recommend = new ArrayList<University>();
 		for (University i: allUnivs)
@@ -560,15 +560,16 @@ public class UniversityController {
 //			
 //		}
 		ArrayList<University> sortedSchools = mergeSort(recommend);
-		for (int i = 1 ; i <= 5 ; i++)
-		{
-			System.out.println(sortedSchools.get(i).getSchoolName());
-		}
+//		for (int i = 1 ; i <= 5 ; i++)
+//		{
+//			System.out.println(sortedSchools.get(i).getSchoolName());
+//		}
+		return sortedSchools;
 		
 
 	}
 	
-	public ArrayList<University> mergeSort(ArrayList<University> whole)
+	private ArrayList<University> mergeSort(ArrayList<University> whole)
 	{
 		ArrayList<University> left = new ArrayList<University>();
 		ArrayList<University> right = new ArrayList<University>();

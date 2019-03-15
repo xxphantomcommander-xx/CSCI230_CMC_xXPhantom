@@ -181,15 +181,15 @@ public class NonAdminFunctionalityController {
 	 * @param username
 	 */
 	public void resetPasswordByEmail(String username) {
-		
+		//TODO finish this additional functionality
 	}
 	
 	/**
 	 * returns the list of recommended schools based on the current school
 	 * @param school
 	 */
-	public List<University> recommendSchools(String school){
-		return null;
+	public ArrayList<University> recommendSchools(University school){
+		return univC.topRecommended(school);
 		
 	}
 	
