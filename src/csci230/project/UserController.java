@@ -24,8 +24,8 @@ public class UserController {
 	public UserController() {
 		dbCon = new DBController();
 		univC = new UniversityController();
-		this.loggedOnUser = dbCon.getLoggedOnUser();
-		this.allUsers = dbCon.loadUsers(loggedOnUser.getUserName());
+//		this.allUsers = dbCon.loadUsers(loggedOnUser.getUserName());
+//		this.loggedOnUser = dbCon.getLoggedOnUser();
 	}
 	
 	/**
@@ -178,16 +178,17 @@ public class UserController {
 	   * @return arraylist of users
 	   */
 	  public ArrayList<User> viewUsers(){
-		  if(loggedOnUser.getType() == 'a') {
-			  ArrayList<User> users = allUsers;
-				  return users;
-			  
-		  }
-		  else {
-			  System.out.println("Currently logged in user is not an admin");
-			  return null;
-		  }
-		  
+		  return dbCon.getAllUsers();
+//		  if(loggedOnUser.getType() == 'a') {
+//			  ArrayList<User> users = allUsers;
+//				  return users;
+//			  
+//		  }
+//		  else {
+//			  System.out.println("Currently logged in user is not an admin");
+//			  return null;
+//		  }
+//		  
 	  }
 	  
 	  

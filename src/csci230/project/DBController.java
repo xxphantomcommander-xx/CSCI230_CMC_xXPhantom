@@ -15,6 +15,7 @@ public class DBController {
 	private User loggedOnUser;
 	private UniversityController univC;
 	private UserController userC;
+	private ArrayList<User> allUsers;
 	
 
 	
@@ -200,7 +201,7 @@ public class DBController {
 			}
 	
 		}
-
+		allUsers = users;
 		return users;
 	}
 	
@@ -261,4 +262,8 @@ public class DBController {
 		  return loggedOnUser;
 	  
 }
+	public ArrayList<User> getAllUsers()
+	{
+		return allUsers;
+	}
 }

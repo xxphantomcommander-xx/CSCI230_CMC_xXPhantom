@@ -97,6 +97,8 @@ public class Driver {
 		
 		System.out.println("Search for schools by a combination of state and number of students");
 		System.out.println("View Results");
+		ai.logOut();
+		uc.logOn("juser", "user");
 		dbCon.loadUniversities();
 		//name, **state**, location, control, **numOfStudents(low)**, **numOfStudents(high)**, prctFem(low), prctFem(high), SATVerbal(low), SATVerbal(high), SATMath(low), SATMath(high), expenses(low), expenses(high), prctFinAid(low), prctFinAid(low), prctFinAid(high), numOfApps(low), numOfApps(high), prctAdmitted(low), prctAdmitted(high) prctEnrolled(low), prctEnrolled(high), academicsScale(low), academicsScale(high), socialScale(low), socialScale(high), qualOfLife(low), qualOfLife(high), array list of emphasis
 		// Searches for New York schools with a size of 15000-35000. Excludes schools that do not meet criteria.
@@ -105,7 +107,7 @@ public class Driver {
 		al.add("");
 		al.add("");
 		al.add("");
-		ArrayList<University> results = ai.searchSchools("", "Minnesota", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
+		ArrayList<University> results = nai.searchSchools("", "Minnesota", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
 		for(University i: results) {
 		System.out.println(i.getSchoolName());
 	}
@@ -137,9 +139,9 @@ public class Driver {
 		
 		System.out.println("View list of universities");
 		//System.out.println("!!!! VIEW LIST OF UNIVERSITIES HAS BEEN DEACTIVATED FOR TESTING PURPOSES !!!! \nTo reactivate, uncomment line 111 in Driver.java");
-		for(int i = 0 ; i < nai.viewUniversities().size() ; i++)
+		for(University i : nai.viewUniversities())
 		{
-		  System.out.println("HEy man");
+		  System.out.println(i.getSchoolName());
 		}
 		System.out.println("******** 5 COMPLETE ********\n\n");
 
@@ -148,11 +150,16 @@ public class Driver {
 		System.out.println("******** 6 ********");
 		
 		System.out.println("View list of users");
-		ai.viewUsers();
+		nai.logOut();
+		uc.logOn("nadmin", "admin");
+		for(User i : ai.viewUsers()) {
+			System.out.println(i.getUserName());
+		}
 		
 		System.out.println("******** 6 COMPLETE ********");
 		
 		
+		System.out.println("********** 7 **********");
 		
 		
 			
