@@ -822,6 +822,48 @@ public class UniversityController {
 	}
 
 	/**
+	 * edits the school using parameters
+	 * @param sch
+	 * @param st
+	 * @param l
+	 * @param c
+	 * @param nStuLow
+	 * @param nStuHigh
+	 * @param prctfLow
+	 * @param prctfHigh
+	 * @param svLow
+	 * @param svHigh
+	 * @param smLow
+	 * @param smHigh
+	 * @param eLow
+	 * @param eHigh
+	 * @param prctfinLow
+	 * @param prctfinHigh
+	 * @param nApLow
+	 * @param nApHigh
+	 * @param prctaLow
+	 * @param prctaHigh
+	 * @param prcteLow
+	 * @param prcteHigh
+	 * @param asLow
+	 * @param asHigh
+	 * @param ssLow
+	 * @param ssHigh
+	 * @param qLow
+	 * @param qHigh
+	 * @param emp
+	 * @return University Objects of universities that match the search parameters
+	 */
+	public void editSchool(String school, String state, String location, String control, 
+			int numStudents, int perFem, int satVerbal, int satMath,
+			int expenses, int financialAid, int numOfApps, int perAdmitted, 
+			int perEnrolled, int academicScale, int socialScale, 
+			int qualOfLife, ArrayList<String> emphasis) {
+		 University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0);
+		 this.dbCon.editUniversity(newUniv);
+	}
+	
+	/**
 	 * get all universities
 	 * @return ArrayList<University> os all universities
 	 */
@@ -860,4 +902,11 @@ public class UniversityController {
 		dbCon.addUniversity(newUniv);
 	}
 
+	/**
+	 * removes a university from the list of schools on the database
+	 * @param univ
+	 */
+	public void removeUniversity(University univ) {
+		dbCon.removeSchool(univ);
+	}
 }

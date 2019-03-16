@@ -118,6 +118,47 @@ public class AdminInteraction {
 	}
 	
 	/**
+	 * edits the school using parameters
+	 * @param sch
+	 * @param st
+	 * @param l
+	 * @param c
+	 * @param nStuLow
+	 * @param nStuHigh
+	 * @param prctfLow
+	 * @param prctfHigh
+	 * @param svLow
+	 * @param svHigh
+	 * @param smLow
+	 * @param smHigh
+	 * @param eLow
+	 * @param eHigh
+	 * @param prctfinLow
+	 * @param prctfinHigh
+	 * @param nApLow
+	 * @param nApHigh
+	 * @param prctaLow
+	 * @param prctaHigh
+	 * @param prcteLow
+	 * @param prcteHigh
+	 * @param asLow
+	 * @param asHigh
+	 * @param ssLow
+	 * @param ssHigh
+	 * @param qLow
+	 * @param qHigh
+	 * @param emp
+	 * @return University Objects of universities that match the search parameters
+	 */
+	public void editSchool(String school, String state, String location, String control, 
+			int numStudents, int perFem, int satVerbal, int satMath,
+			int expenses, int financialAid, int numOfApps, int perAdmitted, 
+			int perEnrolled, int academicScale, int socialScale, 
+			int qualOfLife, ArrayList<String> emphasis) {
+		 this.aFC.editSchool(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis);
+	}
+	
+	/**
 	 * Showcases the school of the week entered by the Admin
 	 * @param schoolName
 	 */
@@ -152,6 +193,14 @@ public class AdminInteraction {
 		return aFC.viewMyProfile();
 		//System.out.println(temp.getFirstName() + "\n" + temp.getLastName() + "\n" + temp.getUserName() + "\n" + temp.getPassword() + "\n" + temp.getType());
 		
+	}
+	
+	/**
+	 * removes a university from the list of schools on the database
+	 * @param univ
+	 */
+	public void removeUniversity(University univ) {
+		aFC.removeUniversity(univ);
 	}
 
 }

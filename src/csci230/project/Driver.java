@@ -230,8 +230,59 @@ public class Driver {
 		
 		System.out.println("********** ViewUsers Complete!!! ***********\n\n");
 		
-		System.out.println("********** addUniversities ***********\n");
-			
-    }
-	
+		System.out.println("********** University Funtionalities ***********\n");
+		
+		System.out.println("*********** Viewing University & view university details ***********\n");
+		
+		ArrayList<University> printUniv = new ArrayList<University>();
+		printUniv = ai.viewUniversities();
+		for(University i:printUniv) {
+			for(String x:ai.showSchoolDetails(i)) {
+				System.out.print(x + ", ");
+			}
+			System.out.println();
+		}
+		
+		System.out.println("************ Adding University of Zac ************\n");
+		
+		ArrayList<String> newUnivEmp = new ArrayList<String>();	
+		newUnivEmp.add("COMPUTER SCIENCE");
+		newUnivEmp.add("BIOLOGY");
+		
+		ai.addSchool("University of Zac", "Minnesota", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp);
+		printUniv = ai.viewUniversities();
+		for(University i:printUniv) {
+			for(String x:ai.showSchoolDetails(i)) {
+				System.out.print(x + ", ");
+			}
+			System.out.println();
+		}
+		
+		
+		System.out.println("*********** Edit University **********\n");
+		
+		newUnivEmp.add("Hispanic studies");
+		System.out.println("Changes made to university of zac changed to urban, public, number of students = 1, 0% female, and added Hispanic studies emphasis\n");
+		ai.editSchool("University of Zac", "Minnesota", "Urban", "Public", 1, 0, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp);
+		for(University i:printUniv) {
+			for(String x:ai.showSchoolDetails(i)) {
+				System.out.print(x + ", ");
+			}
+			System.out.println();
+		}
+		
+		System.out.println("*********** Remove University **********\n");
+		
+		System.out.println("University of Zac removed\n");
+		University removeZac = new University("University of Zac", "Minnesota", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp, 0);
+		ai.removeUniversity(removeZac);
+		for(University i:printUniv) {
+			for(String x:ai.showSchoolDetails(i)) {
+				System.out.print(x + ", ");
+			}
+			System.out.println();
+		}
+		System.out.println("********** University Functionalities Complete!!! *************\n\n");
+    
+	}
 }

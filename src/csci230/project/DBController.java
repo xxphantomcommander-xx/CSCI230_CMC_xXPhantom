@@ -74,9 +74,13 @@ public class DBController {
 	 * removes a school from the database
 	 * @param uniName
 	 */
-	public void removeSchool(String uniName)
+	public void removeSchool(University univ)
 	{
-		univDBlib.university_deleteUniversity(uniName);
+		for (String i:univ.getEmp()) {
+			removeUnivEmph(univ.getSchoolName().toUpperCase(), i.toUpperCase());
+		}
+
+		univDBlib.university_deleteUniversity(univ.getSchoolName().toUpperCase());
 	}
 	
 	/**
@@ -94,13 +98,13 @@ public class DBController {
 	 */
 	public void addUniversity(University univ)
 	{
-	univDBlib.university_addUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), univ.getControl(), univ.getNumOfStudents(), 
+	univDBlib.university_addUniversity(univ.getSchoolName().toUpperCase(), univ.getState().toUpperCase(), univ.getLocation().toUpperCase(), univ.getControl().toUpperCase(), univ.getNumOfStudents(), 
 			univ.getPerFem(), univ.getSatVerbal(), univ.getSatMath(), univ.getExpenses(), univ.getFinancialAid(), univ.getNumOfApps(), univ.getPerAdmitted(), 
 			univ.getPerEnrolled(), univ.getAcademicScale(), univ.getSocialScale(), univ.getQualOfLife());
 	ArrayList<String> emp = new ArrayList<String>();
 	emp = univ.getEmp();
 	for(String i:emp) {
-		addUnivEmph(univ.getSchoolName(), i);
+		addUnivEmph(univ.getSchoolName(), i.toUpperCase());
 	}
 	loadUniversities();
 	
@@ -147,7 +151,7 @@ public class DBController {
 	 * @param school
 	 * @param emphasis
 	 */
-	public void removeUnivEmph(String school, String emphasis) {
+	private void removeUnivEmph(String school, String emphasis) {
 		univDBlib.university_removeUniversityEmphasis(school, emphasis);
 	}
 	
