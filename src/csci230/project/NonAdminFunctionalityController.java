@@ -201,4 +201,13 @@ public class NonAdminFunctionalityController {
 		
 		return univC.showUniversityDetails(school);
 	}
+	
+	/**
+	 * generates a random school from the list of universities
+	 * @return random University
+	 */
+	public University randomSchool()
+	{
+		return univC.randomSchool();
+	}
 }

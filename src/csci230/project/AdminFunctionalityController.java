@@ -200,4 +200,31 @@ public class AdminFunctionalityController {
 	public void removeUniversity(University univ) {
 		univC.removeUniversity(univ);
 	}
+	
+	/**
+	 * deletes a user from the database
+	 * @param username
+	 */
+	public void deleteUser(String username) {
+		userC.deleteUser(username);
+	}
+	
+	/**
+	 * sets the school of the week
+	 * @param schoolName
+	 */
+	public void setSchoolOfTheWeek(String schoolName)
+	{
+		univC.setSchoolOfTheWeek(schoolName);
+	}
+	
+	/**
+	 * gets the school of the week
+	 * @return school of the week
+	 */
+	public University getSchoolOfTheWeek()
+	{
+		return univC.getSchoolOfTheWeek();
+	}
+	
 }

@@ -203,5 +203,30 @@ public class AdminInteraction {
 		aFC.removeUniversity(univ);
 	}
 
+	/**
+	 * deletes a user from the database
+	 * @param username
+	 */
+	public void deleteUser(String username) {
+		aFC.deleteUser(username);
+	}
+	
+	/**
+	 * sets the school of the week
+	 * @param schoolName
+	 */
+	public void setSchoolOfTheWeek(String schoolName)
+	{
+		aFC.setSchoolOfTheWeek(schoolName);
+	}
+	
+	/**
+	 * gets the school of the week
+	 * @return school of the week
+	 */
+	public University getSchoolOfTheWeek()
+	{
+		return aFC.getSchoolOfTheWeek();
+	}
 }
 

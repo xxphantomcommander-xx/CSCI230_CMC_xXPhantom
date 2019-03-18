@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class UniversityController {
 	private DBController dbCon;
 	private ArrayList<University> allUnivs;
+	private University schoolOfTheWeek;
 	/**
 	 * Constructor for University controller
 	 */
@@ -908,5 +909,42 @@ public class UniversityController {
 	 */
 	public void removeUniversity(University univ) {
 		dbCon.removeSchool(univ);
+	}
+	
+	/**
+	 * generates a random school from the list of universities
+	 * @return random University
+	 */
+	public University randomSchool()
+	{
+		ArrayList<University> randList = dbCon.loadUniversities();
+		int x;
+		x = (int) Math.floor(Math.random() * randList.size());
+		return randList.get(x);
+	}
+	
+	/**
+	 * allows an admin to change the school of the week
+	 * @return school of the week
+	 */
+	public void setSchoolOfTheWeek(String schoolName)
+	{
+		ArrayList<University> schoolList = dbCon.loadUniversities();
+		for(University i : schoolList)
+		{
+			if(schoolName.equals(i.getSchoolName()))
+			{
+				schoolOfTheWeek= i;
+			}
+		}
+	}
+	
+	/**
+	 * gets the school of the week
+	 * @return school of the week
+	 */
+	public University getSchoolOfTheWeek()
+	{
+		return schoolOfTheWeek;
 	}
 }

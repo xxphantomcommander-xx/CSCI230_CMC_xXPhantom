@@ -282,4 +282,11 @@ public class UserController {
 		dbCon.saveUniversities(school);
 	}
 	
+	/**
+	 * deletes a user from the database
+	 * @param username
+	 */
+	public void deleteUser(String username) {
+		dbCon.deleteUser(username);
+	}
 }

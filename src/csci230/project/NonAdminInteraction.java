@@ -187,4 +187,13 @@ public class NonAdminInteraction {
 	public ArrayList<University> recommendSchools(University school){
 		return nAFC.recommendSchools(school);
 	}
+	
+	/**
+	 * generates a random school from the list of universities
+	 * @return random University
+	 */
+	public University randomSchool()
+	{
+		return nAFC.randomSchool();
+	}
 }
