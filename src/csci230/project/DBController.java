@@ -81,6 +81,7 @@ public class DBController {
 		}
 
 		univDBlib.university_deleteUniversity(univ.getSchoolName().toUpperCase());
+		loadUniversities();
 	}
 	
 	/**
@@ -141,9 +142,10 @@ public class DBController {
 	 */
 	public void editUniversity(University univ)
 	{
-	univDBlib.university_editUniversity(univ.getSchoolName(), univ.getState(), univ.getLocation(), univ.getControl(), univ.getNumOfStudents(), 
+	univDBlib.university_editUniversity(univ.getSchoolName().toUpperCase(), univ.getState().toUpperCase(), univ.getLocation().toUpperCase(), univ.getControl().toUpperCase(), univ.getNumOfStudents(), 
 			univ.getPerFem(), univ.getSatVerbal(), univ.getSatMath(), univ.getExpenses(), univ.getFinancialAid(), univ.getNumOfApps(), univ.getPerAdmitted(), 
 			univ.getPerEnrolled(), univ.getAcademicScale(), univ.getSocialScale(), univ.getQualOfLife());
+	loadUniversities();
 	}
 	
 	/**
@@ -235,7 +237,6 @@ public class DBController {
 					Integer.parseInt(univData[i][7]), Integer.parseInt(univData[i][8]), Integer.parseInt(univData[i][9]), Integer.parseInt(univData[i][10]), Integer.parseInt(univData[i][11]),
 					Integer.parseInt(univData[i][12]), Integer.parseInt(univData[i][13]), Integer.parseInt(univData[i][14]), Integer.parseInt(univData[i][15]), loadEmp(univData[i][0]), 0);
 			univ.add(temp);
-			//hey
 		}
 
 		
