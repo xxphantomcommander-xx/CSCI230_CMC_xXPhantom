@@ -156,7 +156,7 @@ public class NonAdminFunctionalityController {
 	 * @param username
 	 */
 	public void resetPasswordByEmail(String username) {
-		//TODO finish this additional functionality
+		userC.resetPasswordByEmail(username);
 	}
 	
 	/**
@@ -173,7 +173,7 @@ public class NonAdminFunctionalityController {
 	 * @param savedSchools
 	 */
 	public void sortByState(List<University> savedSchools) {
-		//TODO finish this additional functionality
+		userC.sortByState(savedSchools);
 	}
 	
 	/**
@@ -181,7 +181,7 @@ public class NonAdminFunctionalityController {
 	 * @param savedSchools
 	 */
 	public void sortBySize(List<University> savedSchools) {
-		//TODO finish this additional functionality
+		userC.sortBySize(savedSchools);
 	}
 	
 	/**
@@ -189,7 +189,7 @@ public class NonAdminFunctionalityController {
 	 * @param savedSchools
 	 */
 	public void sortByName(List<University> savedSchools) {
-		//TODO finish this additional functionality
+		userC.sortByName(savedSchools);
 	}
 	
 	/**
@@ -209,5 +209,13 @@ public class NonAdminFunctionalityController {
 	public University randomSchool()
 	{
 		return univC.randomSchool();
+	}
+	
+	/**
+	 * Displays the search history of the user
+	 * @param user
+	 */
+	public ArrayList<String> viewHistory(){
+		return univC.viewHistory();
 	}
 }

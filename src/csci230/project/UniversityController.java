@@ -1,6 +1,7 @@
 package csci230.project;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -13,6 +14,7 @@ public class UniversityController {
 	private DBController dbCon;
 	private ArrayList<University> allUnivs;
 	private University schoolOfTheWeek;
+	private ArrayList<String> history = new ArrayList<String>();
 	/**
 	 * Constructor for University controller
 	 */
@@ -58,7 +60,7 @@ public class UniversityController {
 	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
 			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, ArrayList<String> emp) {
-
+		history.add(sch);
 		ArrayList<University> searchList = new ArrayList<University>();
 		ArrayList<University> results = new ArrayList<University>();
 		searchList = allUnivs;
@@ -947,4 +949,17 @@ public class UniversityController {
 	{
 		return schoolOfTheWeek;
 	}
+	
+	/**
+	 * Displays the search history of the user
+	 * @param user
+	 */
+	public ArrayList<String> viewHistory(){
+		return history;
+	}
+	
+	public void clearHistory() {
+		history.clear();
+	}
+	
 }
