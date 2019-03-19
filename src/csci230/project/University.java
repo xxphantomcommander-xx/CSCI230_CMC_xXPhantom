@@ -46,6 +46,8 @@ public class University {
 	int count;
 	// the recommend distance of the University
 	double distance;
+	//the super recommend
+	double sup;
 	/**
 	 * creates a University
 	 * @param schoolName
@@ -65,12 +67,13 @@ public class University {
 	 * @param socialScale
 	 * @param qualOfLife
 	 * @param count
+	 * @param sup
 	 */
 	public University(String schoolName, String state, String location, String control, 
 			int numOfStudents, int perFem, int satVerbal, int satMath,
 			int expenses, int financialAid, int numOfApps, int perAdmitted, 
 			int perEnrolled, int academicScale, int socialScale, 
-			int qualOfLife, ArrayList<String> emphasis, int count, int distance) {
+			int qualOfLife, ArrayList<String> emphasis, int count, int distance, double sup) {
 		this.schoolName = schoolName;
 		this.state = state;
 		this.location = location;
@@ -90,6 +93,7 @@ public class University {
 		this.emphasis = emphasis;
 		this.count = count;
 		this.distance = distance;
+		this.sup = sup;
 	}
 	
 	/**
@@ -398,6 +402,20 @@ public class University {
 	 */
 	public void setDistance(double newDistance) {
 		this.distance = newDistance;
+	}
+
+	/**
+	 * @return the sup
+	 */
+	public double getSup() {
+		return sup;
+	}
+
+	/**
+	 * @param sup the sup to set
+	 */
+	public void setSup(double sup) {
+		this.sup = sup;
 	}
 
 }

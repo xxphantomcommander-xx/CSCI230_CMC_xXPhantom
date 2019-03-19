@@ -29,7 +29,7 @@ public class UserController {
 	public UserController() {
 		dbCon = new DBController();
 		univC = new UniversityController();
-		mySavedSchools = dbCon.getSavedSchoolList();
+		//mySavedSchools = dbCon.getSavedSchoolList();
 //		this.allUsers = dbCon.loadUsers(loggedOnUser.getUserName());
 //		this.loggedOnUser = dbCon.getLoggedOnUser();
 	}

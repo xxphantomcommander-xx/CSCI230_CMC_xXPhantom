@@ -27,13 +27,8 @@ public class Driver {
 		al2.add("");
 		al2.add("");
 		al2.add("");
-<<<<<<< HEAD
-		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0);
-=======
-	
-		
-		//University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0);
->>>>>>> 419c635b218a9550709babd74a57fc51c1f93e0e
+		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+
 		
 		
 //		System.out.println();
@@ -367,6 +362,14 @@ public class Driver {
 		{
 			System.out.println(ual.get(i).getSchoolName());
 			System.out.println(ual.get(i).getDistance());
+		}
+		System.out.println("*************************************************************************************************");
+		System.out.println("*************************************************************************************************");
+		ArrayList<University> ual3 = univc.superRecommend(u);
+		for(int i = 1; i < 6; i++)
+		{
+			System.out.println(ual3.get(i).getSchoolName());
+			System.out.println(ual3.get(i).getSup());
 		}
 }
 }

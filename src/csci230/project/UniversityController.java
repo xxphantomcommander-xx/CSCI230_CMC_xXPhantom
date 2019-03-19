@@ -447,6 +447,10 @@ public class UniversityController {
 			{
 				
 			}
+			else if(univ.getNumOfStudents() == i.getNumOfStudents())
+			{
+				count += 2;
+			}
 			else if (i.getNumOfStudents() - univ.getNumOfStudents() <= 5000 && i.getNumOfStudents() - univ.getNumOfStudents() >= -5000)
 			{
 				count++;
@@ -456,7 +460,10 @@ public class UniversityController {
 			{
 				
 			}
-			else if (i.getPerFem() - univ.getPerFem() <= 10 && i.getPerFem() - univ.getPerFem() >= -10)
+			else if (univ.getPerFem() == i.getPerFem()) {
+				count += 2;
+			}
+			else if (i.getPerFem() - univ.getPerFem() <= 5 && i.getPerFem() - univ.getPerFem() >= -5)
 			{
 				count++;
 			}
@@ -465,7 +472,10 @@ public class UniversityController {
 			{
 				
 			}
-			else if (i.getSatVerbal() - univ.getSatVerbal() <= 50 && i.getSatVerbal() - univ.getSatVerbal() >= -50)
+			else if (univ.getSatVerbal() == i.getSatVerbal()) {
+				count += 2;
+			}
+			else if (i.getSatVerbal() - univ.getSatVerbal() <= 25 && i.getSatVerbal() - univ.getSatVerbal() >= -25)
 			{
 				count++;
 			}
@@ -474,7 +484,10 @@ public class UniversityController {
 			{
 				
 			}
-			else if (i.getSatMath() - univ.getSatMath() <= 50 && i.getSatMath() - univ.getSatMath() >= -50)
+			else if (univ.getSatMath() == i.getSatMath()) {
+				count += 2;
+			}
+			else if (i.getSatMath() - univ.getSatMath() <= 25 && i.getSatMath() - univ.getSatMath() >= -25)
 			{
 				count++;
 			}
@@ -483,8 +496,10 @@ public class UniversityController {
 			{
 				
 			}
-
-			else if (i.getExpenses() - univ.getExpenses() <= 5000 && i.getExpenses() - univ.getExpenses() >= -5000)
+			else if (univ.getExpenses() == i.getExpenses()) {
+				count += 2;
+			}
+			else if (i.getExpenses() - univ.getExpenses() <= 2500 && i.getExpenses() - univ.getExpenses() >= -2500)
 			{
 				count++;
 			}
@@ -493,7 +508,10 @@ public class UniversityController {
 			{
 				
 			}
-			else if (i.getFinancialAid() - univ.getFinancialAid() <= 10 && i.getFinancialAid() - univ.getFinancialAid() >= 10)
+			else if (univ.getFinancialAid() == i.getFinancialAid()) {
+				count += 2;
+			}
+			else if (i.getFinancialAid() - univ.getFinancialAid() <= 5 && i.getFinancialAid() - univ.getFinancialAid() >= -5)
 			{
 				count++;
 			}
@@ -502,7 +520,10 @@ public class UniversityController {
 			{
 				
 			}
-			else if (i.getNumOfApps() - univ.getNumOfApps() <= 500 && i.getNumOfApps() - univ.getNumOfApps() >= 500)
+			else if (univ.getNumOfApps() == i.getNumOfApps()) {
+				count += 2;
+			}
+			else if (i.getNumOfApps() - univ.getNumOfApps() <= 500 && i.getNumOfApps() - univ.getNumOfApps() >= -500)
 			{
 				count++;
 			}
@@ -511,7 +532,10 @@ public class UniversityController {
 			{
 				
 			}
-			else if (i.getPerAdmitted() - univ.getPerAdmitted() <= 10 && i.getPerAdmitted() - univ.getPerAdmitted() >= 10)
+			else if (univ.getPerAdmitted() == i.getPerAdmitted()) {
+				count += 2;
+			}
+			else if (i.getPerAdmitted() - univ.getPerAdmitted() <= 5 && i.getPerAdmitted() - univ.getPerAdmitted() >= -5)
 			{
 				count++;
 			}
@@ -520,7 +544,10 @@ public class UniversityController {
 			{
 				
 			}
-			else if (i.getPerEnrolled() - univ.getPerEnrolled() <= 10 && i.getPerEnrolled() - univ.getPerEnrolled() >= 10)
+			else if (univ.getPerEnrolled() == i.getPerEnrolled()) {
+				count += 2;
+			}
+			else if (i.getPerEnrolled() - univ.getPerEnrolled() <= 5 && i.getPerEnrolled() - univ.getPerEnrolled() >= -5)
 			{
 				count++;
 			}
@@ -529,7 +556,10 @@ public class UniversityController {
 			{
 				
 			}
-			else if (i.getAcademicScale() == univ.getAcademicScale())
+			else if (univ.getAcademicScale() == i.getAcademicScale()) {
+				count += 2;
+			}
+			else if (i.getAcademicScale() - univ.getAcademicScale() <= 1 && i.getAcademicScale() - univ.getAcademicScale() >= -1)
 			{
 				count++;
 			}
@@ -537,6 +567,9 @@ public class UniversityController {
 			if (univ.getSocialScale() == -1)
 			{
 				
+			}
+			else if (univ.getSocialScale() == i.getSocialScale()) {
+				count += 2;
 			}
 			else if (i.getSocialScale() == univ.getSocialScale())
 			{
@@ -546,6 +579,9 @@ public class UniversityController {
 			if (univ.getQualOfLife() == -1)
 			{
 				
+			}
+			else if (univ.getQualOfLife() == i.getQualOfLife()) {
+				count += 2;
 			}
 			else if (i.getQualOfLife() == univ.getQualOfLife())
 			{
@@ -1074,14 +1110,7 @@ public class UniversityController {
 			i.setDistance(distance);
 
 		}
-
-
-		
-		for (University i : allUnivs)
-		{
-			recommend.add(i);
-		}
-		ArrayList<University> sortedSchools = mergeSort2(recommend);
+		ArrayList<University> sortedSchools = mergeSort2(allUnivs);
 		return sortedSchools;
 		
 	}
@@ -1374,7 +1403,7 @@ public class UniversityController {
 			int expenses, int financialAid, int numOfApps, int perAdmitted, 
 			int perEnrolled, int academicScale, int socialScale, 
 			int qualOfLife, ArrayList<String> emphasis) {
-		 University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0, 0);
+		 University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0, 0, 0);
 		 this.dbCon.editUniversity(newUniv);
 	}
 	
@@ -1413,7 +1442,7 @@ public class UniversityController {
 			int perEnrolled, int academicScale, int socialScale, 
 			int qualOfLife, ArrayList<String> emphasis)
 	{
-		University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0, 0);
+		University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0, 0, 0);
 		dbCon.addUniversity(newUniv);
 	}
 
@@ -1474,4 +1503,83 @@ public class UniversityController {
 		history.clear();
 	}
 	
+	public ArrayList<University> superRecommend(University univ){
+		ArrayList<University> tc = new ArrayList<University>();
+		tc = topRecommended(univ);
+		topRecommended2(univ);
+		for(University i:tc) {
+			double n = i.getCount();
+			double j = i.getDistance();
+			double z = n-j;
+			i.setSup(z);
+		}
+		ArrayList<University> sortedSchools = mergeSort3(allUnivs);
+		return sortedSchools;
+	}
+	
+	private ArrayList<University> mergeSort3(ArrayList<University> whole)
+	{
+		ArrayList<University> left = new ArrayList<University>();
+		ArrayList<University> right = new ArrayList<University>();
+		int center;
+		
+		if (whole.size() == 1)
+		{
+			return whole;
+		}
+		else 
+		{
+			center = whole.size()/2;
+			for (int i = 0; i < center ; i++)
+			{
+				left.add(whole.get(i));
+			}
+			for (int i = center; i < whole.size(); i++)
+			{
+				right.add(whole.get(i));
+			}
+			left = mergeSort3(left);
+			right = mergeSort3(right);
+			merge3(left, right, whole);
+		}
+		return whole;
+	}
+	
+	private void merge3(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int wholeIndex = 0;
+ 
+        // As long as neither the left nor the right ArrayList has
+        // been used up, keep taking the smaller of left.get(leftIndex)
+        // or right.get(rightIndex) and adding it at both.get(bothIndex).
+        while (leftIndex < left.size() && rightIndex < right.size()) {
+            if ( (left.get(leftIndex).getSup() > (right.get(rightIndex).getSup()))) {
+                whole.set(wholeIndex, left.get(leftIndex));
+                leftIndex++;
+            } else {
+                whole.set(wholeIndex, right.get(rightIndex));
+                rightIndex++;
+            }
+            wholeIndex++;
+        }
+ 
+        ArrayList<University> rest;
+        int restIndex;
+        if (leftIndex >= left.size()) {
+            // The left ArrayList has been use up...
+            rest = right;
+            restIndex = rightIndex;
+        } else {
+            // The right ArrayList has been used up...
+            rest = left;
+            restIndex = leftIndex;
+        }
+ 
+        // Copy the rest of whichever ArrayList (left or right) was not used up.
+        for (int i=restIndex; i<rest.size(); i++) {
+            whole.set(wholeIndex, rest.get(i));
+            wholeIndex++;
+        }
+    }
 }
