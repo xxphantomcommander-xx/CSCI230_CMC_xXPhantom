@@ -1448,7 +1448,7 @@ public class UniversityController {
 		{
 			if(schoolName.equals(i.getSchoolName()))
 			{
-				schoolOfTheWeek= i;
+				schoolOfTheWeek= i;//hi gAvin
 			}
 		}
 	}
