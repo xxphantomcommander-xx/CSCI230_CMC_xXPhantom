@@ -288,11 +288,22 @@ public class Driver {
 				System.out.println(i.getSchoolName());
 		}
 		System.out.println("*********** Search Schools Complete!!! ****************\n\n");
+
+		System.out.println("*********** Search History ****************\n");
+		ArrayList<String> history = new ArrayList<String>();
+		univc.showUniversityDetails(u);
+		University zach2 = new University("Zach2", "Minnesota", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp, 0, 0, 0);
+		univc.showUniversityDetails(zach2);
+		history = nai.viewHistory();
+		for(String i:history) {
+			System.out.println(i);
+		}
+		System.out.println("*********** Search History Complete!!! ****************\n");
 		
 		System.out.println("*********** Save Schools ****************\n");
 		System.out.println("Saving Adelphi and Zach2 to this profile which is Andrew");
 		nai.saveUniversity(u);
-		University zach2 = new University("Zach2", "Minnesota", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp, 0, 0, 0);
+		
 		nai.saveUniversity(zach2);
 		System.out.println("*********** Save Schools Complete!!! ****************\n\n");
 		

@@ -60,7 +60,7 @@ public class UniversityController {
 	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
 			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, ArrayList<String> emp) {
-		history.add(sch);
+
 		ArrayList<University> searchList = new ArrayList<University>();
 		ArrayList<University> results = new ArrayList<University>();
 		searchList = allUnivs;
@@ -1362,6 +1362,7 @@ public class UniversityController {
 		for(String i:univ.getEmp()) {
 			details.add(i);
 		}
+		history.add(univ.getSchoolName());
 		return details;
 	}
 
@@ -1477,7 +1478,7 @@ public class UniversityController {
 		{
 			if(schoolName.equals(i.getSchoolName()))
 			{
-				schoolOfTheWeek= i;//hi gAvin
+				schoolOfTheWeek= i;
 			}
 		}
 	}
@@ -1499,6 +1500,9 @@ public class UniversityController {
 		return history;
 	}
 	
+	/**
+	 * clears the history of viewed schools
+	 */
 	public void clearHistory() {
 		history.clear();
 	}
