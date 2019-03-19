@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * This class is how Non-Admins interact with the system
  * @author zheinen001
- * @version 3/10/19
+ * @version 3/19/19
  */
 public class NonAdminInteraction {
 	//Controller that controls all the functionalities of a nonadmin user

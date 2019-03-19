@@ -161,7 +161,8 @@ public class UserController {
 	   */
 	  public ArrayList<User> viewUsers(){
 		 // if(dbCon.getLoggedOnUser().getType() == 'a') {
-			  ArrayList<User> users = dbCon.getAllUsers();
+			  ArrayList<User> users = new ArrayList<User>();
+				users = dbCon.getAllUsers();
 				  return users;
 			  
 		  //}
