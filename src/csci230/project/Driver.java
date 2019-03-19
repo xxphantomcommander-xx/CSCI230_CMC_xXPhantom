@@ -109,7 +109,7 @@ public class Driver {
 		System.out.println("********** ViewUsers Complete!!! ***********\n\n");
 		
 		System.out.println("*********** resetPassword by Email **********\n");
-		ai.resetPasswordByEmail("ZHEINEN001@csbsju.edu");
+		ai.resetPasswordByEmail("ABREYEN001@csbsju.edu");
 		ArrayList<User> users = ai.viewUsers();
 		for(User i : users) {
 			System.out.println("Username: " + i.getUserName());
@@ -312,5 +312,6 @@ public class Driver {
 			i.getSchoolName();
 		}
 		System.out.println("*********** Remove Saved Schools Complete!!! ****************\n\n");
+		System.out.println("-_-_-_- DRIVER COMPLETE -_-_-_-");
 }
 }

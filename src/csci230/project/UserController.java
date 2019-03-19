@@ -282,7 +282,7 @@ public class UserController {
 	 */
 	public void resetPasswordByEmail(String userName) {
 		String to = userName;
-		String from = "CMCPhantomCommanders@gmail.com";
+		String from = "CMCPhantomCommanders";
 		String host = "localHost";
 		Properties properties=new Properties();  
 		properties.setProperty("mail.smtp.host", host);
@@ -292,8 +292,8 @@ public class UserController {
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(from));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-			message.setSubject("Your Password has been reset");
-			String abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+			message.setSubject("Your Password has been reset: CMC");
+			String abc = "ABCDEFGHIJKLMNPQRSTUVWXYZabcdefghijklmnpqrstuvwxyz123456789!@#$%^&*";
 			String newPass = "";
 			for(int i = 0; i < 8; i++) {
 				int n = (int)(abc.length() * Math.random());
@@ -304,7 +304,7 @@ public class UserController {
 					editUser(i.getFirstName(), i.getLastName(), i.getUserName(), newPass, i.getType(), i.getStatus());
 				}
 			}
-			message.setText("Password has been reset to: " + newPass);
+			message.setText("Dear User,\n\n Your CMC Password has been reset to: " + newPass+"\n\nPlease log in with this new password and change it.\n\nThanks,\nxXPhantomCommander$Xx");
 			
 			Transport.send(message);
 			}catch(MessagingException mex) {
