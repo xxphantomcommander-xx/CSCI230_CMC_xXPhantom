@@ -27,6 +27,8 @@ public class Driver {
 		al2.add("");
 		al2.add("");
 		al2.add("");
+	
+		
 		//University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0);
 		
 		
@@ -222,15 +224,7 @@ public class Driver {
 		
 		System.out.println("********** AddUser Complete!!! ***********\n\n");
 		
-		System.out.println("************* Edit User *************\n");
-		
-		System.out.println("Changing gavin");
-		ai.editUser("Dingus2.0", "Jahoyhoy", "GWOLLENBE001@csbsju.edu", "ww2", 'u', 'Y');
-		
-		System.out.println("************* Edit User Complete!!!! *************\n\n");
-		
-		System.out.println("********** ViewUsers ***********\n");
-		
+		System.out.println("********** ViewUsers ***********\n\n");
 		ArrayList<User> users = ai.viewUsers();
 		for(User i : users) {
 			System.out.println("First Name: " + i.getFirstName());
@@ -244,12 +238,22 @@ public class Driver {
 		
 		System.out.println("********** ViewUsers Complete!!! ***********\n\n");
 		
-		System.out.println("********** Remove Users ***********\n");
+		System.out.println("*********** resetPassword by Email **********\n");
+		ai.resetPasswordByEmail("ZHEINEN001@csbsju.edu");
+		for(User i : users) {
+			System.out.println("Username: " + i.getUserName());
+			System.out.println("Password: " + i.getPassword());
+			System.out.println();
+		}
 		
-		ai.deleteUser("GWOLLENBE001@csbsju.edu");
+		System.out.println("*********** resetPassword by Email Complete **********\n\n");
 		
-		ArrayList<User> users2 = ai.viewUsers();
-		for(User i : users2) {
+		System.out.println("************* Edit User *************\n");
+		
+		System.out.println("Changing gavin");
+		ai.editUser("Dingus2.0", "Jahoyhoy", "GWOLLENBE001@csbsju.edu", "ww2", 'u', 'Y');
+		ai.editUser("Zachary", "Heinen", "ZHEINEN001@csbsju.edu", "zaciscool", 'a', 'Y');
+		for(User i : users) {
 			System.out.println("First Name: " + i.getFirstName());
 			System.out.println("Last Name: " + i.getLastName());
 			System.out.println("Username: " + i.getUserName());
@@ -258,8 +262,23 @@ public class Driver {
 			System.out.println("Status: " + i.getStatus());
 			System.out.println();
 		}
+		System.out.println("************* Edit User Complete!!!! *************\n\n");
 		
-//		System.out.println("********** University Funtionalities ***********\n");
+		System.out.println("********** ViewUsers ***********\n");
+		
+		
+		System.out.println("********** Remove Users ***********\n");
+		
+		ai.deleteUser("GWOLLENBE001@csbsju.edu");
+		
+		for(User i : users) {
+			System.out.println("First Name: " + i.getFirstName());
+			System.out.println("Last Name: " + i.getLastName());
+			System.out.println("Username: " + i.getUserName());
+			System.out.println();
+		}
+		
+//		System.out.println("********** University Functionalities ***********\n");
 //		
 //		System.out.println("*********** Viewing University & view university details ***********\n");
 //		

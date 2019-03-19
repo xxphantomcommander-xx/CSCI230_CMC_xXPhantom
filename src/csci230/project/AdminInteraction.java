@@ -158,13 +158,6 @@ public class AdminInteraction {
 		 this.aFC.editSchool(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis);
 	}
 	
-	/**
-	 * Showcases the school of the week entered by the Admin
-	 * @param schoolName
-	 */
-	public void editSchoolOfTheWeek(String schoolName) {
-		//TODO finish this additional functionality
-	}
 	
 	/**
 	 * Displays the Universitie's names
@@ -180,7 +173,7 @@ public class AdminInteraction {
 	 * @param userName
 	 */
 	public void resetPasswordByEmail(String userName) {
-		//TODO finish this additional functionality
+	aFC.resetPasswordByEmail(userName);
 	}
 	
 	
@@ -190,9 +183,7 @@ public class AdminInteraction {
 	 */
 	public User viewMyProfile() {
 
-		return aFC.viewMyProfile();
-		//System.out.println(temp.getFirstName() + "\n" + temp.getLastName() + "\n" + temp.getUserName() + "\n" + temp.getPassword() + "\n" + temp.getType());
-		
+		return aFC.viewMyProfile();		
 	}
 	
 	/**
