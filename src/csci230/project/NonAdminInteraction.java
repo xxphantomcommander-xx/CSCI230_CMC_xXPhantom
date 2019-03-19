@@ -77,10 +77,10 @@ public class NonAdminInteraction {
 	
 	/**
 	 * sends email to user with new password
-	 * @param userName
+	 * @param username
 	 */
-	public void resetPasswordByEmail(String userName) {
-		//TODO finish this functionality
+	public void resetPasswordByEmail(String username) {
+		nAFC.resetPasswordByEmail(username);
 	}
 	
 	/**
@@ -151,8 +151,8 @@ public class NonAdminInteraction {
 	 * Displays the search history of the user
 	 * @param user
 	 */
-	public void viewHistory(String user){
-		//TODO finish this additional functionality
+	public ArrayList<String> viewHistory(){
+		return nAFC.viewHistory();
 	}
 	
 	/**
@@ -160,7 +160,7 @@ public class NonAdminInteraction {
 	 * @param savedSchool
 	 */
 	public void sortByState(List<University> savedSchool) {
-		//TODO finish this additional functionality
+		nAFC.sortByState(savedSchool);
 	}
 	
 	/**
@@ -168,7 +168,7 @@ public class NonAdminInteraction {
 	 * @param savedSchool
 	 */
 	public void sortBySize(List<University> savedSchool) {
-		//TODO finish this additional functionality
+		nAFC.sortBySize(savedSchool);
 	}
 	
 	/**
@@ -176,7 +176,7 @@ public class NonAdminInteraction {
 	 * @param savedSchool
 	 */
 	public void sortByName(List<University> savedSchool) {
-		//TODO finish this additional functionality
+		nAFC.sortByName(savedSchool);
 	}
 	
 	/**

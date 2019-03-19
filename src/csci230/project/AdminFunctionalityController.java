@@ -227,4 +227,12 @@ public class AdminFunctionalityController {
 		return univC.getSchoolOfTheWeek();
 	}
 	
+	/**
+	 * sends email to user with new password
+	 * @param userName
+	 */
+	public void resetPasswordByEmail(String userName) {
+	userC.resetPasswordByEmail(userName);
+	}
+	
 }

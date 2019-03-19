@@ -2,6 +2,11 @@ package csci230.project;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  * This class controls how Users objects interact
@@ -15,6 +20,7 @@ public class UserController {
 	private boolean isAdminLoggedIn = false;
 	private DBController dbCon;
 	private UniversityController univC;
+	private ArrayList<University> mySavedSchools = new ArrayList<University>();
 	//private User loggedOnUser;
 	
 	/**
@@ -23,6 +29,7 @@ public class UserController {
 	public UserController() {
 		dbCon = new DBController();
 		univC = new UniversityController();
+		mySavedSchools = dbCon.getSavedSchoolList();
 //		this.allUsers = dbCon.loadUsers(loggedOnUser.getUserName());
 //		this.loggedOnUser = dbCon.getLoggedOnUser();
 	}
@@ -97,6 +104,7 @@ public class UserController {
 	 */
 	public void logOut() {
 		dbCon.logOut();
+		univC.clearHistory();
 	}
 	
 	
@@ -127,30 +135,6 @@ public class UserController {
 //		  char type = loggedOnUser.getType();
 //		  char status = loggedOnUser.getStatus();
 		  //System.out.println("First Name: "+ first + "\t"+"Last Name: "+ last + "\t"+"Username: "+ username + "\t"+"Password: "+ password + "\t\t"+"Type: "+ type + "\t\t"+"Status: "+ status + "\t");
-	}
-	
-	/**
-	 * sorts by state
-	 * @param savedSchools saved schools
-	 */
-	public void sortByState(List<University> savedSchools) {
-		
-	}
-	
-	/**
-	 * sorts by size
-	 * @param savedSchools saved schools
-	 */
-	public void sortBySize(List<University> savedSchools) {
-		
-	}
-	
-	/**
-	 * sorts by name
-	 * @param savedSchools saved schools
-	 */
-	public void sortByName(List<University> savedSchools) {
-		
 	}
 	
 	  /**
@@ -262,7 +246,8 @@ public class UserController {
 	 * @return list of Saved Schools connected to a user
 	 */
 	public ArrayList<University> viewSavedSchools() {
-		return dbCon.getSavedSchoolList();
+		
+		return mySavedSchools;
 	}
 	
 	/**
@@ -288,5 +273,276 @@ public class UserController {
 	 */
 	public void deleteUser(String username) {
 		dbCon.deleteUser(username);
+	}
+	
+	/**
+	 * sends email to user with new password
+	 * @param userName
+	 */
+	public void resetPasswordByEmail(String userName) {
+		String to = userName;
+		String from = "CMCPhantomCommanders@gmail.com";
+		String host = "localHost";
+		Properties properties=new Properties();  
+		properties.setProperty("mail.smtp.host", host);
+		Session session=Session.getDefaultInstance(properties);  
+		
+		try {
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(from));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			message.setSubject("Your Password has been reset");
+			String abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+			String newPass = "";
+			for(int i = 0; i < 8; i++) {
+				int n = (int)(abc.length() * Math.random());
+				newPass = newPass + abc.charAt(n);
+			}
+			for(User i : viewUsers()) {
+				if(userName.equals(i.getUserName())) {
+					editUser(i.getFirstName(), i.getLastName(), i.getUserName(), newPass, i.getType(), i.getStatus());
+				}
+			}
+			message.setText("Password has been reset to: " + newPass);
+			
+			Transport.send(message);
+			}catch(MessagingException mex) {
+				mex.printStackTrace();}
+	}
+	
+	/**
+	 * Sorts alphabetically by state
+	 * @param whole
+	 * @return
+	 */
+	private ArrayList<University> mergeSortState(ArrayList<University> whole)
+	{
+		ArrayList<University> left = new ArrayList<University>();
+		ArrayList<University> right = new ArrayList<University>();
+		int center;
+		
+		if (whole.size() == 1)
+		{
+			return whole;
+		}
+		else 
+		{
+			center = whole.size()/2;
+			for (int i = 0; i < center ; i++)
+			{
+				left.add(whole.get(i));
+			}
+			for (int i = center; i < whole.size(); i++)
+			{
+				right.add(whole.get(i));
+			}
+			left = mergeSortState(left);
+			right = mergeSortState(right);
+			mergeState(left, right, whole);
+		}
+		return whole;
+	}
+	
+	/**
+	 * Merge alphabetically by state
+	 * @param left
+	 * @param right
+	 * @param whole
+	 */
+	private void mergeState(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int wholeIndex = 0;
+ 
+        // As long as neither the left nor the right ArrayList has
+        // been used up, keep taking the smaller of left.get(leftIndex)
+        // or right.get(rightIndex) and adding it at both.get(bothIndex).
+        while (leftIndex < left.size() && rightIndex < right.size()) {
+            if ( (left.get(leftIndex).getState().compareTo((right.get(rightIndex).getState())) > 0)) {
+                whole.set(wholeIndex, left.get(leftIndex));
+                leftIndex++;
+            } else {
+                whole.set(wholeIndex, right.get(rightIndex));
+                rightIndex++;
+            }
+            wholeIndex++;
+        }
+	}
+        
+        /**
+         * Sorts alphabetically by size
+         * @param whole
+         * @return
+         */
+    	private ArrayList<University> mergeSortSize(ArrayList<University> whole)
+    	{
+    		ArrayList<University> left = new ArrayList<University>();
+    		ArrayList<University> right = new ArrayList<University>();
+    		int center;
+    		
+    		if (whole.size() == 1)
+    		{
+    			return whole;
+    		}
+    		else 
+    		{
+    			center = whole.size()/2;
+    			for (int i = 0; i < center ; i++)
+    			{
+    				left.add(whole.get(i));
+    			}
+    			for (int i = center; i < whole.size(); i++)
+    			{
+    				right.add(whole.get(i));
+    			}
+    			left = mergeSortSize(left);
+    			right = mergeSortSize(right);
+    			mergeSize(left, right, whole);
+    		}
+    		return whole;
+    	}
+
+    	
+    	/**
+    	 * 
+    	 * @param left
+    	 * @param right
+    	 * @param whole
+    	 */
+    	private void mergeSize(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
+            int leftIndex = 0;
+            int rightIndex = 0;
+            int wholeIndex = 0;
+     
+            // As long as neither the left nor the right ArrayList has
+            // been used up, keep taking the smaller of left.get(leftIndex)
+            // or right.get(rightIndex) and adding it at both.get(bothIndex).
+            while (leftIndex < left.size() && rightIndex < right.size()) {
+                if ( (left.get(leftIndex).getNumOfStudents() > right.get(rightIndex).getNumOfStudents())) {
+                    whole.set(wholeIndex, left.get(leftIndex));
+                    leftIndex++;
+                } else {
+                    whole.set(wholeIndex, right.get(rightIndex));
+                    rightIndex++;
+                }
+                wholeIndex++;
+            }
+ 
+        ArrayList<University> rest;
+        int restIndex;
+        if (leftIndex >= left.size()) {
+            // The left ArrayList has been use up...
+            rest = right;
+            restIndex = rightIndex;
+        } else {
+            // The right ArrayList has been used up...
+            rest = left;
+            restIndex = leftIndex;
+        }
+ 
+        // Copy the rest of whichever ArrayList (left or right) was not used up.
+        for (int i=restIndex; i<rest.size(); i++) {
+            whole.set(wholeIndex, rest.get(i));
+            wholeIndex++;
+        }
+    }
+    	
+            
+            /**
+             * Sorts alphabetically by size
+             * @param whole
+             * @return
+             */
+        	private ArrayList<University> mergeSortName(ArrayList<University> whole)
+        	{
+        		ArrayList<University> left = new ArrayList<University>();
+        		ArrayList<University> right = new ArrayList<University>();
+        		int center;
+        		
+        		if (whole.size() == 1)
+        		{
+        			return whole;
+        		}
+        		else 
+        		{
+        			center = whole.size()/2;
+        			for (int i = 0; i < center ; i++)
+        			{
+        				left.add(whole.get(i));
+        			}
+        			for (int i = center; i < whole.size(); i++)
+        			{
+        				right.add(whole.get(i));
+        			}
+        			left = mergeSortName(left);
+        			right = mergeSortName(right);
+        			mergeName(left, right, whole);
+        		}
+        		return whole;
+        	}
+        	
+        	/**
+        	 * Merge alphabetically by state
+        	 * @param left
+        	 * @param right
+        	 * @param whole
+        	 */
+        	private void mergeName(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
+                int leftIndex = 0;
+                int rightIndex = 0;
+                int wholeIndex = 0;
+         
+                // As long as neither the left nor the right ArrayList has
+                // been used up, keep taking the smaller of left.get(leftIndex)
+                // or right.get(rightIndex) and adding it at both.get(bothIndex).
+                while (leftIndex < left.size() && rightIndex < right.size()) {
+                    if ( (left.get(leftIndex).getSchoolName().compareTo((right.get(rightIndex).getSchoolName())) > 0)) {
+                        whole.set(wholeIndex, left.get(leftIndex));
+                        leftIndex++;
+                    } else {
+                        whole.set(wholeIndex, right.get(rightIndex));
+                        rightIndex++;
+                    }
+                    wholeIndex++;
+                }
+        	}
+	
+	/**
+	 * lists out the saved schools sorted by the state alphabetically
+	 * @param savedSchools
+	 */
+	public void sortByState(List<University> savedSchools) {
+		ArrayList<University> temp = new ArrayList<University>();
+		temp = viewSavedSchools();
+		for(University i:mergeSortState(univC.viewUniversities())){
+			temp.add(i);
+		}
+		mySavedSchools = temp;
+	}
+	
+	/**
+	 * lists out the saved schools sorted by the size
+	 * @param savedSchools
+	 */
+	public void sortBySize(List<University> savedSchools) {
+		ArrayList<University> temp = new ArrayList<University>();
+		temp = viewSavedSchools();
+		for(University i:mergeSortSize(univC.viewUniversities())){
+			temp.add(i);
+		}
+		mySavedSchools = temp;
+	}
+	
+	/**
+	 * lists out the saved schools sorted by the name alphabetically
+	 * @param savedSchools
+	 */
+	public void sortByName(List<University> savedSchools) {
+		ArrayList<University> temp = new ArrayList<University>();
+		temp = viewSavedSchools();
+		for(University i: mergeSortName(univC.viewUniversities())) {
+			temp.add(i);
+		}
+		mySavedSchools = temp;
 	}
 }
