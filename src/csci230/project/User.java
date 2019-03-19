@@ -1,8 +1,8 @@
 package csci230.project;
 /**
  * this class will act as a super class for both non-admin and admin users
- * @author: Gavin Wollenberg
- * @version: 3/10/19
+ * @author: xXPhantomCommander$Xx
+ * @version: 3/19/19
  */
 
 public class User {
@@ -18,7 +18,15 @@ public class User {
   protected char type;
   //status of user (active or deactivated)
   protected char status;
-
+/**
+ * constructor
+ * @param firstName
+ * @param lastName
+ * @param userName
+ * @param password
+ * @param type
+ * @param status
+ */
   public User(java.lang.String firstName, java.lang.String lastName, java.lang.String userName,
 			java.lang.String password, char type, char status) {
 		this.firstName = firstName;

@@ -9,19 +9,24 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * This class controls how Users objects interact
+ * This class controls how User objects interact
  * with the system
- * @author andrewbreyen
- * @version 3/10/19
+ * @author xXPhantomCommander$Xx
+ * @version 3/19/19
  */
 
 public class UserController {
+	// boolean to check if the non-admin is logged in
 	private boolean isLoggedIn = false;
+	// boolean to check if the admin is logged in
 	private boolean isAdminLoggedIn = false;
+	// an instance of the DBController
 	private DBController dbCon;
+	// an instance of the UniversityController
 	private UniversityController univC;
+	// An arraylist of universities for a users saved schools
 	private ArrayList<University> mySavedSchools = new ArrayList<University>();
-	//private User loggedOnUser;
+
 	
 	/**
 	 * constructor
@@ -30,8 +35,6 @@ public class UserController {
 		dbCon = new DBController();
 		univC = new UniversityController();
 		//mySavedSchools = dbCon.getSavedSchoolList();
-//		this.allUsers = dbCon.loadUsers(loggedOnUser.getUserName());
-//		this.loggedOnUser = dbCon.getLoggedOnUser();
 	}
 	
 	/**
@@ -59,7 +62,6 @@ public class UserController {
 							isLoggedIn = true;
 							dbCon.loadUniversities();
 							dbCon.loadUsers(username);
-							//loggedOnUser = dbCon.getLoggedOnUser();
 							return;
 						}
 						else
@@ -67,16 +69,15 @@ public class UserController {
 							//user type IS admin
 							isAdminLoggedIn = true;
 							dbCon.loadUniversities();
-							dbCon.loadUsers(username);
-							//loggedOnUser = dbCon.getLoggedOnUser();
+							dbCon.loadUsers(username);						
 							return;
 						}
 					}
 					else
 					{
 						//user status IS inactive
-//						System.out.println("User status is inactive");
-//						return;
+						System.out.println("User status is inactive");
+						return;
 					}
 				}
 				else
@@ -84,17 +85,12 @@ public class UserController {
 					//password IS incorrect
 					isLoggedIn = false;
 					isAdminLoggedIn = false;
-//					System.out.println("Password incorrect.");
-//					return;
+
 				}
 			}
-			
-			else {
-				//System.out.println(username +" Username incorrect.");
-				//return;
-			}
+
 		}
-		
+		System.out.println("Username or Password is incorrect");
 	}
 	
 	
@@ -128,13 +124,6 @@ public class UserController {
 	 */
 	public User viewMyProfile() {
 		return dbCon.getLoggedOnUser();
-//		  String first = loggedOnUser.getFirstName();
-//		  String last = loggedOnUser.getLastName();
-//		  String username = loggedOnUser.getUserName();
-//		  String password = loggedOnUser.getPassword();
-//		  char type = loggedOnUser.getType();
-//		  char status = loggedOnUser.getStatus();
-		  //System.out.println("First Name: "+ first + "\t"+"Last Name: "+ last + "\t"+"Username: "+ username + "\t"+"Password: "+ password + "\t\t"+"Type: "+ type + "\t\t"+"Status: "+ status + "\t");
 	}
 	
 	  /**
@@ -160,16 +149,9 @@ public class UserController {
 	   * @return arraylist of users
 	   */
 	  public ArrayList<User> viewUsers(){
-		 // if(dbCon.getLoggedOnUser().getType() == 'a') {
 			  ArrayList<User> users = new ArrayList<User>();
 				users = dbCon.getAllUsers();
 				  return users;
-			  
-		  //}
-		  //else {
-			//  System.out.println("Currently logged in user is not an admin");
-		//	  return null;
-		 // }
 		  
 	  }
 	  
@@ -203,6 +185,39 @@ public class UserController {
 	  }
 	  		
 	
+	/**
+	 * searches for schools
+	 * @param sch
+	 * @param st
+	 * @param l
+	 * @param c
+	 * @param nStuLow
+	 * @param nStuHigh
+	 * @param prctfLow
+	 * @param prctfHigh
+	 * @param svLow
+	 * @param svHigh
+	 * @param smLow
+	 * @param smHigh
+	 * @param eLow
+	 * @param eHigh
+	 * @param prctfinLow
+	 * @param prctfinHigh
+	 * @param nApLow
+	 * @param nApHigh
+	 * @param prctaLow
+	 * @param prctaHigh
+	 * @param prcteLow
+	 * @param prcteHigh
+	 * @param asLow
+	 * @param asHigh
+	 * @param ssLow
+	 * @param ssHigh
+	 * @param qLow
+	 * @param qHigh
+	 * @param emp
+	 * @return arraylist of schools matching the search criteria
+	 */
 	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
 			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, ArrayList<String> emp)
@@ -247,8 +262,7 @@ public class UserController {
 	 * @return list of Saved Schools connected to a user
 	 */
 	public ArrayList<University> viewSavedSchools() {
-		
-		return mySavedSchools;
+		return dbCon.getSavedSchoolList();
 	}
 	
 	/**
@@ -304,7 +318,7 @@ public class UserController {
 					editUser(i.getFirstName(), i.getLastName(), i.getUserName(), newPass, i.getType(), i.getStatus());
 				}
 			}
-			message.setText("Dear User,\n\n Your CMC Password has been reset to: " + newPass+"\n\nPlease log in with this new password and change it.\n\nThanks,\nxXPhantomCommander$Xx");
+			message.setText("Dear User,\n\n Your CMC Password has been reset to: \n" + newPass+"\n\nPlease log in with this new password and change it.\n\nThanks,\nxXPhantomCommander$Xx");
 			
 			Transport.send(message);
 			}catch(MessagingException mex) {
@@ -312,11 +326,11 @@ public class UserController {
 	}
 	
 	/**
-	 * Sorts alphabetically by state
+	 * Sorts by percent enrolled
 	 * @param whole
-	 * @return
+	 * @return an arraylist of universities in order of percent enrolled
 	 */
-	private ArrayList<University> mergeSortState(ArrayList<University> whole)
+	private ArrayList<University> mergeSortPerEnrolled(ArrayList<University> whole)
 	{
 		ArrayList<University> left = new ArrayList<University>();
 		ArrayList<University> right = new ArrayList<University>();
@@ -337,20 +351,20 @@ public class UserController {
 			{
 				right.add(whole.get(i));
 			}
-			left = mergeSortState(left);
-			right = mergeSortState(right);
-			mergeState(left, right, whole);
+			left = mergeSortPerEnrolled(left);
+			right = mergeSortPerEnrolled(right);
+			mergePerEnrolled(left, right, whole);
 		}
 		return whole;
 	}
 	
 	/**
-	 * Merge alphabetically by state
+	 * Merge by percent enrolled
 	 * @param left
 	 * @param right
 	 * @param whole
 	 */
-	private void mergeState(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
+	private void mergePerEnrolled(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
         int leftIndex = 0;
         int rightIndex = 0;
         int wholeIndex = 0;
@@ -359,7 +373,7 @@ public class UserController {
         // been used up, keep taking the smaller of left.get(leftIndex)
         // or right.get(rightIndex) and adding it at both.get(bothIndex).
         while (leftIndex < left.size() && rightIndex < right.size()) {
-            if ( (left.get(leftIndex).getState().compareTo((right.get(rightIndex).getState())) > 0)) {
+            if (left.get(leftIndex).getPerEnrolled() > right.get(rightIndex).getPerEnrolled()) {
                 whole.set(wholeIndex, left.get(leftIndex));
                 leftIndex++;
             } else {
@@ -371,9 +385,9 @@ public class UserController {
 	}
         
         /**
-         * Sorts alphabetically by size
+         * Sorts by size
          * @param whole
-         * @return
+         * @return arraylist of universities sorted by number of students
          */
     	private ArrayList<University> mergeSortSize(ArrayList<University> whole)
     	{
@@ -405,7 +419,7 @@ public class UserController {
 
     	
     	/**
-    	 * 
+    	 * merge for size
     	 * @param left
     	 * @param right
     	 * @param whole
@@ -419,7 +433,7 @@ public class UserController {
             // been used up, keep taking the smaller of left.get(leftIndex)
             // or right.get(rightIndex) and adding it at both.get(bothIndex).
             while (leftIndex < left.size() && rightIndex < right.size()) {
-                if ( (left.get(leftIndex).getNumOfStudents() > right.get(rightIndex).getNumOfStudents())) {
+                if ( left.get(leftIndex).getNumOfStudents() > right.get(rightIndex).getNumOfStudents()) {
                     whole.set(wholeIndex, left.get(leftIndex));
                     leftIndex++;
                 } else {
@@ -449,76 +463,90 @@ public class UserController {
     }
     	
             
-            /**
-             * Sorts alphabetically by size
-             * @param whole
-             * @return
-             */
-        	private ArrayList<University> mergeSortName(ArrayList<University> whole)
-        	{
-        		ArrayList<University> left = new ArrayList<University>();
-        		ArrayList<University> right = new ArrayList<University>();
-        		int center;
-        		
-        		if (whole.size() == 1)
-        		{
-        			return whole;
-        		}
-        		else 
-        		{
-        			center = whole.size()/2;
-        			for (int i = 0; i < center ; i++)
-        			{
-        				left.add(whole.get(i));
-        			}
-        			for (int i = center; i < whole.size(); i++)
-        			{
-        				right.add(whole.get(i));
-        			}
-        			left = mergeSortName(left);
-        			right = mergeSortName(right);
-        			mergeName(left, right, whole);
-        		}
-        		return whole;
-        	}
-        	
-        	/**
-        	 * Merge alphabetically by state
-        	 * @param left
-        	 * @param right
-        	 * @param whole
-        	 */
-        	private void mergeName(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
-                int leftIndex = 0;
-                int rightIndex = 0;
-                int wholeIndex = 0;
-         
-                // As long as neither the left nor the right ArrayList has
-                // been used up, keep taking the smaller of left.get(leftIndex)
-                // or right.get(rightIndex) and adding it at both.get(bothIndex).
-                while (leftIndex < left.size() && rightIndex < right.size()) {
-                    if ( (left.get(leftIndex).getSchoolName().compareTo((right.get(rightIndex).getSchoolName())) > 0)) {
-                        whole.set(wholeIndex, left.get(leftIndex));
-                        leftIndex++;
-                    } else {
-                        whole.set(wholeIndex, right.get(rightIndex));
-                        rightIndex++;
-                    }
-                    wholeIndex++;
+    	/**
+    	 * sorts by expenses
+    	 * @param whole
+    	 * @return an arraylist of universities in order of expences
+    	 */
+    	private ArrayList<University> mergeSortExpense(ArrayList<University> whole)
+    	{
+    		ArrayList<University> left = new ArrayList<University>();
+    		ArrayList<University> right = new ArrayList<University>();
+    		int center;
+    		
+    		if (whole.size() == 1)
+    		{
+    			return whole;
+    		}
+    		else 
+    		{
+    			center = whole.size()/2;
+    			for (int i = 0; i < center ; i++)
+    			{
+    				left.add(whole.get(i));
+    			}
+    			for (int i = center; i < whole.size(); i++)
+    			{
+    				right.add(whole.get(i));
+    			}
+    			left = mergeSortExpense(left);
+    			right = mergeSortExpense(right);
+    			mergeExpense(left, right, whole);
+    		}
+    		return whole;
+    	}
+
+    	
+    	/**
+    	 * merge by expenses
+    	 * @param left
+    	 * @param right
+    	 * @param whole
+    	 */
+    	private void mergeExpense(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
+            int leftIndex = 0;
+            int rightIndex = 0;
+            int wholeIndex = 0;
+     
+            // As long as neither the left nor the right ArrayList has
+            // been used up, keep taking the smaller of left.get(leftIndex)
+            // or right.get(rightIndex) and adding it at both.get(bothIndex).
+            while (leftIndex < left.size() && rightIndex < right.size()) {
+                if ( left.get(leftIndex).getExpenses() > right.get(rightIndex).getExpenses()) {
+                    whole.set(wholeIndex, left.get(leftIndex));
+                    leftIndex++;
+                } else {
+                    whole.set(wholeIndex, right.get(rightIndex));
+                    rightIndex++;
                 }
-        	}
+                wholeIndex++;
+            }
+ 
+        ArrayList<University> rest;
+        int restIndex;
+        if (leftIndex >= left.size()) {
+            // The left ArrayList has been use up...
+            rest = right;
+            restIndex = rightIndex;
+        } else {
+            // The right ArrayList has been used up...
+            rest = left;
+            restIndex = leftIndex;
+        }
+ 
+        // Copy the rest of whichever ArrayList (left or right) was not used up.
+        for (int i=restIndex; i<rest.size(); i++) {
+            whole.set(wholeIndex, rest.get(i));
+            wholeIndex++;
+        }
+    }
 	
 	/**
 	 * lists out the saved schools sorted by the state alphabetically
 	 * @param savedSchools
 	 */
-	public void sortByState(List<University> savedSchools) {
-		ArrayList<University> temp = new ArrayList<University>();
-		temp = viewSavedSchools();
-		for(University i:mergeSortState(univC.viewUniversities())){
-			temp.add(i);
-		}
-		mySavedSchools = temp;
+	public void sortByPerEnrolled(List<University> savedSchools) {
+		mySavedSchools = mergeSortPerEnrolled(viewSavedSchools());
 	}
 	
 	/**
@@ -526,24 +554,22 @@ public class UserController {
 	 * @param savedSchools
 	 */
 	public void sortBySize(List<University> savedSchools) {
-		ArrayList<University> temp = new ArrayList<University>();
-		temp = viewSavedSchools();
-		for(University i:mergeSortSize(univC.viewUniversities())){
-			temp.add(i);
-		}
-		mySavedSchools = temp;
+		mySavedSchools = mergeSortSize(viewSavedSchools());
 	}
 	
 	/**
 	 * lists out the saved schools sorted by the name alphabetically
 	 * @param savedSchools
 	 */
-	public void sortByName(List<University> savedSchools) {
-		ArrayList<University> temp = new ArrayList<University>();
-		temp = viewSavedSchools();
-		for(University i: mergeSortName(univC.viewUniversities())) {
-			temp.add(i);
-		}
-		mySavedSchools = temp;
+	public void sortByExpense(List<University> savedSchools) {
+		mySavedSchools = mergeSortExpense(viewSavedSchools());
+	}
+	
+	/**
+	 * able to view the your saved school's list
+	 * @return list of Saved Schools connected to a user
+	 */
+	public ArrayList<University> viewSortedSavedSchools() {
+		return mySavedSchools;
 	}
 }

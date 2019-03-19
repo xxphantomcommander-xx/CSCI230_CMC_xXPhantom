@@ -6,13 +6,15 @@ import java.util.ArrayList;
 /**
  * This class accesses the raw information from the database
  * can remove and save new users and schools to database
- * @author zheinen001
- * @version 3/10/19
+ * @author xXPhantomCommander$Xx
+ * @version 3/19/19
  */
 public class DBController {
+	// a variable to set who the logged on user is
 	private User loggedOnUser;
+	// an instance of university controller
 	private UniversityController univC;
-	//private UserController userC;
+	// an arraylist of users
 	private ArrayList<User> allUsers = new ArrayList<User>();
 	
 
@@ -25,8 +27,6 @@ public class DBController {
 	 */
 	public DBController() {
 		univDBlib = new UniversityDBLibrary("xxphanto", "csci230");
-		//univC = new UniversityController();
-		//userC = new UserController();
 	}
 	
 	/**
@@ -36,7 +36,7 @@ public class DBController {
 	 */
 	public void saveUniversities(University school)
 	{
-		univDBlib.user_saveSchool(loggedOnUser.getUserName(), school.getSchoolName());
+		univDBlib.user_saveSchool(loggedOnUser.getUserName(), school.getSchoolName().toUpperCase());
 	}
 	
 	/*
@@ -49,7 +49,7 @@ public class DBController {
 		return univDBlib.user_getUsers();
 	}
 
-	/*e
+	/*
 	 * gets a list of saved schools for
 	 * a specific user from the database
 	 * @return an arrayList of universities saved by the user
@@ -59,12 +59,20 @@ public class DBController {
 		ArrayList<University> savedUnivs = new ArrayList<University>();
 		String [][] usersSavedUnivs = univDBlib.user_getUsernamesWithSavedSchools();
 		ArrayList<String> al = new ArrayList<String>();
+		al.add("");
+		al.add("");
+		al.add("");
+		al.add("");
+		al.add("");
 		User loggedOnUser2 = getLoggedOnUser();
 		for(int i = 0; i < usersSavedUnivs.length; i++) {
 			
 			if(usersSavedUnivs[i][0].equals(loggedOnUser2.getUserName())) {
-				University temp = univC.searchSchools(usersSavedUnivs[i][1], "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al).get(0);
-				savedUnivs.add(temp);
+				ArrayList<University> temp = new ArrayList<University>();
+				NonAdminFunctionalityController nai = new NonAdminFunctionalityController();
+				temp = nai.searchSchools(usersSavedUnivs[i][1], "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
+				savedUnivs.add(temp.get(0));
+				
 			}
 		}
 		return savedUnivs;
@@ -239,8 +247,6 @@ public class DBController {
 			univ.add(temp);
 		}
 
-		
-		//System.out.println(univEmp[0][1]);
 		return univ;
 		
 	}
@@ -274,14 +280,17 @@ public class DBController {
 		  return loggedOnUser;
 	  
 }
+	
+	/**
+	 * gets all users from the database and puts them in an arraylist of users
+	 * @return arraylist of all users
+	 */
 	public ArrayList<User> getAllUsers()
 	{
 		String [][] userString = getUsers();
-		//ArrayList<User> users = new ArrayList<User>();
 		for (int i = 0; i < userString.length; i++)
 		{
 			
-			//User u = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
 			
 			if ("u".equals(userString[i][4]))
 			{
@@ -301,6 +310,9 @@ public class DBController {
 		return this.allUsers;
 	}
 	
+	/**
+	 * logs out user
+	 */
 	public void logOut()
 	{
 		loggedOnUser = null;

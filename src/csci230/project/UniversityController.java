@@ -7,14 +7,18 @@ import java.util.List;
 /**
  * This class controls how Universities object interact 
  * with the system
- * @author zheinen001
- * @version 3/10/19
+ * @author xXPhantomCommander$Xx
+ * @version 3/19/19
  */
 public class UniversityController {
+	// creates an instance of a DBController
 	private DBController dbCon;
+	// Arraylist of all universities
 	private ArrayList<University> allUnivs;
+	// University that is the school of the week
 	private University schoolOfTheWeek;
-	private ArrayList<String> history = new ArrayList<String>();
+	// ArrayList of universities that contains the top result of all searches
+	private ArrayList<University> history = new ArrayList<University>();
 	/**
 	 * Constructor for University controller
 	 */
@@ -68,6 +72,7 @@ public class UniversityController {
 				(searchByPercentFinAid(searchByExpenses(searchBySATMath(searchBySATVerbal(searchByPercentFemale(searchByNumOfStudents(searchByControl(searchByState(searchBySchool(searchList, sch), st),  c),nStuLow, nStuHigh)
 				, prctfLow, prctfHigh), svLow, svHigh), smLow, smHigh), eLow, eHigh), prctfinLow, prctfinHigh), nApLow, nApHigh), prctaLow, prctaHigh), prcteLow, prcteHigh),
 				asLow, asHigh), ssLow, ssHigh), qLow, qHigh), emp);
+		history.add(results.get(0));
 		//for(University i: results) {
 //			System.out.println(i.getSchoolName());
 
@@ -75,6 +80,12 @@ public class UniversityController {
 		return results;
 	}
 	
+	/**
+	 * Searches based on the school name
+	 * @param temp
+	 * @param sch
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchBySchool(ArrayList<University> temp, String sch)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -94,7 +105,12 @@ public class UniversityController {
 			return matchedSchools;
 		}
 	}
-	
+	/**
+	 * Searches based on the state
+	 * @param temp
+	 * @param st
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByState(ArrayList<University> temp, String st)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -117,7 +133,12 @@ public class UniversityController {
 
 		}
 	
-	
+	/**
+	 * Searches based on the control
+	 * @param temp
+	 * @param c
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByControl(ArrayList<University> temp, String c)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -140,7 +161,13 @@ public class UniversityController {
 	
 	}
 	
-	
+	/**
+	 * Searches based on the number of students
+	 * @param temp
+	 * @param nStuLow
+	 * @param nStuHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByNumOfStudents(ArrayList<University> temp, int nStuLow, int nStuHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -160,7 +187,13 @@ public class UniversityController {
 			
 		}
 	}
-	
+	/**
+	 * Searches based on the percent female
+	 * @param temp
+	 * @param prctfLow
+	 * @param prctfHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByPercentFemale(ArrayList<University> temp, int prctfLow, int prctfHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -179,7 +212,13 @@ public class UniversityController {
 			return matchedSchools;
 		}
 	}
-	
+	/**
+	 * Searches based on the SAT verbal
+	 * @param temp
+	 * @param svLow
+	 * @param svHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchBySATVerbal(ArrayList<University> temp, int svLow, int svHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -199,7 +238,13 @@ public class UniversityController {
 			
 		}
 	}
-	
+	/**
+	 * Searches based on the SAT math
+	 * @param temp
+	 * @param smLow
+	 * @param smHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchBySATMath(ArrayList<University> temp, int smLow, int smHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -219,7 +264,13 @@ public class UniversityController {
 
 		}
 	}
-	
+	/**
+	 * Searches based on the Expenses
+	 * @param temp
+	 * @param eLow
+	 * @param eHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByExpenses(ArrayList<University> temp, int eLow, int eHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -239,7 +290,13 @@ public class UniversityController {
 
 		}
 	}
-	
+	/**
+	 * Searches based on the percent financial aid
+	 * @param temp
+	 * @param prctfinLow
+	 * @param prctfinHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByPercentFinAid(ArrayList<University> temp, int prctfinLow, int prctfinHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -259,7 +316,13 @@ public class UniversityController {
 
 		}
 	}
-	
+	/**
+	 * Searches based on the number of applicants
+	 * @param temp
+	 * @param nApLow
+	 * @param nApHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByNumOfApps(ArrayList<University> temp, int nApLow, int nApHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -279,7 +342,13 @@ public class UniversityController {
 
 		}
 	}
-	
+	/**
+	 * Searches based on the percent admitted
+	 * @param temp
+	 * @param prctaLow
+	 * @param prctaHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByPercAdmitted(ArrayList<University> temp, int prctaLow, int prctaHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -299,7 +368,13 @@ public class UniversityController {
 
 		}
 	}
-	
+	/**
+	 * Searches based on the percent enrolled
+	 * @param temp
+	 * @param prcteLow
+	 * @param prcteHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByPercEnrolled(ArrayList<University> temp, int prcteLow, int prcteHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -319,7 +394,13 @@ public class UniversityController {
 
 		}
 	}
-	
+	/**
+	 * Searches based on the academic scale
+	 * @param temp
+	 * @param asLow
+	 * @param asHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByAcademicScale(ArrayList<University> temp, int asLow, int asHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -339,7 +420,13 @@ public class UniversityController {
 
 		}
 	}
-	
+	/**
+	 * Searches based on the social scale
+	 * @param temp
+	 * @param ssLow
+	 * @param ssHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchBySocialLife(ArrayList<University> temp, int ssLow, int ssHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -359,7 +446,13 @@ public class UniversityController {
 
 		}
 	}
-	
+	/**
+	 * Searches based on the quality of life
+	 * @param temp
+	 * @param qLow
+	 * @param qHigh
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByQualityOfLife(ArrayList<University> temp, int qLow, int qHigh)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -379,7 +472,12 @@ public class UniversityController {
 
 		}
 	}
-	
+	/**
+	 * Searches based on the emphasis
+	 * @param temp
+	 * @param emp
+	 * @return ArrayList of all universities matching search criteria
+	 */
 	private ArrayList<University> searchByEmphasis(ArrayList<University> temp, ArrayList<String> emp)
 	{
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -597,21 +695,19 @@ public class UniversityController {
 			recommend.add(i);
 		}
 		
-//		for (int i = 0 ; i < recomend.size() ; i++)
-//		{
-//			recomend.get(i).getCount();
-//			
-//		}
+
 		ArrayList<University> sortedSchools = mergeSort(recommend);
-//		for (int i = 1 ; i <= 5 ; i++)
-//		{
-//			System.out.println(sortedSchools.get(i).getSchoolName());
-//		}
+
 		return sortedSchools;
 		
 
 	}
 	
+	/**
+	 * merge sort for the counts of universities
+	 * @param whole
+	 * @return the arraylist of universities sorted by their count
+	 */
 	private ArrayList<University> mergeSort(ArrayList<University> whole)
 	{
 		ArrayList<University> left = new ArrayList<University>();
@@ -640,6 +736,12 @@ public class UniversityController {
 		return whole;
 	}
 	
+	/**
+	 * helper method for mergeSort
+	 * @param left
+	 * @param right
+	 * @param whole
+	 */
 	private void merge(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
         int leftIndex = 0;
         int rightIndex = 0;
@@ -684,7 +786,7 @@ public class UniversityController {
 	 */
 	public ArrayList<University> topRecommended2(University univ)
 	{
-		ArrayList<University> recommend = new ArrayList<University>();
+		
 		double maxStudents = 0;
 		double minStudents = 0;
 		double maxPrctFem = 0;
@@ -1115,6 +1217,11 @@ public class UniversityController {
 		
 	}
 	
+	/**
+	 * merge sorts based on the distance value of the universities
+	 * @param whole
+	 * @return Arraylist of universities sorted by distance
+	 */
 	private ArrayList<University> mergeSort2(ArrayList<University> whole)
 	{
 		ArrayList<University> left = new ArrayList<University>();
@@ -1143,6 +1250,12 @@ public class UniversityController {
 		return whole;
 	}
 	
+	/**
+	 * helper method for mergeSort2
+	 * @param left
+	 * @param right
+	 * @param whole
+	 */
 	private void merge2(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
         int leftIndex = 0;
         int rightIndex = 0;
@@ -1362,7 +1475,6 @@ public class UniversityController {
 		for(String i:univ.getEmp()) {
 			details.add(i);
 		}
-		history.add(univ.getSchoolName());
 		return details;
 	}
 
@@ -1496,7 +1608,7 @@ public class UniversityController {
 	 * Displays the search history of the user
 	 * @param user
 	 */
-	public ArrayList<String> viewHistory(){
+	public ArrayList<University> viewHistory(){
 		return history;
 	}
 	
@@ -1507,6 +1619,11 @@ public class UniversityController {
 		history.clear();
 	}
 	
+	/**
+	 * uses toprecommend and toprecommend2 to make a more accurate recommendation system
+	 * @param univ
+	 * @return top 5 recommended schools
+	 */
 	public ArrayList<University> superRecommend(University univ){
 		ArrayList<University> tc = new ArrayList<University>();
 		tc = topRecommended(univ);
@@ -1521,6 +1638,11 @@ public class UniversityController {
 		return sortedSchools;
 	}
 	
+	/**
+	 * merge sorts the arraylist of universities based on the Sup value universities
+	 * @param whole
+	 * @return a sorted arraylist based on Sup
+	 */
 	private ArrayList<University> mergeSort3(ArrayList<University> whole)
 	{
 		ArrayList<University> left = new ArrayList<University>();
@@ -1549,6 +1671,12 @@ public class UniversityController {
 		return whole;
 	}
 	
+	/**
+	 * helper method for mergeSort3
+	 * @param left
+	 * @param right
+	 * @param whole
+	 */
 	private void merge3(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
         int leftIndex = 0;
         int rightIndex = 0;

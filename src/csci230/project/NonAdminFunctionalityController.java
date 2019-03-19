@@ -5,8 +5,8 @@ import java.util.List;
 
 /**
  * This class contains all the functionalities of Non-Admins
- * @author zheinen001
- * @version 3/10/19
+ * @author xXPhantomCommander$Xx
+ * @version 3/19/19
  */
 public class NonAdminFunctionalityController {
 	//Controller that controls all universities
@@ -142,15 +142,7 @@ public class NonAdminFunctionalityController {
 		return null;
 		
 	}
-	
-	/**
-	 * displays the school image for the specific school
-	 * @param school
-	 */
-	public void displaySchoolImage(String school) {
-		//TODO finish this additional functionality
-	}
-	
+
 	/**
 	 * Resets the password by email if forgotten password
 	 * @param username
@@ -172,15 +164,15 @@ public class NonAdminFunctionalityController {
 	 * lists out the saved schools sorted by the state alphabetically
 	 * @param savedSchools
 	 */
-	public void sortByState(List<University> savedSchools) {
-		userC.sortByState(savedSchools);
+	public void sortByPerEnrolled(List<University> savedSchools) {
+		userC.sortByPerEnrolled(savedSchools);
 	}
 	
 	/**
 	 * lists out the saved schools sorted by the size
 	 * @param savedSchools
 	 */
-	public void sortBySize(List<University> savedSchools) {
+	public void sortBySize(ArrayList<University> savedSchools) {
 		userC.sortBySize(savedSchools);
 	}
 	
@@ -188,8 +180,8 @@ public class NonAdminFunctionalityController {
 	 * lists out the saved schools sorted by the name alphabetically
 	 * @param savedSchools
 	 */
-	public void sortByName(List<University> savedSchools) {
-		userC.sortByName(savedSchools);
+	public void sortByExpense (ArrayList<University> savedSchools) {
+		userC.sortByExpense(savedSchools);
 	}
 	
 	/**
@@ -215,7 +207,15 @@ public class NonAdminFunctionalityController {
 	 * Displays the search history of the user
 	 * @param user
 	 */
-	public ArrayList<String> viewHistory(){
+	public ArrayList<University> viewHistory(){
 		return univC.viewHistory();
+	}
+	
+	/**
+	 * able to view the your saved school's list
+	 * @return list of Saved Schools connected to a user
+	 */
+	public ArrayList<University> viewSortedSavedSchools() {
+		return userC.viewSortedSavedSchools();
 	}
 }

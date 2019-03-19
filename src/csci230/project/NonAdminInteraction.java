@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * This class is how Non-Admins interact with the system
- * @author zheinen001
+ * @author xXPhantomCommander$Xx
  * @version 3/19/19
  */
 public class NonAdminInteraction {
@@ -151,7 +151,7 @@ public class NonAdminInteraction {
 	 * Displays the search history of the user
 	 * @param user
 	 */
-	public ArrayList<String> viewHistory(){
+	public ArrayList<University> viewHistory(){
 		return nAFC.viewHistory();
 	}
 	
@@ -159,15 +159,15 @@ public class NonAdminInteraction {
 	 * Sorts the saved schools by state
 	 * @param savedSchool
 	 */
-	public void sortByState(List<University> savedSchool) {
-		nAFC.sortByState(savedSchool);
+	public void sortByPerEnrolled(List<University> savedSchool) {
+		nAFC.sortByPerEnrolled(savedSchool);
 	}
 	
 	/**
 	 * Sorts the saved schools by Size
 	 * @param savedSchool
 	 */
-	public void sortBySize(List<University> savedSchool) {
+	public void sortBySize(ArrayList<University> savedSchool) {
 		nAFC.sortBySize(savedSchool);
 	}
 	
@@ -175,8 +175,8 @@ public class NonAdminInteraction {
 	 * Sorts the saved schools by name
 	 * @param savedSchool
 	 */
-	public void sortByName(List<University> savedSchool) {
-		nAFC.sortByName(savedSchool);
+	public void sortByExpense(ArrayList<University> savedSchool) {
+		nAFC.sortByExpense(savedSchool);
 	}
 	
 	/**
@@ -195,5 +195,13 @@ public class NonAdminInteraction {
 	public University randomSchool()
 	{
 		return nAFC.randomSchool();
+	}
+	
+	/**
+	 * able to view the your saved school's list
+	 * @return list of Saved Schools connected to a user
+	 */
+	public ArrayList<University> viewSortedSavedSchools() {
+		return nAFC.viewSortedSavedSchools();
 	}
 }

@@ -3,8 +3,8 @@ package csci230.project;
 import java.util.ArrayList;
 
 /**
- * @author abreyen001
- * @version 3/19/18
+ * @author xXPhantomCommander$Xx
+ * @version 3/19/19
  */
 public class Driver {
 
@@ -82,7 +82,7 @@ public class Driver {
 		
 		
 		
-		System.out.println("*********** User Functionalities ************\n");
+		System.out.println("*********** User Functionalities for admins ************\n");
 		
 		System.out.println("********** AddUser ***********\n");
 		
@@ -137,7 +137,6 @@ public class Driver {
 		}
 		System.out.println("************* Edit User Complete!!!! *************\n\n");
 		
-		System.out.println("********** ViewUsers ***********\n");
 		
 		
 		System.out.println("********** Remove Users ***********\n");
@@ -151,7 +150,7 @@ public class Driver {
 			System.out.println();
 		}
 		
-		System.out.println("********** University Functionalities ***********\n");
+		System.out.println("********** University Functionalities for admins ***********\n");
 		
 		System.out.println("*********** Viewing University & view university details ***********\n");
 		
@@ -290,28 +289,30 @@ public class Driver {
 		System.out.println("*********** Search Schools Complete!!! ****************\n\n");
 
 		System.out.println("*********** Search History ****************\n");
-		ArrayList<String> history = new ArrayList<String>();
-		univc.showUniversityDetails(u);
-		University zach2 = new University("Zach2", "Minnesota", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp, 0, 0, 0);
-		univc.showUniversityDetails(zach2);
+		ArrayList<University> history = new ArrayList<University>();
+		nai.searchSchools("Zach2", "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
 		history = nai.viewHistory();
-		for(String i:history) {
-			System.out.println(i);
+		for(University i:history) {
+			System.out.println(i.getSchoolName());
 		}
 		System.out.println("*********** Search History Complete!!! ****************\n");
 		
 		System.out.println("*********** Save Schools ****************\n");
 		System.out.println("Saving Adelphi and Zach2 to this profile which is Andrew");
 		nai.saveUniversity(u);
-		
+		University zach2 = new University("Zach2", "Minnesota", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp, 0, 0, 0);
 		nai.saveUniversity(zach2);
+		University cal = new University("Cal tech", "California", "suburban", "Private", 10000, 30, 650, 780, 28557, 70, 4000, 15, 90, 5, 1, 3, newUnivEmp, 0, 0, 0);
+		University prince = new University("Princeton", "New Jersey", "Small-City", "Private", 10000, 35, 650, 675, 55801, 50, 11500, 20, 60, 5, 3, 3, newUnivEmp, 0, 0, 0);
+		nai.saveUniversity(cal);
+		nai.saveUniversity(prince);
 		System.out.println("*********** Save Schools Complete!!! ****************\n\n");
 		
 		System.out.println("*********** View Saved Schools ****************\n");
 		ArrayList<University> savedUnivs = new ArrayList<University>();
 		savedUnivs = nai.viewSavedSchools();
 		for(University i: savedUnivs) {
-			i.getSchoolName();
+			System.out.println(i.getSchoolName());
 		}
 		System.out.println("*********** View Saved Schools Complete!!! ****************\n\n");
 		
@@ -320,9 +321,30 @@ public class Driver {
 		ArrayList<University> savedUnivs2 = new ArrayList<University>();
 		savedUnivs2 = nai.viewSavedSchools();
 		for(University i: savedUnivs2) {
-			i.getSchoolName();
+			System.out.println(i.getSchoolName());
 		}
 		System.out.println("*********** Remove Saved Schools Complete!!! ****************\n\n");
+		
+		System.out.println("*********** Sort Saved Schools by Percent Enrolled ****************\n");
+		nai.sortByPerEnrolled(savedUnivs2);
+		for(University i: nai.viewSortedSavedSchools()) {
+			System.out.println(i.getSchoolName());
+		}
+		System.out.println("*********** Sort Saved Schools by Percent Enrolled Complete!!! ****************\n");
+		
+		System.out.println("*********** Sort Saved Schools by Size ****************\n");
+		nai.sortBySize(savedUnivs2);
+		for(University i: nai.viewSortedSavedSchools()) {
+			System.out.println(i.getSchoolName());
+		}
+		System.out.println("*********** Sort Saved Schools by Size Complete!!! ****************\n");
+		
+		System.out.println("*********** Sort Saved Schools by Expense ****************\n");
+		nai.sortByExpense(savedUnivs2);
+		for(University i: nai.viewSortedSavedSchools()) {
+			System.out.println(i.getSchoolName());
+		}
+		System.out.println("*********** Sort Saved Schools by Expense Complete!!! ****************\n");
 		System.out.println("-_-_-_- DRIVER COMPLETE -_-_-_-");
 }
 }

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**
  * This class contains all the info about Universities
- * @author zheinen001
- * @version 3/10/19
+ * @author xXPhantomCommander$Xx
+ * @version 3/19/19
  */
 public class University {
 	//name of University
@@ -49,6 +49,7 @@ public class University {
 	//the super recommend
 	double sup;
 	/**
+	 * constructor
 	 * creates a University
 	 * @param schoolName
 	 * @param state

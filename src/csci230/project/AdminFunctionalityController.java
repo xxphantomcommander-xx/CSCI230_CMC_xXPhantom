@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 /**
  * This class contains all the functionalities of Admins
- * @author zheinen001 and samyoung3
- * @version 3/10/19
+ * @author xXPhantomCommander$Xx
+ * @version 3/19/19
  */
 public class AdminFunctionalityController {
 	
@@ -87,14 +87,6 @@ public class AdminFunctionalityController {
 	public ArrayList<User> viewUsers()
 	{
 		return userC.viewUsers();
-	}
-	
-	/**
-	 * Edits the school of the week
-	 */
-	public void editSchoolOfTheWeek() 
-	{
-		//TODO finish this method
 	}
 	
 	/**

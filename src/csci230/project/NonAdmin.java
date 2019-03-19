@@ -4,8 +4,8 @@ import java.util.List;
 
 /**
  * This class contains all the info about Non-Admins
- * @author zheinen001
- * @version 2/24/19
+ * @author xXPhantomCommander$Xx
+ * @version 3/19/19
  */
 public class NonAdmin extends User{
 	
