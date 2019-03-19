@@ -2,6 +2,11 @@ package csci230.project;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  * This class controls how Users objects interact
@@ -288,5 +293,40 @@ public class UserController {
 	 */
 	public void deleteUser(String username) {
 		dbCon.deleteUser(username);
+	}
+	
+	/**
+	 * sends email to user with new password
+	 * @param userName
+	 */
+	public void resetPasswordByEmail(String userName) {
+		String to = userName;
+		String from = "CMCPhantomCommanders@gmail.com";
+		String host = "localHost";
+		Properties properties=new Properties();  
+		properties.setProperty("mail.smtp.host", host);
+		Session session=Session.getDefaultInstance(properties);  
+		
+		try {
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(from));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			message.setSubject("Your Password has been reset");
+			String abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+			String newPass = "";
+			for(int i = 0; i < 8; i++) {
+				int n = (int)(abc.length() * Math.random());
+				newPass = newPass + abc.charAt(n);
+			}
+			for(User i : viewUsers()) {
+				if(userName.equals(i.getUserName())) {
+					editUser(i.getFirstName(), i.getLastName(), i.getUserName(), newPass, i.getType(), i.getStatus());
+				}
+			}
+			message.setText("Password has been reset to: " + newPass);
+			
+			Transport.send(message);
+			}catch(MessagingException mex) {
+				mex.printStackTrace();}
 	}
 }
