@@ -403,7 +403,11 @@ public class UniversityController {
 			return matchedSchools;
 		}
 	}
-	
+	/*
+	 * Gets the top recommended schools using a count system
+	 * @param univ the given school to compare to
+	 * @return an arrayList of 5 universities
+	 */
 	public ArrayList<University> topRecommended(University univ)
 	{
 		ArrayList<University> recommend = new ArrayList<University>();
@@ -635,8 +639,516 @@ public class UniversityController {
             wholeIndex++;
         }
     }
+	/*
+	 * Gets the top recommended schools using distance formula
+	 * @param univ the given university to compare to
+	 * @return an arrayList of 5 universities
+	 */
+	public ArrayList<University> topRecommended2(University univ)
+	{
+		ArrayList<University> recommend = new ArrayList<University>();
+		double maxStudents = 0;
+		double minStudents = 0;
+		double maxPrctFem = 0;
+		double minPrctFem = 0;
+		double maxVerbal = 0;
+		double minVerbal = 0;
+		double maxMath = 0;
+		double minMath = 0;
+		double maxExp = 0;
+		double minExp = 0;
+		double maxFinance = 0;
+		double minFinance = 0;
+		double maxApps = 0;
+		double minApps = 0;
+		double maxAdmitted = 0;
+		double minAdmitted = 0;
+		double maxEnrolled = 0;
+		double minEnrolled = 0;
+		double maxAcademics = 0;
+		double minAcademics = 0;
+		double maxSocial = 0;
+		double minSocial = 0;
+		double maxQual = 0;
+		double minQual = 0;
+		int count1 = 0;
+		int count2 = 0;
+		int count3 = 0;
+		int count4 = 0;
+		int count5 = 0;
+		int count6 = 0;
+		int count7 = 0;
+		int count8 = 0;
+		int count9 = 0;
+		int count10 = 0;
+		int count11 = 0;
+		int count12 = 0;
+		// The following calculates the min and max for each category of university
+		// number of students
+		for (University i: allUnivs)
+		{
+			if (count1 == 0)
+			{
+				maxStudents = i.getNumOfStudents();
+				minStudents = i.getNumOfStudents();
+				count1++;
+			}
+			else
+			{
+				if (i.getNumOfStudents() > maxStudents)
+				{
+					maxStudents = i.getNumOfStudents();
+				}
+				else if (i.getNumOfStudents() < minStudents)
+				{
+					if(i.getNumOfStudents() == -1)
+					{
+						
+					}
+					else
+					{
+						minStudents = i.getNumOfStudents();
+					}
+					
+				}
+			}
+		
+		// percent female
+			if (count2 == 0)
+			{
+				maxPrctFem = i.getPerFem();
+				minPrctFem = i.getPerFem();
+				count2++;
+			}
+			else
+			{
+				if (i.getPerFem() > maxPrctFem)
+				{
+					maxPrctFem = i.getPerFem();
+				}
+				else if (i.getPerFem() < minPrctFem)
+				{
+					if(i.getPerFem() == -1)
+					{
+						
+					}
+					else
+					{
+						minPrctFem = i.getPerFem();
+					}
+				}
+			}
+		
+		// SAT Verbal
+			if (count3 == 0 && i.getSatVerbal() != -1)
+			{
+				maxVerbal = i.getSatVerbal();
+				minVerbal = 1000;
+				count3++;
+			}
+			else
+			{
+				if (i.getSatVerbal() > maxVerbal)
+				{
+					maxVerbal = i.getSatVerbal();
+				}
+				else if (i.getSatVerbal() < minVerbal)
+				{
+					if(i.getSatVerbal() == -1)
+					{
+						
+					}
+					else
+					{
+						minVerbal = i.getSatVerbal();
+					}
+				}
+			}
+		
+		//SAT Math
+			if (count4 == 0 && i.getSatMath() != -1)
+			{
+				maxMath = i.getSatMath();
+				minMath = 1000;
+				count4++;
+			}
+			else
+			{
+				if (i.getSatMath() > maxMath)
+				{
+					maxMath = i.getSatMath();
+				}
+				else if (i.getSatMath() < minMath)
+				{
+					if(i.getSatMath() == -1)
+					{
+						
+					}
+					else
+					{
+						minMath = i.getSatMath();
+					}
+				}
+			}
+		
+		//Expenses
+			if (count5 == 0)
+			{
+				maxExp = i.getExpenses();
+				minExp = i.getExpenses();
+				count5++;
+			}
+			else
+			{
+				if (i.getExpenses() > maxExp)
+				{
+					maxExp = i.getExpenses();
+				}
+				else if (i.getExpenses() < minExp)
+				{
+					if(i.getExpenses() == -1)
+					{
+						
+					}
+					else
+					{
+						minExp = i.getExpenses();
+					}
+				}
+			}
 	
+		//Percent Financial Aid
+
+			if (count6 == 0)
+			{
+				maxFinance = i.getFinancialAid();
+				minFinance = i.getFinancialAid();
+				count6++;
+			}
+			else
+			{
+				if (i.getFinancialAid() > maxFinance)
+				{
+					maxFinance = i.getFinancialAid();
+				}
+				else if (i.getFinancialAid() < minFinance)
+				{
+					if(i.getFinancialAid() == -1)
+					{
+						
+					}
+					else
+					{
+						minFinance = i.getFinancialAid();
+					}
+				}
+			}
+		
+		// Number of applicants
+			if (count7 == 0)
+			{
+				maxApps = i.getNumOfApps();
+				minApps = i.getNumOfApps();
+				count7++;
+			}
+			else
+			{
+				if (i.getNumOfApps() > maxApps)
+				{
+					maxApps = i.getNumOfApps();
+				}
+				else if (i.getNumOfApps() < minApps)
+				{
+					if(i.getNumOfApps() == -1)
+					{
+						
+					}
+					else
+					{
+						minApps = i.getNumOfApps();
+					}
+				}
+			}
+		
+		// Percent admitted
+			if (count8 == 0)
+			{
+				maxAdmitted = i.getPerAdmitted();
+				minAdmitted = i.getPerAdmitted();
+				count8++;
+			}
+			else
+			{
+				if (i.getPerAdmitted() > maxAdmitted)
+				{
+					maxAdmitted = i.getPerAdmitted();
+				}
+				else if (i.getPerAdmitted() < minAdmitted)
+				{
+					if(i.getPerAdmitted() == -1)
+					{
+						
+					}
+					else
+					{
+						minAdmitted = i.getPerAdmitted();
+					}
+				}
+			}
+		
+		//Percent enrolled
+			if (count9 == 0)
+			{
+				maxEnrolled = i.getPerEnrolled();
+				minEnrolled = i.getPerEnrolled();
+				count9++;
+			}
+			else
+			{
+				if (i.getPerEnrolled() > maxEnrolled)
+				{
+					maxEnrolled = i.getPerEnrolled();
+				}
+				else if (i.getPerEnrolled() < minEnrolled)
+				{
+					if(i.getPerEnrolled() == -1)
+					{
+						
+					}
+					else
+					{
+						minEnrolled = i.getPerEnrolled();
+					}
+				}
+			}
+		
+		// Academics Scale
+			if (count10 == 0)
+			{
+				maxAcademics = i.getAcademicScale();
+				minAcademics = i.getAcademicScale();
+				count10++;
+			}
+			else
+			{
+				if (i.getAcademicScale() > maxAcademics)
+				{
+					maxAcademics = i.getAcademicScale();
+				}
+				else if (i.getAcademicScale() < minAcademics)
+				{
+					if(i.getAcademicScale() == -1)
+					{
+						
+					}
+					else
+					{
+						minAcademics = i.getAcademicScale();
+					}
+				}
+			}
+		
+		// Social Scale
+			if (count11 == 0)
+			{
+				maxSocial = i.getSocialScale();
+				minSocial = i.getSocialScale();
+				count11++;
+			}
+			else
+			{
+				if (i.getSocialScale() > maxSocial)
+				{
+					maxSocial = i.getSocialScale();
+				}
+				else if (i.getSocialScale() < minSocial)
+				{
+					if(i.getSocialScale() == -1)
+					{
+						
+					}
+					else
+					{
+						minSocial = i.getSocialScale();
+					}
+				}
+			}
+		
+		// Quality of life scale
+			if (count12 == 0)
+			{
+				maxQual = i.getQualOfLife();
+				minQual = i.getQualOfLife();
+				count12++;
+			}
+			else
+			{
+				if (i.getQualOfLife() > maxQual)
+				{
+					maxQual = i.getQualOfLife();
+				}
+				else if (i.getQualOfLife() < minQual)
+				{
+					if(i.getQualOfLife() == -1)
+					{
+						
+					}
+					else
+					{
+						minQual = i.getQualOfLife();
+					}
+				}
+			}
+		}
+		
+		
+		
+		//calculates the distance for all universities
+		for (University i : allUnivs)
+		{
+			double distance = 0;
+			if (!univ.getState().equals(i.getState()))
+			{
+				distance += 1;
+			}
+			if (!univ.getLocation().equals(i.getLocation()))
+			{
+				distance += 1;
+			}
+			if (!univ.getControl().equals(i.getControl()))
+			{
+				distance += 1;
+			}
+			
+			if(i.getNumOfStudents() != -1)
+			{
+				distance += Math.abs(univ.getNumOfStudents() - i.getNumOfStudents()) / (maxStudents - minStudents);
+			}
+			if(i.getPerFem() != -1)
+			{
+				distance += Math.abs(univ.getPerFem() - i.getPerFem()) / (maxPrctFem - minPrctFem);
+			}
+			if(i.getSatVerbal() != -1)
+			{
+				distance += Math.abs(univ.getSatVerbal() - i.getSatVerbal()) / (maxVerbal - minVerbal);
+			}
+			if(i.getSatMath() != -1)
+			{
+				distance += Math.abs(univ.getSatMath() - i.getSatMath()) / (maxMath - minMath);
+			}
+			if(i.getExpenses() != -1)
+			{
+				distance += Math.abs(univ.getExpenses() - i.getExpenses()) / (maxExp - minExp);
+			}
+			if(i.getFinancialAid() != -1)
+			{
+				distance += Math.abs(univ.getFinancialAid() - i.getFinancialAid()) / (maxFinance - minFinance);
+			}
+			if(i.getNumOfApps() != -1)
+			{
+				distance += Math.abs(univ.getNumOfApps() - i.getNumOfApps()) / (maxApps - minApps);
+			}
+			if(i.getPerAdmitted() != -1)
+			{
+				distance += Math.abs(univ.getPerAdmitted() - i.getPerAdmitted()) / (maxAdmitted - minAdmitted);
+			}
+			if(i.getPerEnrolled() != -1)
+			{
+				distance += Math.abs(univ.getPerEnrolled() - i.getPerEnrolled()) / (maxEnrolled - minEnrolled);
+			}
+			if(i.getAcademicScale() != -1)
+			{
+				distance += Math.abs(univ.getAcademicScale() - i.getAcademicScale()) / (maxAcademics - minAcademics);
+			}
+			if(i.getSocialScale() != -1)
+			{
+				distance += Math.abs(univ.getSocialScale() - i.getSocialScale()) / (maxSocial - minSocial);
+			}
+			if(i.getQualOfLife() != -1)
+			{
+				distance += Math.abs(univ.getQualOfLife() - i.getQualOfLife()) / (maxQual - minQual);
+			}
+			
+			i.setDistance(distance);
+
+		}
+
+
+		
+		for (University i : allUnivs)
+		{
+			recommend.add(i);
+		}
+		ArrayList<University> sortedSchools = mergeSort2(recommend);
+		return sortedSchools;
+		
+	}
 	
+	private ArrayList<University> mergeSort2(ArrayList<University> whole)
+	{
+		ArrayList<University> left = new ArrayList<University>();
+		ArrayList<University> right = new ArrayList<University>();
+		int center;
+		
+		if (whole.size() == 1)
+		{
+			return whole;
+		}
+		else 
+		{
+			center = whole.size()/2;
+			for (int i = 0; i < center ; i++)
+			{
+				left.add(whole.get(i));
+			}
+			for (int i = center; i < whole.size(); i++)
+			{
+				right.add(whole.get(i));
+			}
+			left = mergeSort2(left);
+			right = mergeSort2(right);
+			merge2(left, right, whole);
+		}
+		return whole;
+	}
+	
+	private void merge2(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int wholeIndex = 0;
+ 
+        // As long as neither the left nor the right ArrayList has
+        // been used up, keep taking the smaller of left.get(leftIndex)
+        // or right.get(rightIndex) and adding it at both.get(bothIndex).
+        while (leftIndex < left.size() && rightIndex < right.size()) {
+            if ( (left.get(leftIndex).getDistance() < (right.get(rightIndex).getDistance()))) {
+                whole.set(wholeIndex, left.get(leftIndex));
+                leftIndex++;
+            } else {
+                whole.set(wholeIndex, right.get(rightIndex));
+                rightIndex++;
+            }
+            wholeIndex++;
+        }
+ 
+        ArrayList<University> rest;
+        int restIndex;
+        if (leftIndex >= left.size()) {
+            // The left ArrayList has been use up...
+            rest = right;
+            restIndex = rightIndex;
+        } else {
+            // The right ArrayList has been used up...
+            rest = left;
+            restIndex = leftIndex;
+        }
+ 
+        // Copy the rest of whichever ArrayList (left or right) was not used up.
+        for (int i=restIndex; i<rest.size(); i++) {
+            whole.set(wholeIndex, rest.get(i));
+            wholeIndex++;
+        }
+    }
 	
 	
 	
@@ -860,7 +1372,7 @@ public class UniversityController {
 			int expenses, int financialAid, int numOfApps, int perAdmitted, 
 			int perEnrolled, int academicScale, int socialScale, 
 			int qualOfLife, ArrayList<String> emphasis) {
-		 University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0);
+		 University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0, 0);
 		 this.dbCon.editUniversity(newUniv);
 	}
 	
@@ -899,7 +1411,7 @@ public class UniversityController {
 			int perEnrolled, int academicScale, int socialScale, 
 			int qualOfLife, ArrayList<String> emphasis)
 	{
-		University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0);
+		University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0, 0);
 		dbCon.addUniversity(newUniv);
 	}
 

@@ -18,7 +18,7 @@ public class Driver {
 		NonAdminInteraction nai = new NonAdminInteraction();
 		AdminInteraction ai = new AdminInteraction();
 		UserController uc = new UserController();
-		//UniversityController univc = new UniversityController();
+		UniversityController univc = new UniversityController();
 		ArrayList<String> al = new ArrayList<String>();
 		ArrayList<String> al2 = new ArrayList<String>();
 		DBController dbCon = new DBController();
@@ -27,7 +27,7 @@ public class Driver {
 		al2.add("");
 		al2.add("");
 		al2.add("");
-		//University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0);
+		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0);
 		
 		
 //		System.out.println();
@@ -119,20 +119,25 @@ public class Driver {
 //		
 ////		System.out.println("******** 4 ********");
 ////		
-////		System.out.println("Find top 5 recommended schools for a given school");
+		System.out.println("Find top 5 recommended schools for a given school");
 ////		
-////		univc.topRecommended(u);
-////		
-////
-////		
-////		
-////		
-////		
-////		
-////		
+		ArrayList<University> ual2 = univc.topRecommended(u);
+		for(int i = 1; i < 6; i++)
+		{
+			System.out.println(ual2.get(i).getSchoolName());
+			System.out.println(ual2.get(i).getCount());
+		}
 ////		
 ////
-////		System.out.println("******** 4 COMPLETE ********\n\n");
+////		
+////		
+////		
+////		
+////		
+////		
+////		
+////
+		System.out.println("******** 4 COMPLETE ********\n\n");
 //
 //		
 //				
@@ -333,5 +338,12 @@ public class Driver {
 		System.out.println("********** Admin Functionalities Complete!!!! ***********\n\n\n");
 		System.out.println("*************************************************************************************************");
 		
+		
+		ArrayList<University> ual = univc.topRecommended2(u);
+		for(int i = 1; i < 6; i++)
+		{
+			System.out.println(ual.get(i).getSchoolName());
+			System.out.println(ual.get(i).getDistance());
+		}
 }
 }

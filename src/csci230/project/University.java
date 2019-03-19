@@ -44,6 +44,8 @@ public class University {
 	ArrayList<String> emphasis;
 	// the recommend count of the University
 	int count;
+	// the recommend distance of the University
+	double distance;
 	/**
 	 * creates a University
 	 * @param schoolName
@@ -68,7 +70,7 @@ public class University {
 			int numOfStudents, int perFem, int satVerbal, int satMath,
 			int expenses, int financialAid, int numOfApps, int perAdmitted, 
 			int perEnrolled, int academicScale, int socialScale, 
-			int qualOfLife, ArrayList<String> emphasis, int count) {
+			int qualOfLife, ArrayList<String> emphasis, int count, int distance) {
 		this.schoolName = schoolName;
 		this.state = state;
 		this.location = location;
@@ -87,6 +89,7 @@ public class University {
 		this.qualOfLife = qualOfLife;
 		this.emphasis = emphasis;
 		this.count = count;
+		this.distance = distance;
 	}
 	
 	/**
@@ -364,8 +367,8 @@ public class University {
 	}
 	
 	/**
-	 * gets emphases
-	 * @return ArrayList<String> of emphases
+	 * gets the count
+	 * @return ArrayList<String> of counts
 	 */
 	public int getCount(){
 		return count;
@@ -373,11 +376,28 @@ public class University {
 	
 	
 	/**
-	 * adds emphasis
-	 * @param newEmp new emphasis
+	 * set the count
+	 * @param newCount new count
 	 */
 	public void setCount(int newCount) {
 		this.count = newCount;
+	}
+	
+	/**
+	 * gets the distance
+	 * @return ArrayList<String> of distances
+	 */
+	public double getDistance(){
+		return distance;
+	}
+	
+	
+	/**
+	 * adds emphasis
+	 * @param newEmp new emphasis
+	 */
+	public void setDistance(double newDistance) {
+		this.distance = newDistance;
 	}
 
 }
