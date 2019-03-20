@@ -44,7 +44,7 @@ public class Driver {
 		System.out.println("");
 		
 		System.out.println("Logging in with invalid user credentials");
-		//TODO Print error message
+
 		System.out.println("Test 1: User with Incorrect Password");
 		uc.logOn("juser", "incorrectPassword");
 		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
@@ -109,7 +109,7 @@ public class Driver {
 		System.out.println("********** ViewUsers Complete!!! ***********\n\n");
 		
 		System.out.println("*********** resetPassword by Email **********\n");
-		ai.resetPasswordByEmail("ABREYEN001@csbsju.edu");
+		ai.resetPasswordByEmail("ZHEINEN001@csbsju.edu");
 		ArrayList<User> users = ai.viewUsers();
 		for(User i : users) {
 			System.out.println("Username: " + i.getUserName());
@@ -125,8 +125,8 @@ public class Driver {
 		System.out.println("Changing gavin");
 		ai.editUser("Dingus2.0", "Jahoyhoy", "GWOLLENBE001@csbsju.edu", "ww2", 'u', 'Y');
 		ai.editUser("Zachary", "Heinen", "ZHEINEN001@csbsju.edu", "zaciscool", 'a', 'Y');
-		ArrayList<User> users3 = ai.viewUsers();
-		for(User i : users3) {
+		ArrayList<User> editedUser = ai.viewUsers();
+		for(User i : editedUser) {
 			System.out.println("First Name: " + i.getFirstName());
 			System.out.println("Last Name: " + i.getLastName());
 			System.out.println("Username: " + i.getUserName());
@@ -142,18 +142,26 @@ public class Driver {
 		System.out.println("********** Remove Users ***********\n");
 		
 		ai.deleteUser("GWOLLENBE001@csbsju.edu");
-		ArrayList<User> users4 = ai.viewUsers();
-		for(User i : users4) {
+		ArrayList<User> removedUsers = ai.viewUsers();
+		for(User i : removedUsers) {
 			System.out.println("First Name: " + i.getFirstName());
 			System.out.println("Last Name: " + i.getLastName());
 			System.out.println("Username: " + i.getUserName());
 			System.out.println();
 		}
+		System.out.println("********** Remove Users Complete!! ***********\n\n");
 		
 		System.out.println("********** University Functionalities for admins ***********\n");
 		
-		System.out.println("*********** Viewing University & view university details ***********\n");
+				System.out.println("************ Adding University of Zac ************\n");
 		
+		ArrayList<String> newUnivEmp = new ArrayList<String>();	
+		newUnivEmp.add("COMPUTER SCIENCE");
+		newUnivEmp.add("BIOLOGY");
+		
+		ai.addSchool("Zach", "Minnesota", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp);
+		ai.addSchool("Zach2", "Minnesota", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp);
+		System.out.println("*********** Viewing University & view university details ***********\n");
 		ArrayList<University> printUniv = new ArrayList<University>();
 		printUniv = ai.viewUniversities();
 		for(University i:printUniv) {
@@ -163,23 +171,7 @@ public class Driver {
 			System.out.println();
 		}
 		
-		System.out.println("************ Adding University of Zac ************\n");
-		
-		ArrayList<String> newUnivEmp = new ArrayList<String>();	
-		newUnivEmp.add("COMPUTER SCIENCE");
-		newUnivEmp.add("BIOLOGY");
-		
-		ai.addSchool("Zach", "Minnesota", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp);
-		ai.addSchool("Zach2", "Minnesota", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp);
-		printUniv = ai.viewUniversities();
-		ArrayList<University> printUniv2 = new ArrayList<University>();
-		printUniv2 = ai.viewUniversities();
-		for(University i:printUniv2) {
-			for(String x:ai.showSchoolDetails(i)) {
-				System.out.print(x + ", ");
-			}
-			System.out.println();
-		}
+
 		
 		
 		System.out.println("*********** Edit University **********\n");
@@ -194,6 +186,7 @@ public class Driver {
 				for(String x:ai.showSchoolDetails(i)) {
 				System.out.print(x + ", ");
 				}
+				System.out.println();
 			}
 			
 		}
@@ -205,8 +198,8 @@ public class Driver {
 		ai.removeUniversity(removeZac);
 		ArrayList<University> printUniv4 = new ArrayList<University>();
 		printUniv4 = ai.viewUniversities();
-		for(University i:printUniv4) {
-			for(String x:ai.showSchoolDetails(i)) {
+		for(int i = printUniv4.size() - 10; i < printUniv4.size(); i++) {
+			for(String x:ai.showSchoolDetails(printUniv4.get(i))) {
 				System.out.print(x + ", ");
 			}
 			System.out.println();
@@ -216,7 +209,7 @@ public class Driver {
 		
 		
 		System.out.println("********** Set School of The Week ***********\n");
-		ai.setSchoolOfTheWeek("NEW YORK UNIVERSITY");
+		ai.setSchoolOfTheWeek("ZACH2");
 		System.out.println(ai.getSchoolOfTheWeek().getSchoolName());
 		System.out.println("********** Set School of The Week Complete!!! ***********\n");
 		System.out.println("********** Admin Functionalities Complete!!!! ***********");
@@ -298,7 +291,7 @@ public class Driver {
 		System.out.println("*********** Search History Complete!!! ****************\n");
 		
 		System.out.println("*********** Save Schools ****************\n");
-		System.out.println("Saving Adelphi and Zach2 to this profile which is Andrew");
+		System.out.println("Saving Adelphi, Cal Tech, Princeton, and Zach2 to this profile which is Andrew");
 		nai.saveUniversity(u);
 		University zach2 = new University("Zach2", "Minnesota", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000, 40, 80, 4, 5, 5, newUnivEmp, 0, 0, 0);
 		nai.saveUniversity(zach2);

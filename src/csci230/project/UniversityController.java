@@ -1,7 +1,15 @@
 package csci230.project;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 
 
 /**
@@ -1525,7 +1533,7 @@ public class UniversityController {
 	 * @return ArrayList<University> os all universities
 	 */
 	public ArrayList<University> viewUniversities() {
-		return allUnivs;
+		return dbCon.loadUniversities();
 	}
 	
 	
@@ -1592,6 +1600,25 @@ public class UniversityController {
 			{
 				schoolOfTheWeek= i;
 			}
+		}
+		for(String x:dbCon.getUsernameBySavedSchool(schoolName)) {
+			String to = x;
+			String from = "CMCPhantomCommanders";
+			String host = "localHost";
+			Properties properties=new Properties();  
+			properties.setProperty("mail.smtp.host", host);
+			Session session=Session.getDefaultInstance(properties);  
+		
+			try {
+				MimeMessage message = new MimeMessage(session);
+				message.setFrom(new InternetAddress(from));
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+				message.setSubject("New School Of The Week: CMC");
+				message.setText("Dear User,\n\n The school of the week is in your saved school list!!!\n The school of the week is: " + schoolOfTheWeek.getSchoolName() + "\n\nThanks,\nxXPhantomCommander$Xx");
+			
+				Transport.send(message);
+				}catch(MessagingException mex) {
+					mex.printStackTrace();}
 		}
 	}
 	

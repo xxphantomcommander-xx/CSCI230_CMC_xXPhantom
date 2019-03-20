@@ -12,8 +12,6 @@ import java.util.ArrayList;
 public class DBController {
 	// a variable to set who the logged on user is
 	private User loggedOnUser;
-	// an instance of university controller
-	private UniversityController univC;
 	// an arraylist of users
 	private ArrayList<User> allUsers = new ArrayList<User>();
 	
@@ -76,6 +74,25 @@ public class DBController {
 			}
 		}
 		return savedUnivs;
+	}
+	
+	/**
+	 * gets the username with a school parameter
+	 * @param SchoolName
+	 * @return username
+	 */
+	public ArrayList<String> getUsernameBySavedSchool(String SchoolName){
+		ArrayList<String> usernames = new ArrayList<String>();
+		String [][] usersSavedUnivs = univDBlib.user_getUsernamesWithSavedSchools();
+		
+		for(int i = 0; i < usersSavedUnivs.length; i++) {
+			
+			if(usersSavedUnivs[i][1].equals(SchoolName)) {
+				usernames.add(usersSavedUnivs[i][0]);
+				
+			}
+		}
+		return usernames;
 	}
 	
 	/*
@@ -288,6 +305,7 @@ public class DBController {
 	public ArrayList<User> getAllUsers()
 	{
 		String [][] userString = getUsers();
+		this.allUsers.clear();
 		for (int i = 0; i < userString.length; i++)
 		{
 			

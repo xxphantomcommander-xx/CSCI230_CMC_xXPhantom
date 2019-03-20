@@ -89,23 +89,7 @@ public class User {
 	return status;
     
   }
-  
 
-  
-  /**
-   *logon user
-   */
-  public void logon() {
-    
-  }
-  
-  /**
-   *log user out
-   */
-  public void logout() {
-    
-  }
-  
   /**
    *set first name to parameter
    *@param firstName
@@ -151,36 +135,6 @@ public class User {
   public void setStatus(char status) {
 	  this.status = status;
   }   
-  
-  /**
-   *create new user
-   *@param firstName
-   *@param LastName
-   *@param userName
-   *@param password
-   *@param type
-   *@param status
-   */
-  public void createUser(String firstName, String lastName, String userName, String password, boolean type, boolean status) {
-	  
-  }
-  /**
-   *find another user by username
-   *@param userName
-   *@return String
-   */
-  public String findByUserName(String userName) {
-	return "";
-	  //TODO Fix should return user but creates errors for now
-  }
 
-  /**
-   *show details of user 
-   *@param user
-   *@return String 
-   */
-  public String showDetails(User user) {
-	return firstName;
-	  
-  }
+
 }

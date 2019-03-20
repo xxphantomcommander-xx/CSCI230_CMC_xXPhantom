@@ -33,39 +33,4 @@ class Admin extends User {
 		return true;
 	}
 
-	/**
-	 * logon user
-	 */
-	public void logon() {
-
-	}
-
-	/**
-	 * log user out
-	 */
-	public void logout() {
-
-	}
-
-	/**
-	 * @param userName
-	 * @return userName
-	 */
-	public String findByUserName(String userName) {
-		return "";
-	}
-
-	/**
-	 * shows user details
-	 * 
-	 * @param user
-	 * @return user details
-	 */
-	public String showUserDetails(User user) {
-		return "";
-	}
-	
-	
-
-	
 }

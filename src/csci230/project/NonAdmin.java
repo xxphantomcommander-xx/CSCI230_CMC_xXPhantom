@@ -1,7 +1,5 @@
 package csci230.project;
 
-import java.util.List;
-
 /**
  * This class contains all the info about Non-Admins
  * @author xXPhantomCommander$Xx
@@ -10,6 +8,7 @@ import java.util.List;
 public class NonAdmin extends User{
 	
 	/**
+	 * constructor
 	 * @param firstName
 	 * @param lastName
 	 * @param userName
@@ -23,51 +22,5 @@ public class NonAdmin extends User{
 	
 	}
 	
-	
-	/**
-	 * Allows the NonAdmin to change the name
-	 * or password of their profile
-	 * @param first
-	 * @param last
-	 * @param newPassword
-	 */
-	public void editUser(String first, String last, String newPassword)
-	{
-		
-	}
-	/**
-	 * Allows the NonAdmin to sort their saved schools
-	 * by state
-	 * @param savedSchools
-	 */
-	public void sortByState(List<University> savedSchools)
-	{
-		
-	}
-	/**
-	 * Allows the NonAdmin to sort their saved schools
-	 * by size
-	 * @param savedSchools
-	 */
-	public void sortBySize(List<University> savedSchools)
-	{
-		
-	}
-	/**
-	 * Allows the NonAdmin to sort their saved schools
-	 * by name
-	 * @param savedSchools
-	 */
-	public void sortByName(List<University> savedSchools)
-	{
-		
-	}
-	/**
-	 * Gets the list of saved schools by the NonAdmin
-	 */
-	public List<University> getSavedSchools()
-	{
-		return null;
-		
-	}
+
 }

@@ -149,9 +149,7 @@ public class UserController {
 	   * @return arraylist of users
 	   */
 	  public ArrayList<User> viewUsers(){
-			  ArrayList<User> users = new ArrayList<User>();
-				users = dbCon.getAllUsers();
-				  return users;
+				  return dbCon.getAllUsers();
 		  
 	  }
 	  
