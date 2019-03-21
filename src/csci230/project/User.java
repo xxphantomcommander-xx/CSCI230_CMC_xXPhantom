@@ -7,17 +7,17 @@ package csci230.project;
 
 public class User {
   //first name of user
-  protected String firstName;
+  private String firstName;
   //last name of user
-  protected String lastName;
+  private String lastName;
   //username of user
-  protected String userName;
+  private String userName;
   //password of user
-  protected String password;
+  private String password;
   //type of user (admin or non-admin)
-  protected char type;
+  private char type;
   //status of user (active or deactivated)
-  protected char status;
+  private char status;
 /**
  * constructor
  * @param firstName
