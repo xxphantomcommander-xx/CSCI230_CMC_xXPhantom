@@ -72,6 +72,9 @@ public class UserTest {
 		System.out.println(test.getStatus());
 		System.out.println();
 		
+		System.out.println("***********************************************************");
+		System.out.println("************** User Test Complete!!! ************************");
+		
 	}
 
 }
