@@ -227,4 +227,24 @@ public class AdminFunctionalityController {
 	userC.resetPasswordByEmail(userName);
 	}
 	
+	/**
+     * deactivates a user
+	 * @param User user
+	 */
+	public void deactivateUser(String userName)
+	{
+		userC.deactivateUser(userName);
+	}
+	
+	/**
+     * activates a user
+	 * @param User user
+	 */
+	public void activateUser(String userName)
+	{
+		userC.activateUser(userName);
+	}
+	
+
+	
 }

@@ -219,5 +219,22 @@ public class AdminInteraction {
 	{
 		return aFC.getSchoolOfTheWeek();
 	}
+	
+    /**
+	 * deactivates a user
+	 * @param User user
+	 */
+	public void deactivateUser(String userName) {
+		  aFC.deactivateUser(userName);
+	  }
+	
+	/**
+     * activates a user
+	 * @param User user
+	 */
+	public void activateUser(String userName)
+	{
+		aFC.activateUser(userName);
+	}
 }
 

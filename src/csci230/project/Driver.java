@@ -212,6 +212,29 @@ public class Driver {
 		ai.setSchoolOfTheWeek("ZACH2");
 		System.out.println(ai.getSchoolOfTheWeek().getSchoolName());
 		System.out.println("********** Set School of The Week Complete!!! ***********\n");
+		System.out.println();
+		
+		System.out.println("********** Deactivate User ***********\n");
+		ai.deactivateUser("juser");
+		
+		for(User i : ai.viewUsers())
+		{
+			System.out.println(i.getUserName());
+			System.out.println(i.getStatus());
+		}
+		System.out.println("********** DeactivateUsers Complete!!! ***********\n");
+		System.out.println();
+		
+		System.out.println("********** Activate User ***********\n");
+		ai.activateUser("juser");
+		
+		for(User i : ai.viewUsers())
+		{
+			System.out.println(i.getUserName());
+			System.out.println(i.getStatus());
+		}
+		System.out.println("********** ActivateUser Complete!!! ***********\n");
+		System.out.println();
 		System.out.println("********** Admin Functionalities Complete!!!! ***********");
 		System.out.println("*************************************************************************************************\n\n\n");
 		

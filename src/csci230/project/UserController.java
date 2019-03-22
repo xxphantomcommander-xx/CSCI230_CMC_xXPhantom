@@ -570,4 +570,44 @@ public class UserController {
 	public ArrayList<University> viewSortedSavedSchools() {
 		return mySavedSchools;
 	}
+	
+    /**
+     * deactivates a user
+	 * @param User user
+	 */
+	public void deactivateUser(String userName) {
+		  ArrayList<User> useList = dbCon.getAllUsers();
+		  for(User i : useList)
+		  {
+			  if (userName.equals(i.getUserName()))
+			  {
+				  	if (i.getStatus() == 'Y')
+				  	{
+				  		editUser(i.getFirstName(), i.getLastName(), i.getUserName(), i.getPassword(), i.getType(), 'N');
+				  	}
+			  }
+
+		  }
+		  
+	  }
+	
+    /**
+     * activates a user
+	 * @param User user
+	 */
+	public void activateUser(String userName) {
+		  ArrayList<User> useList = dbCon.getAllUsers();
+		  for(User i : useList)
+		  {
+			  if (userName.equals(i.getUserName()))
+			  {
+				  	if (i.getStatus() == 'N')
+				  	{
+				  		editUser(i.getFirstName(), i.getLastName(), i.getUserName(), i.getPassword(), i.getType(), 'Y');
+				  	}
+			  }
+
+		  }
+		  
+	  }
 }
