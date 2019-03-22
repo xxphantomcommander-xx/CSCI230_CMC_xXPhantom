@@ -75,10 +75,10 @@ public class University {
 			int expenses, int financialAid, int numOfApps, int perAdmitted, 
 			int perEnrolled, int academicScale, int socialScale, 
 			int qualOfLife, ArrayList<String> emphasis, int count, int distance, double sup) {
-		this.schoolName = schoolName;
-		this.state = state;
-		this.location = location;
-		this.control = control;
+		this.schoolName = schoolName.toUpperCase();
+		this.state = state.toUpperCase();
+		this.location = location.toUpperCase();
+		this.control = control.toUpperCase();
 		this.numOfStudents = numOfStudents;
 		this.perFem = perFem;
 		this.satVerbal = satVerbal;
@@ -91,6 +91,9 @@ public class University {
 		this.academicScale = academicScale;
 		this.socialScale = socialScale;
 		this.qualOfLife = qualOfLife;
+		for(int i = 0; i < emphasis.size(); i++) {
+			emphasis.set(i, emphasis.get(i).toUpperCase());
+		}
 		this.emphasis = emphasis;
 		this.count = count;
 		this.distance = distance;
@@ -110,7 +113,7 @@ public class University {
 	 * @param schoolName
 	 */
 	public void setSchoolName(String schoolName) {
-		this.schoolName = schoolName;
+		this.schoolName = schoolName.toUpperCase();
 	}
 
 	/**
@@ -126,7 +129,7 @@ public class University {
 	 * @param state
 	 */
 	public void setState(String state) {
-		this.state = state;
+		this.state = state.toUpperCase();
 	}
 
 	/**
@@ -134,7 +137,7 @@ public class University {
 	 * @return location
 	 */
 	public String getLocation() {
-		return location;
+		return location.toUpperCase();
 	}
 
 	/**
@@ -142,7 +145,7 @@ public class University {
 	 * @param location
 	 */
 	public void setLocation(String location) {
-		this.location = location;
+		this.location = location.toUpperCase();
 	}
 	
 	/**
@@ -158,7 +161,7 @@ public class University {
 	 * @param control
 	 */
 	public void setContol(String control) {
-		this.control = control;
+		this.control = control.toUpperCase();
 	}
 
 	/**
@@ -368,6 +371,9 @@ public class University {
 	 * @param newEmp new emphasis
 	 */
 	public void setEmphasis(ArrayList<String> newEmp) {
+		for(int i = 0; i < newEmp.size(); i++) {
+			newEmp.set(i, newEmp.get(i).toUpperCase());
+		}
 		this.emphasis = newEmp;
 	}
 	
