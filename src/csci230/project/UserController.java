@@ -114,8 +114,13 @@ public class UserController {
 	 * @param status
 	 */
 	public void addUser(String first, String last, String username, String password, char type, char status) {
-		User newUser = new User(first, last, username, password, type, status);
-		dbCon.addUser(newUser);
+		if(username.contains("@" + ".***")) {
+			User newUser = new User(first, last, username, password, type, status);
+			dbCon.addUser(newUser);
+		}
+		else {
+			System.out.println("Invalid Username, needs an email as the username");
+		}
 	}
 	
 	/**

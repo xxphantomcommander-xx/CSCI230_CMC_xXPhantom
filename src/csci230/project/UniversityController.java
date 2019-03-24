@@ -81,10 +81,6 @@ public class UniversityController {
 				, prctfLow, prctfHigh), svLow, svHigh), smLow, smHigh), eLow, eHigh), prctfinLow, prctfinHigh), nApLow, nApHigh), prctaLow, prctaHigh), prcteLow, prcteHigh),
 				asLow, asHigh), ssLow, ssHigh), qLow, qHigh), emp);
 		history.add(results.get(0));
-		//for(University i: results) {
-//			System.out.println(i.getSchoolName());
-
-		//}
 		return results;
 	}
 	
@@ -137,9 +133,7 @@ public class UniversityController {
 			}
 			return matchedSchools;
 		}
-			
-
-		}
+	}
 	
 	/**
 	 * Searches based on the control
