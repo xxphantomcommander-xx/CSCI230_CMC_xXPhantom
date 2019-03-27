@@ -9,7 +9,7 @@ import org.junit.Test;
 
 /**
  * @author zheinen001
- *yo
+ *
  */
 public class DBControllerTest {
 
