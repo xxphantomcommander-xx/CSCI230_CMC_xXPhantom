@@ -3,6 +3,10 @@
  */
 package csci230.project;
 
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 /**
  * @author zheinen001
  *
@@ -10,71 +14,107 @@ package csci230.project;
 public class UserTest {
 
 	/**
-	 * @param args
+	 * Test method for {@link csci230.project.User#User(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
 	 */
-	public static void main(String[] args) {
-		System.out.println("*********** User Test *******************\n");
-		
-		User test = new User("John", "Smith", "JSmith22", "Password", 'u', 'Y');
-		System.out.println("Creating user: John Smith. Username: JSmith22. Password: Password. Type: u. Status: Y.");
-		
-		System.out.println("Getting first name. Expected output: John");
-		System.out.println(test.getFirstName());
-		System.out.println();
-		
-		System.out.println("Getting last name. Expected output: Smith");
-		System.out.println(test.getLastName());
-		System.out.println();
-		
-		System.out.println("Getting Username. Expected output: JSmith22");
-		System.out.println(test.getUserName());
-		System.out.println();
-		
-		System.out.println("Getting Password. Expected output: Password");
-		System.out.println(test.getPassword());
-		System.out.println();
-		
-		System.out.println("Getting Type. Expected output: u");
-		System.out.println(test.getType());
-		System.out.println();
-		
-		System.out.println("Getting Status. Expected output: Y");
-		System.out.println(test.getStatus());
-		System.out.println();
-		
-		System.out.println("Setting first name. Expected output: Imad");
-		test.setFirstName("Imad");
-		System.out.println(test.getFirstName());
-		System.out.println();
-		
-		System.out.println("Setting last name. Expected output: Rahal");
-		test.setLastName("Rahal");
-		System.out.println(test.getLastName());
-		System.out.println();
-		
-		System.out.println("Setting Username. Expected output: BestProf");
-		test.setuserName("BestProf");
-		System.out.println(test.getUserName());
-		System.out.println();
-		
-		System.out.println("Setting Password. Expected output: SomeUnknown");
-		test.setPassword("SomeUnknown");
-		System.out.println(test.getPassword());
-		System.out.println();
-		
-		System.out.println("Setting Type. Expected output: a");
-		test.setType('a');
-		System.out.println(test.getType());
-		System.out.println();
-		
-		System.out.println("Setting Status. Expected output: N");
-		test.setStatus('N');
-		System.out.println(test.getStatus());
-		System.out.println();
-		
-		System.out.println("***********************************************************");
-		System.out.println("************** User Test Complete!!! ************************");
-		
+	@Test
+	public void testUser() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#getFirstName()}.
+	 */
+	@Test
+	public void testGetFirstName() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#getLastName()}.
+	 */
+	@Test
+	public void testGetLastName() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#getUserName()}.
+	 */
+	@Test
+	public void testGetUserName() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#getPassword()}.
+	 */
+	@Test
+	public void testGetPassword() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#getType()}.
+	 */
+	@Test
+	public void testGetType() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#getStatus()}.
+	 */
+	@Test
+	public void testGetStatus() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#setFirstName(java.lang.String)}.
+	 */
+	@Test
+	public void testSetFirstName() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#setLastName(java.lang.String)}.
+	 */
+	@Test
+	public void testSetLastName() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#setuserName(java.lang.String)}.
+	 */
+	@Test
+	public void testSetuserName() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#setPassword(java.lang.String)}.
+	 */
+	@Test
+	public void testSetPassword() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#setType(char)}.
+	 */
+	@Test
+	public void testSetType() {
+		fail("Not yet implemented");
+	}
+
+	/**
+	 * Test method for {@link csci230.project.User#setStatus(char)}.
+	 */
+	@Test
+	public void testSetStatus() {
+		fail("Not yet implemented");
 	}
 
 }
