@@ -6,6 +6,7 @@ package csci230.project;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -13,7 +14,13 @@ import org.junit.Test;
  *
  */
 public class UserControllerTest {
-
+	UserController uc;
+	
+	@Before
+	public void setUp() throws Exception{
+		uc = new UserController();
+	}
+	
 	/**
 	 * Test method for {@link csci230.project.UserController#UserController()}.
 	 */
@@ -26,8 +33,30 @@ public class UserControllerTest {
 	 * Test method for {@link csci230.project.UserController#logOn(java.lang.String, java.lang.String)}.
 	 */
 	@Test
-	public void testLogOn() {
-		fail("Not yet implemented");
+	public void testLogOn_AdminLogon() {
+		uc.logOn("ZHEINEN001@csbsju.edu", "zaciscool");
+		assertTrue("Adminlogon. output expected: true actual output: " + uc.isAdminLoggedIn(),uc.isAdminLoggedIn());
+	}
+	
+	@Test
+	public void testLogOn_NonAdminLogon() {
+		uc.logOn("abreyen001@csbsju.edu", "myPassword");
+		assertTrue("NonAdminlogon. output expected: true actual output: " + uc.isLoggedIn(),uc.isLoggedIn());
+	}
+	
+	@Test (expected=UnsupportedOperationException.class)
+	public void testLogOn_IncorrectPassword() {
+		uc.logOn("abreyen001@csbsju.edu", "notmyPassword");
+	}
+	
+	@Test (expected=UnsupportedOperationException.class)
+	public void testLogOn_IncorrectUserName() {
+		uc.logOn("notaUser@csbsju.edu", "myPassword");
+	}
+	
+	@Test (expected=UnsupportedOperationException.class)
+	public void testLogOn_DeactivatedUser() {
+		uc.logOn("luser", "user");
 	}
 
 	/**
