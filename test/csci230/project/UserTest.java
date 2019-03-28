@@ -1,16 +1,13 @@
 
-//
-/**
- * 
- */
 package csci230.project;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
 /**
+ * 
  * @author zheinen001
  *
  */
@@ -122,6 +119,14 @@ public class UserTest {
 		u.setuserName("rahal@gmail.com");
 		assertTrue("setuserName() expected rahal@gmail.com got " + u.getUserName(), u.getUserName().equals(expected));
 	}
+	
+	/**
+	 * Test method for {@link csci230.project.User#setuserName(java.lang.String)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetuserName_InvalidUsername() {
+		u.setuserName("Irahal");
+	}
 
 	/**
 	 * Test method for {@link csci230.project.User#setPassword(java.lang.String)}.
@@ -142,6 +147,14 @@ public class UserTest {
 		u.setType('a');
 		assertTrue("setType() expected 'a' got " + u.getType(), u.getType() == expected);
 	}
+	
+	/**
+	 * Test method for {@link csci230.project.User#setType(char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetType_InvalidType() {
+		u.setType('W');
+	}
 
 	/**
 	 * Test method for {@link csci230.project.User#setStatus(char)}.
@@ -153,4 +166,11 @@ public class UserTest {
 		assertTrue("setStatus() expected 'N' got " + u.getStatus(), u.getStatus() == expected);
 	}
 
+	/**
+	 * Test method for {@link csci230.project.User#setStatus(char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetStatus_InvalidStatus() {
+		u.setStatus('p');
+	}
 }

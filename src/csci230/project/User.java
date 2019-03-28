@@ -126,7 +126,13 @@ public class User {
    *@param userName
    */
   public void setuserName(String userName) {
-	  this.userName = userName;
+	  if(userName.contains("@") && userName.contains(".")) {
+		  this.userName = userName;
+	  }
+	  else {
+			throw new IllegalArgumentException("Invalid Username");
+	  }
+	  
   }
   
   /**
@@ -141,14 +147,25 @@ public class User {
    *set type of profile
    */
   public void setType(char type) {
-	  this.type = type;
+	  if(type == 'u' || type == 'a') {
+		  this.type = type;
+	  }
+		else {
+			throw new IllegalArgumentException("Invalid type");
+		}
+
   }
   
   /**
    *set status of profile
    */
   public void setStatus(char status) {
-	  this.status = status;
+	  if(status == 'Y' || status == 'N') {
+		  this.status = status;
+	  }
+	  else {
+		  throw new IllegalArgumentException("Invalid status");
+	  }
   }   
 
 
