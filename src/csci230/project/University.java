@@ -75,7 +75,7 @@ public class University {
 			int expenses, int financialAid, int numOfApps, int perAdmitted, 
 			int perEnrolled, int academicScale, int socialScale, 
 			int qualOfLife, ArrayList<String> emphasis, int count, int distance, double sup) {
-		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS") || state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT") || state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA") || state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS") || state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY") || state.equals("LOUSIANA") || state.equals("MAINE") || state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA") || state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA") || state.equals("NEBRASKA") || state.equals("NEVADA") || state.equals("NEW HAMPSHIRE") || state.equals("NEW JERSEY") || state.equals("NEW MEXICO") || state.equals("NEW YORK") || state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO") || state.equals("OKLAHOMA") || state.equals("OREGON") || state.equals("PENNSYLVANNIA") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA") || state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS") || state.equals("UTAH") || state.equals("VERMONT") || state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") || state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN")) {
+		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS") || state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT") || state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA") || state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS") || state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY") || state.equals("LOUISIANA") || state.equals("MAINE") || state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA") || state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA") || state.equals("NEBRASKA") || state.equals("NEVADA") || state.equals("NEW HAMPSHIRE") || state.equals("NEW JERSEY") || state.equals("NEW MEXICO") || state.equals("NEW YORK") || state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO") || state.equals("OKLAHOMA") || state.equals("OREGON") || state.equals("PENNSYLVANIA") || state.equals("RHODEISLAND") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA") || state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS") || state.equals("UTAH") || state.equals("VERMONT") || state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") || state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN") || state.equals("DISTRICT OF COLUMBIA")){
 			if(location.equals("-1") || location.equals("SMALL-CITY") || location.equals("SUBURBAN") || location.equals("URBAN")) {
 				if(control.equals("CITY") || control.equals("PRIVATE") || control.equals("STATE")) {
 					if(0 < numOfStudents || numOfStudents == 1) {
@@ -85,11 +85,11 @@ public class University {
 									if(expenses == -1 || expenses >= 0) {
 										if(financialAid == -1 || financialAid >= 0 && financialAid <= 100) {
 											if(numOfApps == -1 || numOfApps >= 0) {
-												if(0 <= perAdmitted && perAdmitted <= 100 || perAdmitted == 1) {
-													if(0 <= perEnrolled && perEnrolled <= 100 || perEnrolled == 1) {
-														if(0 <= academicScale && academicScale <= 5 || academicScale == 1) {
-															if(0 <= socialScale && socialScale <= 5 || socialScale == 1) {
-																if(0 <= qualOfLife && qualOfLife <= 5 || qualOfLife == 1) {
+												if(0 <= perAdmitted && perAdmitted <= 100 || perAdmitted == -1) {
+													if(0 <= perEnrolled && perEnrolled <= 100 || perEnrolled == -1) {
+														if(0 <= academicScale && academicScale <= 5 || academicScale == -1) {
+															if(0 <= socialScale && socialScale <= 5 || socialScale == -1) {
+																if(0 <= qualOfLife && qualOfLife <= 5 || qualOfLife == -1) {
 																	this.schoolName = schoolName.toUpperCase();
 																	this.state = state.toUpperCase();
 																	this.location = location.toUpperCase();
