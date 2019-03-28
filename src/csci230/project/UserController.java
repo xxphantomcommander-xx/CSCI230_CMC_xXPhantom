@@ -75,18 +75,17 @@ public class UserController {
 					}
 					else
 					{
-						//user status IS inactive
-						System.out.println("User status is inactive");
-						return;
+						throw new UnsupportedOperationException("deactivated User");
 					}
 				}
 				else
 				{
-					//password IS incorrect
-					isLoggedIn = false;
-					isAdminLoggedIn = false;
-
+					throw new UnsupportedOperationException("invalid password");
 				}
+			}
+			else if(i == users.length -1){
+				//usernameIS incorrect
+				throw new UnsupportedOperationException("invalid username");
 			}
 
 		}
