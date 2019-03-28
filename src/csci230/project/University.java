@@ -75,30 +75,106 @@ public class University {
 			int expenses, int financialAid, int numOfApps, int perAdmitted, 
 			int perEnrolled, int academicScale, int socialScale, 
 			int qualOfLife, ArrayList<String> emphasis, int count, int distance, double sup) {
-		this.schoolName = schoolName.toUpperCase();
-		this.state = state.toUpperCase();
-		this.location = location.toUpperCase();
-		this.control = control.toUpperCase();
-		this.numOfStudents = numOfStudents;
-		this.perFem = perFem;
-		this.satVerbal = satVerbal;
-		this.satMath = satMath;
-		this.expenses = expenses;
-		this.financialAid = financialAid;
-		this.numOfApps = numOfApps;
-		this.perAdmitted = perAdmitted;
-		this.perEnrolled = perEnrolled;
-		this.academicScale = academicScale;
-		this.socialScale = socialScale;
-		this.qualOfLife = qualOfLife;
-		for(int i = 0; i < emphasis.size(); i++) {
-			emphasis.set(i, emphasis.get(i).toUpperCase());
+		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS") || state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT") || state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA") || state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS") || state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY") || state.equals("LOUSIANA") || state.equals("MAINE") || state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA") || state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA") || state.equals("NEBRASKA") || state.equals("NEVADA") || state.equals("NEW HAMPSHIRE") || state.equals("NEW JERSEY") || state.equals("NEW MEXICO") || state.equals("NEW YORK") || state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO") || state.equals("OKLAHOMA") || state.equals("OREGON") || state.equals("PENNSYLVANNIA") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA") || state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS") || state.equals("UTAH") || state.equals("VERMONT") || state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") || state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN")) {
+			if(location.equals("-1") || location.equals("SMALL-CITY") || location.equals("SUBURBAN") || location.equals("URBAN")) {
+				if(control.equals("CITY") || control.equals("PRIVATE") || control.equals("STATE")) {
+					if(0 < numOfStudents || numOfStudents == 1) {
+						if(0 <= perFem && perFem <= 100 || perFem == 1) {
+							if(200 <= satVerbal && satVerbal <= 800 || satVerbal == -1) {
+								if(200 <= satMath && satMath <= 800 || satMath == -1) {
+									if(expenses == -1 || expenses >= 0) {
+										if(financialAid == -1 || financialAid >= 0 && financialAid <= 100) {
+											if(numOfApps == -1 || numOfApps >= 0) {
+												if(0 <= perAdmitted && perAdmitted <= 100 || perAdmitted == 1) {
+													if(0 <= perEnrolled && perEnrolled <= 100 || perEnrolled == 1) {
+														if(0 <= academicScale && academicScale <= 5 || academicScale == 1) {
+															if(0 <= socialScale && socialScale <= 5 || socialScale == 1) {
+																if(0 <= qualOfLife && qualOfLife <= 5 || qualOfLife == 1) {
+																	this.schoolName = schoolName.toUpperCase();
+																	this.state = state.toUpperCase();
+																	this.location = location.toUpperCase();
+																	this.control = control.toUpperCase();
+																	this.numOfStudents = numOfStudents;
+																	this.perFem = perFem;
+																	this.satVerbal = satVerbal;
+																	this.satMath = satMath;
+																	this.expenses = expenses;
+																	this.financialAid = financialAid;
+																	this.numOfApps = numOfApps;
+																	this.perAdmitted = perAdmitted;
+																	this.perEnrolled = perEnrolled;
+																	this.academicScale = academicScale;
+																	this.socialScale = socialScale;
+																	this.qualOfLife = qualOfLife;
+																	for(int i = 0; i < emphasis.size(); i++) {
+																		emphasis.set(i, emphasis.get(i).toUpperCase());
+																	}
+																	this.emphasis = emphasis;
+																	this.count = count;
+																	this.distance = distance;
+																	this.sup = sup;
+																}
+																else {
+																	throw new IllegalArgumentException("Invalid qualOfLife");
+																}
+															}
+															else {
+																throw new IllegalArgumentException("Invalid socialScale");
+															}
+															}
+														else {
+															throw new IllegalArgumentException("Invalid academicScale");
+														}
+															}
+													else {
+														throw new IllegalArgumentException("Invalid perEnrolled");
+													}
+															}
+												else {
+													throw new IllegalArgumentException("Invalid perAdmmited");
+												}
+															}
+											else {
+												throw new IllegalArgumentException("Invalid numOfApps");
+											}
+															}
+										else {
+											throw new IllegalArgumentException("Invalid financialAid");
+										}
+															}
+									else {
+										throw new IllegalArgumentException("Invalid expenses");
+									}
+															}
+								else {
+									throw new IllegalArgumentException("Invalid satMath");
+								}
+															}
+							else {
+								throw new IllegalArgumentException("Invalid satVerbal");
+							}
+															}
+						else {
+							throw new IllegalArgumentException("Invalid perFem");
+						}
+															}
+					else {
+						throw new IllegalArgumentException("Invalid numOfStudents");
+					}
+															}
+				else {
+					throw new IllegalArgumentException("Invalid control");
+				}
+															}
+			else {
+				throw new IllegalArgumentException("Invalid location");
+			}
+															}
+		else {
+			throw new IllegalArgumentException("Invalid state");
 		}
-		this.emphasis = emphasis;
-		this.count = count;
-		this.distance = distance;
-		this.sup = sup;
 	}
+						
 	
 	/**
 	 * gets school name
@@ -113,7 +189,7 @@ public class University {
 	 * @param schoolName
 	 */
 	public void setSchoolName(String schoolName) {
-		this.schoolName = schoolName.toUpperCase();
+			this.schoolName = schoolName.toUpperCase();
 	}
 
 	/**
@@ -129,7 +205,13 @@ public class University {
 	 * @param state
 	 */
 	public void setState(String state) {
-		this.state = state.toUpperCase();
+		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS") || state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT") || state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA") || state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS") || state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY") || state.equals("LOUSIANA") || state.equals("MAINE") || state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA") || state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA") || state.equals("NEBRASKA") || state.equals("NEVADA") || state.equals("NEW HAMPSHIRE") || state.equals("NEW JERSEY") || state.equals("NEW MEXICO") || state.equals("NEW YORK") || state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO") || state.equals("OKLAHOMA") || state.equals("OREGON") || state.equals("PENNSYLVANNIA") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA") || state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS") || state.equals("UTAH") || state.equals("VERMONT") || state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") || state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN")) {
+			this.state = state.toUpperCase();
+		}
+		else {
+			throw new IllegalArgumentException("Invalid state");
+		}
+
 	}
 
 	/**
@@ -145,7 +227,12 @@ public class University {
 	 * @param location
 	 */
 	public void setLocation(String location) {
-		this.location = location.toUpperCase();
+		if(location.equals("-1") || location.equals("SMALL-CITY") || location.equals("SUBURBAN") || location.equals("URBAN")) {
+			this.location = location.toUpperCase();
+		}
+		else {
+			throw new IllegalArgumentException("Invalid location");
+		}
 	}
 	
 	/**
@@ -160,8 +247,13 @@ public class University {
 	 * sets control
 	 * @param control
 	 */
-	public void setContol(String control) {
-		this.control = control.toUpperCase();
+	public void setControl(String control) {
+		if(control.equals("CITY") || control.equals("PRIVATE") || control.equals("STATE")) {
+			this.control = control.toUpperCase();
+		}
+		else {
+			throw new IllegalArgumentException("Invalid control");
+		}
 	}
 
 	/**
@@ -177,7 +269,12 @@ public class University {
 	 * @param numOfStudents
 	 */
 	public void setNumOfStudents(int numOfStudents) {
-		this.numOfStudents = numOfStudents;
+		if(0 < numOfStudents || numOfStudents == 1) {
+			this.numOfStudents = numOfStudents;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid numOfStudents");
+		}
 	}
 
 	/**
@@ -193,7 +290,12 @@ public class University {
 	 * @param perFem
 	 */
 	public void setPerFem(int perFem) {
-		this.perFem = perFem;
+		if(0 <= perFem && perFem <= 100 || perFem == 1) {
+			this.perFem = perFem;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid perFem");
+		}
 	}
 
 	/**
@@ -209,7 +311,12 @@ public class University {
 	 * @param satVerbal
 	 */
 	public void setSatVerbal(int satVerbal) {
-		this.satVerbal = satVerbal;
+		if(200 <= satVerbal && satVerbal <= 800 || satVerbal == -1) {
+			this.satVerbal = satVerbal;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid satVerbal");
+		}
 	}
 
 	/**
@@ -225,7 +332,12 @@ public class University {
 	 * @param satMath
 	 */
 	public void setSatMath(int satMath) {
-		this.satMath = satMath;
+		if(200 <= satMath && satMath <= 800 || satMath == -1) {
+			this.satMath = satMath;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid satMath");
+		}
 	}
 
 	/**
@@ -241,7 +353,12 @@ public class University {
 	 * @param expenses
 	 */
 	public void setExpenses(int expenses) {
-		this.expenses = expenses;
+		if(expenses == -1 || expenses >= 0) {
+			this.expenses = expenses;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid satExpenses");
+		}
 	}
 
 	/**
@@ -257,7 +374,12 @@ public class University {
 	 * @param financialAid
 	 */
 	public void setFinancialAid(int financialAid) {
-		this.financialAid = financialAid;
+		if(financialAid == -1 || financialAid >= 0 && financialAid <= 100) {
+			this.financialAid = financialAid;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid financialAid");
+		}
 	}
 
 	/**
@@ -273,7 +395,12 @@ public class University {
 	 * @param numOfApps
 	 */
 	public void setNumOfApps(int numOfApps) {
-		this.numOfApps = numOfApps;
+		if(numOfApps == -1 || numOfApps >= 0) {
+			this.numOfApps = numOfApps;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid numOfApps");
+		}
 	}
 
 	/**
@@ -289,7 +416,12 @@ public class University {
 	 * @param perAdmitted
 	 */
 	public void setPerAdmitted(int perAdmitted) {
-		this.perAdmitted = perAdmitted;
+		if(0 <= perAdmitted && perAdmitted <= 100 || perAdmitted == 1) {
+			this.perAdmitted = perAdmitted;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid perAdmitted");
+		}
 	}
 
 	/**
@@ -305,7 +437,12 @@ public class University {
 	 * @param perEnrolled
 	 */
 	public void setPerEnrolled(int perEnrolled) {
-		this.perEnrolled = perEnrolled;
+		if(0 <= perEnrolled && perEnrolled <= 100 || perEnrolled == 1) {
+			this.perEnrolled = perEnrolled;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid perEnrolled");
+		}
 	}
 
 	/**
@@ -321,7 +458,12 @@ public class University {
 	 * @param academicScale
 	 */
 	public void setAcademicScale(int academicScale) {
-		this.academicScale = academicScale;
+		if(0 <= academicScale && academicScale <= 5 || academicScale == 1) {
+			this.academicScale = academicScale;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid academicScale");
+		}
 	}
 
 	/**
@@ -337,7 +479,12 @@ public class University {
 	 * @param socialScale
 	 */
 	public void setSocialScale(int socialScale) {
-		this.socialScale = socialScale;
+		if(0 <= socialScale && socialScale <= 5 || socialScale == 1) {
+			this.socialScale = socialScale;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid socialScale");
+		}
 	}
 
 	/**
@@ -353,7 +500,13 @@ public class University {
 	 * @param qualOfLife
 	 */
 	public void setQualOfLife(int qualOfLife) {
-		this.qualOfLife = qualOfLife;
+		if(0 <= qualOfLife && qualOfLife <= 5 || qualOfLife == 1) {
+			this.qualOfLife = qualOfLife;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid qualOfLife");
+		}
+		
 	}
 	
 	
@@ -391,7 +544,12 @@ public class University {
 	 * @param newCount new count
 	 */
 	public void setCount(int newCount) {
-		this.count = newCount;
+		if(0 <= newCount) {
+			this.count = newCount;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid count");
+		}
 	}
 	
 	/**
@@ -408,7 +566,12 @@ public class University {
 	 * @param newEmp new emphasis
 	 */
 	public void setDistance(double newDistance) {
-		this.distance = newDistance;
+		if(0 <= newDistance) {
+			this.distance = newDistance;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid distance");
+		}
 	}
 
 	/**
@@ -422,7 +585,13 @@ public class University {
 	 * @param sup the sup to set
 	 */
 	public void setSup(double sup) {
-		this.sup = sup;
+		if(0 <= sup) {
+			this.sup = sup;
+		}
+		else {
+			throw new IllegalArgumentException("Invalid super");
+		}
+
 	}
 
 }
