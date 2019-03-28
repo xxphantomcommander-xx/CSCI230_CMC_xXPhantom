@@ -83,7 +83,7 @@ public class UserController {
 					throw new UnsupportedOperationException("invalid password");
 				}
 			}
-			else {
+			else if(i == users.length -1){
 				//usernameIS incorrect
 				throw new UnsupportedOperationException("invalid username");
 			}
