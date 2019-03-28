@@ -109,7 +109,7 @@ public class UserTest {
 	@Test
 	public void testSetLastName() {
 		String expected = "Rahal";
-		u.setFirstName("Rahal");
+		u.setLastName("Rahal");
 		assertTrue("setLastName() expected Rahal got " + u.getLastName(), u.getLastName().equals(expected));
 	}
 
