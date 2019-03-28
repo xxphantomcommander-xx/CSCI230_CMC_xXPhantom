@@ -29,12 +29,27 @@ public class User {
  */
   public User(java.lang.String firstName, java.lang.String lastName, java.lang.String userName,
 			java.lang.String password, char type, char status) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.userName = userName;
-		this.password = password;
-		this.type = type;
-		this.status = status;
+		if(type == 'u' || type == 'a') {
+			if(status == 'Y' || status == 'N') {
+				if(userName.contains("@") && userName.contains(".")) {
+					this.firstName = firstName;
+					this.lastName = lastName;
+					this.userName = userName;
+					this.password = password;
+					this.type = type;
+					this.status = status;
+				}
+				else {
+					throw new IllegalArgumentException("Invalid Username");
+				}
+			}
+			else {
+				throw new IllegalArgumentException("Invalid status");
+			}
+		}
+		else {
+			throw new IllegalArgumentException("Invalid type");
+		}
 	}
 /**
    *get first name
