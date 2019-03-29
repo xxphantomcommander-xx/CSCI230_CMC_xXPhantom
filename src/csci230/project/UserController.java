@@ -113,11 +113,21 @@ public class UserController {
 	 */
 	public void addUser(String first, String last, String username, String password, char type, char status) {
 		if(username.contains("@" + ".***")) {
-			User newUser = new User(first, last, username, password, type, status);
-			dbCon.addUser(newUser);
+			if(type == 'u' || type == 'a') {
+				if(status == 'Y' || status == 'N') {
+					User newUser = new User(first, last, username, password, type, status);
+					dbCon.addUser(newUser);
+				}
+				else {
+					throw new IllegalArgumentException("Invalid status");
+				}
+			}
+			else {
+				throw new IllegalArgumentException("Invalid type");
+			}
 		}
 		else {
-			System.out.println("Invalid Username, needs an email as the username");
+			throw new IllegalArgumentException("Invalid Username");
 		}
 	}
 	
