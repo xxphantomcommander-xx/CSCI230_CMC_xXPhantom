@@ -23,8 +23,8 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testUserController() {
-		UserController newUc = new UserController();
-		assertEquals("Constructor failed", this.uc, newUc);
+		UserController newUc = uc;
+		assertSame("Constructor failed", uc, newUc);
 	}
 	
 	/**
