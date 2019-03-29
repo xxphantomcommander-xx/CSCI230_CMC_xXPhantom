@@ -1403,8 +1403,83 @@ public class UniversityController {
 			int perEnrolled, int academicScale, int socialScale, 
 			int qualOfLife, ArrayList<String> emphasis)
 	{
-		University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0, 0, 0);
-		dbCon.addUniversity(newUniv);
+		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS") || state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT") || state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA") || state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS") || state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY") || state.equals("LOUISIANA") || state.equals("MAINE") || state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA") || state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA") || state.equals("NEBRASKA") || state.equals("NEVADA") || state.equals("NEW HAMPSHIRE") || state.equals("NEW JERSEY") || state.equals("NEW MEXICO") || state.equals("NEW YORK") || state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO") || state.equals("OKLAHOMA") || state.equals("OREGON") || state.equals("PENNSYLVANIA") || state.equals("RHODEISLAND") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA") || state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS") || state.equals("UTAH") || state.equals("VERMONT") || state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") || state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN") || state.equals("DISTRICT OF COLUMBIA")){
+			if(location.equals("-1") || location.equals("SMALL-CITY") || location.equals("SUBURBAN") || location.equals("URBAN")) {
+				if(control.equals("CITY") || control.equals("PRIVATE") || control.equals("STATE")) {
+					if(0 < numStudents || numStudents == 1) {
+						if(0 <= perFem && perFem <= 100 || perFem == 1) {
+							if(200 <= satVerbal && satVerbal <= 800 || satVerbal == -1) {
+								if(200 <= satMath && satMath <= 800 || satMath == -1) {
+									if(expenses == -1 || expenses >= 0) {
+										if(financialAid == -1 || financialAid >= 0 && financialAid <= 100) {
+											if(numOfApps == -1 || numOfApps >= 0) {
+												if(0 <= perAdmitted && perAdmitted <= 100 || perAdmitted == -1) {
+													if(0 <= perEnrolled && perEnrolled <= 100 || perEnrolled == -1) {
+														if(0 <= academicScale && academicScale <= 5 || academicScale == -1) {
+															if(0 <= socialScale && socialScale <= 5 || socialScale == -1) {
+																if(0 <= qualOfLife && qualOfLife <= 5 || qualOfLife == -1) {
+																	University newUniv = new University(school, state, location, 																	control, numStudents, perFem, satVerbal, satMath, expenses, 																	financialAid, numOfApps, perAdmitted, perEnrolled, 																	academicScale, socialScale, qualOfLife, emphasis, 0, 0, 0);
+																	dbCon.addUniversity(newUniv);
+																}
+																	else {
+																		throw new IllegalArgumentException("Invalid qualOfLife");
+																	}
+																}
+																else {
+																	throw new IllegalArgumentException("Invalid socialScale");
+																}
+																}
+															else {
+																throw new IllegalArgumentException("Invalid academicScale");
+															}
+																}
+														else {
+															throw new IllegalArgumentException("Invalid perEnrolled");
+														}
+																}
+													else {
+														throw new IllegalArgumentException("Invalid perAdmmited");
+													}
+																}
+												else {
+													throw new IllegalArgumentException("Invalid numOfApps");
+												}
+																}
+											else {
+												throw new IllegalArgumentException("Invalid financialAid");
+											}
+																}
+										else {
+											throw new IllegalArgumentException("Invalid expenses");
+										}
+																}
+									else {
+										throw new IllegalArgumentException("Invalid satMath");
+									}
+																}
+								else {
+									throw new IllegalArgumentException("Invalid satVerbal");
+								}
+																}
+							else {
+								throw new IllegalArgumentException("Invalid perFem");
+							}
+																}
+						else {
+							throw new IllegalArgumentException("Invalid numOfStudents");
+						}
+																}
+					else {
+						throw new IllegalArgumentException("Invalid control");
+					}
+																}
+				else {
+					throw new IllegalArgumentException("Invalid location");
+				}
+																}
+			else {
+				throw new IllegalArgumentException("Invalid state");
+			}
 	}
 
 	/**
