@@ -113,11 +113,21 @@ public class UserController {
 	 */
 	public void addUser(String first, String last, String username, String password, char type, char status) {
 		if(username.contains("@" + ".***")) {
-			User newUser = new User(first, last, username, password, type, status);
-			dbCon.addUser(newUser);
+			if(type == 'u' || type == 'a') {
+				if(status == 'Y' || status == 'N') {
+					User newUser = new User(first, last, username, password, type, status);
+					dbCon.addUser(newUser);
+				}
+				else {
+					throw new IllegalArgumentException("Invalid status");
+				}
+			}
+			else {
+				throw new IllegalArgumentException("Invalid type");
+			}
 		}
 		else {
-			System.out.println("Invalid Username, needs an email as the username");
+			throw new IllegalArgumentException("Invalid Username");
 		}
 	}
 	
@@ -192,6 +202,7 @@ public class UserController {
 	 * @return arraylist of strings to be printed for the user
 	 */
 	public ArrayList<String> showUserDetails(User user){
+		if(user != null) {
 		ArrayList<String> details = new ArrayList<String>();
 		details.add(user.getFirstName());
 		details.add(user.getLastName());
@@ -200,6 +211,10 @@ public class UserController {
 		details.add(String.valueOf(user.getType()));
 		details.add(String.valueOf(user.getStatus()));
 		return details;
+		}
+		else {
+			throw new UnsupportedOperationException("user is null");
+		}
 	}
 	
 	/**
@@ -211,9 +226,25 @@ public class UserController {
 	 * @param type
 	 * @param status
 	 */
+
 	public void editUser(String first, String last, String username, String password, char type, char status) {
-		User newUser = new User(first, last, username, password, type, status);
-		dbCon.editUser(newUser);
+		if(username.contains("@" + ".***")) {
+			if(type == 'u' || type == 'a') {
+				if(status == 'Y' || status == 'N') {
+					User newUser = new User(first, last, username, password, type, status);
+					dbCon.editUser(newUser);
+				}
+				else {
+					throw new IllegalArgumentException("Invalid status");
+				}
+			}
+			else {
+				throw new IllegalArgumentException("Invalid type");
+			}
+		}
+		else {
+			throw new IllegalArgumentException("Invalid Username");
+		}
 	}
 	
 	/**
