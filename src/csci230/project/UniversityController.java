@@ -69,20 +69,155 @@ public class UniversityController {
 	 * @param qHigh
 	 * @param emp
 	 */
-	public ArrayList<University> searchSchools(String sch, String st, String l, String c, 
+	public ArrayList<University> searchSchools(String schoolName, String state, String location, String control, 
 			int nStuLow, int nStuHigh, int prctfLow, int prctfHigh, int svLow, int svHigh, int smLow, int smHigh, int eLow, int eHigh, int prctfinLow, int prctfinHigh, int nApLow, int nApHigh,
 			int prctaLow, int prctaHigh, int prcteLow, int prcteHigh, int asLow, int asHigh, int ssLow, int ssHigh, int qLow, int qHigh, ArrayList<String> emp) {
+		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS") || state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT") || state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA") || state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS") || state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY") || state.equals("LOUISIANA") || state.equals("MAINE") || state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA") || state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA") || state.equals("NEBRASKA") || state.equals("NEVADA") || state.equals("NEW HAMPSHIRE") || state.equals("NEW JERSEY") || state.equals("NEW MEXICO") || state.equals("NEW YORK") || state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO") || state.equals("OKLAHOMA") || state.equals("OREGON") || state.equals("PENNSYLVANIA") || state.equals("RHODEISLAND") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA") || state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS") || state.equals("UTAH") || state.equals("VERMONT") || state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") || state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN") || state.equals("DISTRICT OF COLUMBIA")){
+			if(location.equals("-1") || location.equals("SMALL-CITY") || location.equals("SUBURBAN") || location.equals("URBAN")) {
+				if(control.equals("CITY") || control.equals("PRIVATE") || control.equals("STATE")) {
+					if(0 <= nStuLow) {
+					if(0 <= nStuHigh && nStuHigh > nStuLow) {
+						if(0 <= prctfLow && prctfLow <= 100) {
+						if(0 <= prctfHigh && prctfLow <= 100 && prctfHigh > prctfLow) {
+							if(200 <= svLow && svLow <= 800) {
+							if(200 <= svHigh && svHigh <= 800 && svHigh > svLow) {
+								if(200 <= smLow && smLow <= 800) {
+								if(200 <= smHigh && smHigh <= 800 && smHigh > smLow) {
+									if(0 <= eLow) {
+									if(0 <= eHigh && eHigh > eLow) {
+										if(0 <= prctfinLow && prctfinLow >= 100) {
+										if(0 <= prctfinHigh && prctfinHigh >= 100 && prctfinHigh > prctfinLow) {
+											if(nApLow >= 0) {
+											if(nApHigh >= 0 && nApHigh > nApLow) {
+												if(0 <= prctaLow && prctaLow <= 100) {
+												if(0 <= prctaHigh && prctaHigh <= 100 && prctaHigh > prctaLow) {
+													if(0 <= prcteLow && prcteLow <= 100) {
+													if(0 <= prcteHigh && prcteHigh <= 100 && prcteHigh > prcteLow) {
+														if(0 <= asLow && asLow <= 5) {
+														if(0 <= asHigh && asHigh <= 5 && asHigh > asLow) {
+															if(0 <= ssLow && ssLow <= 5) {
+															if(0 <= ssHigh && ssHigh <= 5 && ssHigh > ssLow) {
+																if(0 <= qLow && qLow <= 5) {
+																if(0 <= qLow && qLow <= 5 && qHigh > qLow) {
+																	
+																	ArrayList<University> searchList = new ArrayList<University>();
+																	ArrayList<University> results = new ArrayList<University>();
+																	searchList = allUnivs;
+																	results = searchByEmphasis(searchByQualityOfLife(searchBySocialLife(searchByAcademicScale(searchByPercEnrolled(searchByPercAdmitted(searchByNumOfApps
+																			(searchByPercentFinAid(searchByExpenses(searchBySATMath(searchBySATVerbal(searchByPercentFemale(searchByNumOfStudents(searchByControl(searchByState(searchBySchool(searchList, schoolName), state),  control),nStuLow, nStuHigh)
+																			, prctfLow, prctfHigh), svLow, svHigh), smLow, smHigh), eLow, eHigh), prctfinLow, prctfinHigh), nApLow, nApHigh), prctaLow, prctaHigh), prcteLow, prcteHigh),
+																			asLow, asHigh), ssLow, ssHigh), qLow, qHigh), emp);
+																	history.add(results.get(0));
+																	return results;
+																}
+																else {
+																	throw new IllegalArgumentException("Invalid qualOfLife");
+																}
+																}
+																else {
+																	throw new IllegalArgumentException("Invalid qualOfLife");
+																}
+															}
+															else {
+																throw new IllegalArgumentException("Invalid socialScale");
+															}
+															}
+																else {
+																	throw new IllegalArgumentException("Invalid socialScale");
+																}
+															}
+														else {
+															throw new IllegalArgumentException("Invalid academicScale");
+														}
+														}
+															else {
+																throw new IllegalArgumentException("Invalid academicScale");
+															}
+															}
+													else {
+														throw new IllegalArgumentException("Invalid perEnrolled");
+													}
+													}
+															else {
+																throw new IllegalArgumentException("Invalid perEnrolled");
+															}
+															}
+												else {
+													throw new IllegalArgumentException("Invalid perAdmmited");
+												}
+												}
+														else {
+															throw new IllegalArgumentException("Invalid perAdmmited");
+														}
+															}
+											else {
+												throw new IllegalArgumentException("Invalid numOfApps");
+											}
+											}
+														else {
+															throw new IllegalArgumentException("Invalid numOfApps");
+														}
+															}
+										else {
+											throw new IllegalArgumentException("Invalid financialAid");
+										}
+										}
+													else {
+														throw new IllegalArgumentException("Invalid financialAid");
+													}
+															}
+									else {
+										throw new IllegalArgumentException("Invalid expenses");
+									}
+									}
+													else {
+														throw new IllegalArgumentException("Invalid expenses");
+													}
+															}
+								else {
+									throw new IllegalArgumentException("Invalid satMath");
+								}
+								}
+												else {
+													throw new IllegalArgumentException("Invalid satMath");
+												}
+															}
+							else {
+								throw new IllegalArgumentException("Invalid satVerbal");
+							}
+							}
+												else {
+													throw new IllegalArgumentException("Invalid satVerbal");
+												}
+															}
+						else {
+							throw new IllegalArgumentException("Invalid perFem");
+						}
+						}
+											else {
+												throw new IllegalArgumentException("Invalid perFem");
+											}
+															}
+					else {
+						throw new IllegalArgumentException("Invalid numOfStudents");
+					}
+					}
+											else {
+												throw new IllegalArgumentException("Invalid numOfStudents");
+											}
+															}
+				else {
+					throw new IllegalArgumentException("Invalid control");
+				}
+			}
 
-		ArrayList<University> searchList = new ArrayList<University>();
-		ArrayList<University> results = new ArrayList<University>();
-		searchList = allUnivs;
-		results = searchByEmphasis(searchByQualityOfLife(searchBySocialLife(searchByAcademicScale(searchByPercEnrolled(searchByPercAdmitted(searchByNumOfApps
-				(searchByPercentFinAid(searchByExpenses(searchBySATMath(searchBySATVerbal(searchByPercentFemale(searchByNumOfStudents(searchByControl(searchByState(searchBySchool(searchList, sch), st),  c),nStuLow, nStuHigh)
-				, prctfLow, prctfHigh), svLow, svHigh), smLow, smHigh), eLow, eHigh), prctfinLow, prctfinHigh), nApLow, nApHigh), prctaLow, prctaHigh), prcteLow, prcteHigh),
-				asLow, asHigh), ssLow, ssHigh), qLow, qHigh), emp);
-		history.add(results.get(0));
-		return results;
+															}
+			else {
+				throw new IllegalArgumentException("Invalid location");
+			}
+		return allUnivs;
 	}
+
 	
 	/**
 	 * Searches based on the school name
@@ -512,6 +647,8 @@ public class UniversityController {
 	 */
 	public ArrayList<University> topRecommended(University univ)
 	{
+		if(univ != null && allUnivs.contains(univ))
+		{
 		ArrayList<University> recommend = new ArrayList<University>();
 		for (University i: allUnivs)
 		{
@@ -701,6 +838,10 @@ public class UniversityController {
 		ArrayList<University> sortedSchools = mergeSort(recommend);
 
 		return sortedSchools;
+		}
+		else {
+			throw new IllegalArgumentException("University passed is not a valid university");
+		}
 		
 
 	}
@@ -788,6 +929,7 @@ public class UniversityController {
 	 */
 	public ArrayList<University> topRecommended2(University univ)
 	{
+		if(univ != null && allUnivs.contains(univ)) {
 		
 		double maxStudents = 0;
 		double minStudents = 0;
@@ -1216,7 +1358,10 @@ public class UniversityController {
 		}
 		ArrayList<University> sortedSchools = mergeSort2(allUnivs);
 		return sortedSchools;
-		
+	}
+		else {
+			throw new IllegalArgumentException("University passed is not a valid university");
+		}
 	}
 	
 	/**
@@ -1303,27 +1448,32 @@ public class UniversityController {
 	 * @return String of results
 	 */
 	public ArrayList<String> showUniversityDetails(University univ) {
-		ArrayList<String> details = new ArrayList<String>();
-		details.add(univ.getSchoolName());
-		details.add(univ.getState());
-		details.add(univ.getLocation());
-		details.add(univ.getControl());
-		details.add(String.valueOf(univ.getNumOfStudents()));
-		details.add(String.valueOf(univ.getPerFem()));
-		details.add(String.valueOf(univ.getSatVerbal()));
-		details.add(String.valueOf(univ.getSatMath()));
-		details.add(String.valueOf(univ.getExpenses()));
-		details.add(String.valueOf(univ.getFinancialAid()));
-		details.add(String.valueOf(univ.getNumOfApps()));
-		details.add(String.valueOf(univ.getPerAdmitted()));
-		details.add(String.valueOf(univ.getPerEnrolled()));
-		details.add(String.valueOf(univ.getAcademicScale()));
-		details.add(String.valueOf(univ.getSocialScale()));
-		details.add(String.valueOf(univ.getQualOfLife()));
-		for(String i:univ.getEmp()) {
-			details.add(i);
+		if (univ != null && viewUniversities().contains(univ)) {
+			ArrayList<String> details = new ArrayList<String>();
+			details.add(univ.getSchoolName());
+			details.add(univ.getState());
+			details.add(univ.getLocation());
+			details.add(univ.getControl());
+			details.add(String.valueOf(univ.getNumOfStudents()));
+			details.add(String.valueOf(univ.getPerFem()));
+			details.add(String.valueOf(univ.getSatVerbal()));
+			details.add(String.valueOf(univ.getSatMath()));
+			details.add(String.valueOf(univ.getExpenses()));
+			details.add(String.valueOf(univ.getFinancialAid()));
+			details.add(String.valueOf(univ.getNumOfApps()));
+			details.add(String.valueOf(univ.getPerAdmitted()));
+			details.add(String.valueOf(univ.getPerEnrolled()));
+			details.add(String.valueOf(univ.getAcademicScale()));
+			details.add(String.valueOf(univ.getSocialScale()));
+			details.add(String.valueOf(univ.getQualOfLife()));
+			for(String i:univ.getEmp()) {
+				details.add(i);
+			}
+			return details;
 		}
-		return details;
+		else {
+			throw new IllegalArgumentException("University passed is not a valid university");
+		}
 	}
 
 	/**
@@ -1364,8 +1514,83 @@ public class UniversityController {
 			int expenses, int financialAid, int numOfApps, int perAdmitted, 
 			int perEnrolled, int academicScale, int socialScale, 
 			int qualOfLife, ArrayList<String> emphasis) {
-		 University newUniv = new University(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis, 0, 0, 0);
-		 this.dbCon.editUniversity(newUniv);
+		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS") || state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT") || state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA") || state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS") || state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY") || state.equals("LOUISIANA") || state.equals("MAINE") || state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA") || state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA") || state.equals("NEBRASKA") || state.equals("NEVADA") || state.equals("NEW HAMPSHIRE") || state.equals("NEW JERSEY") || state.equals("NEW MEXICO") || state.equals("NEW YORK") || state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO") || state.equals("OKLAHOMA") || state.equals("OREGON") || state.equals("PENNSYLVANIA") || state.equals("RHODEISLAND") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA") || state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS") || state.equals("UTAH") || state.equals("VERMONT") || state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") || state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN") || state.equals("DISTRICT OF COLUMBIA")){
+			if(location.equals("-1") || location.equals("SMALL-CITY") || location.equals("SUBURBAN") || location.equals("URBAN")) {
+				if(control.equals("CITY") || control.equals("PRIVATE") || control.equals("STATE")) {
+					if(0 < numStudents || numStudents == -1) {
+						if(0 <= perFem && perFem <= 100 || perFem == -1) {
+							if(200 <= satVerbal && satVerbal <= 800 || satVerbal == -1) {
+								if(200 <= satMath && satMath <= 800 || satMath == -1) {
+									if(expenses == -1 || expenses >= 0) {
+										if(financialAid == -1 || financialAid >= 0 && financialAid <= 100) {
+											if(numOfApps == -1 || numOfApps >= 0) {
+												if(0 <= perAdmitted && perAdmitted <= 100 || perAdmitted == -1) {
+													if(0 <= perEnrolled && perEnrolled <= 100 || perEnrolled == -1) {
+														if(0 <= academicScale && academicScale <= 5 || academicScale == -1) {
+															if(0 <= socialScale && socialScale <= 5 || socialScale == -1) {
+																if(0 <= qualOfLife && qualOfLife <= 5 || qualOfLife == -1) {
+																	University newUniv = new University(school, state, location, 																	control, numStudents, perFem, satVerbal, satMath, expenses, 																	financialAid, numOfApps, perAdmitted, perEnrolled, 																	academicScale, socialScale, qualOfLife, emphasis, 0, 0, 0);
+																	this.dbCon.editUniversity(newUniv);
+																}
+																else {
+																	throw new IllegalArgumentException("Invalid qualOfLife");
+																}
+															}
+															else {
+																throw new IllegalArgumentException("Invalid socialScale");
+															}
+															}
+														else {
+															throw new IllegalArgumentException("Invalid academicScale");
+														}
+															}
+													else {
+														throw new IllegalArgumentException("Invalid perEnrolled");
+													}
+															}
+												else {
+													throw new IllegalArgumentException("Invalid perAdmmited");
+												}
+															}
+											else {
+												throw new IllegalArgumentException("Invalid numOfApps");
+											}
+															}
+										else {
+											throw new IllegalArgumentException("Invalid financialAid");
+										}
+															}
+									else {
+										throw new IllegalArgumentException("Invalid expenses");
+									}
+															}
+								else {
+									throw new IllegalArgumentException("Invalid satMath");
+								}
+															}
+							else {
+								throw new IllegalArgumentException("Invalid satVerbal");
+							}
+															}
+						else {
+							throw new IllegalArgumentException("Invalid perFem");
+						}
+															}
+					else {
+						throw new IllegalArgumentException("Invalid numOfStudents");
+					}
+															}
+				else {
+					throw new IllegalArgumentException("Invalid control");
+				}
+															}
+			else {
+				throw new IllegalArgumentException("Invalid location");
+			}
+															}
+		else {
+			throw new IllegalArgumentException("Invalid state");
+		}
 	}
 	
 	/**
@@ -1406,8 +1631,8 @@ public class UniversityController {
 		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS") || state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT") || state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA") || state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS") || state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY") || state.equals("LOUISIANA") || state.equals("MAINE") || state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA") || state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA") || state.equals("NEBRASKA") || state.equals("NEVADA") || state.equals("NEW HAMPSHIRE") || state.equals("NEW JERSEY") || state.equals("NEW MEXICO") || state.equals("NEW YORK") || state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO") || state.equals("OKLAHOMA") || state.equals("OREGON") || state.equals("PENNSYLVANIA") || state.equals("RHODEISLAND") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA") || state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS") || state.equals("UTAH") || state.equals("VERMONT") || state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") || state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN") || state.equals("DISTRICT OF COLUMBIA")){
 			if(location.equals("-1") || location.equals("SMALL-CITY") || location.equals("SUBURBAN") || location.equals("URBAN")) {
 				if(control.equals("CITY") || control.equals("PRIVATE") || control.equals("STATE")) {
-					if(0 < numStudents || numStudents == 1) {
-						if(0 <= perFem && perFem <= 100 || perFem == 1) {
+					if(0 < numStudents || numStudents == -1) {
+						if(0 <= perFem && perFem <= 100 || perFem == -1) {
 							if(200 <= satVerbal && satVerbal <= 800 || satVerbal == -1) {
 								if(200 <= satMath && satMath <= 800 || satMath == -1) {
 									if(expenses == -1 || expenses >= 0) {
@@ -1487,7 +1712,13 @@ public class UniversityController {
 	 * @param univ
 	 */
 	public void removeUniversity(University univ) {
+		if(univ != null && allUnivs.contains(univ))
+		{
 		dbCon.removeSchool(univ);
+		}
+		else {
+			throw new IllegalArgumentException("University passed is not a valid university");
+		}
 	}
 	
 	/**
@@ -1514,6 +1745,10 @@ public class UniversityController {
 			if(schoolName.equals(i.getSchoolName()))
 			{
 				schoolOfTheWeek= i;
+			}
+			else
+			{
+				throw new IllegalArgumentException("School not found");
 			}
 		}
 		for(String x:dbCon.getUsernameBySavedSchool(schoolName)) {
@@ -1567,6 +1802,7 @@ public class UniversityController {
 	 * @return top 5 recommended schools
 	 */
 	public ArrayList<University> superRecommend(University univ){
+		if (univ != null && allUnivs.contains(univ)) {
 		ArrayList<University> tc = new ArrayList<University>();
 		tc = topRecommended(univ);
 		topRecommended2(univ);
@@ -1578,6 +1814,10 @@ public class UniversityController {
 		}
 		ArrayList<University> sortedSchools = mergeSort3(allUnivs);
 		return sortedSchools;
+		}
+		else {
+			throw new IllegalArgumentException("University passed is not a valid university");
+		}
 	}
 	
 	/**
@@ -1612,6 +1852,7 @@ public class UniversityController {
 		}
 		return whole;
 	}
+
 	
 	/**
 	 * helper method for mergeSort3

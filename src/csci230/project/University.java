@@ -78,8 +78,8 @@ public class University {
 		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS") || state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT") || state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA") || state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS") || state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY") || state.equals("LOUISIANA") || state.equals("MAINE") || state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA") || state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA") || state.equals("NEBRASKA") || state.equals("NEVADA") || state.equals("NEW HAMPSHIRE") || state.equals("NEW JERSEY") || state.equals("NEW MEXICO") || state.equals("NEW YORK") || state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO") || state.equals("OKLAHOMA") || state.equals("OREGON") || state.equals("PENNSYLVANIA") || state.equals("RHODEISLAND") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA") || state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS") || state.equals("UTAH") || state.equals("VERMONT") || state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") || state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN") || state.equals("DISTRICT OF COLUMBIA")){
 			if(location.equals("-1") || location.equals("SMALL-CITY") || location.equals("SUBURBAN") || location.equals("URBAN")) {
 				if(control.equals("CITY") || control.equals("PRIVATE") || control.equals("STATE")) {
-					if(0 < numOfStudents || numOfStudents == 1) {
-						if(0 <= perFem && perFem <= 100 || perFem == 1) {
+					if(0 < numOfStudents || numOfStudents == -1) {
+						if(0 <= perFem && perFem <= 100 || perFem == -1) {
 							if(200 <= satVerbal && satVerbal <= 800 || satVerbal == -1) {
 								if(200 <= satMath && satMath <= 800 || satMath == -1) {
 									if(expenses == -1 || expenses >= 0) {
