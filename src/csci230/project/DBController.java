@@ -188,7 +188,7 @@ public class DBController {
 	private void addUnivEmph(String school, String emphasis) {
 		univDBlib.university_addUniversityEmphasis(school, emphasis);
 	}
-	
+	//
 	/**
 	 * edits university based on school name to database
 	 * @param school
