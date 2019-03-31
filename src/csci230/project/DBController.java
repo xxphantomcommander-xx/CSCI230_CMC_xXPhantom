@@ -34,7 +34,17 @@ public class DBController {
 	 */
 	public void saveUniversities(University school)
 	{
-		univDBlib.user_saveSchool(loggedOnUser.getUserName(), school.getSchoolName().toUpperCase());
+		boolean saved = false;
+		ArrayList<University> univs = loadUniversities();
+		for (University i : univs) {
+			if (i.getSchoolName().equals(school.getSchoolName())) {
+				univDBlib.user_saveSchool(loggedOnUser.getUserName(), school.getSchoolName().toUpperCase());
+				saved = true;
+			}
+		}
+		if(saved == false) {
+			throw new IllegalArgumentException("School does not exist");
+		}
 	}
 	
 	/*
@@ -54,6 +64,7 @@ public class DBController {
 	 */
 	public ArrayList<University> getSavedSchoolList()
 	{
+		boolean gotSaved = false;
 		ArrayList<University> savedUnivs = new ArrayList<University>();
 		String [][] usersSavedUnivs = univDBlib.user_getUsernamesWithSavedSchools();
 		ArrayList<String> al = new ArrayList<String>();
@@ -70,11 +81,12 @@ public class DBController {
 				NonAdminFunctionalityController nai = new NonAdminFunctionalityController();
 				temp = nai.searchSchools(usersSavedUnivs[i][1], "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
 				savedUnivs.add(temp.get(0));
+				gotSaved = true;
 				
 			}
-			else {
-				throw new IllegalArgumentException("Logged on user doesn't have any save schools");
-			}
+		}
+		if (gotSaved == false) {
+			throw new IllegalArgumentException("Logged on user doesn't have any save schools");
 		}
 		return savedUnivs;
 	}
@@ -85,6 +97,7 @@ public class DBController {
 	 * @return username
 	 */
 	public ArrayList<String> getUsernameBySavedSchool(String SchoolName){
+		boolean gotUsername = false;
 		ArrayList<String> usernames = new ArrayList<String>();
 		String [][] usersSavedUnivs = univDBlib.user_getUsernamesWithSavedSchools();
 		
@@ -92,11 +105,12 @@ public class DBController {
 			
 			if(usersSavedUnivs[i][1].equals(SchoolName)) {
 				usernames.add(usersSavedUnivs[i][0]);
+				gotUsername = true;
 			}
-			else
-			{
-				throw new IllegalArgumentException("School name not found");
-			}
+		}
+		if(gotUsername == false)
+		{
+			throw new IllegalArgumentException("School name not found");
 		}
 		return usernames;
 	}
@@ -120,7 +134,7 @@ public class DBController {
 				loadUniversities();
 			}
 		}
-		if (removed = false) {
+		if (removed == false) {
 			throw new IllegalArgumentException("Cannot remove a school that doesn't exist in database");
 		}
 	}
@@ -186,19 +200,39 @@ public class DBController {
 	 * @param emphasis
 	 */
 	private void addUnivEmph(String school, String emphasis) {
-		univDBlib.university_addUniversityEmphasis(school, emphasis);
+		boolean added = false;
+		ArrayList<University> univs = loadUniversities();
+		for (University i : univs) {
+			if (i.getSchoolName().equals(school)) {
+				univDBlib.university_addUniversityEmphasis(school, emphasis);
+				added = true;
+			}
+		}
+		if (added == false) {
+			throw new IllegalArgumentException("School does not exist");
+		}
 	}
-	//
 	/**
 	 * edits university based on school name to database
 	 * @param school
 	 */
 	public void editUniversity(University univ)
 	{
-	univDBlib.university_editUniversity(univ.getSchoolName().toUpperCase(), univ.getState().toUpperCase(), univ.getLocation().toUpperCase(), univ.getControl().toUpperCase(), univ.getNumOfStudents(), 
-			univ.getPerFem(), univ.getSatVerbal(), univ.getSatMath(), univ.getExpenses(), univ.getFinancialAid(), univ.getNumOfApps(), univ.getPerAdmitted(), 
-			univ.getPerEnrolled(), univ.getAcademicScale(), univ.getSocialScale(), univ.getQualOfLife());
-	loadUniversities();
+		boolean edited = false;
+		ArrayList<University> univs = loadUniversities();
+		for (University i : univs) {
+			if (i.getSchoolName().equals(univ.getSchoolName())) {
+				univDBlib.university_editUniversity(univ.getSchoolName().toUpperCase(), univ.getState().toUpperCase(), univ.getLocation().toUpperCase(), univ.getControl().toUpperCase(), univ.getNumOfStudents(), 
+						univ.getPerFem(), univ.getSatVerbal(), univ.getSatMath(), univ.getExpenses(), univ.getFinancialAid(), univ.getNumOfApps(), univ.getPerAdmitted(), 
+						univ.getPerEnrolled(), univ.getAcademicScale(), univ.getSocialScale(), univ.getQualOfLife());
+						loadUniversities();
+						edited = true;
+			}
+		}
+		if (edited == false)
+		{
+			throw new IllegalArgumentException("University does not exist");
+		}
 	}
 	
 	/**
@@ -207,7 +241,19 @@ public class DBController {
 	 * @param emphasis
 	 */
 	private void removeUnivEmph(String school, String emphasis) {
-		univDBlib.university_removeUniversityEmphasis(school, emphasis);
+		boolean removed = false;
+		ArrayList<University> univs = loadUniversities();
+		for (University i : univs) {
+			if (i.getSchoolName().equals(school)) {
+				univDBlib.university_removeUniversityEmphasis(school, emphasis);
+				removed = true;
+			}
+		}
+		if (removed == false)
+		{
+			throw new IllegalArgumentException("University does not exist");
+		}
+		
 	}
 	
 	/**
@@ -215,7 +261,17 @@ public class DBController {
 	 * @param username
 	 */
 	public void deleteUser(String username) {
-		univDBlib.user_deleteUser(username);
+		boolean deleted = false;
+		ArrayList<User> users = loadUsers(loggedOnUser.getUserName());
+		for (User i : users) {
+			if (i.getUserName().equals(username)) {
+				univDBlib.user_deleteUser(username);
+				deleted = true;
+			}
+		}
+		if (deleted == false) {
+			throw new IllegalArgumentException("User does not exist");
+		}
 	}
 	
 	/**
@@ -224,7 +280,17 @@ public class DBController {
 	 * @param school
 	 */
 	public void deleteSavedSchool(University school) {
-		univDBlib.user_removeSchool(loggedOnUser.getUserName(), school.getSchoolName());
+		boolean deleted = false;
+		ArrayList<University> savedUnivs = getSavedSchoolList();
+		for (University i : savedUnivs) {
+			if (i.getSchoolName().equals(school.getSchoolName())) {
+				univDBlib.user_removeSchool(loggedOnUser.getUserName(), school.getSchoolName());
+				deleted = true;
+			}
+		}
+		if (deleted == false) {
+			throw new IllegalArgumentException("School not saved by the user");
+		}
 	}
 	
 	/**
@@ -233,7 +299,17 @@ public class DBController {
 	 */
 	public void editUser(User newUser)
 	{
-		univDBlib.user_editUser(newUser.getUserName(), newUser.getFirstName(), newUser.getLastName(), newUser.getPassword(), newUser.getType(), newUser.getStatus());
+		boolean edited = false;
+		ArrayList<User> users = loadUsers(loggedOnUser.getUserName());
+		for (User i : users) {
+			if (i.getUserName().equals(newUser.getUserName())) {
+				univDBlib.user_editUser(newUser.getUserName(), newUser.getFirstName(), newUser.getLastName(), newUser.getPassword(), newUser.getType(), newUser.getStatus());
+				edited = true;
+			}
+		}
+		if (edited == false) {
+			throw new IllegalArgumentException("User does not exist");
+		}
 	}
 	
 	/**
@@ -302,18 +378,26 @@ public class DBController {
 	 * @return list of emps
 	 */
 	private ArrayList<String> loadEmp(String univName){
+		boolean loaded = false;
+		ArrayList<University> univs = loadUniversities();
 		String [][] univEmp;
 		univEmp = getEmphasis();
 		ArrayList<String> emp = new ArrayList<String>();
-		for(int i = 0; i < univEmp.length; i++) {
-			
-
-			
-				if(univEmp[i][0].equals(univName)) {
-					emp.add(univEmp[i][1]);
+		for (University i : univs) {
+			if (i.getSchoolName().equals(univName)) {
+				for(int j = 0; j < univEmp.length; j++) {
+					if(univEmp[j][0].equals(univName)) {
+						emp.add(univEmp[j][1]);
+					}	
+				}
+				loaded = true;
 			}
-				
 		}
+		if (loaded == false)
+		{
+			throw new IllegalArgumentException("School does not exist");
+		}
+		
 		return emp;
 	}
 	
