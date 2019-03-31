@@ -72,6 +72,9 @@ public class DBController {
 				savedUnivs.add(temp.get(0));
 				
 			}
+			else {
+				throw new IllegalArgumentException("Logged on user doesn't have any save schools");
+			}
 		}
 		return savedUnivs;
 	}
@@ -89,7 +92,10 @@ public class DBController {
 			
 			if(usersSavedUnivs[i][1].equals(SchoolName)) {
 				usernames.add(usersSavedUnivs[i][0]);
-				
+			}
+			else
+			{
+				throw new IllegalArgumentException("School name not found");
 			}
 		}
 		return usernames;
@@ -101,12 +107,22 @@ public class DBController {
 	 */
 	public void removeSchool(University univ)
 	{
-		for (String i:univ.getEmp()) {
-			removeUnivEmph(univ.getSchoolName().toUpperCase(), i.toUpperCase());
-		}
+		boolean removed = false;
+		ArrayList<University> univs = loadUniversities();
+		for (University i : univs) {
+			if (i.equals(univ)) {
+				for (String j:univ.getEmp()) {
+					removeUnivEmph(univ.getSchoolName().toUpperCase(), j.toUpperCase());
+				}
 
-		univDBlib.university_deleteUniversity(univ.getSchoolName().toUpperCase());
-		loadUniversities();
+				univDBlib.university_deleteUniversity(univ.getSchoolName().toUpperCase());
+				removed = true;
+				loadUniversities();
+			}
+		}
+		if (removed = false) {
+			throw new IllegalArgumentException("Cannot remove a school that doesn't exist in database");
+		}
 	}
 	
 	/**
@@ -115,6 +131,12 @@ public class DBController {
 	 */
 	public void addUser(User newUser)
 	{
+		ArrayList<User> users = loadUsers(loggedOnUser.getUserName());
+		for (User i : users) {
+			if (i.getUserName().equals(newUser.getUserName())) {
+				throw new IllegalArgumentException("User already exists");
+			}
+		}
 		univDBlib.user_addUser(newUser.getFirstName(), newUser.getLastName(), newUser.getUserName(), newUser.getPassword(), newUser.getType());
 	}
 	
@@ -124,6 +146,12 @@ public class DBController {
 	 */
 	public void addUniversity(University univ)
 	{
+	ArrayList<University> univs = loadUniversities();
+	for (University i : univs) {
+		if (i.getSchoolName().equals(univ.getSchoolName())) {
+			throw new IllegalArgumentException("University already exists");
+		}
+	}
 	univDBlib.university_addUniversity(univ.getSchoolName().toUpperCase(), univ.getState().toUpperCase(), univ.getLocation().toUpperCase(), univ.getControl().toUpperCase(), univ.getNumOfStudents(), 
 			univ.getPerFem(), univ.getSatVerbal(), univ.getSatMath(), univ.getExpenses(), univ.getFinancialAid(), univ.getNumOfApps(), univ.getPerAdmitted(), 
 			univ.getPerEnrolled(), univ.getAcademicScale(), univ.getSocialScale(), univ.getQualOfLife());
