@@ -308,22 +308,8 @@ public class DBController {
 		this.allUsers.clear();
 		for (int i = 0; i < userString.length; i++)
 		{
-			
-			
-			if ("u".equals(userString[i][4]))
-			{
-
 				User temp = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
-				this.allUsers.add(temp);
-				
-			}
-			else
-			{
-				User temp2 = new User(userString[i][0], userString[i][1], userString[i][2], userString[i][3], userString[i][4].charAt(0), userString[i][5].charAt(0));
-				this.allUsers.add(temp2);
-				
-			}
-	
+				this.allUsers.add(temp);	
 		}
 		return this.allUsers;
 	}
