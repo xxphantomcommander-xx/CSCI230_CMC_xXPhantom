@@ -232,9 +232,7 @@ public class DBController {
 		ArrayList<University> univs = loadUniversities();
 		for (University i : univs) {
 			if (i.getSchoolName().equals(univ.getSchoolName())) {
-				univDBlib.university_editUniversity(univ.getSchoolName().toUpperCase(), univ.getState().toUpperCase(), univ.getLocation().toUpperCase(), univ.getControl().toUpperCase(), univ.getNumOfStudents(), 
-						univ.getPerFem(), univ.getSatVerbal(), univ.getSatMath(), univ.getExpenses(), univ.getFinancialAid(), univ.getNumOfApps(), univ.getPerAdmitted(), 
-						univ.getPerEnrolled(), univ.getAcademicScale(), univ.getSocialScale(), univ.getQualOfLife());
+				univDBlib.university_editUniversity(univ.getSchoolName().toUpperCase(), univ.getState().toUpperCase(), univ.getLocation().toUpperCase(), univ.getControl().toUpperCase(), univ.getNumOfStudents(), univ.getPerFem(), univ.getSatVerbal(), univ.getSatMath(), univ.getExpenses(), univ.getFinancialAid(), univ.getNumOfApps(), univ.getPerAdmitted(), univ.getPerEnrolled(), univ.getAcademicScale(), univ.getSocialScale(), univ.getQualOfLife());
 						loadUniversities();
 						edited = true;
 			}
