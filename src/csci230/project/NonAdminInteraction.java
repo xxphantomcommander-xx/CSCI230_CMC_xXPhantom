@@ -156,30 +156,6 @@ public class NonAdminInteraction {
 	}
 	
 	/**
-	 * Sorts the saved schools by state
-	 * @param savedSchool
-	 */
-	public void sortByPerEnrolled(List<University> savedSchool) {
-		nAFC.sortByPerEnrolled(savedSchool);
-	}
-	
-	/**
-	 * Sorts the saved schools by Size
-	 * @param savedSchool
-	 */
-	public void sortBySize(ArrayList<University> savedSchool) {
-		nAFC.sortBySize(savedSchool);
-	}
-	
-	/**
-	 * Sorts the saved schools by name
-	 * @param savedSchool
-	 */
-	public void sortByExpense(ArrayList<University> savedSchool) {
-		nAFC.sortByExpense(savedSchool);
-	}
-	
-	/**
 	 * lists 5 recommended Universities
 	 * @param school
 	 * @return University objects of recommended schools
@@ -195,13 +171,5 @@ public class NonAdminInteraction {
 	public University randomSchool()
 	{
 		return nAFC.randomSchool();
-	}
-	
-	/**
-	 * able to view the your saved school's list
-	 * @return list of Saved Schools connected to a user
-	 */
-	public ArrayList<University> viewSortedSavedSchools() {
-		return nAFC.viewSortedSavedSchools();
 	}
 }
