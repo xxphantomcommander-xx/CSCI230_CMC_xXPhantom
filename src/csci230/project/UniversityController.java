@@ -1740,16 +1740,17 @@ public class UniversityController {
 	public void setSchoolOfTheWeek(String schoolName)
 	{
 		ArrayList<University> schoolList = dbCon.loadUniversities();
+		boolean schoolFound = false;
 		for(University i : schoolList)
 		{
 			if(schoolName.equals(i.getSchoolName()))
 			{
 				schoolOfTheWeek= i;
+				schoolFound = true;
 			}
-			else
-			{
-				throw new IllegalArgumentException("School not found");
-			}
+		}
+		if (schoolFound == false) {
+			throw new IllegalArgumentException("School not found");
 		}
 		for(String x:dbCon.getUsernameBySavedSchool(schoolName)) {
 			String to = x;
