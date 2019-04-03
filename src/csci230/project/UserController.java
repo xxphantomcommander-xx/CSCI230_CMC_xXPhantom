@@ -1,7 +1,6 @@
 package csci230.project;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import javax.mail.*;
@@ -24,9 +23,6 @@ public class UserController {
 	private DBController dbCon;
 	// an instance of the UniversityController
 	private UniversityController univC;
-	// An arraylist of universities for a users saved schools
-	private ArrayList<University> mySavedSchools = new ArrayList<University>();
-
 	
 	/**
 	 * constructor

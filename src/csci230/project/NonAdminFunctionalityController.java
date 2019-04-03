@@ -1,8 +1,6 @@
 package csci230.project;
 
 import java.util.ArrayList;
-import java.util.List;
-
 /**
  * This class contains all the functionalities of Non-Admins
  * @author xXPhantomCommander$Xx

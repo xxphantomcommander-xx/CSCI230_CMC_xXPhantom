@@ -340,27 +340,6 @@ public class Driver {
 			System.out.println(i.getSchoolName());
 		}
 		System.out.println("*********** Remove Saved Schools Complete!!! ****************\n\n");
-		
-		System.out.println("*********** Sort Saved Schools by Percent Enrolled ****************\n");
-		nai.sortByPerEnrolled(savedUnivs2);
-		for(University i: nai.viewSortedSavedSchools()) {
-			System.out.println(i.getSchoolName());
-		}
-		System.out.println("*********** Sort Saved Schools by Percent Enrolled Complete!!! ****************\n");
-		
-		System.out.println("*********** Sort Saved Schools by Size ****************\n");
-		nai.sortBySize(savedUnivs2);
-		for(University i: nai.viewSortedSavedSchools()) {
-			System.out.println(i.getSchoolName());
-		}
-		System.out.println("*********** Sort Saved Schools by Size Complete!!! ****************\n");
-		
-		System.out.println("*********** Sort Saved Schools by Expense ****************\n");
-		nai.sortByExpense(savedUnivs2);
-		for(University i: nai.viewSortedSavedSchools()) {
-			System.out.println(i.getSchoolName());
-		}
-		System.out.println("*********** Sort Saved Schools by Expense Complete!!! ****************\n");
 		System.out.println("-_-_-_- DRIVER COMPLETE -_-_-_-");
 }
 }

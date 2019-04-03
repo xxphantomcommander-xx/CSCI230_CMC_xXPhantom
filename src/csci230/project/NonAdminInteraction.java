@@ -1,8 +1,6 @@
 package csci230.project;
 
 import java.util.ArrayList;
-import java.util.List;
-
 /**
  * This class is how Non-Admins interact with the system
  * @author xXPhantomCommander$Xx
