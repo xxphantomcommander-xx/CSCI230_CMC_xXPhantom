@@ -317,41 +317,61 @@ public class UserController {
 	
     /**
      * deactivates a user
-	 * @param User user
+	 * @param String userName
 	 */
 	public void deactivateUser(String userName) {
 		  ArrayList<User> useList = dbCon.getAllUsers();
+		  boolean activated = false;
+		  boolean exists = false;
 		  for(User i : useList)
 		  {
 			  if (userName.equals(i.getUserName()))
 			  {
+				  exists = true;
 				  	if (i.getStatus() == 'Y')
 				  	{
+				  		activated = true;
 				  		editUser(i.getFirstName(), i.getLastName(), i.getUserName(), i.getPassword(), i.getType(), 'N');
 				  	}
 			  }
 
 		  }
+			if(activated == false) {
+				throw new IllegalArgumentException("User already deactivated");
+			}
+			if(exists == false) {
+				throw new IllegalArgumentException("User doesn't exist");
+			}
 		  
 	  }
 	
     /**
      * activates a user
-	 * @param User user
+	 * @param String userName
 	 */
 	public void activateUser(String userName) {
 		  ArrayList<User> useList = dbCon.getAllUsers();
+		  boolean deactivated = false;
+		  boolean exists = false;
 		  for(User i : useList)
 		  {
 			  if (userName.equals(i.getUserName()))
 			  {
+				  exists = true;
 				  	if (i.getStatus() == 'N')
 				  	{
+				  		deactivated = true;
 				  		editUser(i.getFirstName(), i.getLastName(), i.getUserName(), i.getPassword(), i.getType(), 'Y');
 				  	}
 			  }
 
 		  }
+			if(deactivated == false) {
+				throw new IllegalArgumentException("User already activated");
+			}
+			if(exists == false) {
+				throw new IllegalArgumentException("User doesn't exist");
+			}
 		  
 	  }
 }
