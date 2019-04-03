@@ -16,9 +16,10 @@ public class UserControllerTest {
 	UserController uc;
 	
 	@Before
-	public void setUp() throws Exception{
+	  public void setUp() throws Exception {
 		uc = new UserController();
-	}
+		uc.logOn("ZHEINEN001@csbsju.edu", "zaciscool");
+	  }
 	
 	/**
 	 * Test method for {@link csci230.project.UserController#UserController()}.
@@ -172,7 +173,40 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testEditUser() {
-		fail("Not yet implemented");
+		uc.editUser("IMAD", "RAHAL", "luser@csbsju.edu", "PASSWORD", 'a', 'Y');
+		ArrayList<User> allUsers = uc.viewUsers();
+		for(User i:allUsers) {
+			if(i.getUserName().equals("luser@csbsju.edu")) {
+				if(i.getLastName().equals("RAHAL") && i.getPassword().equals("PASSWORD") && i.getType() == 'a' && i.getStatus() == 'Y') {
+					assertTrue("edited User first name should equal IMAD. actual result" + i.getFirstName(), i.getFirstName().equals("IMAD"));
+				}
+			}
+		}
+		uc.editUser("Lynn", "User", "luser@csbsju.edu", "user", 'u', 'N');
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#editUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditUser_InvalidUsername() {
+		uc.editUser("IMAD", "RAHAL", "luser", "PASSWORD", 'a', 'Y');
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#editUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditUser_InvalidType() {
+		uc.editUser("IMAD", "RAHAL", "luser@csbsju.edu", "PASSWORD", 'Z', 'Y');
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#editUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditUser_InvalidStatus() {
+		uc.editUser("IMAD", "RAHAL", "luser@csbsju.edu", "PASSWORD", 'a', 'p');
 	}
 
 	/**
@@ -212,38 +246,6 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testResetPasswordByEmail() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link csci230.project.UserController#sortByPerEnrolled(java.util.List)}.
-	 */
-	@Test
-	public void testSortByPerEnrolled() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link csci230.project.UserController#sortBySize(java.util.List)}.
-	 */
-	@Test
-	public void testSortBySize() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link csci230.project.UserController#sortByExpense(java.util.List)}.
-	 */
-	@Test
-	public void testSortByExpense() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link csci230.project.UserController#viewSortedSavedSchools()}.
-	 */
-	@Test
-	public void testViewSortedSavedSchools() {
 		fail("Not yet implemented");
 	}
 

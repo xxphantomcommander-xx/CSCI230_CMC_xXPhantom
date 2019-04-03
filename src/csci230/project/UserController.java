@@ -108,7 +108,7 @@ public class UserController {
 	 * @param status
 	 */
 	public void addUser(String first, String last, String username, String password, char type, char status) {
-		if(username.contains("@" + ".***")) {
+		if(username.contains("@") && username.contains(".")) {
 			if(type == 'u' || type == 'a') {
 				if(status == 'Y' || status == 'N') {
 					User newUser = new User(first, last, username, password, type, status);
@@ -224,7 +224,7 @@ public class UserController {
 	 */
 
 	public void editUser(String first, String last, String username, String password, char type, char status) {
-		if(username.contains("@" + ".***")) {
+		if(username.contains("@") && username.contains(".")) {
 			if(type == 'u' || type == 'a') {
 				if(status == 'Y' || status == 'N') {
 					User newUser = new User(first, last, username, password, type, status);
