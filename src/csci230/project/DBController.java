@@ -389,20 +389,15 @@ public class DBController {
 	 */
 	private ArrayList<String> loadEmp(String univName){
 		boolean loaded = false;
-		ArrayList<University> univs = loadUniversities();
 		String [][] univEmp;
 		univEmp = getEmphasis();
 		ArrayList<String> emp = new ArrayList<String>();
-		for (University i : univs) {
-			if (i.getSchoolName().equals(univName)) {
 				for(int j = 0; j < univEmp.length; j++) {
 					if(univEmp[j][0].equals(univName)) {
 						emp.add(univEmp[j][1]);
 					}	
 				}
 				loaded = true;
-			}
-		}
 		if (loaded == false)
 		{
 			throw new IllegalArgumentException("School does not exist");
