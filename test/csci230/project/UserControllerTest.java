@@ -3,6 +3,8 @@ package csci230.project;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -70,7 +72,43 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testAddUser() {
-		fail("Not yet implemented");
+		uc.addUser("Zac", "Heinen", "someEmail@gmail.com", "password", 'a', 'Y');
+		boolean found = false;
+		ArrayList<User> allUsers = uc.viewUsers();
+		for(User i:allUsers) {
+			if(i.getUserName().equals("someEmail@gmail.com")) {
+				found = true;
+				assertTrue("expected output someEmail@gmail.com got" + i.getUserName(),i.getUserName().equals("someEmail@gmail.com"));
+			}
+		}
+		if(!found) {
+			assertFalse(true);
+		}
+		uc.deleteUser("someEmail@gmail.com");
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#addUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUser_InvalidUsername() {
+		uc.addUser("Zac", "Heinen", "badUsername", "password", 'a', 'Y');
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#addUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUser_InvalidType() {
+		uc.addUser("Zac", "Heinen", "someEmail@gmail.com", "password", 'g', 'Y');
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#addUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUser_InvalidStatus() {
+		uc.addUser("Zac", "Heinen", "someEmail@gmail.com", "password", 'a', 'Z');
 	}
 
 	/**

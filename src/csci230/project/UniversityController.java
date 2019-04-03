@@ -260,7 +260,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid numOfStudents");
+							throw new IllegalArgumentException("High has to be greater than low");
 						}
 					}
 
@@ -297,7 +297,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid prctFemale");
+							throw new IllegalArgumentException("high has to be greater than low");
 						}
 					} else {
 						throw new IllegalArgumentException("Invalid prctFemale");
@@ -332,7 +332,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid satVerbal");
+							throw new IllegalArgumentException("High has to be greater than low");
 						}
 					} else {
 						throw new IllegalArgumentException("Invalid satVerbal");
@@ -368,7 +368,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid satMath");
+							throw new IllegalArgumentException("High has to be greater than low");
 						}
 					} else {
 						throw new IllegalArgumentException("Invalid satMath");
@@ -402,7 +402,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid expenses");
+							throw new IllegalArgumentException("High has to be greater than low");
 						}
 					} else {
 						throw new IllegalArgumentException("Invalid expenses");
@@ -436,7 +436,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid financialAid");
+							throw new IllegalArgumentException("High has to be greater than low");
 						}
 					} else {
 						throw new IllegalArgumentException("Invalid financialAid");
@@ -470,7 +470,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid numOfApps");
+							throw new IllegalArgumentException("High has to be greater than low");
 						}
 					} else {
 						throw new IllegalArgumentException("Invalid numOfApps");
@@ -504,7 +504,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid perAdmmited");
+							throw new IllegalArgumentException("High has to be greater than low");
 						}
 					} else {
 						throw new IllegalArgumentException("Invalid perAdmmited");
@@ -538,7 +538,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid perEnrolled");
+							throw new IllegalArgumentException("High has to be greater than low");
 						}
 					} else {
 						throw new IllegalArgumentException("Invalid perEnrolled");
@@ -572,7 +572,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid academicScale");
+							throw new IllegalArgumentException("High has to be greater than low");
 						}
 					} else {
 						throw new IllegalArgumentException("Invalid academicScale");
@@ -606,7 +606,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid socialScale");
+							throw new IllegalArgumentException("High has to be greater than low");
 						}
 					} else {
 						throw new IllegalArgumentException("Invalid socialScale");
@@ -641,7 +641,7 @@ public class UniversityController {
 					}
 					return matchedSchools;
 						} else {
-							throw new IllegalArgumentException("Invalid qualOfLife");
+							throw new IllegalArgumentException("High has to be greater than low");
 						}
 					} else {
 						throw new IllegalArgumentException("Invalid qualOfLife");
