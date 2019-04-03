@@ -1,7 +1,6 @@
 package csci230.project;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import javax.mail.*;
@@ -24,9 +23,6 @@ public class UserController {
 	private DBController dbCon;
 	// an instance of the UniversityController
 	private UniversityController univC;
-	// An arraylist of universities for a users saved schools
-	private ArrayList<University> mySavedSchools = new ArrayList<University>();
-
 	
 	/**
 	 * constructor
@@ -315,291 +311,63 @@ public class UserController {
 				mex.printStackTrace();}
 	}
 	
-	/**
-	 * Sorts by percent enrolled
-	 * @param whole
-	 * @return an arraylist of universities in order of percent enrolled
-	 */
-	private ArrayList<University> mergeSortPerEnrolled(ArrayList<University> whole)
-	{
-		ArrayList<University> left = new ArrayList<University>();
-		ArrayList<University> right = new ArrayList<University>();
-		int center;
-		
-		if (whole.size() == 1)
-		{
-			return whole;
-		}
-		else 
-		{
-			center = whole.size()/2;
-			for (int i = 0; i < center ; i++)
-			{
-				left.add(whole.get(i));
-			}
-			for (int i = center; i < whole.size(); i++)
-			{
-				right.add(whole.get(i));
-			}
-			left = mergeSortPerEnrolled(left);
-			right = mergeSortPerEnrolled(right);
-			mergePerEnrolled(left, right, whole);
-		}
-		return whole;
-	}
-	
-	/**
-	 * Merge by percent enrolled
-	 * @param left
-	 * @param right
-	 * @param whole
-	 */
-	private void mergePerEnrolled(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
-        int leftIndex = 0;
-        int rightIndex = 0;
-        int wholeIndex = 0;
- 
-        // As long as neither the left nor the right ArrayList has
-        // been used up, keep taking the smaller of left.get(leftIndex)
-        // or right.get(rightIndex) and adding it at both.get(bothIndex).
-        while (leftIndex < left.size() && rightIndex < right.size()) {
-            if (left.get(leftIndex).getPerEnrolled() > right.get(rightIndex).getPerEnrolled()) {
-                whole.set(wholeIndex, left.get(leftIndex));
-                leftIndex++;
-            } else {
-                whole.set(wholeIndex, right.get(rightIndex));
-                rightIndex++;
-            }
-            wholeIndex++;
-        }
-	}
-        
-        /**
-         * Sorts by size
-         * @param whole
-         * @return arraylist of universities sorted by number of students
-         */
-    	private ArrayList<University> mergeSortSize(ArrayList<University> whole)
-    	{
-    		ArrayList<University> left = new ArrayList<University>();
-    		ArrayList<University> right = new ArrayList<University>();
-    		int center;
-    		
-    		if (whole.size() == 1)
-    		{
-    			return whole;
-    		}
-    		else 
-    		{
-    			center = whole.size()/2;
-    			for (int i = 0; i < center ; i++)
-    			{
-    				left.add(whole.get(i));
-    			}
-    			for (int i = center; i < whole.size(); i++)
-    			{
-    				right.add(whole.get(i));
-    			}
-    			left = mergeSortSize(left);
-    			right = mergeSortSize(right);
-    			mergeSize(left, right, whole);
-    		}
-    		return whole;
-    	}
-
-    	
-    	/**
-    	 * merge for size
-    	 * @param left
-    	 * @param right
-    	 * @param whole
-    	 */
-    	private void mergeSize(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
-            int leftIndex = 0;
-            int rightIndex = 0;
-            int wholeIndex = 0;
-     
-            // As long as neither the left nor the right ArrayList has
-            // been used up, keep taking the smaller of left.get(leftIndex)
-            // or right.get(rightIndex) and adding it at both.get(bothIndex).
-            while (leftIndex < left.size() && rightIndex < right.size()) {
-                if ( left.get(leftIndex).getNumOfStudents() > right.get(rightIndex).getNumOfStudents()) {
-                    whole.set(wholeIndex, left.get(leftIndex));
-                    leftIndex++;
-                } else {
-                    whole.set(wholeIndex, right.get(rightIndex));
-                    rightIndex++;
-                }
-                wholeIndex++;
-            }
- 
-        ArrayList<University> rest;
-        int restIndex;
-        if (leftIndex >= left.size()) {
-            // The left ArrayList has been use up...
-            rest = right;
-            restIndex = rightIndex;
-        } else {
-            // The right ArrayList has been used up...
-            rest = left;
-            restIndex = leftIndex;
-        }
- 
-        // Copy the rest of whichever ArrayList (left or right) was not used up.
-        for (int i=restIndex; i<rest.size(); i++) {
-            whole.set(wholeIndex, rest.get(i));
-            wholeIndex++;
-        }
-    }
-    	
-            
-    	/**
-    	 * sorts by expenses
-    	 * @param whole
-    	 * @return an arraylist of universities in order of expences
-    	 */
-    	private ArrayList<University> mergeSortExpense(ArrayList<University> whole)
-    	{
-    		ArrayList<University> left = new ArrayList<University>();
-    		ArrayList<University> right = new ArrayList<University>();
-    		int center;
-    		
-    		if (whole.size() == 1)
-    		{
-    			return whole;
-    		}
-    		else 
-    		{
-    			center = whole.size()/2;
-    			for (int i = 0; i < center ; i++)
-    			{
-    				left.add(whole.get(i));
-    			}
-    			for (int i = center; i < whole.size(); i++)
-    			{
-    				right.add(whole.get(i));
-    			}
-    			left = mergeSortExpense(left);
-    			right = mergeSortExpense(right);
-    			mergeExpense(left, right, whole);
-    		}
-    		return whole;
-    	}
-
-    	
-    	/**
-    	 * merge by expenses
-    	 * @param left
-    	 * @param right
-    	 * @param whole
-    	 */
-    	private void mergeExpense(ArrayList<University> left, ArrayList<University> right, ArrayList<University> whole) {
-            int leftIndex = 0;
-            int rightIndex = 0;
-            int wholeIndex = 0;
-     
-            // As long as neither the left nor the right ArrayList has
-            // been used up, keep taking the smaller of left.get(leftIndex)
-            // or right.get(rightIndex) and adding it at both.get(bothIndex).
-            while (leftIndex < left.size() && rightIndex < right.size()) {
-                if ( left.get(leftIndex).getExpenses() > right.get(rightIndex).getExpenses()) {
-                    whole.set(wholeIndex, left.get(leftIndex));
-                    leftIndex++;
-                } else {
-                    whole.set(wholeIndex, right.get(rightIndex));
-                    rightIndex++;
-                }
-                wholeIndex++;
-            }
- 
-        ArrayList<University> rest;
-        int restIndex;
-        if (leftIndex >= left.size()) {
-            // The left ArrayList has been use up...
-            rest = right;
-            restIndex = rightIndex;
-        } else {
-            // The right ArrayList has been used up...
-            rest = left;
-            restIndex = leftIndex;
-        }
- 
-        // Copy the rest of whichever ArrayList (left or right) was not used up.
-        for (int i=restIndex; i<rest.size(); i++) {
-            whole.set(wholeIndex, rest.get(i));
-            wholeIndex++;
-        }
-    }
-	
-	/**
-	 * lists out the saved schools sorted by the state alphabetically
-	 * @param savedSchools
-	 */
-	public void sortByPerEnrolled(List<University> savedSchools) {
-		mySavedSchools = mergeSortPerEnrolled(viewSavedSchools());
-	}
-	
-	/**
-	 * lists out the saved schools sorted by the size
-	 * @param savedSchools
-	 */
-	public void sortBySize(List<University> savedSchools) {
-		mySavedSchools = mergeSortSize(viewSavedSchools());
-	}
-	
-	/**
-	 * lists out the saved schools sorted by the name alphabetically
-	 * @param savedSchools
-	 */
-	public void sortByExpense(List<University> savedSchools) {
-		mySavedSchools = mergeSortExpense(viewSavedSchools());
-	}
-	
-	/**
-	 * able to view the your saved school's list
-	 * @return list of Saved Schools connected to a user
-	 */
-	public ArrayList<University> viewSortedSavedSchools() {
-		return mySavedSchools;
-	}
-	
     /**
      * deactivates a user
-	 * @param User user
+	 * @param String userName
 	 */
 	public void deactivateUser(String userName) {
 		  ArrayList<User> useList = dbCon.getAllUsers();
+		  boolean activated = false;
+		  boolean exists = false;
 		  for(User i : useList)
 		  {
 			  if (userName.equals(i.getUserName()))
 			  {
+				  exists = true;
 				  	if (i.getStatus() == 'Y')
 				  	{
+				  		activated = true;
 				  		editUser(i.getFirstName(), i.getLastName(), i.getUserName(), i.getPassword(), i.getType(), 'N');
 				  	}
 			  }
 
 		  }
+			if(activated == false) {
+				throw new IllegalArgumentException("User already deactivated");
+			}
+			if(exists == false) {
+				throw new IllegalArgumentException("User doesn't exist");
+			}
 		  
 	  }
 	
     /**
      * activates a user
-	 * @param User user
+	 * @param String userName
 	 */
 	public void activateUser(String userName) {
 		  ArrayList<User> useList = dbCon.getAllUsers();
+		  boolean deactivated = false;
+		  boolean exists = false;
 		  for(User i : useList)
 		  {
 			  if (userName.equals(i.getUserName()))
 			  {
+				  exists = true;
 				  	if (i.getStatus() == 'N')
 				  	{
+				  		deactivated = true;
 				  		editUser(i.getFirstName(), i.getLastName(), i.getUserName(), i.getPassword(), i.getType(), 'Y');
 				  	}
 			  }
 
 		  }
+			if(deactivated == false) {
+				throw new IllegalArgumentException("User already activated");
+			}
+			if(exists == false) {
+				throw new IllegalArgumentException("User doesn't exist");
+			}
 		  
 	  }
 }

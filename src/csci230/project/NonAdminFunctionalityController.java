@@ -1,8 +1,6 @@
 package csci230.project;
 
 import java.util.ArrayList;
-import java.util.List;
-
 /**
  * This class contains all the functionalities of Non-Admins
  * @author xXPhantomCommander$Xx
@@ -160,29 +158,6 @@ public class NonAdminFunctionalityController {
 		
 	}
 	
-	/**
-	 * lists out the saved schools sorted by the state alphabetically
-	 * @param savedSchools
-	 */
-	public void sortByPerEnrolled(List<University> savedSchools) {
-		userC.sortByPerEnrolled(savedSchools);
-	}
-	
-	/**
-	 * lists out the saved schools sorted by the size
-	 * @param savedSchools
-	 */
-	public void sortBySize(ArrayList<University> savedSchools) {
-		userC.sortBySize(savedSchools);
-	}
-	
-	/**
-	 * lists out the saved schools sorted by the name alphabetically
-	 * @param savedSchools
-	 */
-	public void sortByExpense (ArrayList<University> savedSchools) {
-		userC.sortByExpense(savedSchools);
-	}
 	
 	/**
 	 * Displays the school's details
@@ -209,13 +184,5 @@ public class NonAdminFunctionalityController {
 	 */
 	public ArrayList<University> viewHistory(){
 		return univC.viewHistory();
-	}
-	
-	/**
-	 * able to view the your saved school's list
-	 * @return list of Saved Schools connected to a user
-	 */
-	public ArrayList<University> viewSortedSavedSchools() {
-		return userC.viewSortedSavedSchools();
 	}
 }

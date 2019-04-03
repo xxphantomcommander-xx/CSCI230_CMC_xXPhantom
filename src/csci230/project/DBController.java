@@ -35,15 +35,25 @@ public class DBController {
 	public void saveUniversities(University school)
 	{
 		boolean saved = false;
+		boolean exists = false;
 		ArrayList<University> univs = loadUniversities();
 		for (University i : univs) {
 			if (i.getSchoolName().equals(school.getSchoolName())) {
-				univDBlib.user_saveSchool(loggedOnUser.getUserName(), school.getSchoolName().toUpperCase());
-				saved = true;
+				exists = true;
+				ArrayList<University>  savedSchools = getSavedSchoolList();
+				for(University j : savedSchools) {
+					if(!j.getSchoolName().equals(school.getSchoolName())) {
+						univDBlib.user_saveSchool(loggedOnUser.getUserName(), school.getSchoolName().toUpperCase());
+						saved = true;
+					}
+				}
 			}
 		}
 		if(saved == false) {
-			throw new IllegalArgumentException("School does not exist");
+			throw new IllegalArgumentException("School already saved");
+		}
+		if(exists == false) {
+			throw new IllegalArgumentException("School not in database");
 		}
 	}
 	
