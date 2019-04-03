@@ -140,28 +140,30 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByState(ArrayList<University> temp, String state) {
-		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS")
-				|| state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT")
-				|| state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA")
-				|| state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS")
-				|| state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY")
-				|| state.equals("LOUISIANA") || state.equals("MAINE") || state.equals("MARYLAND")
-				|| state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA")
-				|| state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA")
-				|| state.equals("NEBRASKA") || state.equals("NEVADA") || state.equals("NEW HAMPSHIRE")
-				|| state.equals("NEW JERSEY") || state.equals("NEW MEXICO") || state.equals("NEW YORK")
-				|| state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO")
-				|| state.equals("OKLAHOMA") || state.equals("OREGON") || state.equals("PENNSYLVANIA")
-				|| state.equals("RHODEISLAND") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA")
-				|| state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS")
-				|| state.equals("UTAH") || state.equals("VERMONT") || state.equals("VIRGINIA")
-				|| state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") || state.equals("WISCONSIN")
-				|| state.equals("WYOMING") || state.equals("FOREIGN") || state.equals("DISTRICT OF COLUMBIA")) {
-			ArrayList<University> matchedSchools = new ArrayList<University>();
-			String st = state.toUpperCase();
-			if (state.equals(null)) {
-				return temp;
-			} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		String st = state.toUpperCase();
+		if (state.equals(null)) {
+			return temp;
+		} else {
+			if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS")
+					|| state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT")
+					|| state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA")
+					|| state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS")
+					|| state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS")
+					|| state.equals("KENTUCKY") || state.equals("LOUISIANA") || state.equals("MAINE")
+					|| state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN")
+					|| state.equals("MINNESOTA") || state.equals("MISSISSIPPI") || state.equals("MISSOURI")
+					|| state.equals("MONTANA") || state.equals("NEBRASKA") || state.equals("NEVADA")
+					|| state.equals("NEW HAMPSHIRE") || state.equals("NEW JERSEY") || state.equals("NEW MEXICO")
+					|| state.equals("NEW YORK") || state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA")
+					|| state.equals("OHIO") || state.equals("OKLAHOMA") || state.equals("OREGON")
+					|| state.equals("PENNSYLVANIA") || state.equals("RHODEISLAND") || state.equals("RHODE ISLAND")
+					|| state.equals("SOUTH CAROLINA") || state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE")
+					|| state.equals("TEXAS") || state.equals("UTAH") || state.equals("VERMONT")
+					|| state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA")
+					|| state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN")
+					|| state.equals("DISTRICT OF COLUMBIA")) {
 				for (University i : temp) {
 					String name = i.getState();
 					if (name.contains(st)) {
@@ -169,9 +171,9 @@ public class UniversityController {
 					}
 				}
 				return matchedSchools;
+			} else {
+				throw new IllegalArgumentException("Invalid state");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid state");
 		}
 
 	}
@@ -184,13 +186,12 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByLocation(ArrayList<University> temp, String l) {
-		if (l.equals("-1") || l.equals("SMALL-CITY") || l.equals("SUBURBAN") || l.equals("URBAN")) {
-			ArrayList<University> matchedSchools = new ArrayList<University>();
-			String location = l.toUpperCase();
-			if (l.equals(null)) {
-				return temp;
-			} else {
-
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		String location = l.toUpperCase();
+		if (l.equals(null)) {
+			return temp;
+		} else {
+			if (l.equals("-1") || l.equals("SMALL-CITY") || l.equals("SUBURBAN") || l.equals("URBAN")) {
 				for (University i : temp) {
 					String name = i.getLocation();
 					if (name.contains(location)) {
@@ -198,11 +199,10 @@ public class UniversityController {
 					}
 				}
 				return matchedSchools;
+			} else {
+				throw new IllegalArgumentException("Invalid location");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid location");
 		}
-
 	}
 
 	/**
@@ -213,13 +213,12 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByControl(ArrayList<University> temp, String c) {
-		if (c.equals("CITY") || c.equals("PRIVATE") || c.equals("STATE")) {
-			ArrayList<University> matchedSchools = new ArrayList<University>();
-			String control = c.toUpperCase();
-			if (c.equals(null)) {
-				return temp;
-			} else {
-
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		String control = c.toUpperCase();
+		if (c.equals(null)) {
+			return temp;
+		} else {
+			if (c.equals("CITY") || c.equals("PRIVATE") || c.equals("STATE")) {
 				for (University i : temp) {
 					String name = i.getControl();
 					if (name.contains(control)) {
@@ -227,10 +226,11 @@ public class UniversityController {
 					}
 				}
 				return matchedSchools;
+			} else {
+				throw new IllegalArgumentException("Invalid control");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid control");
 		}
+
 	}
 
 	/**
@@ -242,12 +242,13 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByNumOfStudents(ArrayList<University> temp, int nStuLow, int nStuHigh) {
-		if (0 <= nStuLow) {
-			if (0 <= nStuHigh && nStuHigh > nStuLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (nStuLow == -1 && nStuHigh == -1) {
-					return temp;
-				} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (nStuLow == -1 && nStuHigh == -1) {
+			return temp;
+		} else {
+			if (0 <= nStuLow) {
+				if (0 <= nStuHigh && nStuHigh >= nStuLow) {
 					for (University i : temp) {
 						int v = i.getNumOfStudents();
 						if (v >= nStuLow && v <= nStuHigh) {
@@ -255,15 +256,14 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
-
+				} else {
+					throw new IllegalArgumentException("Invalid numOfStudents");
 				}
-			} else {
+			}
+
+			else {
 				throw new IllegalArgumentException("Invalid numOfStudents");
 			}
-		}
-
-		else {
-			throw new IllegalArgumentException("Invalid numOfStudents");
 		}
 
 	}
@@ -277,12 +277,13 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByPercentFemale(ArrayList<University> temp, int prctfLow, int prctfHigh) {
-		if (0 <= prctfLow && prctfLow <= 100) {
-			if (0 <= prctfHigh && prctfLow <= 100 && prctfHigh > prctfLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (prctfLow == -1 && prctfHigh == -1) {
-					return temp;
-				} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (prctfLow == -1 && prctfHigh == -1) {
+			return temp;
+		} else {
+			if (0 <= prctfLow && prctfLow <= 100) {
+				if (0 <= prctfHigh && prctfLow <= 100 && prctfHigh > prctfLow) {
 					for (University i : temp) {
 						int v = i.getPerFem();
 						if (v >= prctfLow && v <= prctfHigh) {
@@ -290,12 +291,12 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
+				} else {
+					throw new IllegalArgumentException("Invalid prctFemale");
 				}
 			} else {
-				throw new IllegalArgumentException("Invalid perFem");
+				throw new IllegalArgumentException("Invalid prctFemale");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid perFem");
 		}
 
 	}
@@ -309,12 +310,13 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchBySATVerbal(ArrayList<University> temp, int svLow, int svHigh) {
-		if (200 <= svLow && svLow <= 800) {
-			if (200 <= svHigh && svHigh <= 800 && svHigh > svLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (svLow == -1 && svHigh == -1) {
-					return temp;
-				} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (svLow == -1 && svHigh == -1) {
+			return temp;
+		} else {
+			if (200 <= svLow && svLow <= 800) {
+				if (200 <= svHigh && svHigh <= 800 && svHigh > svLow) {
 					for (University i : temp) {
 						int v = i.getSatVerbal();
 						if (v >= svLow && v <= svHigh) {
@@ -322,14 +324,15 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
-
+				} else {
+					throw new IllegalArgumentException("Invalid satVerbal");
 				}
 			} else {
 				throw new IllegalArgumentException("Invalid satVerbal");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid satVerbal");
+
 		}
+
 	}
 
 	/**
@@ -342,12 +345,12 @@ public class UniversityController {
 	 */
 	private ArrayList<University> searchBySATMath(ArrayList<University> temp, int smLow, int smHigh) {
 
-		if (200 <= smLow && smLow <= 800) {
-			if (200 <= smHigh && smHigh <= 800 && smHigh > smLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (smLow == -1 && smHigh == -1) {
-					return temp;
-				} else {
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (smLow == -1 && smHigh == -1) {
+			return temp;
+		} else {
+			if (200 <= smLow && smLow <= 800) {
+				if (200 <= smHigh && smHigh <= 800 && smHigh > smLow) {
 					for (University i : temp) {
 						int v = i.getSatMath();
 						if (v >= smLow && v <= smHigh) {
@@ -355,13 +358,13 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
-
+				} else {
+					throw new IllegalArgumentException("Invalid satMath");
 				}
 			} else {
 				throw new IllegalArgumentException("Invalid satMath");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid satMath");
+
 		}
 	}
 
@@ -374,12 +377,13 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByExpenses(ArrayList<University> temp, int eLow, int eHigh) {
-		if (0 <= eLow) {
-			if (0 <= eHigh && eHigh > eLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (eLow == -1 && eHigh == -1) {
-					return temp;
-				} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (eLow == -1 && eHigh == -1) {
+			return temp;
+		} else {
+			if (0 <= eLow) {
+				if (0 <= eHigh && eHigh > eLow) {
 					for (University i : temp) {
 						int v = i.getExpenses();
 						if (v >= eLow && v <= eHigh) {
@@ -387,14 +391,14 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
-
+				} else {
+					throw new IllegalArgumentException("Invalid expenses");
 				}
 			} else {
 				throw new IllegalArgumentException("Invalid expenses");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid expenses");
 		}
+
 	}
 
 	/**
@@ -406,12 +410,13 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByPercentFinAid(ArrayList<University> temp, int prctfinLow, int prctfinHigh) {
-		if (0 <= prctfinLow && prctfinLow >= 100) {
-			if (0 <= prctfinHigh && prctfinHigh >= 100 && prctfinHigh > prctfinLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (prctfinLow == -1 && prctfinHigh == -1) {
-					return temp;
-				} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (prctfinLow == -1 && prctfinHigh == -1) {
+			return temp;
+		} else {
+			if (0 <= prctfinLow && prctfinLow >= 100) {
+				if (0 <= prctfinHigh && prctfinHigh >= 100 && prctfinHigh > prctfinLow) {
 					for (University i : temp) {
 						int v = i.getFinancialAid();
 						if (v >= prctfinLow && v <= prctfinHigh) {
@@ -419,14 +424,14 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
-
+				} else {
+					throw new IllegalArgumentException("Invalid financialAid");
 				}
 			} else {
 				throw new IllegalArgumentException("Invalid financialAid");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid financialAid");
 		}
+
 	}
 
 	/**
@@ -438,12 +443,13 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByNumOfApps(ArrayList<University> temp, int nApLow, int nApHigh) {
-		if (nApLow >= 0) {
-			if (nApHigh >= 0 && nApHigh > nApLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (nApLow == -1 && nApHigh == -1) {
-					return temp;
-				} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (nApLow == -1 && nApHigh == -1) {
+			return temp;
+		} else {
+			if (nApLow >= 0) {
+				if (nApHigh >= 0 && nApHigh > nApLow) {
 					for (University i : temp) {
 						int v = i.getNumOfApps();
 						if (v >= nApLow && v <= nApHigh) {
@@ -451,14 +457,14 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
-
+				} else {
+					throw new IllegalArgumentException("Invalid numOfApps");
 				}
 			} else {
 				throw new IllegalArgumentException("Invalid numOfApps");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid numOfApps");
 		}
+
 	}
 
 	/**
@@ -470,12 +476,13 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByPercAdmitted(ArrayList<University> temp, int prctaLow, int prctaHigh) {
-		if (0 <= prctaLow && prctaLow <= 100) {
-			if (0 <= prctaHigh && prctaHigh <= 100 && prctaHigh > prctaLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (prctaLow == -1 && prctaHigh == -1) {
-					return temp;
-				} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (prctaLow == -1 && prctaHigh == -1) {
+			return temp;
+		} else {
+			if (0 <= prctaLow && prctaLow <= 100) {
+				if (0 <= prctaHigh && prctaHigh <= 100 && prctaHigh > prctaLow) {
 					for (University i : temp) {
 						int v = i.getPerAdmitted();
 						if (v >= prctaLow && v <= prctaHigh) {
@@ -483,14 +490,14 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
-
+				} else {
+					throw new IllegalArgumentException("Invalid perAdmmited");
 				}
 			} else {
 				throw new IllegalArgumentException("Invalid perAdmmited");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid perAdmmited");
 		}
+
 	}
 
 	/**
@@ -502,12 +509,13 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByPercEnrolled(ArrayList<University> temp, int prcteLow, int prcteHigh) {
-		if (0 <= prcteLow && prcteLow <= 100) {
-			if (0 <= prcteHigh && prcteHigh <= 100 && prcteHigh > prcteLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (prcteLow == -1 && prcteHigh == -1) {
-					return temp;
-				} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (prcteLow == -1 && prcteHigh == -1) {
+			return temp;
+		} else {
+			if (0 <= prcteLow && prcteLow <= 100) {
+				if (0 <= prcteHigh && prcteHigh <= 100 && prcteHigh > prcteLow) {
 					for (University i : temp) {
 						int v = i.getPerEnrolled();
 						if (v >= prcteLow && v <= prcteHigh) {
@@ -515,14 +523,14 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
-
+				} else {
+					throw new IllegalArgumentException("Invalid perEnrolled");
 				}
 			} else {
 				throw new IllegalArgumentException("Invalid perEnrolled");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid perEnrolled");
 		}
+
 	}
 
 	/**
@@ -534,12 +542,13 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByAcademicScale(ArrayList<University> temp, int asLow, int asHigh) {
-		if (0 <= asLow && asLow <= 5) {
-			if (0 <= asHigh && asHigh <= 5 && asHigh > asLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (asLow == -1 && asHigh == -1) {
-					return temp;
-				} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (asLow == -1 && asHigh == -1) {
+			return temp;
+		} else {
+			if (0 <= asLow && asLow <= 5) {
+				if (0 <= asHigh && asHigh <= 5 && asHigh > asLow) {
 					for (University i : temp) {
 						int v = i.getAcademicScale();
 						if (v >= asLow && v <= asHigh) {
@@ -547,14 +556,14 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
-
+				} else {
+					throw new IllegalArgumentException("Invalid academicScale");
 				}
 			} else {
 				throw new IllegalArgumentException("Invalid academicScale");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid academicScale");
 		}
+
 	}
 
 	/**
@@ -566,12 +575,13 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchBySocialLife(ArrayList<University> temp, int ssLow, int ssHigh) {
-		if (0 <= ssLow && ssLow <= 5) {
-			if (0 <= ssHigh && ssHigh <= 5 && ssHigh > ssLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (ssLow == -1 && ssHigh == -1) {
-					return temp;
-				} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (ssLow == -1 && ssHigh == -1) {
+			return temp;
+		} else {
+			if (0 <= ssLow && ssLow <= 5) {
+				if (0 <= ssHigh && ssHigh <= 5 && ssHigh > ssLow) {
 					for (University i : temp) {
 						int v = i.getSocialScale();
 						if (v >= ssLow && v <= ssHigh) {
@@ -579,13 +589,12 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
-
+				} else {
+					throw new IllegalArgumentException("Invalid socialScale");
 				}
 			} else {
 				throw new IllegalArgumentException("Invalid socialScale");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid socialScale");
 		}
 
 	}
@@ -599,12 +608,13 @@ public class UniversityController {
 	 * @return ArrayList of all universities matching search criteria
 	 */
 	private ArrayList<University> searchByQualityOfLife(ArrayList<University> temp, int qLow, int qHigh) {
-		if (0 <= qLow && qLow <= 5) {
-			if (0 <= qLow && qLow <= 5 && qHigh > qLow) {
-				ArrayList<University> matchedSchools = new ArrayList<University>();
-				if (qLow == -1 && qHigh == -1) {
-					return temp;
-				} else {
+
+		ArrayList<University> matchedSchools = new ArrayList<University>();
+		if (qLow == -1 && qHigh == -1) {
+			return temp;
+		} else {
+			if (0 <= qLow && qLow <= 5) {
+				if (0 <= qLow && qLow <= 5 && qHigh > qLow) {
 					for (University i : temp) {
 						int v = i.getQualOfLife();
 						if (v >= qLow && v <= qHigh) {
@@ -612,15 +622,13 @@ public class UniversityController {
 						}
 					}
 					return matchedSchools;
-
+				} else {
+					throw new IllegalArgumentException("Invalid qualOfLife");
 				}
 			} else {
 				throw new IllegalArgumentException("Invalid qualOfLife");
 			}
-		} else {
-			throw new IllegalArgumentException("Invalid qualOfLife");
 		}
-
 	}
 
 	/**
@@ -674,7 +682,12 @@ public class UniversityController {
 				}
 
 				if (univ.getLocation().equals("-1")) {
-
+				} else {
+					throw new IllegalArgumentException("Invalid qualOfLife");
+				}
+			} else {
+				throw new IllegalArgumentException("Invalid qualOfLife");
+			}
 				} else if (i.getLocation().equals(univ.getLocation())) {
 					count++;
 				}
@@ -792,16 +805,17 @@ public class UniversityController {
 				i.setCount(count);
 			}
 
-			for (University i : allUnivs) {
-				recommend.add(i);
-			}
+	for(
 
-			ArrayList<University> sortedSchools = mergeSort(recommend);
+	University i:allUnivs)
+	{
+		recommend.add(i);
+	}
 
-			return sortedSchools;
-		} else {
-			throw new IllegalArgumentException("University passed is not a valid university");
-		}
+	ArrayList<University> sortedSchools = mergeSort(recommend);
+
+	return sortedSchools;
+	}else{throw new IllegalArgumentException("University passed is not a valid university");}
 
 	}
 
