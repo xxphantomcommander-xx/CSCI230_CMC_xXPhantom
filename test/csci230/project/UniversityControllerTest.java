@@ -44,7 +44,7 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testAddUniversity() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
