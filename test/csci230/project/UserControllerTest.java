@@ -254,7 +254,29 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testDeactivateUser() {
-		fail("Not yet implemented");
+		uc.deactivateUser("abreyen001@csbsju.edu");
+		for(User i:uc.viewUsers()) {
+			if(i.getUserName().equals("abreyen001@csbsju.edu")) {
+				assertTrue("expected output: 'N' actual output: " + i.getStatus(), i.getStatus() == 'N');
+			}
+		}
+		uc.activateUser("abreyen001@csbsju.edu");
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#deactivateUser(java.lang.String)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testDeactivateUser_AlreadyDeactivated() {
+		uc.deactivateUser("luser@csbsju.edu");
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#deactivateUser(java.lang.String)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testDeactivateUser_UserNotInDatabase() {
+		uc.deactivateUser("notAUser@csbsju.edu");
 	}
 
 	/**
@@ -262,7 +284,29 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testActivateUser() {
-		fail("Not yet implemented");
+		uc.activateUser("luser@csbsju.edu");
+		for(User i:uc.viewUsers()) {
+			if(i.getUserName().equals("luser@csbsju.edu")) {
+				assertTrue("expected output: 'Y' actual output: " + i.getStatus(), i.getStatus() == 'Y');
+			}
+		}
+		uc.deactivateUser("luser@csbsju.edu");
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#activateUser(java.lang.String)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testActivateUser_AlreadyActivated() {
+		uc.activateUser("abreyen001@csbsju.edu");
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#activateUser(java.lang.String)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testActivateUser_UserNotInDatabase() {
+		uc.activateUser("notAUser@csbsju.edu");
 	}
 
 }
