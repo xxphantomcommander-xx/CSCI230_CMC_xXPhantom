@@ -4,9 +4,12 @@ package csci230.project;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import java.util.ArrayList;
+import org.junit.Before;
+
 
 public class UniversityControllerTest {
-	UNiversityController univC;
+	UniversityController univC;
 	
 	@Before
 	  public void setUp() throws Exception {
@@ -15,7 +18,7 @@ public class UniversityControllerTest {
 	
 	@Test
 	public void testUniversityController() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
