@@ -94,6 +94,8 @@ public class UserController {
 	 */
 	public void logOut() {
 		dbCon.logOut();
+		isLoggedIn = false;
+		isAdminLoggedIn = false;
 		univC.clearHistory();
 	}
 	
