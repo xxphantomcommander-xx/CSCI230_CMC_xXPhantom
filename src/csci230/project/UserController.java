@@ -318,7 +318,8 @@ public class UserController {
 	 * @param String userName
 	 */
 	public void deactivateUser(String userName) {
-		  ArrayList<User> useList = dbCon.getAllUsers();
+		  ArrayList<User> useList = new ArrayList<User>();
+		  useList = dbCon.getAllUsers();
 		  boolean activated = false;
 		  boolean exists = false;
 		  for(User i : useList)
@@ -348,7 +349,8 @@ public class UserController {
 	 * @param String userName
 	 */
 	public void activateUser(String userName) {
-		  ArrayList<User> useList = dbCon.getAllUsers();
+		  ArrayList<User> useList = new ArrayList<User>();
+		  useList = dbCon.getAllUsers();
 		  boolean deactivated = false;
 		  boolean exists = false;
 		  for(User i : useList)

@@ -53,7 +53,8 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testAddUniversity() {
-		
+		University i = new University("test", "foreign")
+		univC.addUniversity(school, state, location, control, numStudents, perFem, satVerbal, satMath, expenses, financialAid, numOfApps, perAdmitted, perEnrolled, academicScale, socialScale, qualOfLife, emphasis);
 	}
 
 	@Test

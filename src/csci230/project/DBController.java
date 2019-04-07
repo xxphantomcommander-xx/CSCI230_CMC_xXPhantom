@@ -200,7 +200,7 @@ public class DBController {
 	 * gets a 2d array of the emphasis connected to the university names
 	 * @return Emphasis
 	 */
-	public String [][] getEmphasis(){
+	private String [][] getEmphasis(){
 		return univDBlib.university_getNamesWithEmphases();
 	}
 	
