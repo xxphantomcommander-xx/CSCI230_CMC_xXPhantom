@@ -393,9 +393,10 @@ public class DBController {
 				for(int j = 0; j < univEmp.length; j++) {
 					if(univEmp[j][0].equals(univName)) {
 						emp.add(univEmp[j][1]);
-						loaded = true;
+
 					}	
 				}
+				loaded = true;
 		if (loaded == false)
 		{
 			throw new IllegalArgumentException("School does not exist");
