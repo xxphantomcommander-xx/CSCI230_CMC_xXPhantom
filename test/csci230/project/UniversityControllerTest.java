@@ -18,12 +18,13 @@ public class UniversityControllerTest {
 	
 	@Test
 	public void testUniversityController() {
-		
+		UniversityController newUc = univC;
+		assertSame("Constructor failed", univC, newUc);
 	}
 
 	@Test
 	public void testSearchSchools() {
-		fail("Not yet implemented");
+		ArrayList<University> results = univC.searchSchools(-1, "California","Urban", -1, -1, -1, -1, -1, 500, 650, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1);
 	}
 
 	@Test
