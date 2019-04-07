@@ -6,7 +6,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class UniversityControllerTest {
-
+	UNiversityController univC;
+	
+	@Before
+	  public void setUp() throws Exception {
+		univC = new UniversityController();
+	  }
+	
 	@Test
 	public void testUniversityController() {
 		fail("Not yet implemented");

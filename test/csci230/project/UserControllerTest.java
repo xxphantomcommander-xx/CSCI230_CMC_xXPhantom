@@ -65,7 +65,8 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testLogOut() {
-		fail("Not yet implemented");
+		uc.logOut();
+		assertTrue("Successful logOut. outputExpected: null actual output: " + this.uc.isLoggedIn(),uc.isLoggedIn());
 	}
 
 	/**
