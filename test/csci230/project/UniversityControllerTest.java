@@ -10,6 +10,8 @@ import org.junit.Before;
 
 public class UniversityControllerTest {
 	UniversityController univC;
+	DBController dbCon;
+	
 	
 	@Before
 	  public void setUp() throws Exception {
@@ -18,12 +20,17 @@ public class UniversityControllerTest {
 	
 	@Test
 	public void testUniversityController() {
-		
+		UniversityController newUc = univC;
+		assertSame("Constructor failed", univC, newUc);
 	}
 
 	@Test
 	public void testSearchSchools() {
-		fail("Not yet implemented");
+		ArrayList<String> emp = new ArrayList<String>();
+		ArrayList<University> results = univC.searchSchools("", "California","Urban", "", -1, -1, -1, -1, 500, 650, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, emp);
+		for (University i: results){
+			
+		}
 	}
 
 	@Test
@@ -74,9 +81,15 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testRandomSchool() {
-		fail("Not yet implemented");
+		University rand = univC.randomSchool();
+		ArrayList<University> temp = dbCon.loadUniversities(); 
+		for(University i: temp) {
+			if(i.equals(rand)) {
+				assertTrue(i.getSchoolName()+ " = " + rand.getSchoolName(),i.getSchoolName().equals(rand.getSchoolName()));
+			}
+		}
+		
 	}
-
 	@Test
 	public void testSetSchoolOfTheWeek() {
 		fail("Not yet implemented");

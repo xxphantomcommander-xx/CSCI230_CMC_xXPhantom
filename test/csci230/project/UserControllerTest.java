@@ -116,10 +116,11 @@ public class UserControllerTest {
 	/**
 	 * Test method for {@link csci230.project.UserController#viewMyProfile()}.
 	 */
-	@Test
-	public void testViewMyProfile() {
-		fail("Not yet implemented");
-	}
+//	@Test
+//	public void testViewMyProfile() {
+//		uc.viewMyProfile();
+//		assertTrue("expected output ZHEINEN001@csbsju.edu got" + uc.viewMyProfile(),i.getUserName().equals("someEmail@gmail.com"));
+//	}
 
 	/**
 	 * Test method for {@link csci230.project.UserController#isLoggedIn()}.
