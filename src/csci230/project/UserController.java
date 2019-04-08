@@ -317,23 +317,26 @@ public class UserController {
      * deactivates a user
 	 * @param String userName
 	 */
-	public void deactivateUser(String userName) {
+	public void deactivateUser(User user) {
 		  ArrayList<User> useList = new ArrayList<User>();
 		  useList = dbCon.getAllUsers();
 		  boolean activated = false;
 		  boolean exists = false;
 		  for(User i : useList)
 		  {
-			  if (userName.equals(i.getUserName()))
+			  if (user.equals(i))
 			  {
 				  exists = true;
 				  	if (i.getStatus() == 'Y')
 				  	{
 				  		activated = true;
-				  		editUser(i.getFirstName(), i.getLastName(), i.getUserName(), i.getPassword(), i.getType(), 'N');
 				  	}
 			  }
 
+		  }
+		  if(activated == true)
+		  {
+			  editUser(user.getFirstName(), user.getLastName(), user.getUserName(), user.getPassword(), user.getType(), 'N');
 		  }
 			if(activated == false) {
 				throw new IllegalArgumentException("User already deactivated");

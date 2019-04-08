@@ -14,11 +14,15 @@ import org.junit.Test;
  */
 public class UserControllerTest {
 	UserController uc;
+	User andrew;
+	User luser;
 	
 	@Before
 	  public void setUp() throws Exception {
 		uc = new UserController();
 		uc.logOn("ZHEINEN001@csbsju.edu", "zaciscool");
+		andrew = new User("Andrew", "Breyen", "abreyen001@csbsju.edu", "myPassword", 'u', 'N');
+		luser = new User("Lynn", "User", "luser@csbsju.edu", "user", 'u', 'Y');
 	  }
 	
 	/**
@@ -256,7 +260,7 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testDeactivateUser() {
-		uc.deactivateUser("abreyen001@csbsju.edu");
+		uc.deactivateUser(andrew);
 		for(User i:uc.viewUsers()) {
 			if(i.getUserName().equals("abreyen001@csbsju.edu")) {
 				assertTrue("expected output: 'N' actual output: " + i.getStatus(), i.getStatus() == 'N');
@@ -270,7 +274,7 @@ public class UserControllerTest {
 	 */
 	@Test(expected=IllegalArgumentException.class)
 	public void testDeactivateUser_AlreadyDeactivated() {
-		uc.deactivateUser("luser@csbsju.edu");
+		uc.deactivateUser(luser);
 	}
 	
 	/**
@@ -292,7 +296,7 @@ public class UserControllerTest {
 				assertTrue("expected output: 'Y' actual output: " + i.getStatus(), i.getStatus() == 'Y');
 			}
 		}
-		uc.deactivateUser("luser@csbsju.edu");
+		uc.deactivateUser(luser);
 	}
 	
 	/**
