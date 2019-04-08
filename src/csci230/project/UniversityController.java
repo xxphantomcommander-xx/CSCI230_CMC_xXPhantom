@@ -1492,6 +1492,13 @@ public class UniversityController {
 	public void addUniversity(String school, String state, String location, String control, int numStudents, int perFem,
 			int satVerbal, int satMath, int expenses, int financialAid, int numOfApps, int perAdmitted, int perEnrolled,
 			int academicScale, int socialScale, int qualOfLife, ArrayList<String> emphasis) {
+		school = school.toUpperCase();
+		state = state.toUpperCase();
+		location = location.toUpperCase();
+		control = control.toUpperCase();
+		for(int i = 0; i < emphasis.size(); i++) {
+			emphasis.set(i, emphasis.get(i).toUpperCase());
+		}
 		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS")
 				|| state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT")
 				|| state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA")
@@ -1589,7 +1596,7 @@ public class UniversityController {
 	 * @param univ
 	 */
 	public void removeUniversity(University univ) {
-		if (univ != null && allUnivs.contains(univ)) {
+		if (univ != null ) {
 			dbCon.removeSchool(univ);
 		} else {
 			throw new IllegalArgumentException("University passed is not a valid university");

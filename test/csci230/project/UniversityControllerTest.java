@@ -61,17 +61,19 @@ public class UniversityControllerTest {
 	@Test
 	public void testAddUniversity() {
 		ArrayList<String> emp = new ArrayList<String>();
-		emp.add("Biology");
-		emp.add("Computer Science");
 		emp.add("");
 		emp.add("");
 		emp.add("");
-		univC.addUniversity("test", "foreign", "urban", "private", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp);
+		emp.add("");
+		emp.add("");
+		University test = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp, 0, 0, 0);
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp);
 		for(University i:univC.viewUniversities()) {
-			if(i.getSchoolName().equals("TEST")) {
-				assertTrue("school added", i.getSchoolName().equals("TEST"));
+			if(i.getSchoolName().equals("TEST1")) {
+				assertTrue("school added", i.getSchoolName().equals("TEST1"));	
 			}
 		}
+		univC.removeUniversity(test);
 	}
 
 	@Test

@@ -131,24 +131,12 @@ public class DBController {
 	 */
 	public void removeSchool(University univ)
 	{
-		boolean removed = false;
-		ArrayList<University> univs = loadUniversities();
-		for (University i : univs) {
-			if (i.equals(univ)) {
 				for (String j:univ.getEmp()) {
 					removeUnivEmph(univ.getSchoolName().toUpperCase(), j.toUpperCase());
 				}
-
 				univDBlib.university_deleteUniversity(univ.getSchoolName().toUpperCase());
-				removed = true;
 				loadUniversities();
 			}
-		}
-		if (removed == false) {
-			throw new IllegalArgumentException("Cannot remove a school that doesn't exist in database");
-		}
-	}
-	
 	/**
 	 * adds a user to the database
 	 * @param status
