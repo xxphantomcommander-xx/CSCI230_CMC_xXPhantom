@@ -38,7 +38,7 @@ public class Driver {
 		System.out.println("******** LogOn  *********");
 		
 		System.out.println("Logging in with valid user credentials");
-		uc.logOn("juser", "user");
+		uc.logOn("juser@csbsju.edu", "user");
 		System.out.println("IsLoggedIn status: "+uc.isLoggedIn());
 		
 		System.out.println("");

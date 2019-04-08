@@ -175,7 +175,20 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testAddUniversity() {
-		fail("Not yet implemented");
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University test = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp, 0, 0, 0);
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp);
+		for(University i:univC.viewUniversities()) {
+			if(i.getSchoolName().equals("TEST1")) {
+				assertTrue("school added", i.getSchoolName().equals("TEST1"));	
+			}
+		}
+		univC.removeUniversity(test);
 	}
 
 	@Test
