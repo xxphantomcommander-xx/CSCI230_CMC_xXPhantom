@@ -5,6 +5,9 @@ package csci230.project;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -12,7 +15,12 @@ import org.junit.Test;
  *
  */
 public class DBControllerTest {
-
+	DBController dbCon;
+	@Before
+	  public void setUp() throws Exception {
+		 dbCon = new DBController();
+	  }
+	
 	/**
 	 * Test method for {@link csci230.project.DBController#DBController()}.
 	 */
@@ -129,8 +137,37 @@ public class DBControllerTest {
 	 * Test method for {@link csci230.project.DBController#loadUsers(java.lang.String)}.
 	 */
 	@Test
-	public void testLoadUsers() {
-		fail("Not yet implemented");
+	public void testLoadUsers_FoundNonAdminSuccessfulLoad() {
+		ArrayList<User> allUsers = dbCon.loadUsers("abreyen001@csbsju.edu");
+		ArrayList<User> allUsers2 = dbCon.getAllUsers();
+		
+		User loggedOnUser = dbCon.getLoggedOnUser();
+		if(loggedOnUser.getUserName().equals("abreyen001@csbsju.edu")) {
+			assertTrue("expected: " + allUsers2.get(0).getUserName() + "actual: " + allUsers.get(0).getUserName(), allUsers2.get(0).getUserName().equals(allUsers.get(0).getUserName()));
+		}
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.DBController#loadUsers(java.lang.String)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testLoadUsers_Invaliduser() {
+		dbCon.loadUsers("InvalidUser@csbsju.edu");
+	
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.DBController#loadUsers(java.lang.String)}.
+	 */
+	@Test
+	public void testLoadUsers_FoundAdminSuccessfulLoad() {
+		ArrayList<User> allUsers = dbCon.loadUsers("ZHEINEN001@csbsju.edu");
+		ArrayList<User> allUsers2 = dbCon.getAllUsers();
+		
+		User loggedOnUser = dbCon.getLoggedOnUser();
+		if(loggedOnUser.getUserName().equals("ZHEINEN001@csbsju.edu")) {
+			assertTrue("expected: " + allUsers2.get(0).getUserName() + "actual: " + allUsers.get(0).getUserName(), allUsers2.get(0).getUserName().equals(allUsers.get(0).getUserName()));
+		}
 	}
 
 	/**
@@ -138,7 +175,8 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testLoadUniversities() {
-		fail("Not yet implemented");
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+		assertTrue("expected: ABILENE CHRISTIAN UNIVERSITY. actual: " + allUnivs.get(0).getSchoolName(), allUnivs.get(0).getSchoolName().equals("ABILENE CHRISTIAN UNIVERSITY"));
 	}
 
 	/**

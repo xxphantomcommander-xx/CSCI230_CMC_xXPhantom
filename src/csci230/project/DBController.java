@@ -314,6 +314,8 @@ public class DBController {
 	 */
 	public ArrayList<User> loadUsers(String username)
 	{
+		boolean user = false;
+		boolean admin = false;
 		String [][] userString = getUsers();
 		//ArrayList<User> users = new ArrayList<User>();
 		for (int i = 0; i < userString.length; i++)
@@ -328,6 +330,7 @@ public class DBController {
 				this.allUsers.add(temp);
 				if(username.equals(userString[i][2])) {
 					loggedOnUser = this.allUsers.get(i);
+					user = true;
 				}
 			}
 			else
@@ -336,9 +339,13 @@ public class DBController {
 				this.allUsers.add(temp2);
 				if(username.equals(userString[i][2])) {
 					loggedOnUser = this.allUsers.get(i);
+					admin = true;
 				}
 			}
 	
+		}
+		if(!user && !admin) {
+			throw new IllegalArgumentException("not a valid User");
 		}
 		return this.allUsers;
 	}
