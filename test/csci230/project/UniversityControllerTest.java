@@ -480,6 +480,27 @@ public class UniversityControllerTest {
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, -10, 5500, 70, 40, 2, 2, 2, al2);
 	}
 	
+	@Test
+	public void testEditSchool_SuccessfulNumOfApps() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 20, 5500, 70, 40, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
+		assertTrue("expected 20 got " + u.getFinancialAid(), u.getFinancialAid() == 20);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
 	
 	@Test
 	public void testViewUniversities() {
