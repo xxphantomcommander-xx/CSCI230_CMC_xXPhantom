@@ -93,10 +93,17 @@ public class UserController {
 	 * logs out
 	 */
 	public void logOut() {
-		dbCon.logOut();
-		isLoggedIn = false;
-		isAdminLoggedIn = false;
-		univC.clearHistory();
+		if (isLoggedIn == true || isAdminLoggedIn == true)
+		{
+			dbCon.logOut();
+			isLoggedIn = false;
+			isAdminLoggedIn = false;
+			univC.clearHistory();
+		}
+		else 
+		{
+			throw new IllegalArgumentException("nobody is logged in");
+		}
 	}
 	
 	
@@ -181,7 +188,7 @@ public class UserController {
 			  dbCon.editUser(dbCon.getLoggedOnUser());
 		  }
 		  else {
-			  System.out.println("Incorrect Password. Nothing changed!");
+			  throw new IllegalArgumentException("Old Password is incorrect");
 		  }
 	  }
 	  

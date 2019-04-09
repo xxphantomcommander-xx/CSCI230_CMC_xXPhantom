@@ -398,7 +398,14 @@ public class DBController {
 	 * @return currently logged on user
 	 */
 	public User getLoggedOnUser() {
+		if(loggedOnUser != null)
+		{
 		  return loggedOnUser;
+		}
+		else
+		{
+			throw new IllegalArgumentException("Nobody logged on");
+		}
 	  
 }
 	

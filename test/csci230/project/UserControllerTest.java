@@ -14,11 +14,22 @@ import org.junit.Test;
  */
 public class UserControllerTest {
 	UserController uc;
+	DBController dbCon;
+	User john;
+//	User lynn;
+//	User andrew;
+//	User zach;
+//	User noreen;
 	
 	@Before
 	  public void setUp() throws Exception {
 		uc = new UserController();
 		uc.logOn("ZHEINEN001@csbsju.edu", "zaciscool");
+		john = new User("John", "User", "juser@csbsju.edu", "user", 'u', 'Y');
+//		lynn = new User("Lynn", "User", "luser@csbsju.edu", "user", 'u', 'N');
+//		andrew = new User("Andrew", "Breyen", "abreyen001@csbsju.edu", "myPassword", 'u', 'Y');
+//		noreen = new User("Noreen", "Admin", "nadmin@csbsju.edu", "admin", 'a', 'Y');
+//		zach = new User("Zach", "Heinen", "ZHEINEN001@csbsju.edu", "zaciscool", 'a', 'Y');
 	  }
 	
 	/**
@@ -65,8 +76,16 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testLogOut() {
+		uc.logOn("ZHEINEN001@csbsju.edu", "zaciscool");
 		uc.logOut();
-		assertTrue("Successful logOut. outputExpected: null actual output: " + this.uc.isLoggedIn(),uc.isLoggedIn());
+		assertTrue("Successful logOut. isLoggedInShould should be false " + uc.isLoggedIn(), uc.isLoggedIn() == false);
+		uc.logOn("ZHEINEN001@csbsju.edu", "zaciscool");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testLogOut_NobodyLoggedIn() {
+		uc.logOut();
+		uc.logOut();
 	}
 
 	/**
@@ -74,6 +93,7 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testAddUser() {
+		uc.logOn("ZHEINEN001@csbsju.edu", "zaciscool");
 		uc.addUser("Zac", "Heinen", "someEmail@gmail.com", "password", 'a', 'Y');
 		boolean found = false;
 		ArrayList<User> allUsers = uc.viewUsers();
@@ -116,18 +136,22 @@ public class UserControllerTest {
 	/**
 	 * Test method for {@link csci230.project.UserController#viewMyProfile()}.
 	 */
-//	@Test
-//	public void testViewMyProfile() {
-//		uc.viewMyProfile();
-//		assertTrue("expected output ZHEINEN001@csbsju.edu got" + uc.viewMyProfile(),i.getUserName().equals("someEmail@gmail.com"));
-//	}
+	@Test
+	public void testViewMyProfile() {
+		uc.viewMyProfile();
+		assertTrue("expected output zach got" + uc.viewMyProfile(), uc.viewMyProfile().equals(uc.getLoggedOnUser()));
+	}
+	
 
 	/**
 	 * Test method for {@link csci230.project.UserController#isLoggedIn()}.
 	 */
 	@Test
 	public void testIsLoggedIn() {
-		fail("Not yet implemented");
+		uc.logOn("juser@csbsju.edu", "user");
+		uc.isLoggedIn();
+		assertTrue("expected output true" + uc.isLoggedIn(), uc.isLoggedIn() == true);
+		uc.logOut();
 	}
 
 	/**
@@ -135,7 +159,8 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testIsAdminLoggedIn() {
-		fail("Not yet implemented");
+		uc.isAdminLoggedIn();
+		assertTrue("expected output true" + uc.isAdminLoggedIn(), uc.isAdminLoggedIn() == true);
 	}
 
 	/**
@@ -143,7 +168,9 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testViewUsers() {
-		fail("Not yet implemented");
+		uc.viewUsers();
+		assertTrue("expected output is the username of the first User of all the users from the database " + uc.viewUsers().get(0).getUserName(), uc.viewUsers().get(0).getUserName().equals("abreyen001@csbsju.edu"));
+		
 	}
 
 	/**
@@ -151,7 +178,22 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testEditMyProfile() {
-		fail("Not yet implemented");
+		uc.logOn("juser@csbsju.edu", "user");
+		uc.editMyProfile("Johnny", "User", "user", "john");
+		ArrayList<User> allUsers = uc.viewUsers();
+		for(User i:allUsers) {
+			if(i.getUserName().equals("juser@csbsju.edu")) {
+				if(i.getFirstName().equals("Johnny") && i.getPassword().equals("john") && i.getUserName().equals("juser@csbsju.edu")) {
+					assertTrue("edited User first name should equal Johnny. actual result" + i.getFirstName(), i.getFirstName().equals("Johnny"));
+				}
+			}
+		}
+		uc.editMyProfile("John", "User", "john", "user");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditMyProfile_WrongOldPassword() {
+		uc.editMyProfile("John", "User", "john", "user");
 	}
 
 	/**
@@ -159,7 +201,17 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testGetLoggedOnUser() {
-		fail("Not yet implemented");
+		uc.getLoggedOnUser();
+		assertTrue("expected output: " + uc.getLoggedOnUser().getUserName(), uc.getLoggedOnUser().getUserName().equals("ZHEINEN001@csbsju.edu"));	
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#editUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testGetLoggedOnUser_NoOneLoggedIn() {
+		uc.logOut();
+		uc.getLoggedOnUser();
 	}
 
 	/**
@@ -167,8 +219,17 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testShowUserDetails() {
-		fail("Not yet implemented");
+		uc.showUserDetails(john);
+		ArrayList<String> list = new ArrayList<String>();
+		list.add("John");
+		list.add("User");
+		list.add("juser@csbsju.edu");
+		list.add("user");
+		list.add("u");
+		list.add("Y");
+		assertTrue("expected output for user name is and ArrayList of strings with User john's info" + uc.showUserDetails(john), uc.showUserDetails(john).equals(list));
 	}
+	
 
 	/**
 	 * Test method for {@link csci230.project.UserController#editUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
@@ -240,7 +301,28 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testDeleteUser() {
-		fail("Not yet implemented");
+		uc.logOn("ZHEINEN001@csbsju.edu", "zaciscool");
+		uc.deleteUser("juser@csbsju.edu");
+		boolean found = false;
+		ArrayList<User> allUsers = uc.viewUsers();
+		for(User i:allUsers) {
+			if(i.getUserName().equals("juser@csbsju.edu")) {
+				found = true;
+			}
+		}
+		if(found) {
+			assertFalse(true);
+		}
+		else
+		{
+			assertTrue(true);
+		}
+		uc.addUser("John", "User", "juser@csbsju.edu", "user", 'u', 'Y');
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testDeleteUser_UserNotFound() {
+		uc.deleteUser("someEmail@gmail.com");
 	}
 
 	/**
