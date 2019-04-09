@@ -11,11 +11,27 @@ import org.junit.Before;
 public class UniversityControllerTest {
 	UniversityController univC;
 	DBController dbCon;
-	
+	University u;
+	ArrayList<University> allUnivs;
 	
 	@Before
 	  public void setUp() throws Exception {
 		univC = new UniversityController();
+		dbCon = new DBController();
+		/*
+		 * tests view universities
+		 */
+		allUnivs = dbCon.loadUniversities();
+		/*
+		 * university used for testing set and get school of the week
+		 */
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
 	  }
 	
 	@Test
@@ -36,7 +52,7 @@ public class UniversityControllerTest {
 	@Test
 	public void testSearchBySchool_NullForBoth() {
 		ArrayList<University> result = univC.searchBySchool(null, null);
-		AssertTrue("Expected output null got" + result.get(0), result.get(0) == null);
+		assertTrue("Expected output null got" + result.get(0), result.get(0) == null);
 	}
 	
 	@Test
@@ -66,7 +82,7 @@ public class UniversityControllerTest {
 		{
 			if (i.getSchoolName().equals("WORCHESTER"))
 			{
-				AssertTrue("Expected output Worchester got" + i.getSchoolName(), "WORCHESTER".equals(i.getSchoolName());
+				assertTrue("Expected output Worchester got" + i.getSchoolName(), "WORCHESTER".equals(i.getSchoolName());
 			}
 		}
 
@@ -137,7 +153,7 @@ public class UniversityControllerTest {
 		
 		ArrayList<University> result = univC.searchBySchool(example, "ZACH2");
 
-		AssertTrue("Expected output null got" + result.get(0), result.get(0) == null);
+		assertTrue("Expected output null got" + result.get(0), result.get(0) == null);
 
 
 		
@@ -164,13 +180,152 @@ public class UniversityControllerTest {
 	}
 
 	@Test
-	public void testEditSchool() {
-		fail("Not yet implemented");
+	public void testEditSchool_SuccessfulState() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "CALIFORNIA", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		assertTrue("expected California got " + u.getState(), u.getState().equals("CALIFORNIA"));
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulState() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NOTASTATE", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
 
 	@Test
+	public void testEditSchool_SuccessfulLocation() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "URBAN", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		assertTrue("expected Urban got " + u.getLocation(), u.getLocation().equals("URBAN"));
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulLocation() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "NOTALOCATION", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test
+	public void testEditSchool_SuccessfulControl() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "STATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		assertTrue("expected State got " + u.getControl(), u.getControl().equals("STATE"));
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulControl() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "NOTACONTROL", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test
+	public void testEditSchool_SuccessfulNumStudents() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 20000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		assertTrue("expected 20000 got " + u.getNumOfStudents(), u.getNumOfStudents() == 20000);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulNumStudents() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", -500, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test
+	public void testEditSchool_SuccessfulPerFem() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 50, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		assertTrue("expected 50 got " + u.getPerFem(), u.getPerFem() == 50);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulPerFem() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, -20, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test
+	public void testEditSchool_SuccessfulSatVerbal() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 600, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		assertTrue("expected 600 got " + u.getSatVerbal(), u.getSatVerbal() == 600);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulSatVerbal() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, -500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	@Test
 	public void testViewUniversities() {
-		fail("Not yet implemented");
+		ArrayList<University> allUnivs = univC.viewUniversities();
+		assertTrue("expected every university",this.allUnivs.equals(allUnivs));
 	}
 
 	@Test
@@ -209,12 +364,20 @@ public class UniversityControllerTest {
 	}
 	@Test
 	public void testSetSchoolOfTheWeek() {
-		fail("Not yet implemented");
+		String expected = u.getSchoolName();
+		univC.setSchoolOfTheWeek(expected);
+		assertTrue("Expected Adelphi got " + univC.getSchoolOfTheWeek().getSchoolName(), univC.getSchoolOfTheWeek().getSchoolName().equals(expected));
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetSchoolOfTheWeek_InvalidName() {
+		String expected = "NotASchool";
+		univC.setSchoolOfTheWeek(expected);
 	}
 
 	@Test
 	public void testGetSchoolOfTheWeek() {
-		fail("Not yet implemented");
+		assertTrue("expected Adelphi got " + univC.getSchoolOfTheWeek().getSchoolName(), univC.getSchoolOfTheWeek().getSchoolName().equals(u.getSchoolName()));
 	}
 
 	@Test
