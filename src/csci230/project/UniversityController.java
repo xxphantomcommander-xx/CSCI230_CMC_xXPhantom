@@ -691,7 +691,11 @@ public class UniversityController {
 	 * @return an arrayList of 5 universities
 	 */
 	public ArrayList<University> topRecommended(University univ) {
-		if (univ != null && allUnivs.contains(univ)) {
+		boolean inDatabase = false;
+		for (University i : allUnivs)
+			if (i.getSchoolName().equals(univ.getSchoolName()))
+				inDatabase = true;
+		if (univ != null && inDatabase) {
 			ArrayList<University> recommend = new ArrayList<University>();
 			for (University i : allUnivs) {
 				int count = 0;
@@ -914,7 +918,11 @@ public class UniversityController {
 	 * @return an arrayList of 5 universities
 	 */
 	public ArrayList<University> topRecommended2(University univ) {
-		if (univ != null && allUnivs.contains(univ)) {
+		boolean inDatabase = false;
+		for (University i : allUnivs)
+			if (i.getSchoolName().equals(univ.getSchoolName()))
+				inDatabase = true;
+		if (univ != null && inDatabase) {
 
 			double maxStudents = 0;
 			double minStudents = 0;
@@ -1304,7 +1312,11 @@ public class UniversityController {
 	 * @return String of results
 	 */
 	public ArrayList<String> showUniversityDetails(University univ) {
-		if (univ != null && viewUniversities().contains(univ)) {
+		boolean inDatabase = false;
+		for (University i : allUnivs)
+			if (i.getSchoolName().equals(univ.getSchoolName()))
+				inDatabase = true;
+		if (univ != null && inDatabase) {
 			ArrayList<String> details = new ArrayList<String>();
 			details.add(univ.getSchoolName());
 			details.add(univ.getState());
@@ -1692,7 +1704,11 @@ public class UniversityController {
 	 * @return top 5 recommended schools
 	 */
 	public ArrayList<University> superRecommend(University univ) {
-		if (univ != null && allUnivs.contains(univ)) {
+		boolean inDatabase = false;
+		for (University i : allUnivs)
+			if (i.getSchoolName().equals(univ.getSchoolName()))
+				inDatabase = true;
+		if (univ != null && inDatabase) {
 			ArrayList<University> tc = new ArrayList<University>();
 			tc = topRecommended(univ);
 			topRecommended2(univ);

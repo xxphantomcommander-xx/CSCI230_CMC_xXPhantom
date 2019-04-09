@@ -166,22 +166,25 @@ public class UniversityControllerTest {
 	
 	@Test
 	public void testSearchBySchool_InvalidName() {
-		
+		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testTopRecommended() {
-		fail("Not yet implemented");
+		ArrayList<University> r = univC.topRecommended(u);
+		assertTrue("Top Recomended, results should be HOFSTRA, was "+r.get(1).getSchoolName(), r.get(1).getSchoolName().equals("HOFSTRA"));
 	}
 
 	@Test
 	public void testTopRecommended2() {
-		fail("Not yet implemented");
+		ArrayList<University> r = univC.topRecommended2(u);
+		assertTrue("Top Recomended 2, result 1 should be HOFSTRA, was" +r.get(1).getSchoolName(), r.get(1).getSchoolName().equals("HOFSTRA"));
 	}
 
 	@Test
 	public void testShowUniversityDetails() {
-		fail("Not yet implemented");
+		ArrayList<String> univDetails = univC.showUniversityDetails(u);
+		assertTrue("School name should be ADELPHI, was "+univDetails.get(0), univDetails.get(0).equals("ADELPHI"));
 	}
 
 	@Test
@@ -785,7 +788,8 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testSuperRecommend() {
-		fail("Not yet implemented");
+		ArrayList<University> r = univC.superRecommend(u);
+		assertTrue("Top Recomended, results should be HOFSTRA, was "+r.get(1).getSchoolName(), r.get(1).getSchoolName().equals("HOFSTRA"));
 	}
 
 }

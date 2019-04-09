@@ -585,13 +585,7 @@ public class University {
 	 * @param sup the sup to set
 	 */
 	public void setSup(double sup) {
-		if(0 <= sup) {
-			this.sup = sup;
-		}
-		else {
-			throw new IllegalArgumentException("Invalid super");
-		}
-
+		this.sup = sup;
 	}
 
 }
