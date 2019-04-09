@@ -76,7 +76,7 @@ public class UniversityControllerTest {
 		ArrayList<String> emp4 = new ArrayList<String>();
 		emp4.add("BIOLOGY");
 		emp4.add("COMPUTER SCIENCE");
-		ArrayList<University> allUnivs = new ArrayList<University>();
+		
 		ArrayList<University> example = new ArrayList<University>();
 		example.add(new University("WORCHESTER", "MASSACHUSETTS", "URBAN","PRIVATE", 10000, 20, 550, 650, 30973, 70, 4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
 		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40, 11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
@@ -150,7 +150,6 @@ public class UniversityControllerTest {
 		ArrayList<String> emp4 = new ArrayList<String>();
 		emp4.add("BIOLOGY");
 		emp4.add("COMPUTER SCIENCE");
-		ArrayList<University> allUnivs = new ArrayList<University>();
 		ArrayList<University> example = new ArrayList<University>();
 		example.add(new University("WORCHESTER", "MASSACHUSETTS", "URBAN","PRIVATE", 10000, 20, 550, 650, 30973, 70, 4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
 		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40, 11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
