@@ -114,7 +114,7 @@ public class UniversityController {
 	 * @param sch
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchBySchool(ArrayList<University> temp, String sch) {
+	public ArrayList<University> searchBySchool(ArrayList<University> temp, String sch) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		String schoolName = sch.toUpperCase();
@@ -139,7 +139,7 @@ public class UniversityController {
 	 * @param state
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByState(ArrayList<University> temp, String state) {
+	public ArrayList<University> searchByState(ArrayList<University> temp, String state) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		String st = state.toUpperCase();
@@ -185,7 +185,7 @@ public class UniversityController {
 	 * @param l
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByLocation(ArrayList<University> temp, String l) {
+	public ArrayList<University> searchByLocation(ArrayList<University> temp, String l) {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		String location = l.toUpperCase();
 		if (l.equals(null)) {
@@ -213,7 +213,7 @@ public class UniversityController {
 	 * @param c
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByControl(ArrayList<University> temp, String c) {
+	public ArrayList<University> searchByControl(ArrayList<University> temp, String c) {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		String control = c.toUpperCase();
 		if (c.equals(null)) {
@@ -243,7 +243,7 @@ public class UniversityController {
 	 * @param nStuHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByNumOfStudents(ArrayList<University> temp, int nStuLow, int nStuHigh) {
+	public ArrayList<University> searchByNumOfStudents(ArrayList<University> temp, int nStuLow, int nStuHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (nStuLow == -1 && nStuHigh == -1) {
@@ -280,7 +280,7 @@ public class UniversityController {
 	 * @param prctfHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByPercentFemale(ArrayList<University> temp, int prctfLow, int prctfHigh) {
+	public ArrayList<University> searchByPercentFemale(ArrayList<University> temp, int prctfLow, int prctfHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (prctfLow == -1 && prctfHigh == -1) {
@@ -315,7 +315,7 @@ public class UniversityController {
 	 * @param svHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchBySATVerbal(ArrayList<University> temp, int svLow, int svHigh) {
+	public ArrayList<University> searchBySATVerbal(ArrayList<University> temp, int svLow, int svHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (svLow == -1 && svHigh == -1) {
@@ -350,7 +350,7 @@ public class UniversityController {
 	 * @param smHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchBySATMath(ArrayList<University> temp, int smLow, int smHigh) {
+	public ArrayList<University> searchBySATMath(ArrayList<University> temp, int smLow, int smHigh) {
 
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
@@ -385,7 +385,7 @@ public class UniversityController {
 	 * @param eHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByExpenses(ArrayList<University> temp, int eLow, int eHigh) {
+	public ArrayList<University> searchByExpenses(ArrayList<University> temp, int eLow, int eHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (eLow == -1 && eHigh == -1) {
@@ -419,7 +419,7 @@ public class UniversityController {
 	 * @param prctfinHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByPercentFinAid(ArrayList<University> temp, int prctfinLow, int prctfinHigh) {
+	public ArrayList<University> searchByPercentFinAid(ArrayList<University> temp, int prctfinLow, int prctfinHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (prctfinLow == -1 && prctfinHigh == -1) {
@@ -453,7 +453,7 @@ public class UniversityController {
 	 * @param nApHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByNumOfApps(ArrayList<University> temp, int nApLow, int nApHigh) {
+	public ArrayList<University> searchByNumOfApps(ArrayList<University> temp, int nApLow, int nApHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (nApLow == -1 && nApHigh == -1) {
@@ -487,7 +487,7 @@ public class UniversityController {
 	 * @param prctaHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByPercAdmitted(ArrayList<University> temp, int prctaLow, int prctaHigh) {
+	public ArrayList<University> searchByPercAdmitted(ArrayList<University> temp, int prctaLow, int prctaHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (prctaLow == -1 && prctaHigh == -1) {
@@ -521,7 +521,7 @@ public class UniversityController {
 	 * @param prcteHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByPercEnrolled(ArrayList<University> temp, int prcteLow, int prcteHigh) {
+	public ArrayList<University> searchByPercEnrolled(ArrayList<University> temp, int prcteLow, int prcteHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (prcteLow == -1 && prcteHigh == -1) {
@@ -555,7 +555,7 @@ public class UniversityController {
 	 * @param asHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByAcademicScale(ArrayList<University> temp, int asLow, int asHigh) {
+	public ArrayList<University> searchByAcademicScale(ArrayList<University> temp, int asLow, int asHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (asLow == -1 && asHigh == -1) {
@@ -589,7 +589,7 @@ public class UniversityController {
 	 * @param ssHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchBySocialLife(ArrayList<University> temp, int ssLow, int ssHigh) {
+	public ArrayList<University> searchBySocialLife(ArrayList<University> temp, int ssLow, int ssHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (ssLow == -1 && ssHigh == -1) {
@@ -624,7 +624,7 @@ public class UniversityController {
 	 * @param qHigh
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByQualityOfLife(ArrayList<University> temp, int qLow, int qHigh) {
+	public ArrayList<University> searchByQualityOfLife(ArrayList<University> temp, int qLow, int qHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (qLow == -1 && qHigh == -1) {
@@ -658,7 +658,7 @@ public class UniversityController {
 	 * @param emp
 	 * @return ArrayList of all universities matching search criteria
 	 */
-	private ArrayList<University> searchByEmphasis(ArrayList<University> temp, ArrayList<String> emp) {
+	public ArrayList<University> searchByEmphasis(ArrayList<University> temp, ArrayList<String> emp) {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		ArrayList<String> capEmp = new ArrayList<String>();
 		for (String i : emp) {
