@@ -88,7 +88,7 @@ public class UniversityControllerTest {
 		{
 			if (i.getSchoolName().equals("WORCHESTER"))
 			{
-				assertTrue("Expected output Worchester got" + i.getSchoolName(), "WORCHESTER".equals(i.getSchoolName());
+				assertTrue("Expected output Worchester got" + i.getSchoolName(), "WORCHESTER".equals(i.getSchoolName()));
 			}
 		}
 
@@ -581,17 +581,42 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testGetSchoolOfTheWeek() {
+		String expected = u.getSchoolName();
+		univC.setSchoolOfTheWeek(expected);
+		
 		assertTrue("expected Adelphi got " + univC.getSchoolOfTheWeek().getSchoolName(), univC.getSchoolOfTheWeek().getSchoolName().equals(u.getSchoolName()));
 	}
 
 	@Test
 	public void testViewHistory() {
-		fail("Not yet implemented");
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.searchSchools("ADELPHI", "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, emp);
+		univC.searchSchools("TUFTS", "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, emp);
+		univC.searchSchools("GOTHENBURG UNIVERSITY", "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, emp);
+		assertTrue("Expected TUFTS, was"+univC.viewHistory().get(1).getSchoolName(),(univC.viewHistory().get(1).getSchoolName()).equals("TUFTS"));
 	}
 
 	@Test
 	public void testClearHistory() {
-		fail("Not yet implemented");
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.searchSchools("ADELPHI", "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, emp);
+		univC.searchSchools("TUFTS", "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, emp);
+		univC.searchSchools("GOTHENBURG UNIVERSITY", "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, emp);
+		assertTrue("Expected TUFTS, was"+univC.viewHistory().get(1).getSchoolName(),(univC.viewHistory().get(1).getSchoolName()).equals("TUFTS"));
+		
+		univC.clearHistory();
+		
+		assertTrue("Expected isEmpty, was"+univC.viewHistory(),(univC.viewHistory().isEmpty()));
 	}
 
 	@Test
