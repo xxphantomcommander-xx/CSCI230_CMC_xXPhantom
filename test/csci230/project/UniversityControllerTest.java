@@ -11,13 +11,17 @@ import org.junit.Before;
 public class UniversityControllerTest {
 	UniversityController univC;
 	DBController dbCon;
+	UserController uc;
 	University u;
 	ArrayList<University> allUnivs;
 	
 	@Before
 	  public void setUp() throws Exception {
+		uc = new UserController();
 		univC = new UniversityController();
 		dbCon = new DBController();
+		
+		uc.logOn("juser@csbsju.edu", "user");
 		/*
 		 * tests view universities
 		 */
@@ -188,6 +192,15 @@ public class UniversityControllerTest {
 		al2.add("");
 		al2.add("");
 		univC.editSchool("ADELPHI", "CALIFORNIA", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
 		assertTrue("expected California got " + u.getState(), u.getState().equals("CALIFORNIA"));
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
@@ -212,6 +225,15 @@ public class UniversityControllerTest {
 		al2.add("");
 		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "URBAN", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
 		assertTrue("expected Urban got " + u.getLocation(), u.getLocation().equals("URBAN"));
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
@@ -236,6 +258,15 @@ public class UniversityControllerTest {
 		al2.add("");
 		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "STATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
 		assertTrue("expected State got " + u.getControl(), u.getControl().equals("STATE"));
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
@@ -260,6 +291,15 @@ public class UniversityControllerTest {
 		al2.add("");
 		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 20000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
 		assertTrue("expected 20000 got " + u.getNumOfStudents(), u.getNumOfStudents() == 20000);
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
@@ -284,6 +324,15 @@ public class UniversityControllerTest {
 		al2.add("");
 		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 50, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
 		assertTrue("expected 50 got " + u.getPerFem(), u.getPerFem() == 50);
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
@@ -308,6 +357,15 @@ public class UniversityControllerTest {
 		al2.add("");
 		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 600, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
 		assertTrue("expected 600 got " + u.getSatVerbal(), u.getSatVerbal() == 600);
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
@@ -332,6 +390,15 @@ public class UniversityControllerTest {
 		al2.add("");
 		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 675, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
 		assertTrue("expected 675 got " + u.getSatMath(), u.getSatMath() == 675);
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
@@ -356,6 +423,15 @@ public class UniversityControllerTest {
 		al2.add("");
 		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 17437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
 		assertTrue("expected 17437 got " + u.getExpenses(), u.getExpenses() == 17437);
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
@@ -380,6 +456,15 @@ public class UniversityControllerTest {
 		al2.add("");
 		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 20, 5500, 70, 40, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
 		assertTrue("expected 20 got " + u.getFinancialAid(), u.getFinancialAid() == 20);
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
