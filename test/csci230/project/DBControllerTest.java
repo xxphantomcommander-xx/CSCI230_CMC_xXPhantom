@@ -186,7 +186,7 @@ public class DBControllerTest {
 	public void testGetLoggedOnUser() {
 		fail("Not yet implemented");
 	}
-
+//
 	/**
 	 * Test method for {@link csci230.project.DBController#getAllUsers()}.
 	 */
