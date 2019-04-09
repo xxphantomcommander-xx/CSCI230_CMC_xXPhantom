@@ -166,7 +166,7 @@ public class UniversityControllerTest {
 	
 	@Test
 	public void testSearchBySchool_InvalidName() {
-		
+		fail("Not yet implemented");
 	}
 
 	@Test
@@ -181,7 +181,8 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testShowUniversityDetails() {
-		fail("Not yet implemented");
+		ArrayList<String> univDetails = univC.showUniversityDetails(u);
+		assertTrue("School name should be ADELPHI, was "+univDetails.get(0), univDetails.get(0).equals("ADELPHI"));
 	}
 
 	@Test

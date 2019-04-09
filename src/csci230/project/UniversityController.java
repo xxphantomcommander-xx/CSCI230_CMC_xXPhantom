@@ -1304,7 +1304,11 @@ public class UniversityController {
 	 * @return String of results
 	 */
 	public ArrayList<String> showUniversityDetails(University univ) {
-		if (univ != null && viewUniversities().contains(univ)) {
+		boolean inDatabase = false;
+		for (University i : allUnivs)
+			if (i.getSchoolName().equals(univ.getSchoolName()))
+				inDatabase = true;
+		if (univ != null && inDatabase) {
 			ArrayList<String> details = new ArrayList<String>();
 			details.add(univ.getSchoolName());
 			details.add(univ.getState());
