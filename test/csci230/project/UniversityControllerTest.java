@@ -204,23 +204,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulState() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NOTASTATE", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
 
 	@Test
 	public void testEditSchool_SuccessfulLocation() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "URBAN", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -237,23 +225,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulLocation() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "NOTALOCATION", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulControl() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "STATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -270,23 +246,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulControl() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "NOTACONTROL", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulNumStudents() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 20000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -303,23 +267,12 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulNumStudents() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", -500, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulPerFem() {
 		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 50, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -336,23 +289,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulPerFem() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, -20, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulSatVerbal() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 600, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -369,23 +310,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulSatVerbal() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, -500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulSatMath() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 675, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -402,23 +331,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulSatMath() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 2, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulExpences() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 17437, 60, 5500, 70, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -435,23 +352,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulExpences() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, -10000, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulFinancialAid() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 20, 5500, 70, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -468,23 +373,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulFinancialAid() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, -10, 5500, 70, 40, 2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulNumOfApps() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 7500, 70, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -501,23 +394,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulNumOfApps() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, -5500, 70, 40, 2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulPerAdmitted() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 40, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -534,23 +415,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulPerAdmitted() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, -70, 40, 2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulPerEnrolled() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 40, 60, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -567,23 +436,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulPerEnrolled() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, -40, 2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulAcademicScale() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 4, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -600,23 +457,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulAcademicScale() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, -2, 2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulSocialScale() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 4, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -633,23 +478,11 @@ public class UniversityControllerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulSocialScale() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, -2, 2, al2);
 	}
 	
 	@Test
 	public void testEditSchool_SuccessfulQualOfLife() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 4, al2);
 		
 		allUnivs = dbCon.loadUniversities();
@@ -672,7 +505,7 @@ public class UniversityControllerTest {
 		al2.add("");
 		al2.add("");
 		al2.add("");
-		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, -2, 2, al2);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, -2, al2);
 	}
 	
 	@Test
