@@ -317,24 +317,26 @@ public class UserController {
      * deactivates a user
 	 * @param String userName
 	 */
-	public void deactivateUser(User user) {
+	public void deactivateUser(String userName) {
 		  ArrayList<User> useList = new ArrayList<User>();
 		  useList = dbCon.getAllUsers();
+		  User user = new User("Pete", "Gathje", "pgathje001@csbsju.edu", "password", 'a', 'Y');
 		  boolean activated = false;
 		  boolean exists = false;
 		  for(User i : useList)
 		  {
-			  if (user.equals(i))
+			  if (userName.equals(i.getUserName()))
 			  {
 				  exists = true;
 				  	if (i.getStatus() == 'Y')
 				  	{
 				  		activated = true;
+				  		user = i;
 				  	}
 			  }
 
 		  }
-		  if(activated == true)
+		  if (activated == true)
 		  {
 			  editUser(user.getFirstName(), user.getLastName(), user.getUserName(), user.getPassword(), user.getType(), 'N');
 		  }
@@ -352,10 +354,10 @@ public class UserController {
 	 * @param String userName
 	 */
 	public void activateUser(String userName) {
-		  ArrayList<User> useList = new ArrayList<User>();
-		  useList = dbCon.getAllUsers();
+		  ArrayList<User> useList = dbCon.getAllUsers();
 		  boolean deactivated = false;
 		  boolean exists = false;
+		  User user = new User("Pete", "Gathje", "pgathje001@csbsju.edu", "password", 'a', 'Y');
 		  for(User i : useList)
 		  {
 			  if (userName.equals(i.getUserName()))
@@ -364,10 +366,14 @@ public class UserController {
 				  	if (i.getStatus() == 'N')
 				  	{
 				  		deactivated = true;
-				  		editUser(i.getFirstName(), i.getLastName(), i.getUserName(), i.getPassword(), i.getType(), 'Y');
+				  		user = i;
 				  	}
 			  }
 
+		  }
+		  if(deactivated == true)
+		  {
+			  editUser(user.getFirstName(), user.getLastName(), user.getUserName(), user.getPassword(), user.getType(), 'Y');
 		  }
 			if(deactivated == false) {
 				throw new IllegalArgumentException("User already activated");
