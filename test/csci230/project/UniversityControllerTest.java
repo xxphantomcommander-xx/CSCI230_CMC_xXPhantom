@@ -531,7 +531,172 @@ public class UniversityControllerTest {
 		}
 		univC.removeUniversity(test);
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidState() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "NOTASTATE", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidLocation() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "NOTALOCATION", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp);
+	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidControl() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "NOTACONTROL", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidNumOfStudents() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", -50, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidPerFem() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 150, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidSATVerbal() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -50, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidSATMath() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -50, 16403, 20, 5500, 50, 80, 3, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidExpenses() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, -50, 20, 5500, 50, 80, 3, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidFinancialAid() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, -50, 5500, 50, 80, 3, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidNumOfApps() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, -50, 50, 80, 3, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidPerAdmitted() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 150, 80, 3, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidPerEnrolled() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 150, 3, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidAcademicScale() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, -50, 3, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidSocialScale() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, -50, 3, emp);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUniversity_InvalidQualOfLife() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		univC.addUniversity("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, -50, emp);
+	}
+	
 	@Test
 	public void testRemoveUniversity() {
 		ArrayList<String> emp = new ArrayList<String>();
