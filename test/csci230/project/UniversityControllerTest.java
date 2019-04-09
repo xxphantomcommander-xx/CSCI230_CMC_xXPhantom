@@ -488,7 +488,7 @@ public class UniversityControllerTest {
 		al2.add("");
 		al2.add("");
 		al2.add("");
-		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 20, 5500, 70, 40, 2, 2, 2, al2);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 7500, 70, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
 		
@@ -498,8 +498,184 @@ public class UniversityControllerTest {
 			}
 		}
 		
-		assertTrue("expected 20 got " + u.getFinancialAid(), u.getFinancialAid() == 20);
+		assertTrue("expected 7500 got " + u.getNumOfApps(), u.getNumOfApps() == 7500);
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulNumOfApps() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, -5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test
+	public void testEditSchool_SuccessfulPerAdmitted() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 40, 40, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
+		assertTrue("expected 40 got " + u.getPerAdmitted(), u.getPerAdmitted() == 40);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulPerAdmitted() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, -70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test
+	public void testEditSchool_SuccessfulPerEnrolled() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 40, 60, 2, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
+		assertTrue("expected 60 got " + u.getPerEnrolled(), u.getPerEnrolled() == 60);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulPerEnrolled() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, -40, 2, 2, 2, al2);
+	}
+	
+	@Test
+	public void testEditSchool_SuccessfulAcademicScale() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 4, 2, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
+		assertTrue("expected 4 got " + u.getAcademicScale(), u.getAcademicScale() == 4);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulAcademicScale() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, -2, 2, 2, al2);
+	}
+	
+	@Test
+	public void testEditSchool_SuccessfulSocialScale() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 4, 2, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
+		assertTrue("expected 4 got " + u.getSocialScale(), u.getSocialScale() == 4);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulSocialScale() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, -2, 2, al2);
+	}
+	
+	@Test
+	public void testEditSchool_SuccessfulQualOfLife() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 4, al2);
+		
+		allUnivs = dbCon.loadUniversities();
+		
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+					u = i;
+			}
+		}
+		
+		assertTrue("expected 4 got " + u.getQualOfLife(), u.getQualOfLife() == 4);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulQualOFLife() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, -2, 2, al2);
 	}
 	
 	@Test
