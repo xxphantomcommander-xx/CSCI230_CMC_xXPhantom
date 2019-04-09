@@ -680,8 +680,8 @@ public class UniversityControllerTest {
 	
 	@Test
 	public void testViewUniversities() {
-		ArrayList<University> allUnivs = univC.viewUniversities();
-		assertTrue("expected every university",this.allUnivs.equals(allUnivs));
+		ArrayList<University> allUnivs2 = univC.viewUniversities();
+		assertTrue("expected ADELPHI got "+allUnivs2.get(2).getSchoolName(),(allUnivs2.get(2).getSchoolName()).equals(allUnivs.get(2).getSchoolName()));
 	}
 
 	@Test
