@@ -322,6 +322,80 @@ public class UniversityControllerTest {
 		al2.add("");
 		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, -500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 	}
+	
+	@Test
+	public void testEditSchool_SuccessfulSatMath() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 675, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		assertTrue("expected 675 got " + u.getSatMath(), u.getSatMath() == 675);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulSatMath() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 2, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test
+	public void testEditSchool_SuccessfulExpences() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 17437, 60, 5500, 70, 40, 2, 2, 2, al2);
+		assertTrue("expected 17437 got " + u.getExpenses(), u.getExpenses() == 17437);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulExpences() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, -10000, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test
+	public void testEditSchool_SuccessfulFinancialAid() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 20, 5500, 70, 40, 2, 2, 2, al2);
+		assertTrue("expected 20 got " + u.getFinancialAid(), u.getFinancialAid() == 20);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditSchool_UnsuccessfulFinancialAid() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, -10, 5500, 70, 40, 2, 2, 2, al2);
+	}
+	
+	
 	@Test
 	public void testViewUniversities() {
 		ArrayList<University> allUnivs = univC.viewUniversities();
