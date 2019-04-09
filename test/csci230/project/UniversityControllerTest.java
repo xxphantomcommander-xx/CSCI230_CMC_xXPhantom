@@ -14,12 +14,15 @@ public class UniversityControllerTest {
 	UserController uc;
 	University u;
 	ArrayList<University> allUnivs;
+	ArrayList<String> al2;
+	
 	
 	@Before
 	  public void setUp() throws Exception {
 		uc = new UserController();
 		univC = new UniversityController();
 		dbCon = new DBController();
+		al2 = new ArrayList<String>();
 		
 		uc.logOn("juser@csbsju.edu", "user");
 		/*
@@ -29,7 +32,6 @@ public class UniversityControllerTest {
 		/*
 		 * university used for testing set and get school of the week
 		 */
-		ArrayList<String> al2 = new ArrayList<String>();
 		al2.add("BIOLOGY");
 		al2.add("BUSINESS-ADMINISTRATION");
 		al2.add("");
@@ -185,12 +187,7 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testEditSchool_SuccessfulState() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
+
 		univC.editSchool("ADELPHI", "CALIFORNIA", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2);
 		
 		allUnivs = dbCon.loadUniversities();
