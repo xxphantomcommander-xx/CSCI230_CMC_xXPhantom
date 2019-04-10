@@ -14,6 +14,7 @@ public class AdminFunctionalityController {
 	
 	//controller for all users
 	UserController userC;
+	private boolean isAdminLoggedIn = false;
 	
 	/**
 	 * constructor method
@@ -31,6 +32,12 @@ public class AdminFunctionalityController {
 	public void logOn(String username, String password)
 	{
 		userC.logOn(username, password);
+		isAdminLoggedIn = true;
+	}
+	
+	public boolean getIsAdminLoggedIn()
+	{
+		return isAdminLoggedIn;
 	}
 	
 	/**
@@ -41,6 +48,7 @@ public class AdminFunctionalityController {
 	public void logOff() 
 	{
 		userC.logOut();
+		isAdminLoggedIn = false;
 	}
 
 	/**
