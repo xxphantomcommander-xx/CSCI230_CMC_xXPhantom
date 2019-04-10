@@ -150,8 +150,33 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testDeleteSavedSchool() {
-		fail("Not yet implemented");
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		dbCon.saveUniversities(u);
+		dbCon.deleteSavedSchool(u);
+		for (University i: dbCon.getSavedSchoolList()) {
+			if (!i.getSchoolName().equals("ADELPHI"))
+			assertTrue("expected to remove Adelphi", !i.getSchoolName().equals("ADELPHI"));
+		}
 	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testDeleteSavedSchool_SchoolNotSaved() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		dbCon.deleteSavedSchool(u);
+	}
+	
 
 	/**
 	 * Test method for {@link csci230.project.DBController#editUser(csci230.project.User)}.
