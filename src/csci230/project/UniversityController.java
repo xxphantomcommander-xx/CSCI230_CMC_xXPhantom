@@ -499,7 +499,7 @@ public class UniversityController {
 			return temp;
 		} 
 		else {
-			if (0 <= prctaLow && prctaLow <= 100) {
+			if (0 <= prctaLow && prctaLow <= 100 || prctaLow == -1) {
 				if (0 <= prctaHigh && prctaHigh <= 100 && prctaHigh >= prctaLow) {
 					for (University i : temp) {
 						int v = i.getPerAdmitted();
@@ -533,7 +533,7 @@ public class UniversityController {
 			return temp;
 		} 
 		else {
-			if (0 <= prcteLow && prcteLow <= 100) {
+			if (0 <= prcteLow && prcteLow <= 100 || prcteLow == -1) {
 				if (0 <= prcteHigh && prcteHigh <= 100 && prcteHigh >= prcteLow) {
 					for (University i : temp) {
 						int v = i.getPerEnrolled();
@@ -567,7 +567,7 @@ public class UniversityController {
 			return temp;
 		} 
 		else {
-			if (0 <= asLow && asLow <= 5) {
+			if (0 <= asLow && asLow <= 5 || asLow == -1) {
 				if (0 <= asHigh && asHigh <= 5 && asHigh >= asLow) {
 					for (University i : temp) {
 						int v = i.getAcademicScale();
@@ -601,7 +601,7 @@ public class UniversityController {
 			return temp;
 		} 
 		else {
-			if (0 <= ssLow && ssLow <= 5) {
+			if (0 <= ssLow && ssLow <= 5 || ssLow == -1) {
 				if (0 <= ssHigh && ssHigh <= 5 && ssHigh >= ssLow) {
 					for (University i : temp) {
 						int v = i.getSocialScale();
@@ -636,7 +636,7 @@ public class UniversityController {
 			return temp;
 		} 
 		else {
-			if (0 <= qLow && qLow <= 5) {
+			if (0 <= qLow && qLow <= 5 || qLow == -1) {
 				if (0 <= qLow && qLow <= 5 && qHigh >= qLow) {
 					for (University i : temp) {
 						int v = i.getQualOfLife();

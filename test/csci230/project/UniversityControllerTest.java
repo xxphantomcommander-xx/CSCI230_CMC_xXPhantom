@@ -1864,7 +1864,7 @@ public class UniversityControllerTest {
 		}
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testSearchByPercentFinAid_TempNotNullFinAidLowNullFinAidHigh60() {
 		ArrayList<String> emp1 = new ArrayList<String>();
 		emp1.add("FINE-ARTS");
@@ -1913,6 +1913,1739 @@ public class UniversityControllerTest {
 			assertTrue("expected: PENN STATE. actual: " + matchingSchools.get(3).getSchoolName(),
 					matchingSchools.get(3).getSchoolName().equals("PENN STATE"));
 		}
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentFinAid_TempNotNullFinAidLowNeg2FinAidHigh60() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		univC.searchByPercentFinAid(example, -2, 60);
+	}
+	
+	
+	@Test
+	public void testSearchByPercentFinAid_TempNotNullFinAidLow30FinAidHigh30() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercentFinAid(example2, 30, 30);
+			assertTrue("expected: OHIO STATE. actual: " + matchingSchools.get(0).getSchoolName(),
+					matchingSchools.get(0).getSchoolName().equals("OHIO STATE"));
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentFinAid_TempNotNullFinAidLow65FinAidHigh30() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercentFinAid(example, 400, 600);
+		assertTrue("expected: OHIO STATE. actual: " + matchingSchools.get(0).getSchoolName(),
+				matchingSchools.get(0).getSchoolName().equals("OHIO STATE"));
+	}
+	
+	@Test
+	public void testSearchBySATVerbal_TempNullLowNullHighNull() {
+		ArrayList<University> matchingSchools = univC.searchBySATVerbal(null, -1, -1);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test
+	public void testSearchBySATVerbal_TempNotNullLow400High600() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchBySATVerbal(example, 400, 600);	
+		if (matchingSchools.get(0).getSchoolName().equals("WORCESTER")) {
+			assertTrue("expected: ZACH2 actual: " + matchingSchools.get(2).getSchoolName(),
+					matchingSchools.get(2).getSchoolName().equals("ZACH2"));
+		}
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchBySATVerbal_TempNotNullLowNeg10HighNeg10() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchBySATVerbal(example2, -10, -10);
+	}
+	
+	@Test
+	public void testSearchBySATVerbal_TempNullLow0High0() {
+		ArrayList<University> matchingSchools = univC.searchBySATVerbal(null, 0, 0);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchBySATVerbal_TempNotNullLow1High1() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		univC.searchBySATVerbal(example, 1, 1);	
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchBySATVerbal_TempNotNullLowNeg2HighNeg2() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchBySATVerbal(example2, -2, -2);
+	}
+	
+	@Test
+	public void testSearchBySATVerbal_TempNullLow799High799() {
+		ArrayList<University> matchingSchools = univC.searchBySATVerbal(null, 799, 799);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test
+	public void testSearchBySATVerbal_TempNotNullLow800High800() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchBySATVerbal(example, 800, 800);	
+
+			assertTrue("expected: true actual: " + matchingSchools.isEmpty(),
+					matchingSchools.isEmpty());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchBySATVerbal_TempNotNullLow801High801() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchBySATVerbal(example2, 801, 801);
+	}
+	
+	
+	
+	@Test
+	public void testSearchBySATVerbal_TempNotNullLow650High675() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchBySATVerbal(example, 650, 675);	
+
+
+			assertTrue("expected: YALE actual: " + matchingSchools.get(0).getSchoolName(),
+					matchingSchools.get(0).getSchoolName().equals("YALE"));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchBySATVerbal_TempNotNullLowNullHigh675() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchBySATVerbal(example2, -1, 675);
+		if (matchingSchools.get(0).getSchoolName().equals("OBLERIN")) {
+			assertTrue("expected: PRATT actual: " + matchingSchools.get(4).getSchoolName(),
+					matchingSchools.get(4).getSchoolName().equals("PRATT"));
+		}
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchBySATVerbal_TempNotNulllLowNeg2High600() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		univC.searchBySATVerbal(example, -2, 600);	
+	}
+	
+	@Test
+	public void testSearchBySATVerbal_TempNotNullLow570High570() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchBySATVerbal(example2, 570, 570);
+			assertTrue("expected: NOTRE DAME actual: " + matchingSchools.get(0).getSchoolName(),
+					matchingSchools.get(0).getSchoolName().equals("NOTRE DAME"));
+	}
+	
+	@Test
+	public void testSearchBySATMath_TempNullLowNullHighNull() {
+		ArrayList<University> matchingSchools = univC.searchBySATMath(null, -1, -1);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test
+	public void testSearchBySATMath_TempNotNullLow400High600() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchBySATMath(example, 400, 600);	
+		if (matchingSchools.get(0).getSchoolName().equals("WORCESTER")) {
+			assertTrue("expected: ZACH2 actual: " + matchingSchools.get(2).getSchoolName(),
+					matchingSchools.get(2).getSchoolName().equals("ZACH2"));
+		}
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchBySATMath_TempNotNullLowNeg10HighNeg10() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchBySATMath(example2, -10, -10);
+	}
+	
+	@Test
+	public void testSearchBySATMath_TempNullLow0High0() {
+		ArrayList<University> matchingSchools = univC.searchBySATMath(null, 0, 0);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchBySATMath_TempNotNullLow1High1() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		univC.searchBySATMath(example, 1, 1);	
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchBySATMath_TempNotNullLowNeg2HighNeg2() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchBySATMath(example2, -2, -2);
+	}
+	
+	@Test
+	public void testSearchBySATMath_TempNullLow799High799() {
+		ArrayList<University> matchingSchools = univC.searchBySATMath(null, 799, 799);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test
+	public void testSearchBySATMath_TempNotNullLow800High800() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchBySATMath(example, 800, 800);	
+			assertTrue("expected: true actual: " + matchingSchools.isEmpty(),
+					matchingSchools.isEmpty());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchBySATMath_TempNotNullLow801High801() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchBySATMath(example2, 801, 801);	
+	}
+	
+	@Test
+	public void testSearchBySATMath_TempNotNullLow650High675() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchBySATMath(example, 800, 800);	
+			assertTrue("expected: true actual: " + matchingSchools.isEmpty(),
+					matchingSchools.isEmpty());
+	}
+	
+	@Test
+	public void testSearchBySATMath_TempNotNullLowNeg1High675() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchBySATMath(example2, -1, 6750);	
+		if (matchingSchools.get(0).getSchoolName().equals("OBERLIN")) {
+			assertTrue("expected: PRATT actual: " + matchingSchools.get(4).getSchoolName(),
+					matchingSchools.get(4).getSchoolName().equals("PRATT"));
+		}
+	}
+	
+	public void testSearchBySATMath_TempNotNullLowNeg2High600() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		univC.searchBySATMath(example, -2, 600);	
+	}
+	
+	@Test
+	public void testSearchBySATMath_TempNotNullLow640High640() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchBySATMath(example2, 640, 640);	
+			assertTrue("expected: NOTRE DAME actual: " + matchingSchools.get(0).getSchoolName(),
+					matchingSchools.get(0).getSchoolName().equals("NOTRE DAME"));
+	}
+	
+	@Test
+	public void testSearchByPercentAdmitted_TempNullLowNullHighNull() {
+		ArrayList<University> matchingSchools = univC.searchByPercAdmitted(null, -1, -1);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test
+	public void testSearchByPercentAdmitted_TempNullLowHighNull() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercAdmitted(example, 30, 60);
+		if (matchingSchools.get(0).getSchoolName().equals("WORCESTER")) {
+			assertTrue("expected: ZACH2 actual: " + matchingSchools.get(1).getSchoolName(),
+					matchingSchools.get(1).getSchoolName().equals("ZACH2"));
+		}
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentAdmitted_TempNullLowNeg10HighNeg10() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchByPercAdmitted(example2, -10, -10);
+	}
+	
+	@Test
+	public void testSearchByPercentAdmitted_TempNullLow0High0() {
+		ArrayList<University> matchingSchools = univC.searchByPercAdmitted(null, 0, 0);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test
+	public void testSearchByPercentAdmitted_TempNullLow1High1() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercAdmitted(example, 1, 1);
+			assertTrue("expected: true actual: " + matchingSchools.isEmpty(),
+					matchingSchools.isEmpty());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentAdmitted_TempNullLowNeg2HighNeg2() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchByPercAdmitted(example2, -2, -2);
+	}
+	
+	@Test
+	public void testSearchByPercentAdmitted_TempNullLow99High99() {
+		ArrayList<University> matchingSchools = univC.searchByPercAdmitted(null, 99, 99);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test
+	public void testSearchByPercentAdmitted_TempNullLow100High100() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercAdmitted(example, 100, 100);
+			assertTrue("expected: true actual: " + matchingSchools.isEmpty(),
+					matchingSchools.isEmpty());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentAdmitted_TempNullLow101High101() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchByPercAdmitted(example2, 101, 101);
+	}
+	
+	@Test
+	public void testSearchByPercentAdmitted_TempNullLow40High70() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercAdmitted(example, 40, 70);
+		if (matchingSchools.get(0).getSchoolName().equals("WORCESTER")) {
+			assertTrue("expected: ZACH2 actual: " + matchingSchools.get(1).getSchoolName(),
+					matchingSchools.get(1).getSchoolName().equals("ZACH2"));
+		}
+	}
+	
+	@Test
+	public void testSearchByPercentAdmitted_TempNullLowNeg1High60() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercAdmitted(example2, -1, 60);
+		if (matchingSchools.get(0).getSchoolName().equals("OBERLIN")) {
+			assertTrue("expected: PRATT actual: " + matchingSchools.get(3).getSchoolName(),
+					matchingSchools.get(3).getSchoolName().equals("PRATT"));
+		}
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentAdmitted_TempNullLowNeg2High60() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		univC.searchByPercAdmitted(example, -2, 60);
+	}
+	
+	@Test
+	public void testSearchByPercentAdmitted_TempNullLow90High90() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercAdmitted(example2, 90, 90);
+			assertTrue("expected: OHIO STATE actual: " + matchingSchools.get(0).getSchoolName(),
+					matchingSchools.get(0).getSchoolName().equals("OHIO STATE"));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentAdmitted_TempNullLow65High30() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		univC.searchByPercAdmitted(example, 65, 30);
+	}
+	
+	@Test
+	public void testSearchByPercentEnrolled_TempNullLowNullHighNull() {
+		ArrayList<University> matchingSchools = univC.searchByPercEnrolled(null, -1, -1);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test
+	public void testSearchByPercentEnrolled_TempNullLow30High60() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercEnrolled(example, 30, 60);
+		if (matchingSchools.get(0).getSchoolName().equals("WORCESTER")) {
+			assertTrue("expected: YALE actual: " + matchingSchools.get(1).getSchoolName(),
+					matchingSchools.get(1).getSchoolName().equals("YALE"));
+		}
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentEnrolled_TempNullLowNeg10HighNeg10() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchByPercEnrolled(example2, -10, -10);
+	}
+	
+	@Test
+	public void testSearchByPercentEnrolled_TempNullLow0High0() {
+		ArrayList<University> matchingSchools = univC.searchByPercEnrolled(null, 0, 0);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test
+	public void testSearchByPercentEnrolled_TempNullLow1High1() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercEnrolled(example, 1, 1);
+
+			assertTrue("expected: true actual: " + matchingSchools.isEmpty(),
+					matchingSchools.isEmpty());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentEnrolled_TempNullLowNeg2HighNeg2() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchByPercEnrolled(example2, -2, -2);
+	}
+	
+	@Test
+	public void testSearchByPercentEnrolled_TempNullLow99High99() {
+		ArrayList<University> matchingSchools = univC.searchByPercEnrolled(null, 99, 99);
+		assertTrue("expected: null actual:"  + matchingSchools, matchingSchools == null);
+	}
+	
+	@Test
+	public void testSearchByPercentEnrolled_TempNullLow100High100() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercEnrolled(example, 100, 100);
+
+			assertTrue("expected: true actual: " + matchingSchools.isEmpty(),
+					matchingSchools.isEmpty());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentEnrolled_TempNullLow101High101() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		univC.searchByPercEnrolled(example2, 101, 101);
+	}
+	
+	@Test
+	public void testSearchByPercentEnrolled_TempNullLowNeg1High60() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercEnrolled(example2, -1, 60);
+		if (matchingSchools.get(0).getSchoolName().equals("OBERLIN")) {
+			assertTrue("expected: PRATT actual: " + matchingSchools.get(3).getSchoolName(),
+					matchingSchools.get(3).getSchoolName().equals("PRATT"));
+		}
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentEnrolled_TempNullLowNeg2High60() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		univC.searchByPercEnrolled(example, -2, 60);
+	}
+	
+	@Test
+	public void testSearchByPercentEnrolled_TempNullLow65High65() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByPercEnrolled(example2, 65, 65);
+			assertTrue("expected: OHIO STATE actual: " + matchingSchools.get(0).getSchoolName(),
+					matchingSchools.get(0).getSchoolName().equals("OHIO STATE"));
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByPercentEnrolled_TempNullLow65High30() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		univC.searchByPercEnrolled(example, 65, 30);
 	}
 	
 	@Test
