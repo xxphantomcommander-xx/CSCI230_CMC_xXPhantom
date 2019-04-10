@@ -91,7 +91,9 @@ public class NonAdminFunctionalityController {
 	 * @return list of Saved Schools connected to a user
 	 */
 	public ArrayList<University> viewSavedSchools() {
-		return userC.viewSavedSchools();
+		ArrayList<University> univ = new ArrayList<University>();
+		univ = userC.viewSavedSchools();
+		return univ;
 	}
 	
 	/**
@@ -146,7 +148,7 @@ public class NonAdminFunctionalityController {
 	 * @return Random university
 	 */
 	public University viewRandomSchool() {
-		return null;
+		return univC.randomSchool();
 		
 	}
 
