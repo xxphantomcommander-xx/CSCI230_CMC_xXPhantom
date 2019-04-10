@@ -986,14 +986,8 @@ public class UniversityControllerTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testEditSchool_UnsuccessfulQualOFLife() {
-		ArrayList<String> al2 = new ArrayList<String>();
-		al2.add("BIOLOGY");
-		al2.add("BUSINESS-ADMINISTRATION");
-		al2.add("");
-		al2.add("");
-		al2.add("");
-		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, -2,
-				al2);
+		univC.editSchool("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, -2, al2);
+
 	}
 
 	@Test
