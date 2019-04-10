@@ -124,7 +124,7 @@ public class DBController {
 		}
 		if(gotUsername == false)
 		{
-			throw new IllegalArgumentException("School name not found");
+			throw new IllegalArgumentException("School has not been saved by anyone or school does not exist in datatbase");
 		}
 		return usernames;
 	}
