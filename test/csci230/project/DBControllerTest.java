@@ -185,7 +185,8 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testGetLoggedOnUser() {
-		fail("Not yet implemented");
+		// log someone in
+		dbCon.getLoggedOnUser();
 	}
 //
 	/**
@@ -201,7 +202,9 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testLogOut() {
-		fail("Not yet implemented");
+		//log someone in
+		dbCon.logOut();
+		assertTrue("logged on user is null" + dbCon.getLoggedOnUser(), dbCon.getLoggedOnUser() == null);
 	}
 
 }
