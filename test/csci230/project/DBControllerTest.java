@@ -16,9 +16,24 @@ import org.junit.Test;
  */
 public class DBControllerTest {
 	DBController dbCon;
+	UserController uc;
+	User u;
+	University univ;
+	ArrayList<String> al2;
 	@Before
 	  public void setUp() throws Exception {
 		 dbCon = new DBController();
+		 uc = new UserController();
+		 u = new User("John", "User", "juser@csbsju.edu", "user", 'u', 'Y');
+		 dbCon.loadUsers("juser@csbsju.edu");
+		 al2 = new ArrayList<String>();
+			al2.add("BIOLOGY");
+			al2.add("BUSINESS-ADMINISTRATION");
+			al2.add("");
+			al2.add("");
+			al2.add("");
+			univ = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2,
+					2, al2, 0, 0, 0);
 	  }
 	
 	/**
@@ -35,7 +50,16 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testSaveUniversities() {
-		fail("Not yet implemented");
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		dbCon.saveUniversities(u);
+		assertTrue("expected Adelphi got " + dbCon.getSavedSchoolList().get(0).getSchoolName(), dbCon.getSavedSchoolList().get(0).getSchoolName().equals("ADELPHI"));
+		dbCon.deleteSavedSchool(u);
 	}
 
 	/**
@@ -43,7 +67,8 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testGetUsers() {
-		fail("Not yet implemented");
+		String [][] list = dbCon.getUsers();
+		assertTrue("list [0][0] expected got " + list [0][0], list [0][0].equals("Andrew"));
 	}
 
 	/**
@@ -51,7 +76,9 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testGetSavedSchoolList() {
-		fail("Not yet implemented");
+		dbCon.loadUsers("abreyen001@csbsju.edu");
+		ArrayList<University> list = dbCon.getSavedSchoolList();
+		assertTrue("list.get(0) " + list.get(0).getSchoolName(), list.get(0).getSchoolName().equals("ADELPHI"));
 	}
 
 	/**

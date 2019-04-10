@@ -117,11 +117,13 @@ public class UniversityController {
 	public ArrayList<University> searchBySchool(ArrayList<University> temp, String sch) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		String schoolName = sch.toUpperCase();
+		
 		if (sch.equals(null)) {
 			return temp;
 		} else {
+			String schoolName = sch.toUpperCase();
 			for (University i : temp) {
+				
 				String name = i.getSchoolName();
 				if (name.contains(schoolName)) {
 					matchedSchools.add(i);
@@ -142,11 +144,12 @@ public class UniversityController {
 	public ArrayList<University> searchByState(ArrayList<University> temp, String state) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		String st = state.toUpperCase();
+		
 		if (state.equals(null)) {
 			return temp;
 		}
 		else {
+			String st = state.toUpperCase();
 			if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS")
 					|| state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT")
 					|| state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA")
@@ -187,13 +190,14 @@ public class UniversityController {
 	 */
 	public ArrayList<University> searchByLocation(ArrayList<University> temp, String l) {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		String location = l.toUpperCase();
+		
 		if (l.equals(null)) {
 			return temp;
 		} 
 		else {
 			if (l.equals("-1") || l.equals("SMALL-CITY") || l.equals("SUBURBAN") || l.equals("URBAN")|| l.equals("")) {
 				for (University i : temp) {
+					String location = l.toUpperCase();
 					String name = i.getLocation();
 					if (name.contains(location)) {
 						matchedSchools.add(i);
@@ -215,11 +219,12 @@ public class UniversityController {
 	 */
 	public ArrayList<University> searchByControl(ArrayList<University> temp, String c) {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		String control = c.toUpperCase();
+		
 		if (c.equals(null)) {
 			return temp;
 		} 
 		else {
+			String control = c.toUpperCase();
 			if (c.equals("CITY") || c.equals("PRIVATE") || c.equals("STATE") || c.equals("-1") || c.equals("")) {
 				for (University i : temp) {
 					String name = i.getControl();
