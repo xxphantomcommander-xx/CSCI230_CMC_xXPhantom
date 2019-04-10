@@ -158,9 +158,7 @@ public class UniversityControllerTest {
 		
 		ArrayList<University> result = univC.searchBySchool(example, "ZACH2");
 
-		assertTrue("Expected output null got" + result.get(0), result.get(0) == null);
-
-
+		assertTrue("Expected output null got " + result.get(0).getSchoolName(), result.get(0).getSchoolName() == null);
 		
 	}
 	
@@ -180,7 +178,21 @@ public class UniversityControllerTest {
 		ArrayList<University> r = univC.topRecommended2(u);
 		assertTrue("Top Recomended 2, result 1 should be HOFSTRA, was" +r.get(1).getSchoolName(), r.get(1).getSchoolName().equals("HOFSTRA"));
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testTopRecommended_invalidUniversity() {
+		u = new University("ADELPHInotAUniversity", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		ArrayList<University> r = univC.topRecommended(u);
+		assertTrue("Top Recomended, results should be HOFSTRA, was "+r.get(1).getSchoolName(), r.get(1).getSchoolName().equals("HOFSTRA"));
+	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testTopRecommended2_invalidUniversity() {
+		u = new University("ADELPHInotAUniversity", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		ArrayList<University> r = univC.topRecommended2(u);
+		assertTrue("Top Recomended 2, result 1 should be HOFSTRA, was" +r.get(1).getSchoolName(), r.get(1).getSchoolName().equals("HOFSTRA"));
+	}
+	
 	@Test
 	public void testShowUniversityDetails() {
 		ArrayList<String> univDetails = univC.showUniversityDetails(u);
