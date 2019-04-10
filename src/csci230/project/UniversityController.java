@@ -118,7 +118,7 @@ public class UniversityController {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		
-		if (sch == null) {
+		if (sch == null || temp == null) {
 			return temp;
 		} else {
 			String schoolName = sch.toUpperCase();
