@@ -202,9 +202,410 @@ public class DBControllerTest {
 	 * Test method for {@link csci230.project.DBController#editUniversity(csci230.project.University)}.
 	 */
 	@Test
-	public void testEditUniversity() {
-		fail("Not yet implemented");
+	public void testEditUniversity_SuccessfulState() {
+		University univ2 = new University("ADELPHI", "CALIFORNIA", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2,
+				2, al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected California got " + univ2.getState(), univ2.getState().equals("CALIFORNIA"));
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
 	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulState() {
+		University univ2 = new University("ADELPHI", "NOTASTATE", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulLocation() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "URBAN", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2,
+				2, al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected Urban got " + univ2.getLocation(), univ2.getLocation().equals("URBAN"));
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulLocation() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "NOTALOCATION", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40,
+				2, 2, 2, al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulControl() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "STATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected State got " + univ2.getControl(), univ2.getControl().equals("STATE"));
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulControl() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "NOTACONTROL", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2,
+				2, al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulNumStudents() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 20000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 20000 got " + univ2.getNumOfStudents(), univ2.getNumOfStudents() == 20000);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulNumStudents() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", -500, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulPerFem() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 50, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 50 got " + univ2.getPerFem(), univ2.getPerFem() == 50);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulPerFem() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, -20, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulSatVerbal() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 600, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 600 got " + univ2.getSatVerbal(), univ2.getSatVerbal() == 600);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulSatVerbal() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, -500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulSatMath() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 675, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 675 got " + univ2.getSatMath(), univ2.getSatMath() == 675);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulSatMath() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 2, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulExpences() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 17437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 17437 got " + univ2.getExpenses(), univ2.getExpenses() == 17437);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulExpences() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, -10000, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulFinancialAid() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 20, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 20 got " + univ2.getFinancialAid(), univ2.getFinancialAid() == 20);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulFinancialAid() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, -10, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulNumOfApps() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 7500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 7500 got " + univ2.getNumOfApps(), univ2.getNumOfApps() == 7500);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulNumOfApps() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, -5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulPerAdmitted() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 40, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 40 got " + univ2.getPerAdmitted(), univ2.getPerAdmitted() == 40);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulPerAdmitted() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, -70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulPerEnrolled() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 40, 60, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 60 got " + univ2.getPerEnrolled(), univ2.getPerEnrolled() == 60);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulPerEnrolled() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, -40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulAcademicScale() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 4, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 4 got " + univ2.getAcademicScale(), univ2.getAcademicScale() == 4);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulAcademicScale() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, -2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulSocialScale() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 4, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 4 got " + univ2.getSocialScale(), univ2.getSocialScale() == 4);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulSocialScale() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, -2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
+	@Test
+	public void testEditUniversity_SuccessfulQualOfLife() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 4,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+
+		ArrayList<University> allUnivs = dbCon.loadUniversities();
+
+		for (University i : allUnivs) {
+			if (i.getSchoolName().equals("ADELPHI")) {
+				univ2 = i;
+			}
+		}
+
+		assertTrue("expected 4 got " + univ2.getQualOfLife(), univ2.getQualOfLife() == 4);
+		University oldUniv = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2,
+				al2, 0, 0, 0);
+		dbCon.editUniversity(oldUniv);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testEditUniversity_UnsuccessfulQualOFLife() {
+		University univ2 = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, -2, al2, 0, 0, 0);
+		dbCon.editUniversity(univ2);
+	}
+
 
 	/**
 	 * Test method for {@link csci230.project.DBController#deleteUser(java.lang.String)}.
