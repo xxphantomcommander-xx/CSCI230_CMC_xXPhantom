@@ -277,7 +277,17 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testViewSavedSchools() {
-		fail("Not yet implemented");
+		ArrayList<University> saved = uc.viewSavedSchools();
+		assertTrue("First Saved school expected Tufts got " + saved.get(0).getSchoolName(), saved.get(0).getSchoolName().equals("TUFTS"));
+	}
+	
+	@Test
+	public void testViewSavedSchools_NoSavedSchools() {
+		uc.logOut();
+		uc.logOn("juser@csbsju.edu", "user");
+		ArrayList<University> saved = uc.viewSavedSchools();
+		assertTrue("School list should be empty", saved.size() == 0);
+		uc.logOut();
 	}
 
 	/**
@@ -285,17 +295,76 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testRemoveSavedSchool() {
-		fail("Not yet implemented");
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		uc.saveUniversity(u);
+		uc.removeSavedSchool(u);
+		for (University i: uc.viewSavedSchools()) {
+			if (!i.getSchoolName().equals("ADELPHI"))
+			assertTrue("expected to remove Adelphi", !i.getSchoolName().equals("ADELPHI"));
+		}
 	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testRemoveSavedSchool_SchoolNotSaved() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		uc.removeSavedSchool(u);
+	}
+	
 	/**
 	 * Test method for {@link csci230.project.UserController#saveUniversity(csci230.project.University)}.
 	 */
 	@Test
 	public void testSaveUniversity() {
-		fail("Not yet implemented");
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		uc.saveUniversity(u);
+		assertTrue("expected Adelphi got " + uc.viewSavedSchools().get(0).getSchoolName(), uc.viewSavedSchools().get(0).getSchoolName().equals("ADELPHI"));
+		uc.removeSavedSchool(u);
+		
 	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testSaveUniversity_InvalidSchool() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		University u = new University("NOTAUNIV", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		uc.saveUniversity(u);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testSaveUniversity_SchoolAlreadySaved() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("ENGINEERING");
+		al2.add("LIBERAL-ARTS");
+		al2.add("SCIENCE");
+		al2.add("");
+		al2.add("");
+		University u = new University("TUFTS", "MASSACHUSETTS", "SUBURBAN", "PRIVATE", 15000, 50, 600, 600, 31060, 45, 11500, 35, 35, 4, 3, 3, al2, 0, 0, 0);
+		uc.saveUniversity(u);
+		uc.saveUniversity(u);
+	}
+	
 	/**
 	 * Test method for {@link csci230.project.UserController#deleteUser(java.lang.String)}.
 	 */

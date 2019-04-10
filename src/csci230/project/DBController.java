@@ -41,6 +41,10 @@ public class DBController {
 			if (i.getSchoolName().equals(school.getSchoolName())) {
 				exists = true;
 				ArrayList<University>  savedSchools = getSavedSchoolList();
+				if (savedSchools.size() == 0) {
+					univDBlib.user_saveSchool(loggedOnUser.getUserName(), school.getSchoolName().toUpperCase());
+					saved = true; 
+				}
 				for(University j : savedSchools) {
 					if(!j.getSchoolName().equals(school.getSchoolName())) {
 						univDBlib.user_saveSchool(loggedOnUser.getUserName(), school.getSchoolName().toUpperCase());
@@ -74,7 +78,7 @@ public class DBController {
 	 */
 	public ArrayList<University> getSavedSchoolList()
 	{
-		boolean gotSaved = false;
+		//boolean gotSaved = false;
 		ArrayList<University> savedUnivs = new ArrayList<University>();
 		String [][] usersSavedUnivs = univDBlib.user_getUsernamesWithSavedSchools();
 		ArrayList<String> al = new ArrayList<String>();
@@ -91,13 +95,13 @@ public class DBController {
 				NonAdminFunctionalityController nai = new NonAdminFunctionalityController();
 				temp = nai.searchSchools(usersSavedUnivs[i][1], "", "", "", -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, al);
 				savedUnivs.add(temp.get(0));
-				gotSaved = true;
+			//	gotSaved = true;
 				
 			}
 		}
-		if (gotSaved == false) {
-			throw new IllegalArgumentException("Logged on user doesn't have any save schools");
-		}
+//		if (gotSaved == false) {
+//			throw new IllegalArgumentException("Logged on user doesn't have any save schools");
+//		}
 		return savedUnivs;
 	}
 	
