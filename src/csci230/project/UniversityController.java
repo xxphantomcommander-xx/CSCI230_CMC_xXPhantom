@@ -199,7 +199,7 @@ public class UniversityController {
 				for (University i : temp) {
 					String location = l.toUpperCase();
 					String name = i.getLocation();
-					if (name.contains(location)) {
+					if (name.equals(location)) {
 						matchedSchools.add(i);
 					}
 				}
@@ -255,7 +255,7 @@ public class UniversityController {
 			return temp;
 		} 
 		else {
-			if (0 <= nStuLow) {
+			if (0 <= nStuLow  || nStuLow == -1) {
 				if (0 <= nStuHigh && nStuHigh >= nStuLow) {
 					for (University i : temp) {
 						int v = i.getNumOfStudents();
@@ -363,7 +363,7 @@ public class UniversityController {
 			return temp;
 		} 
 		else {
-			if (200 <= smLow && smLow <= 800) {
+			if (200 <= smLow && smLow <= 800 || smLow == -1) {
 				if (200 <= smHigh && smHigh <= 800 && smHigh >= smLow) {
 					for (University i : temp) {
 						int v = i.getSatMath();
@@ -431,7 +431,7 @@ public class UniversityController {
 			return temp;
 		} 
 		else {
-			if (0 <= prctfinLow && prctfinLow <= 100) {
+			if (0 <= prctfinLow && prctfinLow <= 100 || prctfinLow == -1) {
 				if (0 <= prctfinHigh && prctfinHigh <= 100 && prctfinHigh >= prctfinLow) {
 					for (University i : temp) {
 						int v = i.getFinancialAid();
