@@ -187,7 +187,8 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testGetUniversities() {
-		fail("Not yet implemented");
+		String [][] list = dbCon.getUniversities();
+		assertTrue("list [0][0] expected got " + list [0][0], list [0][0].equals("ABILENE CHRISTIAN UNIVERSITY"));
 	}
 
 	/**
@@ -195,7 +196,8 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testGetEmphasis() {
-		fail("Not yet implemented");
+		String [][] list = dbCon.getUniversities();
+		assertTrue("list [0][0] expected got " + list [0][0], list [0][0].equals("ABILENE CHRISTIAN UNIVERSITY"));
 	}
 
 	/**
