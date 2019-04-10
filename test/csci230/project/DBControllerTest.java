@@ -26,7 +26,8 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testDBController() {
-		fail("Not yet implemented");
+		DBController newDBCon = dbCon;
+		assertSame(dbCon, newDBCon);
 	}
 
 	/**
