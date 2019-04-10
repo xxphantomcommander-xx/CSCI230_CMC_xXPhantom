@@ -292,7 +292,7 @@ public class UniversityController {
 			return temp;
 		} 
 		else {
-			if (0 <= prctfLow && prctfLow <= 100) {
+			if (0 <= prctfLow && prctfLow <= 100 || prctfLow == -1) {
 				if (0 <= prctfHigh && prctfLow <= 100 && prctfHigh >= prctfLow) {
 					for (University i : temp) {
 						int v = i.getPerFem();
@@ -431,8 +431,8 @@ public class UniversityController {
 			return temp;
 		} 
 		else {
-			if (0 <= prctfinLow && prctfinLow >= 100) {
-				if (0 <= prctfinHigh && prctfinHigh >= 100 && prctfinHigh > prctfinLow) {
+			if (0 <= prctfinLow && prctfinLow <= 100) {
+				if (0 <= prctfinHigh && prctfinHigh <= 100 && prctfinHigh >= prctfinLow) {
 					for (University i : temp) {
 						int v = i.getFinancialAid();
 						if (v >= prctfinLow && v <= prctfinHigh) {
