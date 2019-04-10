@@ -13,6 +13,9 @@ public class NonAdminFunctionalityController {
 	//Controller that controls all users
 	private UserController userC;
 	
+	//testing if the user is logged in
+	public boolean isLoggedIn = false;
+	
 	/**
 	 * Constructor method
 	 */
@@ -28,6 +31,11 @@ public class NonAdminFunctionalityController {
 	 */
 	public void logOn(String username, String password) {
 		userC.logOn(username, password);
+		isLoggedIn = true;
+	}
+	
+	public boolean isLoggedIn() {
+		return isLoggedIn;
 	}
 	
 	/**
@@ -35,6 +43,7 @@ public class NonAdminFunctionalityController {
 	 */
 	public void logout() {
 		userC.logOut();
+		isLoggedIn = false;
 	}
 	
 	/**

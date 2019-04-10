@@ -328,7 +328,7 @@ public class UniversityController {
 		} 
 		else {
 			if (200 <= svLow && svLow <= 800) {
-				if (200 <= svHigh && svHigh <= 800 && svHigh > svLow) {
+				if (200 <= svHigh && svHigh <= 800 && svHigh >= svLow) {
 					for (University i : temp) {
 						int v = i.getSatVerbal();
 						if (v >= svLow && v <= svHigh) {
@@ -364,7 +364,7 @@ public class UniversityController {
 		} 
 		else {
 			if (200 <= smLow && smLow <= 800) {
-				if (200 <= smHigh && smHigh <= 800 && smHigh > smLow) {
+				if (200 <= smHigh && smHigh <= 800 && smHigh >= smLow) {
 					for (University i : temp) {
 						int v = i.getSatMath();
 						if (v >= smLow && v <= smHigh) {
@@ -398,7 +398,7 @@ public class UniversityController {
 		} 
 		else {
 			if (0 <= eLow) {
-				if (0 <= eHigh && eHigh > eLow) {
+				if (0 <= eHigh && eHigh >= eLow) {
 					for (University i : temp) {
 						int v = i.getExpenses();
 						if (v >= eLow && v <= eHigh) {
@@ -466,7 +466,7 @@ public class UniversityController {
 		} 
 		else {
 			if (nApLow >= 0) {
-				if (nApHigh >= 0 && nApHigh > nApLow) {
+				if (nApHigh >= 0 && nApHigh >= nApLow) {
 					for (University i : temp) {
 						int v = i.getNumOfApps();
 						if (v >= nApLow && v <= nApHigh) {
@@ -500,7 +500,7 @@ public class UniversityController {
 		} 
 		else {
 			if (0 <= prctaLow && prctaLow <= 100) {
-				if (0 <= prctaHigh && prctaHigh <= 100 && prctaHigh > prctaLow) {
+				if (0 <= prctaHigh && prctaHigh <= 100 && prctaHigh >= prctaLow) {
 					for (University i : temp) {
 						int v = i.getPerAdmitted();
 						if (v >= prctaLow && v <= prctaHigh) {
@@ -534,7 +534,7 @@ public class UniversityController {
 		} 
 		else {
 			if (0 <= prcteLow && prcteLow <= 100) {
-				if (0 <= prcteHigh && prcteHigh <= 100 && prcteHigh > prcteLow) {
+				if (0 <= prcteHigh && prcteHigh <= 100 && prcteHigh >= prcteLow) {
 					for (University i : temp) {
 						int v = i.getPerEnrolled();
 						if (v >= prcteLow && v <= prcteHigh) {
@@ -568,7 +568,7 @@ public class UniversityController {
 		} 
 		else {
 			if (0 <= asLow && asLow <= 5) {
-				if (0 <= asHigh && asHigh <= 5 && asHigh > asLow) {
+				if (0 <= asHigh && asHigh <= 5 && asHigh >= asLow) {
 					for (University i : temp) {
 						int v = i.getAcademicScale();
 						if (v >= asLow && v <= asHigh) {
@@ -602,7 +602,7 @@ public class UniversityController {
 		} 
 		else {
 			if (0 <= ssLow && ssLow <= 5) {
-				if (0 <= ssHigh && ssHigh <= 5 && ssHigh > ssLow) {
+				if (0 <= ssHigh && ssHigh <= 5 && ssHigh >= ssLow) {
 					for (University i : temp) {
 						int v = i.getSocialScale();
 						if (v >= ssLow && v <= ssHigh) {
@@ -637,7 +637,7 @@ public class UniversityController {
 		} 
 		else {
 			if (0 <= qLow && qLow <= 5) {
-				if (0 <= qLow && qLow <= 5 && qHigh > qLow) {
+				if (0 <= qLow && qLow <= 5 && qHigh >= qLow) {
 					for (University i : temp) {
 						int v = i.getQualOfLife();
 						if (v >= qLow && v <= qHigh) {

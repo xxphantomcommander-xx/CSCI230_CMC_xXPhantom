@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class DBController {
 	// a variable to set who the logged on user is
 	private User loggedOnUser;
+	private User loggedOnUser2;
 	// an arraylist of users
 	private ArrayList<User> allUsers = new ArrayList<User>();
 	
@@ -87,7 +88,7 @@ public class DBController {
 		al.add("");
 		al.add("");
 		al.add("");
-		User loggedOnUser2 = getLoggedOnUser();
+		loggedOnUser2 = getLoggedOnUser();
 		for(int i = 0; i < usersSavedUnivs.length; i++) {
 			
 			if(usersSavedUnivs[i][0].equals(loggedOnUser2.getUserName())) {
@@ -412,6 +413,9 @@ public class DBController {
 		if(loggedOnUser != null)
 		{
 		  return loggedOnUser;
+		}
+		else if (loggedOnUser2 != null) {
+			return loggedOnUser2;
 		}
 		else
 		{

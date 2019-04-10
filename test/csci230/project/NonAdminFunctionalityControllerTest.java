@@ -5,6 +5,8 @@ package csci230.project;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,9 +27,9 @@ public class NonAdminFunctionalityControllerTest {
 	public void setUp() throws Exception {
 		uc = new UserController();
 		dbCon = new DBController();
-		uc.logOn("ZHEINEN001@csbsju.edu", "zaciscool");
+		nafc = new NonAdminFunctionalityController();
+		//nafc.logOn("abreyen001@csbsju.edu", "myPassword");
 		john = new User("John", "User", "juser@csbsju.edu", "user", 'u', 'Y');
-		NonAdminFunctionalityController nafc = new NonAdminFunctionalityController();
 	}
 
 	@Test
@@ -38,29 +40,41 @@ public class NonAdminFunctionalityControllerTest {
 	
 	@Test
 	public void testLogOn() {
-		NonAdminFunctionalityController nafc2 = nafc;
-		assertSame("Constructor worked", nafc, nafc2);
+		nafc.logOn("abreyen001@csbsju.edu", "myPassword");
+		assertTrue("NonAdminlogon. output expected: true actual output: " + nafc.isLoggedIn(), nafc.isLoggedIn() == true);
+	}
+	
+	@Test
+	public void testIsLoggedIn() {
+		nafc.logOn("abreyen001@csbsju.edu", "myPassword");
+		assertTrue("NonAdminlogon. output expected: true actual output: " + nafc.isLoggedIn(), nafc.isLoggedIn() == true);
 	}
 	
 	@Test
 	public void testLogOut() {
-		NonAdminFunctionalityController nafc2 = nafc;
-		assertSame("Constructor worked", nafc, nafc2);
-		
+		nafc.logOn("abreyen001@csbsju.edu", "myPassword");
+		nafc.logout();
+		assertTrue("Successful logOut. isLoggedInShould should be false " + nafc.isLoggedIn(), nafc.isLoggedIn() == false);
 	}
 	
 	@Test
 	public void testSearchSchools() {
-		NonAdminFunctionalityController nafc2 = nafc;
-		assertSame("Constructor worked", nafc, nafc2);
-		
+		uc.logOn("abreyen001@csbsju.edu", "myPassword");
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		nafc.searchSchools("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 15000, 70, 70, 500, 500, 475, 475, 37437, 37437, 60, 60, 5500, 5500, 70, 70, 40, 40, 2, 2, 2, 2, 2, 2, al2);
+		assertTrue("expected Adelphi got " + nafc.searchSchools("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 15000, 70, 70, 500, 500, 475, 475, 37437, 37437, 60, 60, 5500, 5500, 70, 70, 40, 40, 2, 2, 2, 2, 2, 2, al2).get(0).getSchoolName(), uc.viewSavedSchools().get(0).getSchoolName().equals("ADELPHI"));
 	}
 	
 	@Test
 	public void testViewedSavedSchools() {
-		NonAdminFunctionalityController nafc2 = nafc;
-		assertSame("Constructor worked", nafc, nafc2);
-		
+		dbCon.loadUsers("abreyen001@csbsju.edu");
+		ArrayList<University> list = nafc.viewSavedSchools();
+		assertTrue("list.get(0) " + list.get(0).getSchoolName(), list.get(0).getSchoolName().equals("ADELPHI"));
 	}
 	
 	@Test
