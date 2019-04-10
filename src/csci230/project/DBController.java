@@ -301,6 +301,7 @@ public class DBController {
 	public void editUser(User newUser)
 	{
 		boolean edited = false;
+		loggedOnUser = newUser;
 		ArrayList<User> users = loadUsers(loggedOnUser.getUserName());
 		for (User i : users) {
 			if (i.getUserName().equals(newUser.getUserName())) {
