@@ -293,6 +293,8 @@ public class UserController {
 		String to = userName;
 		String from = "CMCPhantomCommanders";
 		String host = "localHost";
+		User user = new User("Pete", "Gathje", "pgathje001@csbsju.edu", "password", 'a', 'Y');
+		boolean userFound = false;
 		Properties properties=new Properties();  
 		properties.setProperty("mail.smtp.host", host);
 		Session session=Session.getDefaultInstance(properties);  
@@ -310,9 +312,12 @@ public class UserController {
 			}
 			for(User i : viewUsers()) {
 				if(userName.equals(i.getUserName())) {
-					editUser(i.getFirstName(), i.getLastName(), i.getUserName(), newPass, i.getType(), i.getStatus());
+					user = i;
+					userFound = true;
 				}
 			}
+			if (userFound)
+				editUser(user.getFirstName(), user.getLastName(), user.getUserName(), newPass, user.getType(), user.getStatus());
 			message.setText("Dear User,\n\n Your CMC Password has been reset to: \n" + newPass+"\n\nPlease log in with this new password and change it.\n\nThanks,\nxXPhantomCommander$Xx");
 			
 			Transport.send(message);
