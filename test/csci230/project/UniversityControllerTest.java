@@ -256,8 +256,8 @@ public class UniversityControllerTest {
 		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
 				60, 3, 1, 2, emp5, 0, 0, 0));
 		ArrayList<University> matchingSchools = univC.searchByState(example2, "MINNESOTA");
-		assertTrue("expected: null. actual: " + matchingSchools.get(0).getSchoolName(),
-				matchingSchools.get(0).getSchoolName().equals(null));
+		assertTrue("expected: null. actual: " + matchingSchools.isEmpty(),
+				matchingSchools.isEmpty());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -290,8 +290,8 @@ public class UniversityControllerTest {
 		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
 				40, 80, 4, 5, 5, emp4, 0, 0, 0));
 		ArrayList<University> matchingSchools = univC.searchByState(example, "HAWAII");
-		assertTrue("expected: null. actual: " + matchingSchools.get(0).getSchoolName(),
-				matchingSchools.get(0).getSchoolName().equals(null));
+		assertTrue("expected: null. actual: " + matchingSchools.isEmpty(),
+				matchingSchools.isEmpty());
 
 	}
 	
@@ -425,8 +425,8 @@ public class UniversityControllerTest {
 		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
 				40, 80, 4, 5, 5, emp4, 0, 0, 0));
 		ArrayList<University> matchingSchools= univC.searchByLocation(example, "URBAN");
-		assertTrue("expected: WORCESTER actual: " + matchingSchools.get(0).getLocation(),
-				matchingSchools.get(0).getLocation().equals("WORCESTER"));
+		assertTrue("expected: WORCESTER actual: " + matchingSchools.get(0).getSchoolName(),
+				matchingSchools.get(0).getSchoolName().equals("WORCESTER"));
 	}
 	
 	@Test
@@ -472,9 +472,9 @@ public class UniversityControllerTest {
 				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
 		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
 				60, 3, 1, 2, emp5, 0, 0, 0));
-		ArrayList<University> matchingSchools = univC.searchByState(example2, "SMALL-CITY");
-		assertTrue("expected: null actual: " + matchingSchools.get(0).getLocation(),
-				matchingSchools.get(0).getLocation().equals(null));
+		ArrayList<University> matchingSchools = univC.searchByLocation(example2, "SMALL-CITY");
+		assertTrue("expected: null actual: " + matchingSchools.isEmpty(),
+				matchingSchools.isEmpty());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -611,8 +611,209 @@ public class UniversityControllerTest {
 	
 	@Test
 	public void testSearchByControl_ControlNullTempNull() {
+		ArrayList<University> matchingSchools= univC.searchByControl(null, null);
+		assertTrue("expected: null actual: " + matchingSchools,
+				matchingSchools == null);
+	}
+	
+	@Test
+	public void testSearchByControl_ControlMatches() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByControl(example, "PRIVATE");
+		if(matchingSchools.get(0).getSchoolName().equals("WORCESTER")) {
+			assertTrue("expected: ZACH2. actual: " + matchingSchools.get(3).getSchoolName(),
+					matchingSchools.get(3).getSchoolName().equals("ZACH2"));
+		}
+	}
+	
+	@Test
+	public void testSearchByControl_ControlDoesntMatchTempNotNull() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByControl(example, "STATE");
+			assertTrue("expected: true. actual: " + matchingSchools.isEmpty(),
+					matchingSchools.isEmpty());
 		
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByControl_InvalidControlTempNull() {
+		univC.searchByControl(null, "PETEOWNED");
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchByControl_InvalidControlTempNotNull() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+		univC.searchByControl(example, "STEIGHT");
+		
+	}
+	
+	@Test
+	public void testSearchByControl_ControlNullTempNotNull() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByControl(example2, null);
+		if(matchingSchools.get(0).getSchoolName().equals("OBERLIN")) {
+			assertTrue("expected: PRATT. actual: " + matchingSchools.get(4).getSchoolName(),
+					matchingSchools.get(4).getSchoolName().equals("PRATT"));
+		}
+		
+	}
+	
+	@Test
+	public void testSearchByControl_ControlMatchesMultiple() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("FINE-ARTS");
+		emp1.add("LIBERAL-ARTS");
+		emp1.add("MUSIC");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("ENGINEERING");
+		emp2.add("HUMANITIES");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("ADMINISTRATIVE SCIENCE");
+		emp3.add("AGRICULTURE");
+		emp3.add("ARTS-AND-SCIENCES");
+		emp3.add("DENTISTRY");
+		emp3.add("EDUCATION");
+		emp3.add("ENGINEERING");
+		emp3.add("LAW");
+		emp3.add("MEDICINE");
+		emp3.add("OPTOMETRY");
+		emp3.add("PHARMACY");
+		emp3.add("SOCIAL-WORK");
+		emp3.add("VETERINARY-MEDICINE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("ENGINEERING");
+		emp4.add("LAW");
+		emp4.add("LIBERAL-ARTS");
+		emp4.add("MEDICAL");
+		ArrayList<String> emp5 = new ArrayList<String>();
+		emp5.add("ARCHITECTURE");
+		emp5.add("ART:DESIGN");
+		emp5.add("ARTS-AND-SCIENCES");
+		emp5.add("ELECTRICAL-ENGINEERING");
+		ArrayList<University> example2 = new ArrayList<University>();
+		example2.add(new University("OBERLIN", "OHIO", "SUBURBAN", "PRIVATE", 10000, 50, 550, 550, 25369, 50, 4000, 70,
+				30, 3, 3, 2, emp1, 0, 0, 0));
+		example2.add(new University("NOTRE DAME", "INDIANA", "URBAN", "PRIVATE", 35000, 29, 570, 640, 15650, 50, 8500,
+				35, 60, 5, 3, 3, emp2, 0, 0, 0));
+		example2.add(new University("OHIO STATE", "OHIO", "URBAN", "STATE", 40000, 45, 450, 500, 20840, 30, 17000, 90,
+				65, 4, 4, 3, emp3, 0, 0, 0));
+		example2.add(new University("PENN STATE", "PENNSYLVANIA", "URBAN", "STATE", 40000, 40, 620, 680, 39604, 60,
+				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
+		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
+				60, 3, 1, 2, emp5, 0, 0, 0));
+		ArrayList<University> matchingSchools = univC.searchByControl(example2, "STATE");
+		if(matchingSchools.get(0).getSchoolName().equals("OHIO STATE")) {
+			assertTrue("expected: PENN STATE. actual: " + matchingSchools.get(1).getSchoolName(),
+					matchingSchools.get(1).getSchoolName().equals("PENN STATE"));
+		}
+	}
+	
+	//@Test
+	
 	
 	@Test
 	public void testTopRecommended() {
