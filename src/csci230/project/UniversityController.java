@@ -145,7 +145,7 @@ public class UniversityController {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		
-		if (state == null) {
+		if (state == null || temp == null) {
 			return temp;
 		}
 		else {
@@ -191,7 +191,7 @@ public class UniversityController {
 	public ArrayList<University> searchByLocation(ArrayList<University> temp, String l) {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		
-		if (l == null) {
+		if (l == null || temp == null) {
 			return temp;
 		} 
 		else {
@@ -220,7 +220,7 @@ public class UniversityController {
 	public ArrayList<University> searchByControl(ArrayList<University> temp, String c) {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		
-		if (c == null) {
+		if (c == null || temp == null) {
 			return temp;
 		} 
 		else {
@@ -251,7 +251,7 @@ public class UniversityController {
 	public ArrayList<University> searchByNumOfStudents(ArrayList<University> temp, int nStuLow, int nStuHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (nStuLow == -1 && nStuHigh == -1) {
+		if (nStuLow == -1 && nStuHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
@@ -288,12 +288,12 @@ public class UniversityController {
 	public ArrayList<University> searchByPercentFemale(ArrayList<University> temp, int prctfLow, int prctfHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (prctfLow == -1 && prctfHigh == -1) {
+		if (prctfLow == -1 && prctfHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
 			if (0 <= prctfLow && prctfLow <= 100) {
-				if (0 <= prctfHigh && prctfLow <= 100 && prctfHigh > prctfLow) {
+				if (0 <= prctfHigh && prctfLow <= 100 && prctfHigh >= prctfLow) {
 					for (University i : temp) {
 						int v = i.getPerFem();
 						if (v >= prctfLow && v <= prctfHigh) {
@@ -323,7 +323,7 @@ public class UniversityController {
 	public ArrayList<University> searchBySATVerbal(ArrayList<University> temp, int svLow, int svHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (svLow == -1 && svHigh == -1) {
+		if (svLow == -1 && svHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
@@ -359,7 +359,7 @@ public class UniversityController {
 
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (smLow == -1 && smHigh == -1) {
+		if (smLow == -1 && smHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
@@ -393,7 +393,7 @@ public class UniversityController {
 	public ArrayList<University> searchByExpenses(ArrayList<University> temp, int eLow, int eHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (eLow == -1 && eHigh == -1) {
+		if (eLow == -1 && eHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
@@ -427,7 +427,7 @@ public class UniversityController {
 	public ArrayList<University> searchByPercentFinAid(ArrayList<University> temp, int prctfinLow, int prctfinHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (prctfinLow == -1 && prctfinHigh == -1) {
+		if (prctfinLow == -1 && prctfinHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
@@ -461,7 +461,7 @@ public class UniversityController {
 	public ArrayList<University> searchByNumOfApps(ArrayList<University> temp, int nApLow, int nApHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (nApLow == -1 && nApHigh == -1) {
+		if (nApLow == -1 && nApHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
@@ -495,7 +495,7 @@ public class UniversityController {
 	public ArrayList<University> searchByPercAdmitted(ArrayList<University> temp, int prctaLow, int prctaHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (prctaLow == -1 && prctaHigh == -1) {
+		if (prctaLow == -1 && prctaHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
@@ -529,7 +529,7 @@ public class UniversityController {
 	public ArrayList<University> searchByPercEnrolled(ArrayList<University> temp, int prcteLow, int prcteHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (prcteLow == -1 && prcteHigh == -1) {
+		if (prcteLow == -1 && prcteHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
@@ -563,7 +563,7 @@ public class UniversityController {
 	public ArrayList<University> searchByAcademicScale(ArrayList<University> temp, int asLow, int asHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (asLow == -1 && asHigh == -1) {
+		if (asLow == -1 && asHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
@@ -597,7 +597,7 @@ public class UniversityController {
 	public ArrayList<University> searchBySocialLife(ArrayList<University> temp, int ssLow, int ssHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (ssLow == -1 && ssHigh == -1) {
+		if (ssLow == -1 && ssHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
@@ -632,7 +632,7 @@ public class UniversityController {
 	public ArrayList<University> searchByQualityOfLife(ArrayList<University> temp, int qLow, int qHigh) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		if (qLow == -1 && qHigh == -1) {
+		if (qLow == -1 && qHigh == -1 || temp == null) {
 			return temp;
 		} 
 		else {
