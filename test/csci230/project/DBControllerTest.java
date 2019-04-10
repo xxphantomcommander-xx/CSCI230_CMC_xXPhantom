@@ -173,13 +173,245 @@ public class DBControllerTest {
 		}
 		dbCon.deleteUser("someEmail@gmail.com");
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUser_InvalidUsername() {
+		User zac = new User("Zac", "Heinen", "badUsername", "password", 'a', 'Y');
+		dbCon.addUser(zac);
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#addUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUser_InvalidType() {
+		User zac = new User("Zac", "Heinen", "someEmail@gmail.com", "password", 'g', 'Y');
+		dbCon.addUser(zac);
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#addUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testAddUser_InvalidStatus() {
+		User zac = new User("Zac", "Heinen", "someEmail@gmail.com", "password", 'a', 'Z');
+		dbCon.addUser(zac);
+	}
 
 	/**
 	 * Test method for {@link csci230.project.DBController#addUniversity(csci230.project.University)}.
 	 */
 	@Test
 	public void testAddUniversity() {
-		fail("Not yet implemented");
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University test = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50,
+				80, 3, 3, 3, emp, 0, 0, 0);
+		dbCon.addUniversity(test);
+		for (University i : dbCon.loadUniversities()) {
+			if (i.getSchoolName().equals("TEST1")) {
+				assertTrue("school added", i.getSchoolName().equals("TEST1"));
+			}
+		}
+		dbCon.removeSchool(test);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidState() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "NOTASTATE", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3, emp, 0, 0, 0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidLocation() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "NOTALOCATION", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80,
+				3, 3, 3, emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidControl() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "NOTACONTROL", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3,
+				3, 3, emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidNumOfStudents() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", -50, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3, 3,
+				emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidPerFem() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 150, -1, -1, 16403, 20, 5500, 50, 80, 3, 3,
+				3, emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidSATVerbal() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -50, -1, 16403, 20, 5500, 50, 80, 3, 3,
+				3, emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidSATMath() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -50, 16403, 20, 5500, 50, 80, 3, 3,
+				3, emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidExpenses() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, -50, 20, 5500, 50, 80, 3, 3, 3,
+				emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidFinancialAid() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, -50, 5500, 50, 80, 3, 3,
+				3, emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidNumOfApps() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, -50, 50, 80, 3, 3, 3,
+				emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidPerAdmitted() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 150, 80, 3, 3,
+				3, emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidPerEnrolled() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 150, 3, 3,
+				3, emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidAcademicScale() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, -50, 3,
+				3, emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidSocialScale() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, -50,
+				3, emp,0,0,0);
+		dbCon.addUniversity(u);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddUniversity_InvalidQualOfLife() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University u = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50, 80, 3, 3,
+				-50, emp,0,0,0);
+		dbCon.addUniversity(u);
 	}
 
 	/**
@@ -187,7 +419,8 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testGetUniversities() {
-		fail("Not yet implemented");
+		String [][] list = dbCon.getUniversities();
+		assertTrue("list [0][0] expected got " + list [0][0], list [0][0].equals("ABILENE CHRISTIAN UNIVERSITY"));
 	}
 
 	/**
@@ -195,7 +428,8 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testGetEmphasis() {
-		fail("Not yet implemented");
+		String [][] list = dbCon.getUniversities();
+		assertTrue("list [0][0] expected got " + list [0][0], list [0][0].equals("ABILENE CHRISTIAN UNIVERSITY"));
 	}
 
 	/**
@@ -627,13 +861,11 @@ public class DBControllerTest {
 			assertFalse(true);
 		}
 	}
-
-	/**
-	 * Test method for {@link csci230.project.DBController#deleteSavedSchool(csci230.project.University)}.
-	 */
-	@Test
-	public void testDeleteSavedSchool() {
-		fail("Not yet implemented");
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testDeleteUser_UserDoesNotExist() {
+		User zac = new User("Zac", "Heinen", "someEmail@gmail.com", "password", 'a', 'Y');
+		dbCon.deleteUser(zac.getUserName());
 	}
 
 	/**
@@ -641,47 +873,62 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testEditUser() {
+		boolean found = false;
 		User newUser = new User("IMAD", "RAHAL", "luser@csbsju.edu", "PASSWORD", 'a', 'Y');
 		dbCon.editUser(newUser);
 		ArrayList<User> allUsers = uc.viewUsers();
 		for(User i:allUsers) {
-			if(i.getUserName().equals("luser@csbsju.edu")) {
-				if(i.getLastName().equals("RAHAL") && i.getPassword().equals("PASSWORD") && i.getType() == 'a' && i.getStatus() == 'Y') {
-					assertTrue("edited User first name should equal IMAD. actual result" + i.getFirstName(), i.getFirstName().equals("IMAD"));
-				}
+			if(i.getUserName().equals("juser@csbsju.edu")) {
+				found = true;
 			}
 		}
-		User oldUser = new User("Lynn", "User", "luser@csbsju.edu", "user", 'u', 'N');
-		dbCon.editUser(oldUser);
+		if(found) {
+			assertFalse(true);
+		}
+		else
+		{
+			assertTrue(true);
+		}
+		uc.addUser("John", "User", "juser@csbsju.edu", "user", 'u', 'Y');
 	}
 	
-	/**
-	 * Test method for {@link csci230.project.UserController#editUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
-	 */
 	@Test(expected=IllegalArgumentException.class)
-	public void testEditUser_InvalidUsername() {
-		User newUser = new User("IMAD", "RAHAL", "luser", "PASSWORD", 'a', 'Y');
-		dbCon.editUser(newUser);
+	public void testDeleteUser_UserNotFound() {
+		uc.deleteUser("someEmail@gmail.com");
 	}
 	
+
 	/**
-	 * Test method for {@link csci230.project.UserController#editUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 * Test method for {@link csci230.project.DBController#deleteSavedSchool(csci230.project.University)}.
 	 */
-	@Test(expected=IllegalArgumentException.class)
-	public void testEditUser_InvalidType() {
-		User newUser = new User("IMAD", "RAHAL", "luser@csbsju.edu", "PASSWORD", 'Z', 'Y');
-	    dbCon.editUser(newUser);
-	}
-	
-	/**
-	 * Test method for {@link csci230.project.UserController#editUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
-	 */
-	@Test(expected=IllegalArgumentException.class)
-	public void testEditUser_InvalidStatus() {
-		User newUser = new User("IMAD", "RAHAL", "luser@csbsju.edu", "PASSWORD", 'a', 'p');
-		dbCon.editUser(newUser);
+	@Test
+	public void testDeleteSavedSchool() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		dbCon.saveUniversities(u);
+		dbCon.deleteSavedSchool(u);
+		for (University i: dbCon.getSavedSchoolList()) {
+			if (!i.getSchoolName().equals("ADELPHI"))
+			assertTrue("expected to remove Adelphi", !i.getSchoolName().equals("ADELPHI"));
+		}
 	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testDeleteSavedSchool_SchoolNotSaved() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		dbCon.deleteSavedSchool(u);
+	}
 
 	/**
 	 * Test method for {@link csci230.project.DBController#loadUsers(java.lang.String)}.
@@ -734,26 +981,23 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testGetLoggedOnUser() {
-		dbCon.getLoggedOnUser();
-		assertTrue("Logged on user is John User " + dbCon.getLoggedOnUser().getFirstName(), dbCon.getLoggedOnUser().getFirstName().equals("John"));
+		fail("Not yet implemented");
 	}
-	
+//
 	/**
 	 * Test method for {@link csci230.project.DBController#getAllUsers()}.
 	 */
 	@Test
 	public void testGetAllUsers() {
-		dbCon.getAllUsers();
-		assertTrue("expected output is the username of the first User of all the users from the database " + dbCon.getAllUsers().get(0).getUserName(), dbCon.getAllUsers().get(0).getUserName().equals("abreyen001@csbsju.edu"));
+		fail("Not yet implemented");
 	}
 
 	/**
 	 * Test method for {@link csci230.project.DBController#logOut()}.
 	 */
-	@Test(expected=IllegalArgumentException.class)
+	@Test
 	public void testLogOut() {
-		dbCon.logOut();
-		dbCon.getLoggedOnUser();
+		fail("Not yet implemented");
 	}
 
 }
