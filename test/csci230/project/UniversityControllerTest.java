@@ -1428,6 +1428,19 @@ public class UniversityControllerTest {
 			}
 		}
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testRemoveSchool_SchoolDoesNotExist() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University test = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50,
+				80, 3, 3, 3, emp, 0, 0, 0);
+		univC.removeUniversity(test);
+	}
 
 	@Test
 	public void testRandomSchool() {
