@@ -24,6 +24,7 @@ public class UserControllerTest {
 	@Before
 	  public void setUp() throws Exception {
 		uc = new UserController();
+		dbCon = new DBController();
 		uc.logOn("ZHEINEN001@csbsju.edu", "zaciscool");
 		john = new User("John", "User", "juser@csbsju.edu", "user", 'u', 'Y');
 //		lynn = new User("Lynn", "User", "luser@csbsju.edu", "user", 'u', 'N');
@@ -400,11 +401,19 @@ public class UserControllerTest {
 	@Test
 	public void testResetPasswordByEmail() {
 		uc.logOut();
-		uc.logOn("andrew.breyen+rpt@gmail.com", "myPassword");
+		uc.logOn("andrew.breyen+rpt@gmail.com", "pass");
 		User u = uc.getLoggedOnUser();
 		String oldPass = u.getPassword();
 		uc.resetPasswordByEmail(u.getUserName());
-		assertFalse("Password should have changed" ,oldPass.equals(u.getPassword()));
+		ArrayList<User> allUsers = dbCon.getAllUsers();
+
+		for (User i : allUsers) {
+			if (i.getUserName().equals("andrew.breyen+rpt@gmail.com")) {
+				u = i;
+			}
+		}
+		assertFalse("Password should have changed oldPass:"+oldPass+"u.getPass:"+u.getPassword() ,oldPass.equals(u.getPassword()));
+		uc.editUser("ResetPass", "Word", "andrew.breyen+rpt@gmail.com", oldPass, 'u', 'Y');
 		uc.logOut();
 	}
 
