@@ -267,10 +267,10 @@ public class AdminFunctionalityControllerTest {
 	
 	@Test
 	public void testResetPasswordByEmail() {
-		uc.logOn("andrew.breyen+rpt@gmail.com", "pass");
+		afc.logOn("andrew.breyen+rpt@gmail.com", "pass");
 		User u = uc.getLoggedOnUser();
 		String oldPass = u.getPassword();
-		uc.resetPasswordByEmail(u.getUserName());
+		afc.resetPasswordByEmail(u.getUserName());
 		ArrayList<User> allUsers = dbCon.getAllUsers();
 
 		for (User i : allUsers) {
@@ -279,8 +279,8 @@ public class AdminFunctionalityControllerTest {
 			}
 		}
 		assertFalse("Password should have changed oldPass:"+oldPass+"u.getPass:"+u.getPassword() ,oldPass.equals(u.getPassword()));
-		uc.editUser("ResetPass", "Word", "andrew.breyen+rpt@gmail.com", oldPass, 'u', 'Y');
-		uc.logOut();
+		afc.editUser("ResetPass", "Word", "andrew.breyen+rpt@gmail.com", oldPass, 'u', 'Y');
+		afc.logOff();
 	}
 	
 	@Test
