@@ -120,7 +120,7 @@ public class UniversityController {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 
-		if (sch.isEmpty() || sch == null || temp == null) {
+		if (sch.isEmpty() || temp == null) {
 			return temp;
 		} else {
 			String schoolName = sch.toUpperCase();
@@ -147,7 +147,7 @@ public class UniversityController {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 
-		if (state.isEmpty() || state == null || temp == null) {
+		if (state.isEmpty() || temp == null) {
 			return temp;
 		} else {
 			String st = state.toUpperCase();
@@ -193,7 +193,7 @@ public class UniversityController {
 	public ArrayList<University> searchByLocation(ArrayList<University> temp, String l) {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 
-		if (l.isEmpty() || l == null || temp == null) {
+		if (l.isEmpty() || temp == null) {
 			return temp;
 		} else {
 			if (l.equals("-1") || l.equals("SMALL-CITY") || l.equals("SUBURBAN") || l.equals("URBAN") || l.equals("")) {
@@ -221,7 +221,7 @@ public class UniversityController {
 	public ArrayList<University> searchByControl(ArrayList<University> temp, String c) {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 
-		if (c.isEmpty() || c == null || temp == null) {
+		if (c.isEmpty() || temp == null) {
 			return temp;
 		} else {
 			String control = c.toUpperCase();

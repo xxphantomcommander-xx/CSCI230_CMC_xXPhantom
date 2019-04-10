@@ -58,7 +58,7 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testSearchBySchool_NullForBoth() {
-		ArrayList<University> result = univC.searchBySchool(null, null);
+		ArrayList<University> result = univC.searchBySchool(null, "");
 		assertTrue("expected: null. actual:" + result, result == null);
 	}
 
@@ -229,7 +229,7 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testSearchByState_StateNullTempNull() {
-		ArrayList<University> matchingSchools = univC.searchByState(null, null);
+		ArrayList<University> matchingSchools = univC.searchByState(null, "");
 		assertTrue("expected: null. actual:" + matchingSchools, matchingSchools == null);
 
 	}
@@ -388,7 +388,7 @@ public class UniversityControllerTest {
 				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
 		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
 				60, 3, 1, 2, emp5, 0, 0, 0));
-		ArrayList<University> matchingSchools = univC.searchByState(example2, null);
+		ArrayList<University> matchingSchools = univC.searchByState(example2, "");
 		assertTrue("expected: OBERLIN. actual: " + matchingSchools.get(0).getSchoolName(),
 				matchingSchools.get(0).getSchoolName().equals("OBERLIN"));
 	}
@@ -448,7 +448,7 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testSearchByLocation_LocationNullTempNull() {
-		ArrayList<University> matchingSchools = univC.searchByLocation(null, null);
+		ArrayList<University> matchingSchools = univC.searchByLocation(null, "");
 		assertTrue("expected: null actual: " + matchingSchools, matchingSchools == null);
 	}
 
@@ -528,9 +528,10 @@ public class UniversityControllerTest {
 		assertTrue("expected: null actual: " + matchingSchools.isEmpty(), matchingSchools.isEmpty());
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testSearchByLocation_InvalidLocationTempNull() {
-		univC.searchByLocation(null, "Rural");
+		ArrayList<University> matchingSchools = univC.searchByLocation(null, "Rural");
+		assertTrue("expected: null. actual:" + matchingSchools,  matchingSchools == null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -670,7 +671,7 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testSearchByControl_ControlNullTempNull() {
-		ArrayList<University> matchingSchools = univC.searchByControl(null, null);
+		ArrayList<University> matchingSchools = univC.searchByControl(null, "");
 		assertTrue("expected: null actual: " + matchingSchools, matchingSchools == null);
 	}
 
@@ -815,7 +816,7 @@ public class UniversityControllerTest {
 				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
 		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
 				60, 3, 1, 2, emp5, 0, 0, 0));
-		ArrayList<University> matchingSchools = univC.searchByControl(example2, null);
+		ArrayList<University> matchingSchools = univC.searchByControl(example2, "");
 		if (matchingSchools.get(0).getSchoolName().equals("OBERLIN")) {
 			assertTrue("expected: PRATT. actual: " + matchingSchools.get(4).getSchoolName(),
 					matchingSchools.get(4).getSchoolName().equals("PRATT"));
