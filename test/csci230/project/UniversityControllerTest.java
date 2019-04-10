@@ -88,18 +88,18 @@ public class UniversityControllerTest {
 		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
 				40, 80, 4, 5, 5, emp4, 0, 0, 0));
 
-		ArrayList<University> result = univC.searchBySchool(example, "WORCHESTER");
+		ArrayList<University> result = univC.searchBySchool(example, "ZACH2");
 		for (University i : result) {
-			if (i.getSchoolName().equals("WORCHESTER")) {
+			if (i.getSchoolName().equals("ZACH2")) {
 				assertTrue("Expected output Worchester got" + i.getSchoolName(),
-						"WORCHESTER".equals(i.getSchoolName()));
+						"WORCESTER".equals(i.getSchoolName()));
 			}
 		}
 
 	}
 
 	@Test
-	public void testSearchBySchool_IvalidNameInList2() {
+	public void testSearchBySchool_InvalidNameInList2() {
 		ArrayList<String> emp1 = new ArrayList<String>();
 		emp1.add("FINE-ARTS");
 		emp1.add("LIBERAL-ARTS");
@@ -141,6 +141,19 @@ public class UniversityControllerTest {
 				11500, 40, 50, 5, 4, 4, emp4, 0, 0, 0));
 		example2.add(new University("PRATT", "NEW YORK", "URBAN", "PRIVATE", 10000, 40, 425, 475, 17879, 80, 4000, 50,
 				60, 3, 1, 2, emp5, 0, 0, 0));
+		
+		ArrayList<University> result = univC.searchBySchool(example2, "ZACH2");
+		boolean works = true;
+		for (University i : result) {
+			if (i.getSchoolName().equals("ZACH2")) {
+				works = false;
+			}
+		}
+		if (works == true)
+		{
+			assertTrue("Expected output is empty array list got" + univC.searchBySchool(example2, "ZACH2"),
+					result.isEmpty() == true);
+		}
 	}
 
 	@Test
@@ -168,9 +181,46 @@ public class UniversityControllerTest {
 		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
 				40, 80, 4, 5, 5, emp4, 0, 0, 0));
 
-		ArrayList<University> result = univC.searchBySchool(example, "ZACH2");
+		ArrayList<University> result = univC.searchBySchool(example, "ZACH3");
 
-		assertTrue("Expected output null got" + result.get(0), result.get(0) == null);
+		assertTrue("Expected output null got" + result.isEmpty(), result.isEmpty() == true);
+	}
+	
+	@Test
+	public void testSearchBySchool_NullNameInList() {
+		ArrayList<String> emp1 = new ArrayList<String>();
+		emp1.add("ENGINEERING");
+		ArrayList<String> emp2 = new ArrayList<String>();
+		emp2.add("BIOLOGY");
+		emp2.add("ENGLISH");
+		emp2.add("HISTORY");
+		emp2.add("LIBERAL-ARTS");
+		ArrayList<String> emp3 = new ArrayList<String>();
+		emp3.add("BUSINESS-ADMINISTRATION");
+		emp3.add("SOCIAL-SCIENCE");
+		ArrayList<String> emp4 = new ArrayList<String>();
+		emp4.add("BIOLOGY");
+		emp4.add("COMPUTER SCIENCE");
+		ArrayList<University> example = new ArrayList<University>();
+		example.add(new University("WORCESTER", "MASSACHUSETTS", "URBAN", "PRIVATE", 10000, 20, 550, 650, 30973, 70,
+				4000, 50, 50, 4, 3, 4, emp1, 0, 0, 0));
+		example.add(new University("YALE", "CONNECTICUT", "SMALL-CITY", "PRIVATE", 10000, 45, 675, 675, 33014, 40,
+				11500, 20, 60, 5, 3, 4, emp2, 0, 0, 0));
+		example.add(new University("YANKTOWN COLLEGE", "SOUTH DAKOTA", "SUBURBAN", "PRIVATE", 10000, 30, 450, 400,
+				15736, 95, 4000, 95, 90, 1, 2, 2, emp3, 0, 0, 0));
+		example.add(new University("ZACH2", "MINNESOTA", "SUBURBAN", "PRIVATE", 30000, 60, 600, 650, 30000, 70, 10000,
+				40, 80, 4, 5, 5, emp4, 0, 0, 0));
+
+		ArrayList<University> result = univC.searchBySchool(example, "");
+
+		assertTrue("Expected output for the 2nd school in the list got" + result.get(1).getSchoolName(), result.get(1).getSchoolName() == "YALE");
+	}
+	
+	@Test
+	public void testSearchBySchool_NullList() {
+		ArrayList<University> result = univC.searchBySchool(null, "ADELPHI");
+		assertTrue("expected: null. actual:"  + result,
+				result == null);
 	}
 
 	@Test
