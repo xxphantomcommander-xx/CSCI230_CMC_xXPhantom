@@ -1412,7 +1412,7 @@ public class UniversityControllerTest {
 		emp2.add("LIBERAL-ARTS");
 		ArrayList<String> emp3 = new ArrayList<String>();
 		emp3.add("BUSINESS-ADMINISTRATION");
-		emp3.add("SOCIAL-SCIENCE");
+		emp3.add("SOCIAL-SCIENCE");//
 		ArrayList<String> emp4 = new ArrayList<String>();
 		emp4.add("BIOLOGY");
 		emp4.add("COMPUTER SCIENCE");
