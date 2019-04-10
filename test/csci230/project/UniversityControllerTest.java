@@ -59,7 +59,8 @@ public class UniversityControllerTest {
 	@Test
 	public void testSearchBySchool_NullForBoth() {
 		ArrayList<University> result = univC.searchBySchool(null, null);
-		assertTrue("Expected output null got" + result.get(0), result.get(0) == null);
+		assertTrue("expected: null. actual:"  + result,
+				result == null);
 	}
 
 	@Test
@@ -175,9 +176,9 @@ public class UniversityControllerTest {
 
 	@Test
 	public void testSearchByState_StateNullTempNull() {
-		ArrayList<University> matchingSchools = univC.searchByState(null, "");
-		assertTrue("expected: null. actual: " + matchingSchools.get(0).getSchoolName(),
-				matchingSchools.get(0).getSchoolName().equals(null));
+		ArrayList<University> matchingSchools = univC.searchByState(null, null);
+		assertTrue("expected: null. actual:"  + matchingSchools,
+				matchingSchools == null);
 
 	}
 
@@ -395,8 +396,8 @@ public class UniversityControllerTest {
 	@Test
 	public void testSearchByLocation_LocationNullTempNull() {
 		ArrayList<University> matchingSchools= univC.searchByLocation(null, null);
-		assertTrue("expected: null actual: " + matchingSchools.get(1).getLocation(),
-				matchingSchools.get(1).getLocation().equals(null));
+		assertTrue("expected: null actual: " + matchingSchools,
+				matchingSchools == null);
 	}
 	
 	@Test
@@ -608,7 +609,10 @@ public class UniversityControllerTest {
 		}
 	}
 	
-	
+	@Test
+	public void testSearchByControl_ControlNullTempNull() {
+		
+	}
 	
 	@Test
 	public void testTopRecommended() {

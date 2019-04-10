@@ -240,8 +240,47 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testEditUser() {
-		fail("Not yet implemented");
+		User newUser = new User("IMAD", "RAHAL", "luser@csbsju.edu", "PASSWORD", 'a', 'Y');
+		dbCon.editUser(newUser);
+		ArrayList<User> allUsers = uc.viewUsers();
+		for(User i:allUsers) {
+			if(i.getUserName().equals("luser@csbsju.edu")) {
+				if(i.getLastName().equals("RAHAL") && i.getPassword().equals("PASSWORD") && i.getType() == 'a' && i.getStatus() == 'Y') {
+					assertTrue("edited User first name should equal IMAD. actual result" + i.getFirstName(), i.getFirstName().equals("IMAD"));
+				}
+			}
+		}
+		User oldUser = new User("Lynn", "User", "luser@csbsju.edu", "user", 'u', 'N');
+		dbCon.editUser(oldUser);
 	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#editUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditUser_InvalidUsername() {
+		User newUser = new User("IMAD", "RAHAL", "luser", "PASSWORD", 'a', 'Y');
+		dbCon.editUser(newUser);
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#editUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditUser_InvalidType() {
+		User newUser = new User("IMAD", "RAHAL", "luser@csbsju.edu", "PASSWORD", 'Z', 'Y');
+	    dbCon.editUser(newUser);
+	}
+	
+	/**
+	 * Test method for {@link csci230.project.UserController#editUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String, char, char)}.
+	 */
+	@Test(expected=IllegalArgumentException.class)
+	public void testEditUser_InvalidStatus() {
+		User newUser = new User("IMAD", "RAHAL", "luser@csbsju.edu", "PASSWORD", 'a', 'p');
+		dbCon.editUser(newUser);
+	}
+
 
 	/**
 	 * Test method for {@link csci230.project.DBController#loadUsers(java.lang.String)}.
@@ -294,23 +333,26 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testGetLoggedOnUser() {
-		fail("Not yet implemented");
+		dbCon.getLoggedOnUser();
+		assertTrue("Logged on user is John User " + dbCon.getLoggedOnUser().getFirstName(), dbCon.getLoggedOnUser().getFirstName().equals("John"));
 	}
-//
+	
 	/**
 	 * Test method for {@link csci230.project.DBController#getAllUsers()}.
 	 */
 	@Test
 	public void testGetAllUsers() {
-		fail("Not yet implemented");
+		dbCon.getAllUsers();
+		assertTrue("expected output is the username of the first User of all the users from the database " + dbCon.getAllUsers().get(0).getUserName(), dbCon.getAllUsers().get(0).getUserName().equals("abreyen001@csbsju.edu"));
 	}
 
 	/**
 	 * Test method for {@link csci230.project.DBController#logOut()}.
 	 */
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testLogOut() {
-		fail("Not yet implemented");
+		dbCon.logOut();
+		dbCon.getLoggedOnUser();
 	}
 
 }
