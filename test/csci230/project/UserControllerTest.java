@@ -399,7 +399,13 @@ public class UserControllerTest {
 	 */
 	@Test
 	public void testResetPasswordByEmail() {
-		fail("Not yet implemented");
+		uc.logOut();
+		uc.logOn("andrew.breyen+rpt@gmail.com", "myPassword");
+		User u = uc.getLoggedOnUser();
+		String oldPass = u.getPassword();
+		uc.resetPasswordByEmail(u.getUserName());
+		assertFalse("Password should have changed" ,oldPass.equals(u.getPassword()));
+		uc.logOut();
 	}
 
 	/**
