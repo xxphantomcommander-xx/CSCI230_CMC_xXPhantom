@@ -103,7 +103,9 @@ public class UniversityController {
 								ssLow, ssHigh),
 						qLow, qHigh),
 				emp);
-		history.add(results.get(0));
+		if(!results.isEmpty()) {
+			history.add(results.get(0));
+		}
 		return results;
 	}
 
@@ -117,13 +119,13 @@ public class UniversityController {
 	public ArrayList<University> searchBySchool(ArrayList<University> temp, String sch) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		
+
 		if (sch == null || temp == null) {
 			return temp;
 		} else {
 			String schoolName = sch.toUpperCase();
 			for (University i : temp) {
-				
+
 				String name = i.getSchoolName();
 				if (name.contains(schoolName)) {
 					matchedSchools.add(i);
@@ -144,29 +146,29 @@ public class UniversityController {
 	public ArrayList<University> searchByState(ArrayList<University> temp, String state) {
 
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		
+
 		if (state == null || temp == null) {
 			return temp;
-		}
-		else {
+		} else {
 			String st = state.toUpperCase();
 			if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS")
 					|| state.equals("CALIFORNIA") || state.equals("COLORADO") || state.equals("CONNECTICUT")
 					|| state.equals("DELAWARE") || state.equals("FLORIDA") || state.equals("GEORGIA")
 					|| state.equals("HAWAII") || state.equals("IDAHO") || state.equals("ILLINOIS")
-					|| state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS") || state.equals("KENTUCKY")
-					|| state.equals("LOUISIANA") || state.equals("MAINE") || state.equals("MARYLAND")
-					|| state.equals("MASSACHUSETTS") || state.equals("MICHIGAN") || state.equals("MINNESOTA")
-					|| state.equals("MISSISSIPPI") || state.equals("MISSOURI") || state.equals("MONTANA")
-					|| state.equals("NEBRASKA") || state.equals("NEVADA") || state.equals("NEW HAMPSHIRE")
-					|| state.equals("NEW JERSEY") || state.equals("NEW MEXICO") || state.equals("NEW YORK")
-					|| state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA") || state.equals("OHIO")
-					|| state.equals("OKLAHOMA") || state.equals("OREGON") || state.equals("PENNSYLVANIA")
-					|| state.equals("RHODEISLAND") || state.equals("RHODE ISLAND") || state.equals("SOUTH CAROLINA")
-					|| state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE") || state.equals("TEXAS")
-					|| state.equals("UTAH") || state.equals("VERMONT") || state.equals("VIRGINIA")
-					|| state.equals("WASHINGTON") || state.equals("WEST VIRGINIA") || state.equals("WISCONSIN")
-					|| state.equals("WYOMING") || state.equals("FOREIGN") || state.equals("DISTRICT OF COLUMBIA") || state.equals("-1") || state.equals("")) {
+					|| state.equals("INDIANA") || state.equals("IOWA") || state.equals("KANSAS")
+					|| state.equals("KENTUCKY") || state.equals("LOUISIANA") || state.equals("MAINE")
+					|| state.equals("MARYLAND") || state.equals("MASSACHUSETTS") || state.equals("MICHIGAN")
+					|| state.equals("MINNESOTA") || state.equals("MISSISSIPPI") || state.equals("MISSOURI")
+					|| state.equals("MONTANA") || state.equals("NEBRASKA") || state.equals("NEVADA")
+					|| state.equals("NEW HAMPSHIRE") || state.equals("NEW JERSEY") || state.equals("NEW MEXICO")
+					|| state.equals("NEW YORK") || state.equals("NORTH CAROLINA") || state.equals("NORTH DAKOTA")
+					|| state.equals("OHIO") || state.equals("OKLAHOMA") || state.equals("OREGON")
+					|| state.equals("PENNSYLVANIA") || state.equals("RHODEISLAND") || state.equals("RHODE ISLAND")
+					|| state.equals("SOUTH CAROLINA") || state.equals("SOUTH DAKOTA") || state.equals("TENNESSEE")
+					|| state.equals("TEXAS") || state.equals("UTAH") || state.equals("VERMONT")
+					|| state.equals("VIRGINIA") || state.equals("WASHINGTON") || state.equals("WEST VIRGINIA")
+					|| state.equals("WISCONSIN") || state.equals("WYOMING") || state.equals("FOREIGN")
+					|| state.equals("DISTRICT OF COLUMBIA") || state.equals("-1") || state.equals("")) {
 				for (University i : temp) {
 					String name = i.getState();
 					if (name.contains(st)) {
@@ -190,12 +192,11 @@ public class UniversityController {
 	 */
 	public ArrayList<University> searchByLocation(ArrayList<University> temp, String l) {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		
+
 		if (l == null || temp == null) {
 			return temp;
-		} 
-		else {
-			if (l.equals("-1") || l.equals("SMALL-CITY") || l.equals("SUBURBAN") || l.equals("URBAN")|| l.equals("")) {
+		} else {
+			if (l.equals("-1") || l.equals("SMALL-CITY") || l.equals("SUBURBAN") || l.equals("URBAN") || l.equals("")) {
 				for (University i : temp) {
 					String location = l.toUpperCase();
 					String name = i.getLocation();
@@ -219,11 +220,10 @@ public class UniversityController {
 	 */
 	public ArrayList<University> searchByControl(ArrayList<University> temp, String c) {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
-		
+
 		if (c == null || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			String control = c.toUpperCase();
 			if (c.equals("CITY") || c.equals("PRIVATE") || c.equals("STATE") || c.equals("-1") || c.equals("")) {
 				for (University i : temp) {
@@ -253,9 +253,8 @@ public class UniversityController {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (nStuLow == -1 && nStuHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
-			if (0 <= nStuLow  || nStuLow == -1) {
+		} else {
+			if (0 <= nStuLow || nStuLow == -1) {
 				if (0 <= nStuHigh && nStuHigh >= nStuLow) {
 					for (University i : temp) {
 						int v = i.getNumOfStudents();
@@ -274,7 +273,6 @@ public class UniversityController {
 			}
 		}
 
-
 	}
 
 	/**
@@ -290,8 +288,7 @@ public class UniversityController {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (prctfLow == -1 && prctfHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			if (0 <= prctfLow && prctfLow <= 100 || prctfLow == -1) {
 				if (0 <= prctfHigh && prctfLow <= 100 && prctfHigh >= prctfLow) {
 					for (University i : temp) {
@@ -309,7 +306,6 @@ public class UniversityController {
 			}
 		}
 
-
 	}
 
 	/**
@@ -325,8 +321,7 @@ public class UniversityController {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (svLow == -1 && svHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			if (200 <= svLow && svLow <= 800) {
 				if (200 <= svHigh && svHigh <= 800 && svHigh >= svLow) {
 					for (University i : temp) {
@@ -357,12 +352,10 @@ public class UniversityController {
 	 */
 	public ArrayList<University> searchBySATMath(ArrayList<University> temp, int smLow, int smHigh) {
 
-
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (smLow == -1 && smHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			if (200 <= smLow && smLow <= 800 || smLow == -1) {
 				if (200 <= smHigh && smHigh <= 800 && smHigh >= smLow) {
 					for (University i : temp) {
@@ -395,8 +388,7 @@ public class UniversityController {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (eLow == -1 && eHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			if (0 <= eLow) {
 				if (0 <= eHigh && eHigh >= eLow) {
 					for (University i : temp) {
@@ -429,8 +421,7 @@ public class UniversityController {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (prctfinLow == -1 && prctfinHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			if (0 <= prctfinLow && prctfinLow <= 100 || prctfinLow == -1) {
 				if (0 <= prctfinHigh && prctfinHigh <= 100 && prctfinHigh >= prctfinLow) {
 					for (University i : temp) {
@@ -463,8 +454,7 @@ public class UniversityController {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (nApLow == -1 && nApHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			if (nApLow >= 0) {
 				if (nApHigh >= 0 && nApHigh >= nApLow) {
 					for (University i : temp) {
@@ -497,8 +487,7 @@ public class UniversityController {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (prctaLow == -1 && prctaHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			if (0 <= prctaLow && prctaLow <= 100 || prctaLow == -1) {
 				if (0 <= prctaHigh && prctaHigh <= 100 && prctaHigh >= prctaLow) {
 					for (University i : temp) {
@@ -531,8 +520,7 @@ public class UniversityController {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (prcteLow == -1 && prcteHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			if (0 <= prcteLow && prcteLow <= 100 || prcteLow == -1) {
 				if (0 <= prcteHigh && prcteHigh <= 100 && prcteHigh >= prcteLow) {
 					for (University i : temp) {
@@ -565,8 +553,7 @@ public class UniversityController {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (asLow == -1 && asHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			if (0 <= asLow && asLow <= 5 || asLow == -1) {
 				if (0 <= asHigh && asHigh <= 5 && asHigh >= asLow) {
 					for (University i : temp) {
@@ -599,8 +586,7 @@ public class UniversityController {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (ssLow == -1 && ssHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			if (0 <= ssLow && ssLow <= 5 || ssLow == -1) {
 				if (0 <= ssHigh && ssHigh <= 5 && ssHigh >= ssLow) {
 					for (University i : temp) {
@@ -618,7 +604,6 @@ public class UniversityController {
 			}
 		}
 
-
 	}
 
 	/**
@@ -634,8 +619,7 @@ public class UniversityController {
 		ArrayList<University> matchedSchools = new ArrayList<University>();
 		if (qLow == -1 && qHigh == -1 || temp == null) {
 			return temp;
-		} 
-		else {
+		} else {
 			if (0 <= qLow && qLow <= 5 || qLow == -1) {
 				if (0 <= qLow && qLow <= 5 && qHigh >= qLow) {
 					for (University i : temp) {
@@ -652,7 +636,6 @@ public class UniversityController {
 				throw new IllegalArgumentException("Invalid qualOfLife");
 			}
 		}
-
 
 	}
 
@@ -1513,7 +1496,7 @@ public class UniversityController {
 		state = state.toUpperCase();
 		location = location.toUpperCase();
 		control = control.toUpperCase();
-		for(int i = 0; i < emphasis.size(); i++) {
+		for (int i = 0; i < emphasis.size(); i++) {
 			emphasis.set(i, emphasis.get(i).toUpperCase());
 		}
 		if (state.equals("ALABAMA") || state.equals("ALASKA") || state.equals("ARIZONA") || state.equals("ARKANSAS")
@@ -1613,9 +1596,14 @@ public class UniversityController {
 	 * @param univ
 	 */
 	public void removeUniversity(University univ) {
-		if (univ != null ) {
-			dbCon.removeSchool(univ);
-		} else {
+		boolean found = false;
+		for (University i : dbCon.loadUniversities()) {
+			if (i.getSchoolName().equals(univ.getSchoolName())) {
+				found = true;
+					dbCon.removeSchool(univ);
+			}
+		}
+		if(!found) {
 			throw new IllegalArgumentException("University passed is not a valid university");
 		}
 	}
@@ -1640,11 +1628,9 @@ public class UniversityController {
 	public void setSchoolOfTheWeek(String schoolName) {
 		ArrayList<University> schoolList = dbCon.loadUniversities();
 		boolean schoolFound = false;
-		for(University i : schoolList)
-		{
-			if(schoolName.equals(i.getSchoolName()))
-			{
-				schoolOfTheWeek= i;
+		for (University i : schoolList) {
+			if (schoolName.equals(i.getSchoolName())) {
+				schoolOfTheWeek = i;
 				schoolFound = true;
 			}
 		}

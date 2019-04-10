@@ -263,7 +263,7 @@ public class DBController {
 	 */
 	public void deleteUser(String username) {
 		boolean deleted = false;
-		ArrayList<User> users = loadUsers(loggedOnUser.getUserName());
+		ArrayList<User> users = getAllUsers();
 		for (User i : users) {
 			if (i.getUserName().equals(username)) {
 				univDBlib.user_deleteUser(username);
