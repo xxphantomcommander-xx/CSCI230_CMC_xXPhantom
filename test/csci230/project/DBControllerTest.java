@@ -61,6 +61,18 @@ public class DBControllerTest {
 		assertTrue("expected Adelphi got " + dbCon.getSavedSchoolList().get(0).getSchoolName(), dbCon.getSavedSchoolList().get(0).getSchoolName().equals("ADELPHI"));
 		dbCon.deleteSavedSchool(u);
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testSaveUniversity_InvalidSchool() {
+		ArrayList<String> al2 = new ArrayList<String>();
+		al2.add("BIOLOGY");
+		al2.add("BUSINESS-ADMINISTRATION");
+		al2.add("");
+		al2.add("");
+		al2.add("");
+		University u = new University("NOTAUNIV", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
+		dbCon.saveUniversities(u);
+	}
 
 	/**
 	 * Test method for {@link csci230.project.DBController#getUsers()}.
@@ -79,6 +91,7 @@ public class DBControllerTest {
 		dbCon.loadUsers("abreyen001@csbsju.edu");
 		ArrayList<University> list = dbCon.getSavedSchoolList();
 		assertTrue("list.get(0) " + list.get(0).getSchoolName(), list.get(0).getSchoolName().equals("ADELPHI"));
+		dbCon.loadUsers("juser@csbsju.edu");
 	}
 
 	/**
@@ -86,7 +99,18 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testGetUsernameBySavedSchool() {
-		fail("Not yet implemented");
+		ArrayList<String> list = dbCon.getUsernameBySavedSchool("ADELPHI");
+		assertTrue("list.get(0) should equal " + list.get(0), list.get(0).equals("abreyen001@csbsju.edu"));
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testGetUsernameBySavedSchool_NoUserHasSchoolSaved() {
+		dbCon.getUsernameBySavedSchool("AUBURN");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testGetUsernameBySavedSchool_NoSuchSchoolExists() {
+		dbCon.getUsernameBySavedSchool("AUBORN");
 	}
 
 	/**
@@ -94,7 +118,39 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testRemoveSchool() {
-		fail("Not yet implemented");
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University test = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50,
+				80, 3, 3, 3, emp, 0, 0, 0);
+		dbCon.addUniversity(test);
+		for (University i : dbCon.loadUniversities()) {
+			if (i.getSchoolName().equals("TEST1")) {
+				assertTrue("school added", i.getSchoolName().equals("TEST1"));
+			}
+		}
+		dbCon.removeSchool(test);
+		for (University i : dbCon.loadUniversities()) {
+			if (i.getSchoolName().equals("TEST1")) {
+				assertFalse("school found!", i.getSchoolName().equals("TEST1"));
+			}
+		}
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testRemoveSchool_SchoolDoesNotExist() {
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		emp.add("");
+		University test = new University("TEST1", "FOREIGN", "URBAN", "PRIVATE", 10000, 40, -1, -1, 16403, 20, 5500, 50,
+				80, 3, 3, 3, emp, 0, 0, 0);
+		dbCon.removeSchool(test);
 	}
 
 	/**
@@ -102,7 +158,20 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testAddUser() {
-		fail("Not yet implemented");
+		User zac = new User("Zac", "Heinen", "someEmail@gmail.com", "password", 'a', 'Y');
+		dbCon.addUser(zac);
+		boolean found = false;
+		ArrayList<User> allUsers = dbCon.loadUsers("juser@csbsju.edu");
+		for(User i:allUsers) {
+			if(i.getUserName().equals("someEmail@gmail.com")) {
+				found = true;
+				assertTrue("expected output someEmail@gmail.com got" + i.getUserName(),i.getUserName().equals("someEmail@gmail.com"));
+			}
+		}
+		if(!found) {
+			assertFalse(true);
+		}
+		dbCon.deleteUser("someEmail@gmail.com");
 	}
 
 	/**
@@ -142,12 +211,30 @@ public class DBControllerTest {
 	 */
 	@Test
 	public void testDeleteUser() {
-		
-		dbCon.logOut();
-		dbCon.loadUsers("juser@csbsju.edu");
-		logOn("ZHEINEN001@csbsju.edu", "zaciscool");
-		uc.deleteUser("juser@csbsju.edu");
+		User zac = new User("Zac", "Heinen", "someEmail@gmail.com", "password", 'a', 'Y');
+		dbCon.addUser(zac);
+		dbCon.deleteUser("someEmail@gmail.com");
 		boolean found = false;
+		ArrayList<User> allUsers = dbCon.loadUsers("juser@csbsju.edu");
+		for(User i:allUsers) {
+			if(i.getUserName().equals("someEmail@gmail.com")) {
+				found = true;
+				assertTrue("expected output someEmail@gmail.com got" + i.getUserName(),i.getUserName().equals("someEmail@gmail.com"));
+			}
+		}
+		if(!found) {
+			assertFalse(true);
+		}
+	}
+
+	/**
+	 * Test method for {@link csci230.project.DBController#editUser(csci230.project.User)}.
+	 */
+	@Test
+	public void testEditUser() {
+		boolean found = false;
+		User newUser = new User("IMAD", "RAHAL", "luser@csbsju.edu", "PASSWORD", 'a', 'Y');
+		dbCon.editUser(newUser);
 		ArrayList<User> allUsers = uc.viewUsers();
 		for(User i:allUsers) {
 			if(i.getUserName().equals("juser@csbsju.edu")) {
@@ -200,15 +287,6 @@ public class DBControllerTest {
 		al2.add("");
 		University u = new University("ADELPHI", "NEW YORK", "-1", "PRIVATE", 15000, 70, 500, 475, 37437, 60, 5500, 70, 40, 2, 2, 2, al2, 0, 0, 0);
 		dbCon.deleteSavedSchool(u);
-	}
-	
-
-	/**
-	 * Test method for {@link csci230.project.DBController#editUser(csci230.project.User)}.
-	 */
-	@Test
-	public void testEditUser() {
-		fail("Not yet implemented");
 	}
 
 	/**
