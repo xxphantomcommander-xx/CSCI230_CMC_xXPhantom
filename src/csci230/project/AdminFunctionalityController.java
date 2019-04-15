@@ -23,7 +23,7 @@ public class AdminFunctionalityController {
 		univC = new UniversityController();
 		userC = new UserController();
 	}
-	
+	// yuh
 	/**
 	 * Logs the admin into the system
 	 * @param username
